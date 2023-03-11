@@ -1,13 +1,7 @@
 <template>
   <div style="border-radius: 1rem; margin: 1rem">
     <v-row style="margin: 1rem">
-      <v-col
-        style="
-          border-radius: 1rem;
-          box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
-            rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
-          margin: 1rem;
-        ">
+      <v-col class="shadow-card">
         <h1
           v-if="tour_detail"
           class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">
@@ -121,12 +115,7 @@
             <a-date-picker
               :locale="locale"
               v-model:value="dob"
-              style="
-                height: 4.7vmin;
-                background-color: #f9fafb;
-                border-radius: 0.4rem;
-                width: 100%;
-              "
+              class="date-picker"
               format="DD/MM/YYYY" />
           </v-col>
           <v-col>
@@ -325,7 +314,7 @@ export default defineComponent({
       in: "",
       d_range: [],
       members_ls: [] as any,
-      tour_detail: "",
+      tour_detail: "" as any,
     };
   },
   watch: {
@@ -383,3 +372,17 @@ export default defineComponent({
   },
 });
 </script>
+<style scoped>
+.shadow-card {
+  border-radius: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+  margin: 1rem;
+}
+.date-picker {
+  height: 4.7vmin;
+  background-color: #f9fafb;
+  border-radius: 0.4rem;
+  width: 100%;
+}
+</style>
