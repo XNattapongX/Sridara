@@ -307,6 +307,7 @@
         ><v-btn
           variant="tonal"
           color="light-blue-accent-4"
+          @click="$router.push(`/addusertour/${tour_id}`)"
           :disabled="!lock_form"
           >ไปหน้าเพิ่มลูกทัวร์</v-btn
         ></v-col
