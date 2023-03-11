@@ -138,7 +138,7 @@
               v-model:value="d_range"
               format="DD/MM/YYYY"
               style="
-                height: 4.7vmin;
+                height: 55%;
                 background-color: #f9fafb;
                 border-radius: 0.4rem;
                 width: 100%;
@@ -250,7 +250,7 @@
               :disabled="!lock_form"
               format="DD/MM/YYYY"
               style="
-                height: 4.7vmin;
+                height: 55%;
                 background-color: #f9fafb;
                 border-radius: 0.4rem;
                 width: 100%;
