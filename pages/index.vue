@@ -4,9 +4,7 @@
     style="margin-top: 1rem">
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
       <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-        <thead
-          class="text-xs text-gray-700 uppercase bg-gray-50 dark:text-gray-400"
-          style="background-color: #81c784">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:text-gray-400" style="background-color: #81c784">
           <tr>
             <th scope="col" class="px-6 py-3">ชื่อทริปทัวร์</th>
             <th scope="col" class="px-6 py-3">ชื่อโปรแกรมทัวร์</th>
@@ -21,10 +19,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr
-            class="table-row-hover"
-            v-for="(item, index) in tour_ls"
-            :key="index">
+          <tr class="table-row-hover" v-for="(item, index) in tour_ls" :key="index" @click="detail_tour(item.fields.id.stringValue)">
             <td class="px-6 py-4">
               {{ item.fields.trip_name.stringValue }}
             </td>
@@ -60,6 +55,7 @@
 </template>
 
 <script>
+import { string } from "vue-types";
 import { read_all_data } from "~~/services/configs";
 export default {
   mounted() {
@@ -74,7 +70,13 @@ export default {
       tour_ls: [],
     };
   },
+  methods: {
+    detail_tour(id) {
+      this.$router.push({ path: `/tourdata/${id}` })
+    },
+  }
 };
+
 </script>
 
 <style scoped>
