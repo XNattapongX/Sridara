@@ -221,6 +221,7 @@
           <input
             type="text"
             id="large-input"
+            :disabled="!lock_form"
             v-model="formHotel.name"
             class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
         </div>
@@ -235,6 +236,7 @@
               type="number"
               v-model.number="formHotel.amount_room"
               id="base-input"
+              :disabled="!lock_form"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
           <v-col
@@ -245,6 +247,7 @@
             ><a-range-picker
               v-model:value="d_range2"
               :locale="locale"
+              :disabled="!lock_form"
               format="DD/MM/YYYY"
               style="
                 height: 4.7vmin;
@@ -292,6 +295,23 @@
         </v-table>
       </v-col>
     </v-row>
+    <v-row justify="end"
+      ><v-col cols="2" style="margin-right: -10vmin; margin-top: -2vmin"
+        ><v-btn
+          variant="tonal"
+          color="deep-orange-darken-2"
+          @click="$router.push('/')"
+          >ไปหน้ารายการทัวร์</v-btn
+        ></v-col
+      ><v-col cols="2" style="margin-right: -6vmin; margin-top: -2vmin"
+        ><v-btn
+          variant="tonal"
+          color="light-blue-accent-4"
+          :disabled="!lock_form"
+          >ไปหน้าเพิ่มลูกทัวร์</v-btn
+        ></v-col
+      ></v-row
+    >
   </div>
 </template>
 <script lang="ts">
