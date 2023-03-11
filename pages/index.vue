@@ -19,7 +19,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="table-row-hover" v-for="(item, index) in tour_ls" :key="index">
+          <tr class="table-row-hover" v-for="(item, index) in tour_ls" :key="index" @click="detail_tour(item.fields.id.stringValue)">
             <td class="px-6 py-4">
               {{ item.fields.trip_name.stringValue }}
             </td>
@@ -72,7 +72,7 @@ export default {
   },
   methods: {
     detail_tour(id) {
-      this.$router.push({ name: '/tourdata', params: { id: id } })
+      this.$router.push({ path: `/tourdata/${id}` })
     },
   }
 };
