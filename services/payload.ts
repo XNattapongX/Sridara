@@ -14,6 +14,7 @@ export const group_members = (
   dob: Date,
   nationality: string,
   gender: string,
+  address: string,
   check_stamp_number: string
 ) => {
   return {
@@ -50,6 +51,9 @@ export const group_members = (
       },
       gender: {
         stringValue: gender,
+      },
+      address: {
+        stringValue: address,
       },
       check_stamp_number: {
         stringValue: check_stamp_number,
