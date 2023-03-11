@@ -1,5 +1,7 @@
 <template>
-  <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
+  <section
+    class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5"
+    style="margin-top: 1rem">
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
       <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:text-gray-400" style="background-color: #81c784">

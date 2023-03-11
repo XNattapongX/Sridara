@@ -14,7 +14,7 @@ export const create_data = async (endpoint: string, data: any) => {
     `${endpoint}/${response.data.name.split("/").at(-1)}`,
     data
   );
-  return id;
+  return response.data.name.split("/").at(-1);
 };
 
 export const read_all_data = async (endpoint: string) => {
