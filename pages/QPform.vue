@@ -1,5 +1,5 @@
 <template>
-    <div style="border-radius: 1rem; margin: 1rem">
+   <div style="border-radius: 1rem; margin: 1rem">
       <v-row style="margin: 1rem">
         <v-col class="shadow-card">
           <h1
@@ -164,10 +164,151 @@
                 @click="addMember"
                 style="margin-top: 5px"
                 color="green-accent-4"
-                >ยืนยัน</v-btn
+                >เพิ่มข้อมูล</v-btn
               >
             </v-col>
           </v-row>
+          
+          <br /><br>
+         
+        </v-col>
+      </v-row>
+    </div>
+    <div style="border-radius: 1rem; margin: 1rem">
+      <v-row style="margin: 1rem">
+        <v-col class="shadow-card">
+          <h1
+            v-if="tour_detail"
+            class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">
+            ข้อมูลลูกทัวร์ | {{ tour_detail.fields.trip_name.stringValue }}
+          </h1>
+          <h1
+            v-else
+            class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">
+            ใบเสนอราคา/ยืนยันการสั่งซื้อ
+          </h1>
+          <v-row>
+            <v-col>
+              <label
+                for="base-input"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >ลำดับ</label
+              >
+              <input
+                type="text"
+                id="base-input"
+                v-model="surname_thai"
+                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+            </v-col>
+  
+            <v-col>
+              <label
+                for="base-input"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >รหัสลูกค้า</label
+              >
+              <input
+                type="text"
+                id="small-input"
+                v-model="lastname_thai"
+                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+            </v-col>
+            <v-col>
+              <label
+                for="base-input"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >รายการสินค้า</label
+              >
+              <input
+                type="text"
+                id="base-input"
+                v-model="surname_eng"
+                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+            </v-col>
+  
+            <v-col>
+              <label
+                for="base-input"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >จำนวน</label
+              >
+              <input
+                type="text"
+                id="small-input"
+                v-model="lastname_eng"
+                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+            </v-col>
+            <v-col>
+              <label
+                for="base-input"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >ราคาต่อหน่วย</label
+              >
+              <input
+                type="text"
+                id="base-input"
+                v-model="nationality"
+                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+            </v-col>
+  
+            <v-col>
+              <label
+                for="base-input"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >ส่วนลด</label
+              >
+              <input
+                type="text"
+                id="base-input"
+                v-model="nationality"
+                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+            </v-col>
+          </v-row>
+  
+          <v-row>
+            <v-col>
+              <label
+                for="base-input"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >ภาษี</label
+              >
+              <input
+                type="text"
+                id="small-input"
+                v-model="id_card"
+                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+            </v-col>
+            <v-col>
+              <label
+                for="base-input"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >ภาษี</label
+              >
+              <input
+                type="text"
+                id="small-input"
+                v-model="id_card"
+                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+            </v-col>
+          </v-row>
+    
+          <v-row>
+            <v-col>
+             
+            </v-col>
+            <v-col cols="2">
+              <br />
+              <v-btn
+                block
+                variant="tonal"
+                @click="addMember"
+                style="margin-top: 5px"
+                color="green-accent-4"
+                >เพิ่มข้อมูล</v-btn
+              >
+            </v-col>
+          </v-row>
+          
           <br /><br>
           <div
             class="relative overflow-x-auto"
