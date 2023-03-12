@@ -96,7 +96,12 @@
                   <td>{{ guide_name[l] }}</td>
                   <td>{{ j }}</td>
                   <td style="text-align: center; width: 10%">
-                    <v-btn variant="text" color="red-darken-4">ลบ</v-btn>
+                    <v-btn
+                      variant="text"
+                      color="red-darken-4"
+                      @click="removeGuide(l)"
+                      >ลบ</v-btn
+                    >
                   </td>
                 </tr>
               </tbody>
@@ -396,7 +401,10 @@ export default defineComponent({
     },
   },
   methods: {
-    removeGuide(index: number) {},
+    removeGuide(index: number) {
+      this.guide_name.pop(index);
+      this.guide_tel.pop(index);
+    },
     addTourPackage() {
       const raw = group_tours(
         this.tour_name,
