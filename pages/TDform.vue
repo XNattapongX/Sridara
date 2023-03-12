@@ -10,7 +10,7 @@
           <h1
             v-else
             class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">
-            ใบกำกับภาษี / ใบส่งของ
+            เพิ่มข้อมูลใบกำกับภาษี / ใบส่งของ
           </h1>
           <v-row>
             <v-col>
@@ -132,32 +132,6 @@
                 id="small-input"
                 v-model="customer_id"
                 class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-            </v-col>
-          </v-row>
-
-          <v-row>
-            <v-col>
-              <label
-                for="base-input"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >Email</label
-              >
-              <input
-                type="text"
-                id="small-input"
-                v-model="email"
-                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-            </v-col>
-            <v-col cols="2">
-              <br />
-              <v-btn
-                block
-                variant="tonal"
-                @click="addMember"
-                style="margin-top: 5px"
-                color="red-accent-4"
-                >ยืนยัน</v-btn
-              >
             </v-col>
           </v-row>
           <br />
