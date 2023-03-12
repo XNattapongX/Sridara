@@ -42,13 +42,13 @@
               <label
                 for="base-input"
                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >ID TAX</label
-              >
+                >ID TAX</label>
               <input
                 type="text"
                 id="base-input"
                 v-model="surname_eng"
                 class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                
             </v-col>
   
            
@@ -57,17 +57,16 @@
               <label
                 for="base-input"
                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >ฝ่าย</label
-              >
-              <select
-                style="height: 55%"
-                v-model="gender"
-                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-              
-                <option value="อื่นๆ">อื่นๆ</option>
-              </select>
+                >ฝ่าย</label>
+              <input
+                type="text"
+                id="base-input"
+                v-model="surname_eng"
+                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                
             </v-col>
           </v-row>
+        <v-row>
           <v-col>
               <label
                 for="base-input"
@@ -92,6 +91,7 @@
                 v-model="nationality"
                 class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
             </v-col>
+          </v-row>
           <v-row>
         
             <v-col>
@@ -120,20 +120,23 @@
                 format="DD/MM/YYYY" />
             </v-col>
             
+            
+          </v-row>
+          <v-row>
             <v-col>
               <label
                 for="base-input"
                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >เบอร์โทรศัพท์</label
+                >ที่อยู่</label
               >
               <input
                 type="text"
                 id="small-input"
-                v-model="telephone_number"
+                v-model="address"
                 class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
             </v-col>
-          </v-row>
-    
+            
+            </v-row>
           <v-row>
             <v-col>
               <label
@@ -151,14 +154,17 @@
               <label
                 for="base-input"
                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >ที่อยู่</label
+                >เบอร์โทรศัพท์</label
               >
               <input
                 type="text"
                 id="small-input"
                 v-model="id_card"
                 class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-            </v-col>
+            
+              </v-col>
+              
+           
             <v-col cols="2">
               <br />
               <v-btn
@@ -217,7 +223,9 @@
                 v-model="surname_eng"
                 class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
             </v-col>
-  
+           
+          </v-row>
+          <v-row>
             <v-col>
               <label
                 for="base-input"
@@ -256,7 +264,6 @@
                 class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
             </v-col>
           </v-row>
-  
           <v-row>
             <v-col>
               <label
