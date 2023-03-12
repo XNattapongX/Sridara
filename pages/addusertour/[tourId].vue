@@ -1,6 +1,6 @@
 <template>
-  <div style="border-radius: 1rem; margin: 1rem">
-    <v-row style="margin: 1rem">
+  <div style="border-radius: 1rem">
+    <v-row>
       <v-col class="shadow-card">
         <h1
           v-if="tour_detail"
@@ -208,7 +208,7 @@
               variant="tonal"
               @click="addMember"
               style="margin-top: 5px"
-              color="red-accent-4"
+              color="light-blue-darken-4"
               >เพิ่มลูกทัวร์</v-btn
             >
           </v-col>
@@ -243,9 +243,20 @@
                 </tr>
               </thead>
               <tbody>
+                <tr v-if="!members_ls.length">
+                  <td class="px-6 py-4" colspan="12" style="text-align: center">
+                    ไม่มีข้อมูล
+                  </td>
+                </tr>
                 <tr
-                  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                  class="table-row-hover"
                   v-for="(item, index) in members_ls"
+                  @click="
+                    deleteAlert(
+                      item.fields.id.stringValue,
+                      item.fields.thai_name.stringValue
+                    )
+                  "
                   :key="index">
                   <td class="px-6 py-4">{{ index + 1 }}</td>
                   <td class="px-6 py-4">
@@ -289,9 +300,15 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
+import Swal from "sweetalert2/dist/sweetalert2.js";
 import { group_members } from "~~/services/payload";
-import { read_all_data, create_data, read_one_data } from "~~/services/configs";
+import {
+  read_all_data,
+  create_data,
+  read_one_data,
+  delete_data,
+} from "~~/services/configs";
 import { defineComponent } from "vue";
 import locale from "ant-design-vue/es/date-picker/locale/th_TH";
 export default defineComponent({
@@ -313,8 +330,8 @@ export default defineComponent({
       out: "",
       in: "",
       d_range: [],
-      members_ls: [] as any,
-      tour_detail: "" as any,
+      members_ls: [],
+      tour_detail: "",
     };
   },
   watch: {
@@ -336,13 +353,40 @@ export default defineComponent({
     );
     read_all_data("member_tour").then((result) => {
       const filter = result.filter(
-        (v: any) =>
-          v.fields.tour_id.stringValue == String(this.$route.params.tourId)
+        (v) => v.fields.tour_id.stringValue == String(this.$route.params.tourId)
       );
       this.members_ls = filter;
     });
   },
   methods: {
+    deleteAlert(id, name) {
+      Swal.fire({
+        title: "คุณกำลังจะลบลูกทัวร์",
+        html: `รายชื่อ <span style="color: red">${name}</span> จะถูกลบอย่างถาวร`,
+        icon: "question",
+        confirmButtonText: "ยืนยัน",
+        showCancelButton: true,
+        cancelButtonText: "ยกเลิก",
+        focusConfirm: false,
+      }).then((click) => {
+        if (click.isConfirmed) {
+          delete_data("member_tour", id).then(() => {
+            read_all_data("member_tour").then((result) => {
+              if (result) {
+                const filter = result.filter(
+                  (v) =>
+                    v.fields.tour_id.stringValue ==
+                    String(this.$route.params.tourId)
+                );
+                this.members_ls = filter;
+              } else {
+                this.members_ls = [];
+              }
+            });
+          });
+        }
+      });
+    },
     addMember() {
       const raw = group_members(
         String(this.$route.params.tourId),
@@ -362,7 +406,7 @@ export default defineComponent({
       create_data("member_tour", raw).then(() => {
         read_all_data("member_tour").then((result) => {
           const filter = result.filter(
-            (v: any) =>
+            (v) =>
               v.fields.tour_id.stringValue == String(this.$route.params.tourId)
           );
           this.members_ls = filter;
@@ -384,5 +428,15 @@ export default defineComponent({
   background-color: #f9fafb;
   border-radius: 0.4rem;
   width: 100%;
+}
+.table-row-hover {
+  cursor: pointer;
+  background-color: rgb(255, 255, 255);
+  transition: 0.2s;
+}
+
+.table-row-hover:hover {
+  background-color: rgb(236, 236, 236);
+  transition: 0.2s;
 }
 </style>
