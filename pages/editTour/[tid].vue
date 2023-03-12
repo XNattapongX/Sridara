@@ -10,7 +10,7 @@
         ">
         <h1
           class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">
-          ข้อมูลทัวร์
+          แก้ไขข้อมูลทัวร์
         </h1>
 
         <v-row>
@@ -23,7 +23,6 @@
             <input
               type="text"
               v-model="tour_name"
-              :disabled="lock_form"
               id="large-input"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" /> </v-col
           ><v-col>
@@ -35,7 +34,6 @@
             <input
               type="text"
               v-model="tour_program"
-              :disabled="lock_form"
               id="large-input"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" /> </v-col
         ></v-row>
@@ -51,7 +49,6 @@
               type="text"
               id="base-input"
               v-model="g_name"
-              :disabled="lock_form"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
 
@@ -64,7 +61,6 @@
             <input
               type="text"
               v-model="g_tel"
-              :disabled="lock_form"
               id="small-input"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" /> </v-col
           ><v-col cols="2">
@@ -72,7 +68,6 @@
             <v-btn
               variant="tonal"
               @click="addGuide"
-              :disabled="lock_form"
               color="orange-lighten-1"
               style="margin-top: 5px"
               >เพิ่มไกด์</v-btn
@@ -119,7 +114,6 @@
               type="number"
               v-model.number="day"
               id="base-input"
-              :disabled="lock_form"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
 
@@ -132,7 +126,6 @@
             <input
               type="number"
               id="small-input"
-              :disabled="lock_form"
               v-model.number="night"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
@@ -143,7 +136,6 @@
               >ระยะเวลา</label
             ><a-range-picker
               :locale="locale"
-              :disabled="lock_form"
               v-model:value="d_range"
               format="DD/MM/YYYY"
               style="
@@ -165,7 +157,6 @@
             <input
               type="number"
               v-model.number="members"
-              :disabled="lock_form"
               id="small-input"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
@@ -178,7 +169,6 @@
             <input
               type="text"
               id="large-input"
-              :disabled="lock_form"
               v-model="vehicle_out"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
@@ -191,7 +181,6 @@
             <input
               type="text"
               v-model="vehicle_in"
-              :disabled="lock_form"
               id="large-input"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
@@ -201,10 +190,9 @@
             ><v-btn
               variant="tonal"
               block
-              :disabled="lock_form"
               color="green-accent-4"
-              @click="addTourPackage"
-              >แก้ไขทัวร์</v-btn
+              @click="editTourPackage"
+              >ยืนยันการแก้ไขทัวร์</v-btn
             ></v-col
           >
         </v-row>
@@ -219,7 +207,7 @@
         ">
         <h3
           class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">
-          ข้อมูลโรงแรมที่พัก
+          แก้ไขข้อมูลโรงแรมที่พัก
         </h3>
         <div class="mb-6">
           <label
@@ -230,7 +218,6 @@
           <input
             type="text"
             id="large-input"
-            :disabled="!lock_form"
             v-model="formHotel.name"
             class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
         </div>
@@ -245,7 +232,6 @@
               type="number"
               v-model.number="formHotel.amount_room"
               id="base-input"
-              :disabled="!lock_form"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
           <v-col
@@ -256,7 +242,6 @@
             ><a-range-picker
               v-model:value="d_range2"
               :locale="locale"
-              :disabled="!lock_form"
               format="DD/MM/YYYY"
               style="
                 height: 55%;
@@ -274,7 +259,6 @@
               block
               @click="addHotel"
               color="teal-accent-4"
-              :disabled="!lock_form"
               >เพิ่มโรงแรม</v-btn
             ></v-col
           >
@@ -291,6 +275,7 @@
               <th class="text-left">จำนวนห้องพัก</th>
               <th class="text-left">วันเช็คอินน์</th>
               <th class="text-left">วันเช็คเอ้าท์</th>
+              <th class="text-left">เครื่องมือ</th>
             </tr>
           </thead>
           <tbody>
@@ -299,6 +284,14 @@
               <td>{{ item.fields.amount_room.stringValue }}</td>
               <td>{{ item.fields.check_in.stringValue }}</td>
               <td>{{ item.fields.check_out.stringValue }}</td>
+              <td style="text-align: center; width: 10%">
+                <v-btn
+                  variant="text"
+                  color="red-darken-4"
+                  @click="removeHotel(item.fields.id.stringValue)"
+                  >ลบ</v-btn
+                >
+              </td>
             </tr>
           </tbody>
         </v-table>
@@ -308,7 +301,7 @@
       ><v-col cols="2" style="margin-right: -10vmin; margin-top: -2vmin"
         ><v-btn
           variant="tonal"
-          color="deep-orange-darken-2"
+          color="deep-purple-darken-4"
           @click="$router.push('/')"
           >ไปหน้ารายการทัวร์</v-btn
         ></v-col
@@ -316,8 +309,7 @@
         ><v-btn
           variant="tonal"
           color="light-blue-accent-4"
-          @click="$router.push(`/addusertour/${tour_id}`)"
-          :disabled="!lock_form"
+          @click="$router.push(`/addusertour/${$route.params.tid}`)"
           >ไปหน้าเพิ่มลูกทัวร์</v-btn
         ></v-col
       ></v-row
@@ -326,10 +318,13 @@
 </template>
 <script lang="ts">
 import { group_tours, hotel_tour } from "~~/services/payload";
+import Swal from "sweetalert2";
 import {
   read_one_data,
   create_data,
   read_all_data_conditions,
+  delete_data,
+  update_data,
 } from "~~/services/configs";
 import { defineComponent } from "vue";
 import locale from "ant-design-vue/es/date-picker/locale/th_TH";
@@ -352,6 +347,8 @@ export default defineComponent({
         this.members = field.amount_member.stringValue;
         this.vehicle_in = field.vehicle_income.stringValue;
         this.vehicle_out = field.vehicle_outcome.stringValue;
+        this.go_date = field.go_date.stringValue;
+        this.back_date = field.back_date.stringValue;
       }
     );
     read_all_data_conditions(
@@ -379,7 +376,6 @@ export default defineComponent({
       g_tel: "",
       d_range: [] as any,
       d_range2: [],
-      lock_form: false,
       tour_id: "",
       formHotel: {
         name: "",
@@ -405,8 +401,19 @@ export default defineComponent({
       this.guide_name.pop(index);
       this.guide_tel.pop(index);
     },
-    addTourPackage() {
-      const raw = group_tours(
+    removeHotel(id: string) {
+      delete_data("hotel_tour", id).then(() => {
+        read_all_data_conditions(
+          "hotel_tour",
+          "tour_id",
+          String(this.$route.params.tid)
+        ).then((result) => {
+          this.formHotel.hotel_ls = result;
+        });
+      });
+    },
+    editTourPackage() {
+      const raw: any = group_tours(
         this.tour_name,
         this.tour_program,
         new Date(this.go_date),
@@ -419,19 +426,28 @@ export default defineComponent({
         this.guide_tel,
         this.members
       );
-      create_data("group_tour", raw).then((result) => {
-        this.lock_form = true;
-        this.tour_id = result;
-      });
+      raw.fields.id = { stringValue: String(this.$route.params.tid) };
+      update_data("group_tour", String(this.$route.params.tid), raw).then(
+        () => {
+          Swal.fire({
+            icon: "success",
+            timer: 1500,
+            title: "แก้ไขข้อมูลสำเร็จ",
+            showConfirmButton: false,
+            timerProgressBar: true,
+          });
+        }
+      );
     },
     addHotel() {
       const raw = hotel_tour(
-        this.tour_id,
+        String(this.$route.params.tid),
         this.formHotel.name,
         this.formHotel.amount_room,
         new Date(this.formHotel.check_in),
         new Date(this.formHotel.check_out)
       );
+      console.log(raw);
       create_data("hotel_tour", raw).then(() => {
         read_all_data_conditions(
           "hotel_tour",
