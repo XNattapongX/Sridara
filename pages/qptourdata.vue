@@ -37,13 +37,22 @@
             ผู้เสนอขาย :  
              
           </td>
+        </tr>
+
+<tr>
+          <td colspan="5" class="py-1 pt-2 px-3">
+            <h3>
+              ชื่อผู้ติดต่อ : 
+            </h3>
+          </td>
+          <td colspan="2" class="py-1 px-3">
+            ฝ่าย :  
+             
+          </td>
          
         </tr>
 
-        <tr
-          
-          
-        >
+        <tr>
           <td colspan="5" class="py-1 px-3">
             <h3>ที่อยู่ : </h3>
           </td>
