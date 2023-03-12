@@ -28,6 +28,9 @@
             <li @click="$router.push('/addtour')">
               <v-btn variant="flat">เพิ่มทัวร์</v-btn>
             </li>
+            <li @click="$router.push('/addhotel')">
+              <v-btn variant="flat">เพิ่มโรงแรม</v-btn>
+            </li>
             <li @click="$router.push('/')">
               <v-btn variant="flat">ใบเสนอราคา</v-btn>
             </li>

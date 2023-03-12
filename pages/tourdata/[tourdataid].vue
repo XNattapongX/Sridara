@@ -159,7 +159,7 @@
         style="margin-right: -10.3rem"
         variant="tonal"
         color="red-accent-4"
-        @click="handleDelete"
+        @click="handleDelete(tour_data.fields.trip_name.stringValue)"
         >ลบทัวร์</v-btn
       ></v-col
     >
@@ -184,6 +184,7 @@
 </template>
 
 <script>
+import Swal from "sweetalert2/dist/sweetalert2.js";
 import {
   read_all_data,
   read_one_data,
@@ -214,19 +215,31 @@ export default {
     });
   },
   methods: {
-    handleDelete() {
-      delete_all_data_conditions(
-        "member_tour",
-        "tour_id",
-        this.$route.params.tourdataid
-      );
-      delete_all_data_conditions(
-        "hotel_tour",
-        "tour_id",
-        this.$route.params.tourdataid
-      );
-      delete_data("group_tour", this.$route.params.tourdataid).then(() => {
-        this.$router.push("/");
+    handleDelete(name) {
+      Swal.fire({
+        title: "คุณกำลังจะลบทัวร์",
+        html: `ทัวร์ <span style="color: red">${name}</span> <br/>ข้อมูลที่เกี่ยวข้องจะถูกลบอย่างถาวร`,
+        icon: "question",
+        confirmButtonText: "ยืนยัน",
+        showCancelButton: true,
+        cancelButtonText: "ยกเลิก",
+        focusConfirm: false,
+      }).then((click) => {
+        if (click.isConfirmed) {
+          delete_all_data_conditions(
+            "member_tour",
+            "tour_id",
+            this.$route.params.tourdataid
+          );
+          delete_all_data_conditions(
+            "hotel_tour",
+            "tour_id",
+            this.$route.params.tourdataid
+          );
+          delete_data("group_tour", this.$route.params.tourdataid).then(() => {
+            this.$router.push("/");
+          });
+        }
       });
     },
   },

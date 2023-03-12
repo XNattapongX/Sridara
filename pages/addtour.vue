@@ -299,7 +299,7 @@
       ><v-col cols="2" style="margin-right: -10vmin; margin-top: -2vmin"
         ><v-btn
           variant="tonal"
-          color="deep-orange-darken-2"
+          color="deep-purple-darken-4"
           @click="$router.push('/')"
           >ไปหน้ารายการทัวร์</v-btn
         ></v-col
@@ -320,6 +320,7 @@ import { group_tours, hotel_tour } from "~~/services/payload";
 import { create_data, read_all_data } from "~~/services/configs";
 import { defineComponent } from "vue";
 import locale from "ant-design-vue/es/date-picker/locale/th_TH";
+import Swal from "sweetalert2";
 export default defineComponent({
   setup() {
     return {
@@ -382,6 +383,13 @@ export default defineComponent({
       create_data("group_tour", raw).then((result) => {
         this.lock_form = true;
         this.tour_id = result;
+        Swal.fire({
+          icon: "success",
+          timer: 1500,
+          title: "เพิ่มข้อมูลสำเร็จ",
+          showConfirmButton: false,
+          timerProgressBar: true,
+        });
       });
     },
     addHotel() {
