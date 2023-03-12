@@ -51,7 +51,24 @@
                 class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
             </v-col>
   
+           
+  
             <v-col>
+              <label
+                for="base-input"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >ฝ่าย</label
+              >
+              <select
+                style="height: 55%"
+                v-model="gender"
+                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              
+                <option value="อื่นๆ">อื่นๆ</option>
+              </select>
+            </v-col>
+          </v-row>
+          <v-col>
               <label
                 for="base-input"
                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -75,36 +92,8 @@
                 v-model="nationality"
                 class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
             </v-col>
-  
-            <v-col>
-              <label
-                for="base-input"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >ฝ่าย</label
-              >
-              <select
-                style="height: 55%"
-                v-model="gender"
-                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-              
-                <option value="อื่นๆ">อื่นๆ</option>
-              </select>
-            </v-col>
-          </v-row>
-  
           <v-row>
-            <v-col>
-              <label
-                for="base-input"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >ที่อยู๋</label
-              >
-              <input
-                type="text"
-                id="small-input"
-                v-model="id_card"
-                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-            </v-col>
+        
             <v-col>
               <label
                 for="base-input"
@@ -117,18 +106,7 @@
                 class="date-picker"
                 format="DD/MM/YYYY" />
             </v-col>
-            <v-col>
-              <label
-                for="base-input"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >เบอร์โทรศัพท์</label
-              >
-              <input
-                type="text"
-                id="small-input"
-                v-model="telephone_number"
-                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-            </v-col>
+           
             <v-col>
               <label
                 for="base-input"
@@ -140,6 +118,19 @@
                 v-model:value="dob"
                 class="date-picker"
                 format="DD/MM/YYYY" />
+            </v-col>
+            
+            <v-col>
+              <label
+                for="base-input"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >เบอร์โทรศัพท์</label
+              >
+              <input
+                type="text"
+                id="small-input"
+                v-model="telephone_number"
+                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
             </v-col>
           </v-row>
     
@@ -156,6 +147,18 @@
                 v-model="address"
                 class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
             </v-col>
+            <v-col>
+              <label
+                for="base-input"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >ที่อยู่</label
+              >
+              <input
+                type="text"
+                id="small-input"
+                v-model="id_card"
+                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+            </v-col>
             <v-col cols="2">
               <br />
               <v-btn
@@ -164,7 +167,7 @@
                 @click="addMember"
                 style="margin-top: 5px"
                 color="green-accent-4"
-                >เพิ่มข้อมูล</v-btn
+                >ยืนยัน</v-btn
               >
             </v-col>
           </v-row>
@@ -188,18 +191,7 @@
             ใบเสนอราคา/ยืนยันการสั่งซื้อ
           </h1>
           <v-row>
-            <v-col>
-              <label
-                for="base-input"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >ลำดับ</label
-              >
-              <input
-                type="text"
-                id="base-input"
-                v-model="surname_thai"
-                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-            </v-col>
+        
   
             <v-col>
               <label
@@ -282,7 +274,7 @@
               <label
                 for="base-input"
                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >ภาษี</label
+                >จำนวนเงิน</label
               >
               <input
                 type="text"
