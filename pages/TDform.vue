@@ -57,21 +57,7 @@
             <label
               for="base-input"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >สาขาที่ทำรายการ</label
-            >
-            <select
-              style="height: 55%"
-              v-model="branch"
-              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-              <option value="สำนักงานใหญ่">สำนักงานใหญ่</option>
-              <option value="สาขา">สาขา</option>
-            </select>
-          </v-col>
-          <v-col>
-            <label
-              for="base-input"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >สาขาที่ ( ถ้าเป็นสำนักงานใหญ่ไม่ต้องกรอก )
+              >สาขาที่ทำรายการ
             </label>
             <input
               type="text"
@@ -138,7 +124,7 @@
               @click="addMember"
               style="margin-top: 5px"
               color="green-accent-4"
-              >เพิ่มข้อมูล</v-btn
+              >บันทึก</v-btn
             >
           </v-col>
         </v-row>
@@ -257,7 +243,7 @@
               @click="addMember"
               style="margin-top: 5px"
               color="green-accent-4"
-              >เพิ่มข้อมูล</v-btn
+              >บันทึก</v-btn
             >
           </v-col>
         </v-row>
