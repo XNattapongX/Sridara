@@ -6,8 +6,15 @@ export const api = axios.create({
 });
 
 export const create_data = async (endpoint: string, data: any) => {
-  const response = await api.post(endpoint, data);
-  return response.data;
+  const response = await api.post(endpoint, {
+    fields: { add: { stringValue: "adding" } },
+  });
+  data.fields.id = { stringValue: response.data.name.split("/").at(-1) };
+  const id = await api.patch(
+    `${endpoint}/${response.data.name.split("/").at(-1)}`,
+    data
+  );
+  return response.data.name.split("/").at(-1);
 };
 
 export const read_all_data = async (endpoint: string) => {
