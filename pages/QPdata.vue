@@ -14,7 +14,7 @@
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
       <table
         
-        class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
+        class="w-full text-sm text-left dark:text-gray-400"
         style="background-color: #e8f5e9">
         <tr>
           <td colspan="5" class="pb-1 pt-2 px-3">
@@ -62,34 +62,23 @@
           
         </tr>
 
-        <tr
-    
-          
-        >
-          <td colspan="5" class="py-1 px-3">
-            <h3>
-              
-              
-            </h3>
-          </td>
+        <tr>
+         
           <td colspan="2" class="py-1 px-3">
             <h3>
-              วันที่ส่งของ :
-              
+              วันที่ส่งของ :             
             </h3>
           </td>
-        </tr>
-        <tr>
           <td colspan="5" class="py-1 pt-2 px-3">
             <h3>
               โทร : 
             </h3>
           </td>
+        </tr>
+        <tr>
           <td colspan="2" class="py-1 px-3">
             Email :  
-             
           </td>
-         
         </tr>
       </table>
       <table
