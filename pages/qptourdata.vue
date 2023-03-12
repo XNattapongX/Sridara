@@ -1,360 +1,243 @@
 <template>
-  <v-card class="v-card-main" variant="outlined">
-    <v-container>
-      <v-row no-gutters class="v-row-text">
-        <v-col cols="auto">
-          <img
-            src="https://www.adt.or.th/image/ADT1%20-%201108%20-%200263.jpg"
-            class="mr-3 h-12 sm:h-15"
-            alt="Flowbite Logo"
-          />
-        </v-col>
-        <v-col cols="7">
-          <v-sheet class="pa-2 ma-2" style="text-align: center">
-            บริษัท ศรีดาราทัวร์ จำกัด (สำนักงานใหญ่)
-            <td></td>
-            123 ถนน ชยางกูร หมู่ 19 ตำบล บุ่ง อำเภอเมืองอำนาจเจริญ
-            จังหวัดอำนาจเจริญ 37000
-            <td></td>
-            เลขประจำตัวผู้เสียภาษี0375552000037 โทร.082-3656514
-            www.facebook.com/sridaratourfanpage
-            <td></td>
-            ********************************************************
-          </v-sheet>
-        </v-col>
-
-        <v-col cols="auto">
-          <v-table>
-            <td style="text-align: center">
-              <tr>
-                ใบเสนอราคา/ยืนยันการสั่งซื้อ
-              </tr>
-              <tr>
-                Quatation
-              </tr>
-            </td>
-          </v-table>
-          <v-table>
-            <td>
-              <tr>
-                เลขที่
-              </tr>
-              <tr>
-                วันที่
-              </tr>
-            </td>
-            <td>
-              <tr>
-                184648456
-              </tr>
-              <tr>
-                20/02/66
-              </tr>
-            </td>
-          </v-table>
-        </v-col>
-      </v-row>
-
-      <v-table style="font-size: 1.2rem">
-        <td>
-          <tr>
-            ชื่อลูกค้า:
-          </tr>
-          <tr>
-            ID TEX:
-          </tr>
-          <tr>
-            ชื่อผู้ติดต่อ:
-          </tr>
-          <tr>
-            ที่อยู่:
-          </tr>
-        </td>
-        <td>
-          <tr><!-- ชื่อลูกค้า -->
-            ---
-          </tr>
-          <tr><!-- ID TEX -->
-            ---
-          </tr>
-          <tr><!-- ชื่อผู้ติดต่อ -->
-            ---
-          </tr>
-          <tr><!-- ที่อยู่ -->
-            ---
-          </tr>
-        </td>
-        <td>
-          <tr>
-            รหัสลูกค้า:
-          </tr>
-          <tr>
-            ผู้เสนอขาย:
-          </tr>
-          <tr>
-            ฝ่าย:
-          </tr>
-          <tr>
-            ยืนยันราคาภายใน:
-          </tr>
-          <tr>
-            วันที่ส่งของ:
-          </tr>
-        </td>
-        <td>
-          <tr><!-- รหัสลูค้า -->
-            ---
-          </tr>
-          <tr><!-- ผู้เสนอขาย -->
-            ---
-          </tr>
-          <tr><!-- ฝ่าย -->
-            ---
-          </tr>
-          <tr><!-- ยืนยันราคาภายใน -->
-            ---
-          </tr>
-          <tr><!-- วันที่ส่งของ -->
-            ---
-          </tr>
-        </td>
-      </v-table>
-
-      <v-table style="font-size: 1.2rem; margin-top: 2rem">
-        <td>โทร:</td>
-        <td><!-- เบอร์โทร --></td>
-        <td>Email:</td>
-        <td><!-- Emial --></td>
-      </v-table>
-
-      <v-table class="v-text-table" fixed-header height="300px">
-        <thead>
-          <tr>
-            <th class="text-left">ลำดับ</th>
-            <th class="text-left">รหัสสินค้า</th>
-            <th class="text-left">รายการสินค้า</th>
-            <th class="text-left">จำนวน</th>
-            <th class="text-left">ราคาต่อหน่วย</th>
-            <th class="text-left">ส่วนลด</th>
-            <th class="text-left">ภาษี</th>
-            <th class="text-left">จำนวนเงิน</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="item in customers" :key="item.name">
-            <td>{{ item.no }}</td>
-            <td>{{ item.product_code }}</td>
-            <td>{{ item.product_name }}</td>
-            <td>{{ item.quantity }}</td>
-            <td>{{ item.unit_price }}</td>
-            <td>{{ item.discount }}</td>
-            <td>{{ item.tax }}</td>
-            <td>{{ item.price }}</td>
-          </tr>
-        </tbody>
-      </v-table>
-      <v-card variant="none">
-        <v-card-title>หมายเหตุ:</v-card-title>
-        <v-card-item>
-          <v-row no-gutters>
-            <v-col cols="9">
-              <sheet class="pa-2 ma-2" style="font-size: 18px">
-                <p>กำหนดยืนราคา ...................... วัน</p>
-                <p>
-                  จึงเรียนมาเพื่อโปรดพิจารณาและหวังเป็นอย่างยิ่งว่าจะได้รับการพิจารณาสั่งซื้อจากท่าน
-                </p>
-                <p>ขอขอบพระคุณมา ณ ที่นี้ ดังรายละเอียดธนาคารดังต่อไปนี้ :</p>
-                <p>
-                  1.กรุณาชำระเงิน ค่ามัดจำเบื้องต้นไม่ต่ำกว่า 40% ของราคาที่เสนอ
-                  โดยชำระเงินก่อนการติดตั้งอย่างน้อย 7 วัน
-                </p>
-                <p>
-                  2.หลังติดตั้งและใช้งานได้เรียบร้อยแล้วให้ชำระเงินส่วนที่เหลือ
-                </p>
-              </sheet>
-            </v-col>
-            <v-col cols="3">
-              <v-sheet class="pa-2 ma-2" style="font-size: 18px">
-                <p>มัดจำ ................ 3000</p>
-                <p>รวมเงิน ...............15000</p>
-                <p>ส่วนลดสินค้า ..........300</p>
-                <p>มูลค่าสินค้า ............147000</p>
-                <p>ภาษีมูลค่าเพิ่ม 7 % ......1347</p>
-                <p>จำนวนเงินทั้งสิ้น ........15047</p>
-              </v-sheet>
-            </v-col>
-          </v-row>
-        </v-card-item>
-      </v-card>
-
-      <v-table style="text-align: right; margin-right: 3vmin">
+  <section
+    class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5"
+    style="margin-top: 1rem">
+    <!-- <v-card color="teal-darken-4">
+      <v-card-text>
+        กำลังโหลดข้อมูล กรุณารอ...
+        <v-progress-circular
+          style="margin-left: 1rem; margin-bottom: 0.3rem"
+          indeterminate
+          color="white"></v-progress-circular>
+      </v-card-text>
+    </v-card> -->
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+      <table
+        
+        class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
+        style="background-color: #e8f5e9">
         <tr>
-          <td>
-            <p>ข้าพเจ้าเห็นชอบตามรายการที่เสนอและ</p>
-            <p>ขอสั่งซื้อตามรายละเอียดนี้ทุกประการ</p>
+          <td colspan="5" class="pb-1 pt-2 px-3">
+            <h3>
+              ชื่อลูกค้า : 
+            </h3>
+          </td>
+          <td colspan="2" class="pb-1 pt-2 px-3">
+            รหัสลูกค้า : 
+          </td>
+          
+        </tr>
+        <tr>
+          <td colspan="5" class="py-1 pt-2 px-3">
+            <h3>
+              ID TAX : 
+            </h3>
+          </td>
+          <td colspan="2" class="py-1 px-3">
+            ผู้เสนอขาย :  
+             
+          </td>
+         
+        </tr>
+
+        <tr
+          
+          
+        >
+          <td colspan="5" class="py-1 px-3">
+            <h3>ที่อยู่ : </h3>
+          </td>
+          <td colspan="2" class="py-1 px-3">
+            ยืนยันราคาภายใน : 
+          </td>
+          
+        </tr>
+
+        <tr
+    
+          
+        >
+          <td colspan="5" class="py-1 px-3">
+            <h3>
+              
+              
+            </h3>
+          </td>
+          <td colspan="2" class="py-1 px-3">
+            <h3>
+              วันที่ส่งของ :
+              
+            </h3>
           </td>
         </tr>
-      </v-table>
-
-      <v-card variant="none">
-        <v-row style="text-align: center">
-          <v-col style="display: flex; flex-direction: column">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/a/a0/%E0%B8%A5%E0%B8%B2%E0%B8%A2%E0%B9%80%E0%B8%8B%E0%B9%87%E0%B8%99%E0%B8%AD%E0%B8%99%E0%B8%B8%E0%B8%8A%E0%B8%B2_%E0%B8%AA%E0%B8%B0%E0%B8%AA%E0%B8%A1%E0%B8%97%E0%B8%A3%E0%B8%B1%E0%B8%9E%E0%B8%A2%E0%B9%8C.png"
-              class="h-12 sm:h-15"
-              alt="Flowbite Logo"
-            /><v-sheet> ผู้เสนอราคา </v-sheet>
-          </v-col>
-          <v-col style="display: flex; flex-direction: column"
-            ><img
-              src="https://upload.wikimedia.org/wikipedia/commons/a/a0/%E0%B8%A5%E0%B8%B2%E0%B8%A2%E0%B9%80%E0%B8%8B%E0%B9%87%E0%B8%99%E0%B8%AD%E0%B8%99%E0%B8%B8%E0%B8%8A%E0%B8%B2_%E0%B8%AA%E0%B8%B0%E0%B8%AA%E0%B8%A1%E0%B8%97%E0%B8%A3%E0%B8%B1%E0%B8%9E%E0%B8%A2%E0%B9%8C.png"
-              class="h-12 sm:h-15"
-              alt="Flowbite Logo"
-            />
-            <v-sheet> ผู้รับเงิน </v-sheet>
-          </v-col>
-          <v-col style="display: flex; flex-direction: column"
-            ><img
-              src="https://upload.wikimedia.org/wikipedia/commons/a/a0/%E0%B8%A5%E0%B8%B2%E0%B8%A2%E0%B9%80%E0%B8%8B%E0%B9%87%E0%B8%99%E0%B8%AD%E0%B8%99%E0%B8%B8%E0%B8%8A%E0%B8%B2_%E0%B8%AA%E0%B8%B0%E0%B8%AA%E0%B8%A1%E0%B8%97%E0%B8%A3%E0%B8%B1%E0%B8%9E%E0%B8%A2%E0%B9%8C.png"
-              class="h-12 sm:h-15"
-              alt="Flowbite Logo"
-            />
-            <v-sheet> ผู้ตรวจสอบ </v-sheet>
-          </v-col>
-          <v-col style="display: flex; flex-direction: column"
-            ><img
-              src="https://upload.wikimedia.org/wikipedia/commons/a/a0/%E0%B8%A5%E0%B8%B2%E0%B8%A2%E0%B9%80%E0%B8%8B%E0%B9%87%E0%B8%99%E0%B8%AD%E0%B8%99%E0%B8%B8%E0%B8%8A%E0%B8%B2_%E0%B8%AA%E0%B8%B0%E0%B8%AA%E0%B8%A1%E0%B8%97%E0%B8%A3%E0%B8%B1%E0%B8%9E%E0%B8%A2%E0%B9%8C.png"
-              class="h-12 sm:h-15"
-              alt="Flowbite Logo"
-            />
-            <v-sheet> ผู้อนุมัติสั่งซื้อ </v-sheet></v-col
-          >
-        </v-row>
-        <v-row style="text-align: center">
-          <v-col> <v-sheet> วันที่ 12/02/66</v-sheet> </v-col>
-          <v-col> <v-sheet> วันที่ 12/02/66</v-sheet> </v-col>
-          <v-col> <v-sheet> วันที่ 12/02/66</v-sheet> </v-col>
-          <v-col> <v-sheet> วันที่ 12/02/66</v-sheet></v-col>
-        </v-row>
-      </v-card>
-    </v-container>
-  </v-card>
+        <tr>
+          <td colspan="5" class="py-1 pt-2 px-3">
+            <h3>
+              โทร : 
+            </h3>
+          </td>
+          <td colspan="2" class="py-1 px-3">
+            Email :  
+             
+          </td>
+         
+        </tr>
+      </table>
+      <table
+        class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
+        style="max-height: 400px">
+        <thead
+          class="text-xs text-gray-700 uppercase bg-gray-50 dark:text-gray-400"
+          style="background-color: #81c784">
+          <tr>
+            <th scope="col" class="px-6 py-3">ลำดับ</th>
+            <th scope="col" class="px-6 py-3">รหัสสินค้า</th>
+            <th scope="col" class="px-6 py-3">รายการสินค้า</th>
+            <th scope="col" class="px-6 py-3">จำนวน</th>
+            <th scope="col" class="px-6 py-3">ราคาต่อหน่วย</th>
+            <th scope="col" class="px-6 py-3">ส่วนลด</th>
+            <th scope="col" class="px-6 py-3">ภาษี</th>
+            <th scope="col" class="px-6 py-3">จำนวนเงิน</th>
+         
+          </tr>
+        </thead>
+        <tbody v-if="!members_ls.length">
+          <tr>
+            <td class="px-6 py-4" colspan="12" style="text-align: center">
+              ไม่มีข้อมูล
+            </td>
+          </tr>
+        </tbody>
+        <tbody v-if="members_ls.length">
+          <tr
+            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+            >
+            <td class="px-6 py-4" style="font-size: 13px">{{ index + 1 }}</td>
+            <td class="px-6 py-4" style="font-size: 13px">
+              
+            </td>
+            <td class="px-6 py-4" style="font-size: 13px">
+            </td>
+            <td class="px-6 py-4" style="font-size: 13px">
+            </td>
+            <td class="px-6 py-4" style="font-size: 13px">
+            </td>
+            <td class="px-6 py-4" style="font-size: 13px">
+            </td>
+            <td class="px-6 py-4" style="font-size: 13px">
+            </td>
+            <td class="px-6 py-4" style="font-size: 13px">
+            </td>
+            <td class="px-6 py-4" style="font-size: 13px">
+            </td>
+            <td class="px-6 py-4" style="font-size: 13px">
+            </td>
+            <td class="px-6 py-4" style="font-size: 13px">
+            </td>
+            <td class="px-6 py-4" style="font-size: 13px">
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <v-row justify="end">
+    <v-col cols="2" style="text-align: end"
+      ><v-btn
+        style="margin-right: -10.3rem"
+        variant="tonal"
+        color="red-accent-4"
+        @click="handleDelete"
+        >ลบทัวร์</v-btn
+      ></v-col
+    >
+    <v-col cols="2" style="text-align: end"
+      ><v-btn
+        style="margin-right: -5.2rem"
+        variant="tonal"
+        @click="$router.push(`/addusertour/${$route.params.tourdataid}`)"
+        color="lime-darken-4"
+        >แก้ไขข้อมูลลูกทัวร์</v-btn
+      ></v-col
+    >
+    <v-col
+      cols="2"
+      style="text-align: end"
+      @click="$router.push(`/edittour/${$route.params.tourdataid}`)"
+      ><v-btn style="margin-right: 1.2rem" variant="tonal" color="cyan-darken-4"
+        >แก้ไขข้อมูลทัวร์</v-btn
+      ></v-col
+    >
+  </v-row>
 </template>
 
-<style scoped>
-.v-card-main {
-  width: 80%;
-  height: 100%;
-  margin: auto;
-  margin-top: 5rem;
-  border-radius: 10px;
-  border: 3px solid black;
-}
-.v-row-text {
-  font-size: 18px;
-}
-.v-text-table {
-  font-size: 18px;
-}
-</style>
-
 <script>
+import {
+  read_all_data,
+  read_one_data,
+  delete_data,
+  delete_all_data_conditions,
+} from "~~/services/configs";
 export default {
+  mounted() {
+    // read_one_data("group_tour", this.$route.params.tourdataid).then(
+    //   (result) => {
+    //     this.tour_data = result;
+    //     this.loading = false;
+    //   }
+    // );
+    // read_all_data("hotel_tour").then((result) => {
+    //   const filter = result.filter(
+    //     (v) =>
+    //       v.fields.tour_id.stringValue == String(this.$route.params.tourdataid)
+    //   );
+    //   this.hotels_ls = filter;
+    // });
+    // read_all_data("member_tour").then((result) => {
+    //   const filter = result.filter(
+    //     (v) =>
+    //       v.fields.tour_id.stringValue == String(this.$route.params.tourdataid)
+    //   );
+    //   this.members_ls = filter;
+    // });
+  },
+  methods: {
+    // handleDelete() {
+    //   delete_all_data_conditions(
+    //     "member_tour",
+    //     "tour_id",
+    //     this.$route.params.tourdataid
+    //   );
+    //   delete_all_data_conditions(
+    //     "hotel_tour",
+    //     "tour_id",
+    //     this.$route.params.tourdataid
+    //   );
+    //   delete_data("group_tour", this.$route.params.tourdataid).then(() => {
+    //     this.$router.push("/");
+    //   });
+    // },
+  },
   data() {
     return {
-      customers: [
-        {
-          no: "1",
-          product_code: "123",
-          product_name: "F",
-          quantity: "20",
-          unit_price: "10",
-          discount: "5",
-          tax: "3",
-          price: 15,
-        },
-        {
-          no: "1",
-          product_code: "123",
-          product_name: "F",
-          quantity: "20",
-          unit_price: "10",
-          discount: "5",
-          tax: "3",
-          price: 15,
-        },
-        {
-          no: "1",
-          product_code: "123",
-          product_name: "F",
-          quantity: "20",
-          unit_price: "10",
-          discount: "5",
-          tax: "3",
-          price: 15,
-        },
-        {
-          no: "1",
-          product_code: "123",
-          product_name: "F",
-          quantity: "20",
-          unit_price: "10",
-          discount: "5",
-          tax: "3",
-          price: 15,
-        },
-        {
-          no: "1",
-          product_code: "123",
-          product_name: "F",
-          quantity: "20",
-          unit_price: "10",
-          discount: "5",
-          tax: "3",
-          price: 15,
-        },
-        {
-          no: "1",
-          product_code: "123",
-          product_name: "F",
-          quantity: "20",
-          unit_price: "10",
-          discount: "5",
-          tax: "3",
-          price: 15,
-        },
-        {
-          no: "1",
-          product_code: "123",
-          product_name: "F",
-          quantity: "20",
-          unit_price: "10",
-          discount: "5",
-          tax: "3",
-          price: 15,
-        },
-        {
-          no: "1",
-          product_code: "123",
-          product_name: "F",
-          quantity: "20",
-          unit_price: "10",
-          discount: "5",
-          tax: "3",
-          price: 15,
-        },
-        {
-          no: "1",
-          product_code: "123",
-          product_name: "F",
-          quantity: "20",
-          unit_price: "10",
-          discount: "5",
-          tax: "3",
-          price: 15,
-        },
-      ],
+      tour_data: "",
+      loading: true,
+      members_ls: [],
+      hotels_ls: [],
     };
   },
 };
 </script>
+
+<style scoped>
+.table-row-hover {
+  cursor: pointer;
+  background-color: rgb(255, 255, 255);
+  transition: 0.2s;
+}
+
+.table-row-hover:hover {
+  background-color: rgb(236, 236, 236);
+  transition: 0.2s;
+}
+</style>
