@@ -168,7 +168,7 @@
               >
             </v-col>
           </v-row>
-          <br />
+          <br /><br>
           <div
             class="relative overflow-x-auto"
             style="
@@ -184,17 +184,13 @@
                   style="background-color: #81c784">
                   <tr>
                     <th scope="col" class="px-6 py-3">ลำดับ</th>
-                    <th scope="col" class="px-6 py-3">ชื่อ-นามสกุลภาษาไทย</th>
-                    <th scope="col" class="px-6 py-3">หมายเลขบัตรประชาชน</th>
-                    <th scope="col" class="px-6 py-3">ชื่อ-นามสกุลภาษาอังกฤษ</th>
-                    <th scope="col" class="px-6 py-3">หมายเลขพาสปอร์ต</th>
-                    <th scope="col" class="px-6 py-3">วันที่ออก</th>
-                    <th scope="col" class="px-6 py-3">วันที่หมด</th>
-                    <th scope="col" class="px-6 py-3">ว/ด/ป เกิด</th>
-                    <th scope="col" class="px-6 py-3">สัญชาต</th>
-                    <th scope="col" class="px-6 py-3">เพศ</th>
-                    <th scope="col" class="px-6 py-3">ประเภทเตียง</th>
-                    <th scope="col" class="px-6 py-3">ตรวจลงตราเลขที</th>
+                    <th scope="col" class="px-6 py-3">รหัสสินค้า</th>
+                    <th scope="col" class="px-6 py-3">รายการสินค้า</th>
+                    <th scope="col" class="px-6 py-3">จำนวน</th>
+                    <th scope="col" class="px-6 py-3">ราคาต่อหน่วย</th>
+                    <th scope="col" class="px-6 py-3">ส่วนลด</th>
+                    <th scope="col" class="px-6 py-3">ภาษี</th>
+                    <th scope="col" class="px-6 py-3">จำนวนเงิน</th>
                   </tr>
                 </thead>
                 <tbody>
