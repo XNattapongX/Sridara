@@ -51,6 +51,24 @@
                 class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
             </v-col>
   
+            
+            <v-col>
+              <label
+                for="base-input"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >เลขที่</label
+              >
+              <input
+                type="text"
+                id="base-input"
+                v-model="nationality"
+                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+            </v-col>
+  
+           
+          </v-row>
+          
+          <v-row>
             <v-col>
               <label
                 for="base-input"
@@ -67,23 +85,6 @@
               <label
                 for="base-input"
                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >เลขที่</label
-              >
-              <input
-                type="text"
-                id="base-input"
-                v-model="nationality"
-                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-            </v-col>
-  
-           
-          </v-row>
-  
-          <v-row>
-            <v-col>
-              <label
-                for="base-input"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >เบอร์โทร</label
               >
               <input
@@ -92,6 +93,10 @@
                 v-model="id_card"
                 class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
             </v-col>
+             
+          </v-row>
+          <v-row>
+           
             <v-col>
               <label
                 for="base-input"
@@ -108,14 +113,15 @@
               <label
                 for="base-input"
                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >รหัสลูกค้า</label
+                >ยืนยันราคาวันที่</label
               >
-              <input
-                type="text"
-                id="small-input"
-                v-model="telephone_number"
-                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+              <a-date-picker
+                :locale="locale"
+                v-model:value="dob"
+                class="date-picker"
+                format="DD/MM/YYYY" />
             </v-col>
+          
             <v-col>
               <label
                 for="base-input"
@@ -147,13 +153,13 @@
               <label
                 for="base-input"
                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >ยืนยันราคาวันที่</label
+                >รหัสลูกค้า</label
               >
-              <a-date-picker
-                :locale="locale"
-                v-model:value="dob"
-                class="date-picker"
-                format="DD/MM/YYYY" />
+              <input
+                type="text"
+                id="small-input"
+                v-model="telephone_number"
+                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
             </v-col>
             <v-col>
               <label
@@ -213,18 +219,7 @@
             ใบวางบิล/ใบแจ้งหนี้ 
           </h1>
           <v-row>
-            <v-col>
-              <label
-                for="base-input"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >ลำดับ</label
-              >
-              <input
-                type="text"
-                id="base-input"
-                v-model="surname_thai"
-                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-            </v-col>
+           
   
             <v-col>
               <label
