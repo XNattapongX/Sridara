@@ -88,12 +88,16 @@
                 <tr>
                   <th class="text-left">ชื่อไกด์</th>
                   <th class="text-left">เบอร์โทรไกด์</th>
+                  <th class="text-center">เครื่องมือ</th>
                 </tr>
               </thead>
               <tbody>
                 <tr v-for="(j, l) in guide_tel" :key="l">
                   <td>{{ guide_name[l] }}</td>
                   <td>{{ j }}</td>
+                  <td style="text-align: center; width: 10%">
+                    <v-btn variant="text" color="red-darken-4">ลบ</v-btn>
+                  </td>
                 </tr>
               </tbody>
             </v-table>
@@ -195,7 +199,7 @@
               :disabled="lock_form"
               color="green-accent-4"
               @click="addTourPackage"
-              >เพิ่มทัวร์</v-btn
+              >แก้ไขทัวร์</v-btn
             ></v-col
           >
         </v-row>
@@ -317,7 +321,11 @@
 </template>
 <script lang="ts">
 import { group_tours, hotel_tour } from "~~/services/payload";
-import { create_data, read_all_data } from "~~/services/configs";
+import {
+  read_one_data,
+  create_data,
+  read_all_data_conditions,
+} from "~~/services/configs";
 import { defineComponent } from "vue";
 import locale from "ant-design-vue/es/date-picker/locale/th_TH";
 export default defineComponent({
@@ -325,6 +333,29 @@ export default defineComponent({
     return {
       locale,
     };
+  },
+  mounted() {
+    read_one_data("group_tour", String(this.$route.params.tid)).then(
+      (result) => {
+        const field = result.fields;
+        this.tour_name = field.trip_name.stringValue;
+        this.tour_program = field.program_tour.stringValue;
+        this.guide_name = field.guide_name.stringValue.split(", ");
+        this.guide_tel = field.guide_tel.stringValue.split(", ");
+        this.day = field.day.stringValue;
+        this.night = field.night.stringValue;
+        this.members = field.amount_member.stringValue;
+        this.vehicle_in = field.vehicle_income.stringValue;
+        this.vehicle_out = field.vehicle_outcome.stringValue;
+      }
+    );
+    read_all_data_conditions(
+      "hotel_tour",
+      "tour_id",
+      String(this.$route.params.tid)
+    ).then((result) => {
+      this.formHotel.hotel_ls = result;
+    });
   },
   data() {
     return {
@@ -341,7 +372,7 @@ export default defineComponent({
       vehicle_out: "",
       g_name: "",
       g_tel: "",
-      d_range: [],
+      d_range: [] as any,
       d_range2: [],
       lock_form: false,
       tour_id: "",
@@ -365,6 +396,7 @@ export default defineComponent({
     },
   },
   methods: {
+    removeGuide(index: number) {},
     addTourPackage() {
       const raw = group_tours(
         this.tour_name,
@@ -393,11 +425,12 @@ export default defineComponent({
         new Date(this.formHotel.check_out)
       );
       create_data("hotel_tour", raw).then(() => {
-        read_all_data("hotel_tour").then((result) => {
-          const filter = result.filter(
-            (v: any) => v.fields.tour_id.stringValue == this.tour_id
-          );
-          this.formHotel.hotel_ls = filter;
+        read_all_data_conditions(
+          "hotel_tour",
+          "tour_id",
+          String(this.$route.params.tid)
+        ).then((result) => {
+          this.formHotel.hotel_ls = result;
         });
       });
     },

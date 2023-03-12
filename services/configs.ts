@@ -43,6 +43,18 @@ export const delete_data = async (collection: string, id: string) => {
   return response.data;
 };
 
+export const read_all_data_conditions = async (
+  collection: string,
+  fields: string,
+  values: string
+) => {
+  const response = await api.get(collection);
+  const data = response.data.documents.filter(
+    (doc: any) => doc.fields[fields].stringValue === values
+  );
+  return data;
+};
+
 export const delete_all_data_conditions = async (
   collection: string,
   fields: string,
