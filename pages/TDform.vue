@@ -141,7 +141,7 @@
                 @click="addMember"
                 style="margin-top: 5px"
                 color="green-accent-4"
-                >ยืนยัน</v-btn
+                >เพิ่มข้อมูล</v-btn
               >
             </v-col>
           </v-row>
@@ -162,7 +162,7 @@
           <h1
             v-else
             class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">
-            รายการสินค้า
+            เพิ่มข้อมูลรายการสินค้า
           </h1>
           <v-row>
             <v-col>
@@ -263,7 +263,7 @@
                 @click="addMember"
                 style="margin-top: 5px"
                 color="green-accent-4"
-                >ยืนยัน</v-btn
+                >เพิ่มข้อมูล</v-btn
               >
             </v-col>
           </v-row>
