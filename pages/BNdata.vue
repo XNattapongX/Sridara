@@ -106,9 +106,9 @@
             <th scope="col" class="px-6 py-3">รหัสสินค้า</th>
             <th scope="col" class="px-6 py-3">รายการสินค้า</th>
             <th scope="col" class="px-6 py-3">จำนวน</th>
+            <th scope="col" class="px-6 py-3">หน่วย</th>
             <th scope="col" class="px-6 py-3">ราคาต่อหน่วย</th>
             <th scope="col" class="px-6 py-3">ส่วนลด</th>
-            <th scope="col" class="px-6 py-3">ภาษี</th>
             <th scope="col" class="px-6 py-3">จำนวนเงิน</th>
          
           </tr>

@@ -17,7 +17,7 @@
         class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
         style="background-color: #e8f5e9">
         <tr>
-          <td colspan="6" class="pb-1 pt-2 px-3">
+          <td colspan="5" class="pb-1 pt-2 px-3">
             <h3>
               ชื่อลูกค้า : 
             </h3>
@@ -28,9 +28,9 @@
           
         </tr>
         <tr>
-          <td colspan="6" class="py-1 pt-2 px-3">
+          <td colspan="5" class="py-1 pt-2 px-3">
             <h3>
-              ที่อยู่ : 
+              ID TAX : 
             </h3>
           </td>
           <td colspan="3" class="py-1 px-3">
@@ -40,22 +40,24 @@
         </tr>
 
 <tr>
-          <td colspan="6" class="py-1 pt-2 px-3">
-            
+          <td colspan="5" class="py-1 pt-2 px-3">
+            <h3>
+              ชื่อผู้ติดต่อ : 
+            </h3>
           </td>
           <td colspan="3" class="py-1 px-3">
-            กำหนดการชำระ :  
+            รหัสลูกค้า :  
              
           </td>
          
         </tr>
 
         <tr>
-          <td colspan="6" class="py-1 px-3">
-            <h3>เลขประจำตัวผู้เสียภาษี : </h3>
+          <td colspan="5" class="py-1 px-3">
+            <h3>ที่อยู่ : </h3>
           </td>
           <td colspan="3" class="py-1 px-3">
-            ผู้ขาย : 
+            ผู้เสนอขาย : 
           </td>
           
         </tr>
@@ -66,28 +68,32 @@
         >
           <td colspan="5" class="py-1 px-3">
             <h3>
-            <div class="flex items-center mr-4">
-        <input id="inline-radio" type="radio" value="" name="inline-radio-group" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-        <label for="inline-radio" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">สำนักงานใหญ่</label>
-    </div>
-    
+              
               
             </h3>
           </td>
-          <td>
-            <div class="flex items-center mr-4">
-        <input id="inline-2-radio" type="radio" value="" name="inline-radio-group" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-        <label for="inline-2-radio" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">สาขาที่ :</label>
-    </div>
-          </td>
           <td colspan="3" class="py-1 px-3">
         
-              รหัสลูกค้า :
+              ฝ่าย :
               
             
           </td>
         </tr>
-        
+        <tr>
+          <td colspan="3" class="py-1 pt-2 px-3">
+            
+              โทร : 
+            
+          </td>
+          <td colspan="3" class="py-1 px-3">
+            Fax :  
+             
+          </td>
+         <td colspan="3" class="py-1 px-3">
+            ยืนยันราคาวันที่ :  
+             
+          </td>
+        </tr>
       </table>
       <table
         class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
@@ -96,30 +102,14 @@
           class="text-xs text-gray-700 uppercase bg-gray-50 dark:text-gray-400"
           style="background-color: #81c784">
           <tr>
-            <th scope="col" class="px-6 py-3">ลำดับ
-                <br> No.
-            </th>
-            <th scope="col" class="px-6 py-3">รหัสสินค้า
-                <br> Code.
-            </th>
-            <th scope="col" class="px-6 py-3">รายการสินค้า
-                <br> Description
-            </th>
-            <th scope="col" class="px-6 py-3">จำนวน
-                <br> Quantity
-            </th>
-            <th scope="col" class="px-6 py-3">ราคาต่อหน่วย
-                <br> Price/Unit
-            </th>
-            <th scope="col" class="px-6 py-3">ส่วนลด
-                <br> Discount
-            </th>
-            <th scope="col" class="px-6 py-3">ภาษี
-                <br>Tax
-            </th>
-            <th scope="col" class="px-6 py-3">จำนวนเงิน
-                <br> Amount
-            </th>
+            <th scope="col" class="px-6 py-3">ลำดับ</th>
+            <th scope="col" class="px-6 py-3">รหัสสินค้า</th>
+            <th scope="col" class="px-6 py-3">รายการสินค้า</th>
+            <th scope="col" class="px-6 py-3">จำนวน</th>
+            <th scope="col" class="px-6 py-3">ราคาต่อหน่วย</th>
+            <th scope="col" class="px-6 py-3">ส่วนลด</th>
+            <th scope="col" class="px-6 py-3">ภาษี</th>
+            <th scope="col" class="px-6 py-3">จำนวนเงิน</th>
          
           </tr>
         </thead>
