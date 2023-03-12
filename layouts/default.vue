@@ -32,10 +32,7 @@
               <v-btn variant="flat">เพิ่มโรงแรม</v-btn>
             </li>
             <li @click="$router.push('/')">
-              <v-btn variant="flat">ใบเสนอราคา</v-btn>
-            </li>
-            <li @click="$router.push('/')">
-              <v-btn variant="flat">ติดต่อเรา</v-btn>
+              <v-btn variant="tonal" color="teal-accent-4">ลงชื่อเข้าใช้</v-btn>
             </li>
           </ul>
         </div>
