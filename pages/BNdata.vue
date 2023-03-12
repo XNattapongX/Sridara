@@ -14,7 +14,7 @@
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
       <table
         
-        class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
+        class="w-full text-sm text-left dark:text-gray-400"
         style="background-color: #e8f5e9">
         <tr>
           <td colspan="5" class="pb-1 pt-2 px-3">
@@ -46,12 +46,9 @@
             </h3>
           </td>
           <td colspan="3" class="py-1 px-3">
-            รหัสลูกค้า :  
-             
+            รหัสลูกค้า :    
           </td>
-         
         </tr>
-
         <tr>
           <td colspan="5" class="py-1 px-3">
             <h3>ที่อยู่ : </h3>
@@ -62,29 +59,15 @@
           
         </tr>
 
-        <tr
-    
-          
-        >
-          <td colspan="5" class="py-1 px-3">
-            <h3>
-              
-              
-            </h3>
-          </td>
-          <td colspan="3" class="py-1 px-3">
-        
-              ฝ่าย :
-              
-            
-          </td>
+        <tr>
+            <td colspan="3" class="py-1 px-3">
+              ฝ่าย : 
+            </td>
+            <td colspan="3" class="py-1 pt-2 px-3">       
+              โทร :             
+            </td>
         </tr>
         <tr>
-          <td colspan="3" class="py-1 pt-2 px-3">
-            
-              โทร : 
-            
-          </td>
           <td colspan="3" class="py-1 px-3">
             Fax :  
              
@@ -96,7 +79,7 @@
         </tr>
       </table>
       <table
-        class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
+        class="w-full text-sm text-left dark:text-gray-400"
         style="max-height: 400px">
         <thead
           class="text-xs text-gray-700 uppercase bg-gray-50 dark:text-gray-400"

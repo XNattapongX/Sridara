@@ -14,7 +14,7 @@
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
       <table
         
-        class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
+        class="w-full text-sm text-left dark:text-gray-400"
         style="background-color: #e8f5e9">
         <tr>
           <td colspan="8" class="pb-1 pt-2 px-3">
@@ -38,8 +38,6 @@
           </td>
         </tr>
         <tr>
-          <td colspan="8" class="py-1 px-3">
-          </td>
           <td colspan="3" class="py-1 px-3">
             สาขา :
         </td>
