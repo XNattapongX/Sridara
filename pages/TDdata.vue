@@ -14,7 +14,7 @@
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
       <table
         
-        class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
+        class="w-full text-sm text-left dark:text-gray-400"
         style="background-color: #e8f5e9">
         <tr>
           <td colspan="6" class="pb-1 pt-2 px-3">
@@ -67,7 +67,7 @@
           <td colspan="5" class="py-1 px-3">
             <h3>
             <div class="flex items-center mr-4">
-        <input id="inline-radio" type="radio" value="" name="inline-radio-group" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+        <input id="inline-radio" type="radio" value="" name="inline-radio-group" class="w-4 h-4 text-blue-600 bg-blue border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
         <label for="inline-radio" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">สำนักงานใหญ่</label>
     </div>
     
@@ -76,7 +76,7 @@
           </td>
           <td>
             <div class="flex items-center mr-4">
-        <input id="inline-2-radio" type="radio" value="" name="inline-radio-group" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+        <input id="inline-2-radio" type="radio" value="" name="inline-radio-group" class="w-4 h-4 text-blue-600 bg-blue border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
         <label for="inline-2-radio" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">สาขาที่ :</label>
     </div>
           </td>
@@ -90,10 +90,10 @@
         
       </table>
       <table
-        class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
+        class="w-full text-sm text-left dark:text-gray-400"
         style="max-height: 400px">
         <thead
-          class="text-xs text-gray-700 uppercase bg-gray-50 dark:text-gray-400"
+          class="text-xs uppercase bg-gray-50 dark:text-gray-400"
           style="background-color: #81c784">
           <tr>
             <th scope="col" class="px-6 py-3">ลำดับ

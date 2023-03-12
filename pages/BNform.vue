@@ -246,6 +246,12 @@
                 class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
             </v-col>
   
+           
+            
+           
+          </v-row>
+  
+          <v-row>
             <v-col>
               <label
                 for="base-input"
@@ -270,11 +276,6 @@
                 v-model="nationality"
                 class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
             </v-col>
-  
-           
-          </v-row>
-  
-          <v-row>
             <v-col>
               <label
                 for="base-input"
@@ -361,6 +362,7 @@
                     <th scope="col" class="px-6 py-3">ราคาต่อหน่วย</th>
                     <th scope="col" class="px-6 py-3">ส่วนลด </th>
                     <th scope="col" class="px-6 py-3">จำนวนเงิน</th>
+                    <th scope="col" class="px-6 py-3">ภาษี</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -383,6 +385,9 @@
                     </td>
                     <td class="px-6 py-4">
                       {{ item.fields.date_income.stringValue }}
+                    </td>
+                    <td class="px-6 py-4">
+                      {{ item.fields.date_outcome.stringValue }}
                     </td>
                     <td class="px-6 py-4">
                       {{ item.fields.date_outcome.stringValue }}
