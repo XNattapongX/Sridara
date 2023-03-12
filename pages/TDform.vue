@@ -1,6 +1,6 @@
 <template>
     <div style="border-radius: 1rem; margin: 1rem">
-      <v-row style="margin: 1rem">
+      <v-row style="margin: 1rem ; align-items: left;">
         <v-col class="shadow-card">
           <h1
             v-if="tour_detail"
@@ -10,7 +10,7 @@
           <h1
             v-else
             class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">
-            Quotation
+            เพิ่มข้อมูลใบกำกับภาษี / ใบส่งของ
           </h1>
           <v-row>
             <v-col>
@@ -30,67 +30,28 @@
               <label
                 for="base-input"
                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >รหัสลูกค้า</label
+                >ที่อยู่</label
               >
               <input
                 type="text"
                 id="small-input"
-                v-model="lastname_thai"
+                v-model="address"
                 class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
             </v-col>
             <v-col>
               <label
                 for="base-input"
                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >ID TAX</label
+                >เลขประจำตัวผู้เสียภาษี</label
               >
               <input
                 type="text"
                 id="base-input"
-                v-model="surname_eng"
+                v-model="tax_id"
                 class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
             </v-col>
   
-            <v-col>
-              <label
-                for="base-input"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >ผู้เสนอขาย</label
-              >
-              <input
-                type="text"
-                id="small-input"
-                v-model="lastname_eng"
-                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-            </v-col>
-            <v-col>
-              <label
-                for="base-input"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >ชื่อผู้ติดต่อ</label
-              >
-              <input
-                type="text"
-                id="base-input"
-                v-model="nationality"
-                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-            </v-col>
-  
-            <v-col>
-              <label
-                for="base-input"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >ฝ่าย</label
-              >
-              <select
-                style="height: 55%"
-                v-model="gender"
-                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                <option value="ชาย">ชาย</option>
-                <option value="หญิง">หญิง</option>
-                <option value="อื่นๆ">อื่นๆ</option>
-              </select>
-            </v-col>
+           
           </v-row>
   
           <v-row>
@@ -98,7 +59,34 @@
               <label
                 for="base-input"
                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >ที่อยู๋</label
+                >สาขาที่ทำรายการ</label
+              >
+              <select
+                style="height: 55%"
+                v-model="branch"
+                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              
+                <option value="สำนักงานใหญ่">สำนักงานใหญ่</option>
+                <option value="สาขา">สาขา</option>
+              </select>
+            </v-col>
+            <v-col>
+              <label
+                for="base-input"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >สาขาที่ ( ถ้าเป็นสำนักงานใหญ่ไม่ต้องกรอก ) </label
+              >
+              <input
+                type="text"
+                id="small-input"
+                v-model="branch_name"
+                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  />
+            </v-col>
+            <v-col>
+              <label
+                for="base-input"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >เลขที่</label
               >
               <input
                 type="text"
@@ -110,31 +98,7 @@
               <label
                 for="base-input"
                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >ยืนยันราคาภายใน</label
-              >
-              <a-date-picker
-                :locale="locale"
-                v-model:value="dob"
-                class="date-picker"
-                format="DD/MM/YYYY" />
-            </v-col>
-            <v-col>
-              <label
-                for="base-input"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >เบอร์โทรศัพท์</label
-              >
-              <input
-                type="text"
-                id="small-input"
-                v-model="telephone_number"
-                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-            </v-col>
-            <v-col>
-              <label
-                for="base-input"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >วันที่ส่งของ</label
+                >วันที่</label
               >
               <a-date-picker
                 :locale="locale"
@@ -149,24 +113,25 @@
               <label
                 for="base-input"
                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >Email</label
+                >ผู้ขาย </label
               >
               <input
                 type="text"
                 id="small-input"
-                v-model="address"
+                v-model="lastname_eng"
                 class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
             </v-col>
-            <v-col cols="2">
-              <br />
-              <v-btn
-                block
-                variant="tonal"
-                @click="addMember"
-                style="margin-top: 5px"
-                color="red-accent-4"
-                >ยืนยัน</v-btn
+            <v-col>
+              <label
+                for="base-input"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >รหัสลูกค้า </label
               >
+              <input
+                type="text"
+                id="small-input"
+                v-model="customer_id"
+                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
             </v-col>
           </v-row>
           <br />
@@ -184,18 +149,14 @@
                   class="text-xs text-gray-700 uppercase bg-gray-50 dark:text-gray-400"
                   style="background-color: #81c784">
                   <tr>
-                    <th scope="col" class="px-6 py-3">ลำดับ</th>
-                    <th scope="col" class="px-6 py-3">ชื่อ-นามสกุลภาษาไทย</th>
-                    <th scope="col" class="px-6 py-3">หมายเลขบัตรประชาชน</th>
-                    <th scope="col" class="px-6 py-3">ชื่อ-นามสกุลภาษาอังกฤษ</th>
-                    <th scope="col" class="px-6 py-3">หมายเลขพาสปอร์ต</th>
-                    <th scope="col" class="px-6 py-3">วันที่ออก</th>
-                    <th scope="col" class="px-6 py-3">วันที่หมด</th>
-                    <th scope="col" class="px-6 py-3">ว/ด/ป เกิด</th>
-                    <th scope="col" class="px-6 py-3">สัญชาต</th>
-                    <th scope="col" class="px-6 py-3">เพศ</th>
-                    <th scope="col" class="px-6 py-3">ประเภทเตียง</th>
-                    <th scope="col" class="px-6 py-3">ตรวจลงตราเลขที</th>
+                    <th scope="col" class="px-6 py-3">ชื่อลูกค้า</th>
+                    <th scope="col" class="px-6 py-3">ที่อยู่</th>
+                    <th scope="col" class="px-6 py-3">เลขประจำตัวผู้เสียภาษี</th>
+                    <th scope="col" class="px-6 py-3">สาขาที่ทำรายการ</th>
+                    <th scope="col" class="px-6 py-3">เลขที่</th>
+                    <th scope="col" class="px-6 py-3">วันที่</th>
+                    <th scope="col" class="px-6 py-3">ผู้ขาย</th>
+                    <th scope="col" class="px-6 py-3">รหัสลูกค้า</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -223,18 +184,6 @@
                       {{ item.fields.date_outcome.stringValue }}
                     </td>
                     <td class="px-6 py-4">{{ item.fields.dob.stringValue }}</td>
-                    <td class="px-6 py-4">
-                      {{ item.fields.nationality.stringValue }}
-                    </td>
-                    <td class="px-6 py-4">
-                      {{ item.fields.gender.stringValue }}
-                    </td>
-                    <td class="px-6 py-4">
-                      {{ item.fields.bed_type.stringValue }}
-                    </td>
-                    <td class="px-6 py-4">
-                      {{ item.fields.check_stamp_number.stringValue }}
-                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -259,12 +208,17 @@
         lastname_eng: "",
         nationality: "",
         gender: "",
+        branch: "",
+        branch_name: "",
+        tax_id: "",
         id_card: "",
+        customer_id: "",
         bed_type: "",
         telephone_number: "",
         passport: "",
         stamp_number: "",
         address: "",
+        email: "",
         dob: "",
         out: "",
         in: "",
