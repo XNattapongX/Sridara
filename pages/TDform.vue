@@ -146,6 +146,153 @@
       </v-col>
     </v-row>
   </div>
+  <div style="border-radius: 1rem; margin: 1rem">
+    <v-row style="margin: 1rem; align-items: left">
+      <v-col class="shadow-card">
+        <h1
+          v-if="tour_detail"
+          class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">
+          ข้อมูลลูกทัวร์ | {{ tour_detail.fields.trip_name.stringValue }}
+        </h1>
+        <h1
+          v-else
+          class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">
+          เพิ่มข้อมูลใบกำกับภาษี / ใบส่งของ
+        </h1>
+        <v-row>
+          <v-col>
+            <label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >ชื่อลูกค้า</label
+            >
+            <input
+              type="text"
+              id="base-input"
+              v-model="surname_thai"
+              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+          </v-col>
+
+          <v-col>
+            <label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >ที่อยู่</label
+            >
+            <input
+              type="text"
+              id="small-input"
+              v-model="address"
+              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+          </v-col>
+          <v-col>
+            <label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >เลขประจำตัวผู้เสียภาษี</label
+            >
+            <input
+              type="text"
+              id="base-input"
+              v-model="tax_id"
+              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+          </v-col>
+        </v-row>
+
+        <v-row>
+          <v-col>
+            <label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >สาขาที่ทำรายการ</label
+            >
+            <select
+              style="height: 55%"
+              v-model="branch"
+              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              <option value="สำนักงานใหญ่">สำนักงานใหญ่</option>
+              <option value="สาขา">สาขา</option>
+            </select>
+          </v-col>
+          <v-col>
+            <label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >สาขาที่ ( ถ้าเป็นสำนักงานใหญ่ไม่ต้องกรอก )
+            </label>
+            <input
+              type="text"
+              id="small-input"
+              v-model="branch_name"
+              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+          </v-col>
+          <v-col>
+            <label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >เลขที่</label
+            >
+            <input
+              type="text"
+              id="small-input"
+              v-model="id_card"
+              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+          </v-col>
+          <v-col>
+            <label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >วันที่</label
+            >
+            <a-date-picker
+              :locale="locale"
+              v-model:value="dob"
+              class="date-picker"
+              format="DD/MM/YYYY" />
+          </v-col>
+        </v-row>
+
+        <v-row>
+          <v-col>
+            <label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >ผู้ขาย
+            </label>
+            <input
+              type="text"
+              id="small-input"
+              v-model="lastname_eng"
+              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+          </v-col>
+          <v-col>
+            <label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >รหัสลูกค้า
+            </label>
+            <input
+              type="text"
+              id="small-input"
+              v-model="customer_id"
+              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+          </v-col>
+          <v-col cols="2">
+            <br />
+            <v-btn
+              block
+              variant="tonal"
+              @click="addMember"
+              style="margin-top: 5px"
+              color="green-accent-4"
+              >เพิ่มข้อมูล</v-btn
+            >
+          </v-col>
+        </v-row>
+        <br />
+      </v-col>
+    </v-row>
+  </div>
 
   <div style="border-radius: 1rem; margin: 1rem">
     <v-row style="margin: 1rem; align-items: left">
@@ -158,7 +305,7 @@
         <h1
           v-else
           class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">
-          รายการสินค้า
+          เพิ่มข้อมูลรายการสินค้า
         </h1>
         <v-row>
           <v-col>
@@ -346,37 +493,42 @@
 </template>
 
 <script lang="ts">
-  import { group_members } from "~~/services/payload";
-  import { read_all_data, create_data, read_one_data } from "~~/services/configs";
-  import { defineComponent } from "vue";
-  import locale from "ant-design-vue/es/date-picker/locale/th_TH";
-  export default defineComponent({
-    data() {
-      return {
-        surname_thai: "",
-        lastname_thai: "",
-        surname_eng: "",
-        lastname_eng: "",
-        nationality: "",
-        gender: "",
-        branch: "",
-        branch_name: "",
-        tax_id: "",
-        id_card: "",
-        customer_id: "",
-        bed_type: "",
-        telephone_number: "",
-        passport: "",
-        stamp_number: "",
-        address: "",
-        email: "",
-        dob: "",
-        out: "",
-        in: "",
-        d_range: [],
-        members_ls: [] as any,
-        tour_detail: "" as any,
-      };
+import { group_members } from "~~/services/payload";
+import { read_all_data, create_data, read_one_data } from "~~/services/configs";
+import { defineComponent } from "vue";
+import locale from "ant-design-vue/es/date-picker/locale/th_TH";
+export default defineComponent({
+  data() {
+    return {
+      surname_thai: "",
+      lastname_thai: "",
+      surname_eng: "",
+      lastname_eng: "",
+      nationality: "",
+      gender: "",
+      branch: "",
+      branch_name: "",
+      tax_id: "",
+      id_card: "",
+      customer_id: "",
+      bed_type: "",
+      telephone_number: "",
+      passport: "",
+      stamp_number: "",
+      address: "",
+      email: "",
+      dob: "",
+      out: "",
+      in: "",
+      d_range: [],
+      members_ls: [] as any,
+      tour_detail: "" as any,
+    };
+  },
+  watch: {
+    d_range(newValue) {
+      this.in = newValue[0];
+      this.out = newValue[1];
     },
   },
   setup() {
