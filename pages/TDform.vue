@@ -141,7 +141,7 @@
                 @click="addMember"
                 style="margin-top: 5px"
                 color="green-accent-4"
-                >ยืนยัน</v-btn
+                >เพิ่มข้อมูล</v-btn
               >
             </v-col>
           </v-row>
@@ -263,7 +263,7 @@
                 @click="addMember"
                 style="margin-top: 5px"
                 color="green-accent-4"
-                >ยืนยัน</v-btn
+                >เพิ่มข้อมูล</v-btn
               >
             </v-col>
           </v-row>
