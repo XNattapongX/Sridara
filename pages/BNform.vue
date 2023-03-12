@@ -10,7 +10,7 @@
           <h1
             v-else
             class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">
-            Billing Note/Invoice
+            ใบวางบิล/ใบแจ้งหนี้ 
           </h1>
           <v-row>
             <v-col>
@@ -179,7 +179,7 @@
                 variant="tonal"
                 @click="addMember"
                 style="margin-top: 5px"
-                color="red-accent-4"
+                color="green-accent-4"
                 >ยืนยัน</v-btn
               >
             </v-col>
@@ -234,18 +234,6 @@
                       {{ item.fields.date_outcome.stringValue }}
                     </td>
                     <td class="px-6 py-4">{{ item.fields.dob.stringValue }}</td>
-                    <td class="px-6 py-4">
-                      {{ item.fields.nationality.stringValue }}
-                    </td>
-                    <td class="px-6 py-4">
-                      {{ item.fields.gender.stringValue }}
-                    </td>
-                    <td class="px-6 py-4">
-                      {{ item.fields.bed_type.stringValue }}
-                    </td>
-                    <td class="px-6 py-4">
-                      {{ item.fields.check_stamp_number.stringValue }}
-                    </td>
                   </tr>
                 </tbody>
               </table>
