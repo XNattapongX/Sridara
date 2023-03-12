@@ -51,6 +51,24 @@
                 class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
             </v-col>
   
+            
+            <v-col>
+              <label
+                for="base-input"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >เลขที่</label
+              >
+              <input
+                type="text"
+                id="base-input"
+                v-model="nationality"
+                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+            </v-col>
+  
+           
+          </v-row>
+          
+          <v-row>
             <v-col>
               <label
                 for="base-input"
@@ -67,23 +85,6 @@
               <label
                 for="base-input"
                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >เลขที่</label
-              >
-              <input
-                type="text"
-                id="base-input"
-                v-model="nationality"
-                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-            </v-col>
-  
-           
-          </v-row>
-  
-          <v-row>
-            <v-col>
-              <label
-                for="base-input"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >เบอร์โทร</label
               >
               <input
@@ -92,6 +93,10 @@
                 v-model="id_card"
                 class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
             </v-col>
+             
+          </v-row>
+          <v-row>
+           
             <v-col>
               <label
                 for="base-input"
@@ -108,14 +113,15 @@
               <label
                 for="base-input"
                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >รหัสลูกค้า</label
+                >ยืนยันราคาวันที่</label
               >
-              <input
-                type="text"
-                id="small-input"
-                v-model="telephone_number"
-                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+              <a-date-picker
+                :locale="locale"
+                v-model:value="dob"
+                class="date-picker"
+                format="DD/MM/YYYY" />
             </v-col>
+          
             <v-col>
               <label
                 for="base-input"
@@ -147,13 +153,13 @@
               <label
                 for="base-input"
                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >ยืนยันราคาวันที่</label
+                >รหัสลูกค้า</label
               >
-              <a-date-picker
-                :locale="locale"
-                v-model:value="dob"
-                class="date-picker"
-                format="DD/MM/YYYY" />
+              <input
+                type="text"
+                id="small-input"
+                v-model="telephone_number"
+                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
             </v-col>
             <v-col>
               <label
@@ -191,7 +197,148 @@
                 >ยืนยัน</v-btn
               >
             </v-col>
+
           </v-row>
+          
+          <br />
+          
+        </v-col>
+      </v-row>
+    </div>
+    <div style="border-radius: 1rem; margin: 1rem">
+      <v-row style="margin: 1rem">
+        <v-col class="shadow-card">
+          <h1
+            v-if="tour_detail"
+            class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">
+            ข้อมูลลูกทัวร์ | {{ tour_detail.fields.trip_name.stringValue }}
+          </h1>
+          <h1
+            v-else
+            class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">
+            ใบวางบิล/ใบแจ้งหนี้ 
+          </h1>
+          <v-row>
+           
+  
+            <v-col>
+              <label
+                for="base-input"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >รหัสสินค้า</label
+              >
+              <input
+                type="text"
+                id="small-input"
+                v-model="lastname_thai"
+                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+            </v-col>
+            <v-col>
+              <label
+                for="base-input"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >รายการสินค้า</label
+              >
+              <input
+                type="text"
+                id="base-input"
+                v-model="surname_eng"
+                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+            </v-col>
+  
+           
+            
+           
+          </v-row>
+  
+          <v-row>
+            <v-col>
+              <label
+                for="base-input"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >จำนวน</label
+              >
+              <input
+                type="text"
+                id="small-input"
+                v-model="lastname_eng"
+                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+            </v-col>
+            <v-col>
+              <label
+                for="base-input"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >หน่วย</label
+              >
+              <input
+                type="text"
+                id="base-input"
+                v-model="nationality"
+                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+            </v-col>
+            <v-col>
+              <label
+                for="base-input"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >ราคาต่อหน่วย</label
+              >
+              <input
+                type="text"
+                id="small-input"
+                v-model="id_card"
+                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+            </v-col>
+           
+            <v-col>
+              <label
+                for="base-input"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >ส่วนลด</label
+              >
+              <input
+                type="text"
+                id="small-input"
+                v-model="telephone_number"
+                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+            </v-col>
+            <v-col>
+              <label
+                for="base-input"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >จำนวนเงิน</label
+              >
+              <input
+                type="text"
+                id="small-input"
+                v-model="telephone_number"
+                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+            </v-col>
+            
+          </v-row>
+        
+          <v-row>
+            <v-col>
+              <label
+                for="base-input"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                ></label
+              >
+             
+            </v-col>
+            <v-col cols="2">
+              <br />
+              <v-btn
+                block
+                variant="tonal"
+                @click="addMember"
+                style="margin-top: 5px"
+                color="green-accent-4"
+                >เพิ่มข้อมูล</v-btn
+              >
+            </v-col>
+
+          </v-row>
+          
           <br />
           <div
             class="relative overflow-x-auto"
@@ -215,6 +362,7 @@
                     <th scope="col" class="px-6 py-3">ราคาต่อหน่วย</th>
                     <th scope="col" class="px-6 py-3">ส่วนลด </th>
                     <th scope="col" class="px-6 py-3">จำนวนเงิน</th>
+                    <th scope="col" class="px-6 py-3">ภาษี</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -237,6 +385,9 @@
                     </td>
                     <td class="px-6 py-4">
                       {{ item.fields.date_income.stringValue }}
+                    </td>
+                    <td class="px-6 py-4">
+                      {{ item.fields.date_outcome.stringValue }}
                     </td>
                     <td class="px-6 py-4">
                       {{ item.fields.date_outcome.stringValue }}

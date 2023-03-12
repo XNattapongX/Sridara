@@ -1,16 +1,16 @@
 <template>
-   <div style="border-radius: 1rem; margin: 1rem">
-      <v-row style="margin: 1rem">
+    <div style="border-radius: 1rem; margin: 1rem">
+      <v-row style="margin: 1rem ; align-items: left;">
         <v-col class="shadow-card">
           <h1
             v-if="tour_detail"
             class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">
-            ข้อมูลลูกทัวร์ | {{ tour_detail.fields.trip_name.stringValue }}
+            ข้อมูลลูกค้า | {{ tour_detail.fields.trip_name.stringValue }}
           </h1>
           <h1
             v-else
             class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">
-            ใบเสนอราคา/ยืนยันการสั่งซื้อ
+            เพิ่มข้อมูลใบกำกับภาษี / ใบส่งของ
           </h1>
           <v-row>
             <v-col>
@@ -30,103 +30,6 @@
               <label
                 for="base-input"
                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >รหัสลูกค้า</label
-              >
-              <input
-                type="text"
-                id="small-input"
-                v-model="lastname_thai"
-                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-            </v-col>
-            <v-col>
-              <label
-                for="base-input"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >ID TAX</label>
-              <input
-                type="text"
-                id="base-input"
-                v-model="surname_eng"
-                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-                
-            </v-col>
-  
-           
-  
-            <v-col>
-              <label
-                for="base-input"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >ฝ่าย</label>
-              <input
-                type="text"
-                id="base-input"
-                v-model="surname_eng"
-                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-                
-            </v-col>
-          </v-row>
-        <v-row>
-          <v-col>
-              <label
-                for="base-input"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >ผู้เสนอขาย</label
-              >
-              <input
-                type="text"
-                id="small-input"
-                v-model="lastname_eng"
-                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-            </v-col>
-            <v-col>
-              <label
-                for="base-input"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >ชื่อผู้ติดต่อ</label
-              >
-              <input
-                type="text"
-                id="base-input"
-                v-model="nationality"
-                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-            </v-col>
-          </v-row>
-          <v-row>
-        
-            <v-col>
-              <label
-                for="base-input"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >ยืนยันราคาภายใน</label
-              >
-              <a-date-picker
-                :locale="locale"
-                v-model:value="dob"
-                class="date-picker"
-                format="DD/MM/YYYY" />
-            </v-col>
-           
-            <v-col>
-              <label
-                for="base-input"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >วันที่ส่งของ</label
-              >
-              <a-date-picker
-                :locale="locale"
-                v-model:value="dob"
-                class="date-picker"
-                format="DD/MM/YYYY" />
-            </v-col>
-            
-            
-          </v-row>
-          <v-row>
-            <v-col>
-              <label
-                for="base-input"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >ที่อยู่</label
               >
               <input
@@ -135,36 +38,48 @@
                 v-model="address"
                 class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
             </v-col>
-            
-            </v-row>
-          <v-row>
             <v-col>
               <label
                 for="base-input"
                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >Email</label
+                >วันที่รับชำระ</label
+              >
+              <a-date-picker
+                :locale="locale"
+                v-model:value="dob"
+                class="date-picker"
+                format="DD/MM/YYYY" />
+            </v-col>
+  
+           
+          </v-row>
+  
+          <v-row>
+            
+            <v-col>
+              <label
+                for="base-input"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >เลขที่ใบเสร็จรับเงิน</label
               >
               <input
                 type="text"
                 id="small-input"
-                v-model="address"
-                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                v-model="branch_name"
+                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  />
             </v-col>
             <v-col>
               <label
                 for="base-input"
                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >เบอร์โทรศัพท์</label
+                >สาขา</label
               >
               <input
                 type="text"
                 id="small-input"
                 v-model="id_card"
                 class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-            
-              </v-col>
-              
-           
+            </v-col>
             <v-col cols="2">
               <br />
               <v-btn
@@ -172,111 +87,63 @@
                 variant="tonal"
                 @click="addMember"
                 style="margin-top: 5px"
-                color="green-accent-4"
+                color="blue-accent-4"
                 >ยืนยัน</v-btn
               >
             </v-col>
           </v-row>
+    
+            
           
-          <br /><br>
-         
         </v-col>
       </v-row>
     </div>
+
     <div style="border-radius: 1rem; margin: 1rem">
-      <v-row style="margin: 1rem">
+      <v-row style="margin: 1rem ; align-items: left;">
         <v-col class="shadow-card">
-          <h1
-            v-if="tour_detail"
-            class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">
-            ข้อมูลลูกทัวร์ | {{ tour_detail.fields.trip_name.stringValue }}
-          </h1>
-          <h1
-            v-else
-            class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">
-            ใบเสนอราคา/ยืนยันการสั่งซื้อ
-          </h1>
+         
           <v-row>
-        
-  
+
             <v-col>
               <label
                 for="base-input"
                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >รหัสลูกค้า</label
+                >วันที่</label
               >
-              <input
-                type="text"
-                id="small-input"
-                v-model="lastname_thai"
-                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+              <a-date-picker
+                :locale="locale"
+                v-model:value="dob"
+                class="date-picker"
+                format="DD/MM/YYYY" />
             </v-col>
+
             <v-col>
               <label
                 for="base-input"
                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >รายการสินค้า</label
+                >เลขที่ใบกำกับภาษี</label
               >
               <input
                 type="text"
                 id="base-input"
-                v-model="surname_eng"
+                v-model="surname_thai"
                 class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
             </v-col>
-           
-          </v-row>
-          <v-row>
+
             <v-col>
               <label
                 for="base-input"
                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >จำนวน</label
-              >
-              <input
-                type="text"
-                id="small-input"
-                v-model="lastname_eng"
-                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-            </v-col>
-            <v-col>
-              <label
-                for="base-input"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >ราคาต่อหน่วย</label
+                >รายละเอียด</label
               >
               <input
                 type="text"
                 id="base-input"
-                v-model="nationality"
+                v-model="surname_thai"
                 class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
             </v-col>
   
-            <v-col>
-              <label
-                for="base-input"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >ส่วนลด</label
-              >
-              <input
-                type="text"
-                id="base-input"
-                v-model="nationality"
-                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col>
-              <label
-                for="base-input"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >ภาษี</label
-              >
-              <input
-                type="text"
-                id="small-input"
-                v-model="id_card"
-                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-            </v-col>
             <v-col>
               <label
                 for="base-input"
@@ -286,15 +153,10 @@
               <input
                 type="text"
                 id="small-input"
-                v-model="id_card"
+                v-model="address"
                 class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
             </v-col>
-          </v-row>
-    
-          <v-row>
-            <v-col>
-             
-            </v-col>
+          
             <v-col cols="2">
               <br />
               <v-btn
@@ -302,18 +164,19 @@
                 variant="tonal"
                 @click="addMember"
                 style="margin-top: 5px"
-                color="green-accent-4"
+                color="blue-accent-4"
                 >เพิ่มข้อมูล</v-btn
               >
             </v-col>
           </v-row>
+
+          <br>
           
-          <br /><br>
           <div
             class="relative overflow-x-auto"
             style="
               border-radius: 0.5rem;
-              box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+              box-shadow: rgba(0, 0, 0, 0) 0px 10px 15px -3px,
                 rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
             ">
             <section class="bg-gray-50 dark:bg-gray-900">
@@ -324,12 +187,9 @@
                   style="background-color: #81c784">
                   <tr>
                     <th scope="col" class="px-6 py-3">ลำดับ</th>
-                    <th scope="col" class="px-6 py-3">รหัสสินค้า</th>
-                    <th scope="col" class="px-6 py-3">รายการสินค้า</th>
-                    <th scope="col" class="px-6 py-3">จำนวน</th>
-                    <th scope="col" class="px-6 py-3">ราคาต่อหน่วย</th>
-                    <th scope="col" class="px-6 py-3">ส่วนลด</th>
-                    <th scope="col" class="px-6 py-3">ภาษี</th>
+                    <th scope="col" class="px-6 py-3">วันที่</th>
+                    <th scope="col" class="px-6 py-3">เลขที่ใบกำกับภาษี</th>
+                    <th scope="col" class="px-6 py-3">รายละเอียด</th>
                     <th scope="col" class="px-6 py-3">จำนวนเงิน</th>
                   </tr>
                 </thead>
@@ -351,21 +211,68 @@
                     <td class="px-6 py-4">
                       {{ item.fields.passport_id.stringValue }}
                     </td>
-                    <td class="px-6 py-4">
-                      {{ item.fields.date_income.stringValue }}
-                    </td>
-                    <td class="px-6 py-4">
-                      {{ item.fields.date_outcome.stringValue }}
-                    </td>
-                    <td class="px-6 py-4">{{ item.fields.dob.stringValue }}</td>
                   </tr>
                 </tbody>
               </table>
             </section>
           </div>
+
+          <br>
+          <br>
+
+          <v-row>
+            <v-col>
+              <label
+                for="base-input"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >ชำระ</label
+              >
+              <div class="flex items-center mr-4">
+                <input id="inline-2-radio" type="radio" value="" name="inline-radio-group" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="inline-2-radio" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">เงินสด</label>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="inline-2-radio" type="radio" value="" name="inline-radio-group" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="inline-2-radio" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">เงินโอนธนาคาร</label>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="inline-2-radio" type="radio" value="" name="inline-radio-group" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="inline-2-radio" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">เช็คธนาคาร</label>
+                
+              </div>  
+            </v-col>
+
+            <v-col>
+              <label
+                for="base-input"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >หักภาษี ณ ที่จ่าย</label
+              >
+              <input
+                type="text"
+                id="base-input"
+                v-model="surname_thai"
+                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+            </v-col>
+  
+            <v-col>
+              <label
+                for="base-input"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >เลขที่เช็ค วันที่เช็ค</label
+              >
+              <input
+                type="text"
+                id="small-input"
+                v-model="address"
+                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+            </v-col>
+
+          </v-row>
         </v-col>
       </v-row>
     </div>
+
+    
+    
   </template>
   
   <script lang="ts">
@@ -382,12 +289,17 @@
         lastname_eng: "",
         nationality: "",
         gender: "",
+        branch: "",
+        branch_name: "",
+        tax_id: "",
         id_card: "",
+        customer_id: "",
         bed_type: "",
         telephone_number: "",
         passport: "",
         stamp_number: "",
         address: "",
+        email: "",
         dob: "",
         out: "",
         in: "",
