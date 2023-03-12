@@ -102,10 +102,10 @@ export const group_tours = (
         stringValue: vehicle_outcome,
       },
       guide_name: {
-        stringValue: guide_name.join(","),
+        stringValue: guide_name.join(", "),
       },
       guide_tel: {
-        stringValue: guide_tel.join(","),
+        stringValue: guide_tel.join(", "),
       },
       amount_member: {
         stringValue: String(amount_member),
