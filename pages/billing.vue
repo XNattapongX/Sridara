@@ -1,5 +1,6 @@
 <template>
-  <div style="display: flex; background-color: transparent">
+  <div
+    style="display: flex; background-color: rgb(225, 225, 241); z-index: -111">
     <div class="page">
       <v-table>
         <tr>
@@ -47,9 +48,27 @@
       </v-table>
     </div>
   </div>
+  <v-row justify="center" style="margin-top: -2rem" class="hide-btn"
+    ><v-col style="text-align: center"
+      ><v-btn color="light-blue-accent-4" @click="print"
+        >สั่งพิมพ์ หรือ บันทึกเป็น PDF</v-btn
+      ></v-col
+    ></v-row
+  >
 </template>
+<script lang="ts">
+import { defineComponent } from "vue";
 
-<style>
+export default defineComponent({
+  methods: {
+    print() {
+      window.print();
+    },
+  },
+});
+</script>
+
+<style scope>
 @page {
   size: A4;
   margin: 0;
@@ -58,11 +77,6 @@
 * {
   box-sizing: border-box;
 }
-html,
-body {
-  background-color: rgb(225, 225, 241);
-}
-
 .page {
   width: 210mm;
   min-height: 297mm;
@@ -76,6 +90,9 @@ body {
 
 @media print {
   header {
+    display: none;
+  }
+  .hide-btn {
     display: none;
   }
   html,
