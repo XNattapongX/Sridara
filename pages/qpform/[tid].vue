@@ -276,13 +276,7 @@
         </v-row>
 
         <br /><br />
-        <div
-          class="relative overflow-x-auto"
-          style="
-            border-radius: 0.5rem;
-            box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
-              rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
-          ">
+        <div class="relative overflow-x-auto shadow">
           <section class="bg-gray-50 dark:bg-gray-900">
             <table
               class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -404,5 +398,10 @@ export default defineComponent({
   background-color: #f9fafb;
   border-radius: 0.4rem;
   width: 100%;
+}
+.shadow {
+  border-radius: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
 }
 </style>
