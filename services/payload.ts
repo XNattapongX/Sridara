@@ -624,10 +624,9 @@ export const billing_note_detail = (
   customer_name: string,
   customer_address: string,
   customer_code: string,
-  customer_tel: string,
+  tel: string,
   customer_fax: string,
   contact_name: string,
-  contact_tel: string,
   seller_name: string,
   seller_department: string,
   confirm_price_within_date: Date,
@@ -640,8 +639,8 @@ export const billing_note_detail = (
   receiver_siging_date: Date,
   deliverer_siging_name: string,
   deliverer_siging_date: Date,
-  coodinator_siging_name: string,
-  coodinator_siging_date: Date,
+  coordinator_siging_name: string,
+  coordinator_siging_date: Date,
   Authorized_person_siging_name: string,
   Authorized_person_siging_date: Date
 ) => {
