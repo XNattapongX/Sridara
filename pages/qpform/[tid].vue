@@ -281,6 +281,10 @@
                   <th scope="col" class="px-6 py-3">ส่วนลด</th>
                   <th scope="col" class="px-6 py-3">ภาษี</th>
                   <th scope="col" class="px-6 py-3">จำนวนเงิน</th>
+                  <th scope="col" class="px-6 py-3">
+                    จัดการ <br />
+                    Manage
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -308,11 +312,13 @@
                     {{ item.product_tax }}
                   </td>
                   <td class="px-6 py-4">{{ item.product_total }}</td>
+                  
                 </tr>
               </tbody>
             </table>
           </section>
         </div>
+<<<<<<< HEAD
         <v-col cols="2">
           <br />
           <v-btn
@@ -324,6 +330,9 @@
             >ยืนยัน</v-btn
           >
         </v-col>
+=======
+        
+>>>>>>> d10ae416705e4c2f25f841a19d7399c8aa205ebd
       </v-col>
     </v-row>
   </div>
