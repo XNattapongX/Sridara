@@ -305,7 +305,7 @@ export const quotation_detail_with_product = (
   contact_email: string,
   seller_name: string,
   seller_department: string,
-  confirm_price_within: number,
+  confirm_price_within: Date,
   delivery_date: Date,
   product: Array<any>,
   earnest_money: number,
@@ -324,6 +324,35 @@ export const quotation_detail_with_product = (
   Authorized_person_siging_name: string,
   Authorized_person_siging_date: Date
 ) => {
+  const arrayValue = product.map((item) => {
+    return {
+      mapValue: {
+        fields: {
+          product_code: {
+            stringValue: item.product_code,
+          },
+          product_name: {
+            stringValue: item.product_name,
+          },
+          product_amount: {
+            stringValue: String(item.product_amount),
+          },
+          product_price_per_unit: {
+            stringValue: String(item.product_price_per_unit),
+          },
+          product_discount: {
+            stringValue: String(item.product_discount),
+          },
+          product_tax: {
+            stringValue: String(item.product_tax),
+          },
+          product_total: {
+            stringValue: String(item.product_total),
+          },
+        },
+      },
+    };
+  });
   return {
     fields: {
       tour_id: {
@@ -370,7 +399,7 @@ export const quotation_detail_with_product = (
       },
       product: {
         arrayValue: {
-          values: product,
+          values: arrayValue,
         },
       },
       earnest_money: {
