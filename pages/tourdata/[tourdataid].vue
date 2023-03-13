@@ -156,7 +156,7 @@
   <v-row justify="end">
     <v-col cols="2" style="text-align: end"
       ><v-btn
-        style="margin-right: -14.5rem"
+        style="margin-right: -15.5rem"
         variant="tonal"
         color="red-accent-4"
         @click="handleDelete(tour_data.fields.trip_name.stringValue)"
@@ -169,7 +169,7 @@
         variant="tonal"
         color="light-blue-accent-4"
         @click="$router.push(`/qpform/${$route.params.tourdataid}`)"
-        >จัดการใบเสนอราคา</v-btn
+        >สร้างใบเสนอราคา</v-btn
       >
     </v-col>
     <v-col cols="2" style="text-align: end"

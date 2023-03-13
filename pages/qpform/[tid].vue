@@ -79,11 +79,11 @@
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >ยืนยันราคาภายใน</label
             >
-            <input
-              type="number"
-              id="small-input"
-              v-model.number="confirm_price_within"
-              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+            <a-date-picker
+              :locale="locale"
+              v-model:value="confirm_price_within"
+              class="date-picker"
+              format="DD/MM/YYYY" />
           </v-col>
           <v-col>
             <label
@@ -150,17 +150,6 @@
               id="small-input"
               v-model="contact_email"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-          </v-col>
-          <v-col cols="2">
-            <br />
-            <v-btn
-              block
-              variant="tonal"
-              @click="create_quotation"
-              style="margin-top: 5px"
-              color="green-accent-4"
-              >ยืนยัน</v-btn
-            >
           </v-col>
         </v-row>
       </v-col>
@@ -324,6 +313,17 @@
             </table>
           </section>
         </div>
+        <v-col cols="2">
+          <br />
+          <v-btn
+            block
+            variant="tonal"
+            @click="onAddQuotation"
+            style="margin-top: 5px"
+            color="green-accent-4"
+            >ยืนยัน</v-btn
+          >
+        </v-col>
       </v-col>
     </v-row>
   </div>
@@ -381,6 +381,43 @@ export default defineComponent({
       this.product_discount = "";
       this.product_tax = "";
       this.product_total = "";
+    },
+    onAddQuotation() {
+      const json = quotation_detail_with_product(
+        String(this.$route.params.tid),
+        genRanDec(5),
+        new Date(),
+        this.tax_id,
+        this.customer_name,
+        this.customer_address,
+        this.customer_code,
+        this.contact_name,
+        this.contact_tel,
+        this.contact_email,
+        this.sales_person,
+        this.sale_department,
+        new Date(this.confirm_price_within),
+        new Date(this.delivery_date),
+        this.product_ls,
+        0,
+        "6",
+        100,
+        20,
+        100,
+        100,
+        1000,
+        "",
+        new Date(),
+        "",
+        new Date(),
+        "",
+        new Date(),
+        "",
+        new Date()
+      );
+      create_data("quotation_detail", json).then((res) => {
+        console.log(res);
+      });
     },
   },
 });

@@ -305,7 +305,7 @@ export const quotation_detail_with_product = (
   contact_email: string,
   seller_name: string,
   seller_department: string,
-  confirm_price_within: number,
+  confirm_price_within: Date,
   delivery_date: Date,
   product: Array<any>,
   earnest_money: number,
@@ -324,6 +324,35 @@ export const quotation_detail_with_product = (
   Authorized_person_siging_name: string,
   Authorized_person_siging_date: Date
 ) => {
+  const arrayValue = product.map((item) => {
+    return {
+      mapValue: {
+        fields: {
+          product_code: {
+            stringValue: item.product_code,
+          },
+          product_name: {
+            stringValue: item.product_name,
+          },
+          product_amount: {
+            stringValue: String(item.product_amount),
+          },
+          product_price_per_unit: {
+            stringValue: String(item.product_price_per_unit),
+          },
+          product_discount: {
+            stringValue: String(item.product_discount),
+          },
+          product_tax: {
+            stringValue: String(item.product_tax),
+          },
+          product_total: {
+            stringValue: String(item.product_total),
+          },
+        },
+      },
+    };
+  });
   return {
     fields: {
       tour_id: {
@@ -370,7 +399,7 @@ export const quotation_detail_with_product = (
       },
       product: {
         arrayValue: {
-          values: product,
+          values: arrayValue,
         },
       },
       earnest_money: {
@@ -642,16 +671,13 @@ export const billing_note_detail = (
         stringValue: customer_code,
       },
       customer_tel: {
-        stringValue: customer_tel,
+        stringValue: tel,
       },
       customer_fax: {
         stringValue: customer_fax,
       },
       contact_name: {
         stringValue: contact_name,
-      },
-      contact_tel: {
-        stringValue: contact_tel,
       },
       seller_name: {
         stringValue: seller_name,
@@ -690,10 +716,10 @@ export const billing_note_detail = (
         stringValue: dayjs(deliverer_siging_date).format("DD/MM/BBBB"),
       },
       coodinator_siging_name: {
-        stringValue: coodinator_siging_name,
+        stringValue: coordinator_siging_name,
       },
       coodinator_siging_date: {
-        stringValue: dayjs(coodinator_siging_date).format("DD/MM/BBBB"),
+        stringValue: dayjs(coordinator_siging_date).format("DD/MM/BBBB"),
       },
       Authorized_person_siging_name: {
         stringValue: Authorized_person_siging_name,
