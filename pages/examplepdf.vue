@@ -8,8 +8,7 @@
               src="https://www.adt.or.th/image/ADT1%20-%201108%20-%200263.jpg"
               class="w-141px h-47px"
               style="margin: auto"
-              alt="sridara Logo"
-            />
+              alt="sridara Logo" />
           </td>
           <td>
             <v-sheet style="text-align: center; font-size: 12px">
@@ -27,8 +26,7 @@
           </td>
           <td>
             <v-table
-              style="border: 1px solid black; margin: auto; padding: 10px"
-            >
+              style="border: 1px solid black; margin: auto; padding: 10px">
               <thead style="text-align: center; font-size: 10px">
                 <tr style="font-size: 12px">
                   ใบเสนอราคา/ยืนยันการสั่งซื้อ
@@ -75,8 +73,7 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td style="padding-left: 4px; font-weight: bold" width="25% ">
                   ชื่อลูกค้า:
                 </td>
@@ -89,8 +86,7 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td style="padding-left: 4px; font-weight: bold">ID TEX:</td>
                 <td>1150</td>
               </tr>
@@ -101,8 +97,7 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td style="padding-left: 4px; font-weight: bold">
                   ชื่อผู้ติดต่อ:
                 </td>
@@ -115,8 +110,7 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 80px;
-                "
-              >
+                ">
                 <td style="padding: auto; padding-left: 4px; font-weight: bold">
                   ที่อยู่:
                 </td>
@@ -129,8 +123,7 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td style="padding-left: 4px; font-weight: bold">โทร:</td>
                 <td>0661242478</td>
               </tr>
@@ -145,8 +138,7 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td style="padding-left: 4px; font-weight: bold" width="40%">
                   รหัสลูกค้า:
                 </td>
@@ -159,8 +151,7 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td style="padding-left: 4px; font-weight: bold">
                   ผู้เสนอขาย:
                 </td>
@@ -173,8 +164,7 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td style="padding-left: 4px; font-weight: bold">ฝ่าย:</td>
                 <td>หาของ</td>
               </tr>
@@ -185,8 +175,7 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td style="padding-left: 4px; font-weight: bold">
                   ยืนยันราคาภายใน:
                 </td>
@@ -199,8 +188,7 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td style="padding-left: 4px; font-weight: bold">
                   ยืนยันราคาภายใน:
                 </td>
@@ -213,8 +201,7 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td style="padding-left: 4px; font-weight: bold">Email:</td>
                 <td>fin@soft.com</td>
               </tr>
@@ -228,8 +215,7 @@
           <v-col style="padding: 0">
             <v-table
               density="compact"
-              style="font-size: 12px; border: 1px solid black"
-            >
+              style="font-size: 12px; border: 1px solid black">
               <thead>
                 <tr>
                   <th class="text-center">ลำดับ</th>
@@ -264,8 +250,7 @@
           <v-col style="padding: 0">
             <v-table
               density="compact"
-              style="font-size: 12px; border: 1px solid black"
-            >
+              style="font-size: 12px; border: 1px solid black">
               <tr>
                 <td style="width: 570px; font-weight: bold">หมายเหตุ:</td>
                 <td style="width: 100px">มัดจำ</td>
@@ -325,8 +310,7 @@
               border-right: 1px solid #000000;
               border-bottom: 1px none #000000;
               border-left: 1px solid #000000;
-            "
-          >
+            ">
             <td>&#32;</td>
             <td
               style="
@@ -334,8 +318,7 @@
                 border-right: 1px solid #000000;
                 border-bottom: 1px none #000000;
                 border-left: 1px solid #000000;
-              "
-            >
+              ">
               &#32;
             </td>
             <td
@@ -344,8 +327,7 @@
                 border-right: 1px solid #000000;
                 border-bottom: 1px none #000000;
                 border-left: 1px solid #000000;
-              "
-            >
+              ">
               &#32;
             </td>
             <td>ข้าพเจ้าเห็นชอบตามรายการที่เสนอ</td>
@@ -356,8 +338,7 @@
               border-right: 1px solid #000000;
               border-bottom: 1px none #000000;
               border-left: 1px solid #000000;
-            "
-          >
+            ">
             <td>&#32;</td>
             <td
               style="
@@ -365,8 +346,7 @@
                 border-right: 1px solid #000000;
                 border-bottom: 1px none #000000;
                 border-left: 1px solid #000000;
-              "
-            >
+              ">
               &#32;
             </td>
             <td
@@ -375,8 +355,7 @@
                 border-right: 1px solid #000000;
                 border-bottom: 1px none #000000;
                 border-left: 1px solid #000000;
-              "
-            >
+              ">
               &#32;
             </td>
             <td>และขอสั่งซื้อตามรายละเอียดนี้ทุกประการ</td>
@@ -389,8 +368,7 @@
                 border-bottom: 1px solid #000000;
                 border-left: 1px solid #000000;
                 width: 187px;
-              "
-            >
+              ">
               <v-table>
                 <tr style="height: 120px">
                   <td>&#32;</td>
@@ -413,8 +391,7 @@
                 border-bottom: 1px solid #000000;
                 border-left: 1px solid #000000;
                 width: 187px;
-              "
-            >
+              ">
               <v-table>
                 <tr style="height: 120px">
                   <td>&#32;</td>
@@ -437,8 +414,7 @@
                 border-bottom: 1px solid #000000;
                 border-left: 1px solid #000000;
                 width: 187px;
-              "
-            >
+              ">
               <v-table>
                 <tr style="height: 120px">
                   <td>&#32;</td>
@@ -461,8 +437,7 @@
                 border-bottom: 1px solid #000000;
                 border-left: 1px solid #000000;
                 width: 187px;
-              "
-            >
+              ">
               <v-table>
                 <tr style="height: 120px">
                   <td>&#32;</td>

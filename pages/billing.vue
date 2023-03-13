@@ -1,5 +1,5 @@
 <template>
-  <body>
+  <div style="display: flex; background-color: transparent">
     <div class="page">
       <v-table>
         <tr>
@@ -8,8 +8,7 @@
               src="https://www.adt.or.th/image/ADT1%20-%201108%20-%200263.jpg"
               class="w-141px h-47px"
               style="margin: auto"
-              alt="sridara Logo"
-            />
+              alt="sridara Logo" />
           </td>
           <td>
             <v-sheet style="text-align: center; font-size: 12px">
@@ -30,11 +29,10 @@
               style="
                 border: 1px solid black;
                 margin: auto;
-                padding: 10px;
+
                 text-align: center;
                 font-size: 10px;
-              "
-            >
+              ">
               <tr>
                 <td style="font-size: 12px">ใบวางบิล/ใบแจ้งหนี้</td>
                 <td>Billing Note/Invoice</td>
@@ -48,15 +46,10 @@
         </tr>
       </v-table>
     </div>
-  </body>
+  </div>
 </template>
 
 <style>
-:root {
-  --bleeding: 0.5cm;
-  --margin: 0.1cm;
-}
-
 @page {
   size: A4;
   margin: 0;
@@ -65,45 +58,40 @@
 * {
   box-sizing: border-box;
 }
-
+html,
 body {
-  margin: 0 auto;
-  padding: 0;
-  background: rgb(204, 204, 204);
-  display: flex;
-  flex-direction: column;
+  background-color: rgb(225, 225, 241);
 }
 
 .page {
-  display: inline-block;
-  position: relative;
-  height: 297mm;
   width: 210mm;
-  font-size: 12pt;
-  margin: 2em auto;
-  padding: calc(var(--bleeding) + var(--margin));
-  box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+  min-height: 297mm;
+  padding: 10mm;
+  margin: 10mm auto;
+  border: 1px #d3d3d3 solid;
+  border-radius: 5px;
   background: white;
-}
-
-@media screen {
-  .page::after {
-    position: absolute;
-    content: "";
-    top: 0;
-    left: 0;
-    width: calc(100% - var(--bleeding) * 2);
-    height: calc(100% - var(--bleeding) * 2);
-    margin: var(--bleeding);
-    pointer-events: none;
-    z-index: 9999;
-  }
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
 @media print {
+  header {
+    display: none;
+  }
+  html,
+  body {
+    width: 210mm;
+    height: 297mm;
+  }
   .page {
     margin: 0;
-    overflow: hidden;
+    border: initial;
+    border-radius: initial;
+    width: initial;
+    min-height: initial;
+    box-shadow: initial;
+    background: initial;
+    page-break-after: always;
   }
 }
 </style>

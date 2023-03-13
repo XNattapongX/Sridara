@@ -2,16 +2,7 @@
   <section
     class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5"
     style="margin-top: 1rem">
-    <v-card color="teal-darken-4" v-if="loading">
-      <v-card-text>
-        กำลังโหลดข้อมูล กรุณารอ...
-        <v-progress-circular
-          style="margin-left: 1rem; margin-bottom: 0.3rem"
-          indeterminate
-          color="white"></v-progress-circular>
-      </v-card-text>
-    </v-card>
-    <div v-else class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
       <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead
           class="text-xs text-gray-700 uppercase bg-gray-50 dark:text-gray-400"
@@ -30,7 +21,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-if="!tour_ls">
+          <tr v-if="!tour_ls.length">
             <td class="px-6 py-4" colspan="12" style="text-align: center">
               ไม่มีข้อมูล
             </td>
@@ -76,16 +67,17 @@
 
 <script>
 import { read_all_data } from "~~/services/configs";
+const key = "updatable";
 export default {
   mounted() {
+    this.$message.loading({ content: "กำลังโหลดข้อมูล รายการทัวร์...", key });
     read_all_data("group_tour").then((result) => {
       this.tour_ls = result;
-      this.loading = false;
+      this.$message.success({ content: "สำเร็จ!", key, duration: 2 });
     });
   },
   data() {
     return {
-      loading: true,
       tour_ls: [],
     };
   },
