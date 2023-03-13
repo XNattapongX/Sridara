@@ -20,39 +20,152 @@
           class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
           id="mobile-menu-2">
           <ul
-            style="margin-bottom: 0"
+            style="margin-bottom: 0; align-items: center"
             class="flex flex-col font-medium lg:flex-row lg:space-x-8 lg:mt-0">
             <li @click="$router.push('/')">
               <v-btn variant="flat">รายการทัวร์</v-btn>
             </li>
-            <li @click="$router.push('/addtour')">
-              <v-btn variant="flat">เพิ่มทัวร์</v-btn>
+            <li>
+              <v-btn variant="flat">รายการใบเสนอราคา</v-btn>
             </li>
-            <li @click="$router.push('/addhotel')">
-              <v-btn variant="flat">เพิ่มโรงแรม</v-btn>
+            <li>
+              <v-btn variant="flat">รายการใบแจ้งหนี้</v-btn>
             </li>
-            <li @click="$router.push('/')">
-              <v-btn variant="tonal" color="teal-accent-4">ลงชื่อเข้าใช้</v-btn>
+            <li>
+              <v-btn variant="flat">รายการใบกำกับภาษี</v-btn>
+            </li>
+            <li>
+              <v-btn variant="flat">รายการใบเสร็จรับเงิน</v-btn>
+            </li>
+            <li v-if="raw !== 'login'">
+              <v-btn
+                variant="tonal"
+                icon
+                size="small"
+                color="indigo-darken-4"
+                @click="account = true">
+                <v-icon size="35">mdi-account-circle</v-icon>
+              </v-btn>
             </li>
           </ul>
         </div>
       </div>
     </nav>
   </header>
+  <v-layout>
+    <v-navigation-drawer v-model="account" temporary location="right">
+      <v-list>
+        <v-list-item
+          prepend-avatar="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+          :title="profile_auth.email"
+          :subtitle="role_name"></v-list-item>
+      </v-list>
 
+      <v-divider></v-divider>
+
+      <v-list density="compact" nav>
+        <v-list-item
+          v-if="role === 0"
+          @click="$router.push('/user_management')"
+          prepend-icon="mdi-badge-account-horizontal"
+          title="จัดการบุคลากร"
+          value="จัดการบุคลากร"></v-list-item>
+        <v-list-item
+          prepend-icon="mdi-transit-detour"
+          @click="$router.push('/addtour')"
+          title="จัดการทัวร์"
+          value="จัดการทัวร์"></v-list-item>
+        <v-list-item
+          prepend-icon="mdi-bed"
+          @click="$router.push('/addhotel')"
+          title="จัดการโรงแรม"
+          value="จัดการโรงแรม"></v-list-item>
+        <v-list-item
+          prepend-icon="mdi-note-edit"
+          title="จัดการใบเสนอราคา"
+          value="จัดการใบเสนอราคา"></v-list-item>
+        <v-list-item
+          prepend-icon="mdi-note-edit"
+          title="จัดการใบแจ้งหนี้"
+          value="จัดการใบแจ้งหนี้"></v-list-item>
+        <v-list-item
+          prepend-icon="mdi-note-edit"
+          title="จัดการใบกำกับภาษี"
+          value="จัดการใบกำกับภาษี"></v-list-item>
+        <v-list-item
+          prepend-icon="mdi-note-edit"
+          title="จัดการใบเสร็จรับเงิน"
+          value="จัดการใบเสร็จรับเงิน"></v-list-item>
+        <v-list-item
+          color="indigo-accent-4"
+          prepend-icon="mdi-logout"
+          title="ลงชื่อออก"
+          value="ลงชื่อออก">
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+  </v-layout>
   <div>
-    <main>
-      <slot></slot>
-    </main>
+    <main><slot></slot></main>
   </div>
 </template>
 
-<script setup lang="ts">
-import { onMounted } from "vue";
+<script lang="ts">
+import { defineComponent } from "vue";
 import { initModals } from "flowbite";
-
-// initialize components based on data attribute selectors
-onMounted(() => {
-  initModals();
+import { signOut } from "@firebase/auth";
+import { read_one_data_conditions } from "~~/services/configs";
+import jwt_decode from "jwt-decode";
+export default defineComponent({
+  mounted() {
+    initModals();
+    // if (localStorage.getItem("token") == null) {
+    //   this.$router.push({ path: "/login" });
+    // } else {
+    //   const jwt: any = jwt_decode(String(localStorage.getItem("token")));
+    //   read_one_data_conditions("user", "uid", jwt.user_id).then((result) => {
+    //     console.log(jwt);
+    //     this.role = Number(result[0].fields.role.integerValue);
+    //     if (this.role === 0) {
+    //       this.role_name = "ผู้ดูแลระบบ";
+    //     }
+    //     this.profile_auth = jwt;
+    //   });
+    // }
+  },
+  data() {
+    return {
+      raw: this.$route.name,
+      role: 0,
+      role_name: "",
+      account: false,
+      profile_auth: {} as any,
+    };
+  },
+  beforeUpdate() {
+    this.raw = this.$route.name;
+    // if (localStorage.getItem("token") == null) {
+    //   this.$router.push({ path: "/login" });
+    // } else {
+    //   const jwt: any = jwt_decode(String(localStorage.getItem("token")));
+    //   read_one_data_conditions("user", "uid", jwt.user_id).then((result) => {
+    //     console.log(jwt);
+    //     this.role = Number(result[0].fields.role.integerValue);
+    //     if (this.role === 0) {
+    //       this.role_name = "ผู้ดูแลระบบ";
+    //     }
+    //     this.profile_auth = jwt;
+    //   });
+    // }
+  },
+  methods: {
+    logout() {
+      signOut(this.$auth).then(() => {
+        localStorage.removeItem("token");
+        console.log("logout");
+        this.$router.push("/login");
+      });
+    },
+  },
 });
 </script>

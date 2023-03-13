@@ -29,6 +29,18 @@ export const read_one_data = async (collection: string, id: string) => {
   return response.data;
 };
 
+export const read_one_data_conditions = async (
+  collection: string,
+  fields: string,
+  values: string
+) => {
+  const response = await api.get(collection);
+  const data = response.data.documents.filter(
+    (doc: any) => doc.fields[fields].stringValue === values
+  );
+  return data;
+};
+
 export const update_data = async (
   collection: string,
   id: string,
