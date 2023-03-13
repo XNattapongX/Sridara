@@ -223,8 +223,10 @@
                 </tr>
               </tbody>
             </table>
-            <br>
-            <v-row>
+          </section>
+        </div>
+          <br>
+          <v-row>
             <v-col>
             <label ></label>   
               </v-col> 
@@ -240,8 +242,6 @@
             <label ></label>   
               </v-col> 
             </v-row>
-          </section>
-        </div>
       </v-col>
     </v-row>
   </div>
