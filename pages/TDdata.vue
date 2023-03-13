@@ -216,7 +216,7 @@ export default {
   },
   data() {
     return {
-      tour_data: "",
+      surname_thai: "",
       loading: true,
       members_ls: [],
       hotels_ls: [],

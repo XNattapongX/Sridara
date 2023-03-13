@@ -156,19 +156,28 @@
   <v-row justify="end">
     <v-col cols="2" style="text-align: end"
       ><v-btn
-        style="margin-right: -10.3rem"
+        style="margin-right: -14.5rem"
         variant="tonal"
         color="red-accent-4"
         @click="handleDelete(tour_data.fields.trip_name.stringValue)"
         >ลบทัวร์</v-btn
       ></v-col
     >
+    <v-col cols="2" style="text-align: end">
+      <v-btn
+        style="margin-right: -10.3rem"
+        variant="tonal"
+        color="light-blue-accent-4"
+        @click="$router.push(`/qpform/${$route.params.tourdataid}`)"
+        >จัดการใบเสนอราคา</v-btn
+      >
+    </v-col>
     <v-col cols="2" style="text-align: end"
       ><v-btn
         style="margin-right: -5.2rem"
         variant="tonal"
         @click="$router.push(`/addusertour/${$route.params.tourdataid}`)"
-        color="lime-darken-4"
+        color="cyan-darken-4"
         >แก้ไขข้อมูลลูกทัวร์</v-btn
       ></v-col
     >
