@@ -106,12 +106,15 @@
                   <th scope="col" class="px-6 py-3">เลขที่ใบกำกับภาษี</th>
                   <th scope="col" class="px-6 py-3">รายละเอียด</th>
                   <th scope="col" class="px-6 py-3">จำนวนเงิน</th>
+                  <th align="center" scope="col" class="px-6 py-3">จัดการ</th>
                 </tr>
               </thead>
               <tbody>
                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700" v-for="(item, index) in members_ls"
                   :key="index">
-                  <td class="px-6 py-4">{{ index + 1 }}</td>
+                  <td class="px-6 py-4">
+                    {{ index + 1 }}
+                  </td>
                   <td class="px-6 py-4">
                     {{ item.fields.thai_name.stringValue }}
                   </td>
@@ -123,6 +126,14 @@
                   </td>
                   <td class="px-6 py-4">
                     {{ item.fields.passport_id.stringValue }}
+                  </td>
+                  <td class="px-0 py-4"><v-btn
+                      block
+                      variant="tonal"
+                      @click="addMember"
+                      style="margin-top: 5px"
+                      color="red-accent-4"
+                      >ลบข้อมูล</v-btn>
                   </td>
                 </tr>
               </tbody>
@@ -138,35 +149,36 @@
             <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ชำระ</label>
             <div class="flex items-center mr-4">
               <input id="inline-2-radio" type="radio" value="" name="inline-radio-group"
-                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-              <label for="inline-2-radio" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">เงินสด</label>
+                class="w-4 h-4 text-blue-600 bg-gray-300 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+              <label for="inline-2-radio" 
+                class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">เงินสด</label>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <input id="inline-2-radio" type="radio" value="" name="inline-radio-group"
-                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                class="w-4 h-4 text-blue-600 bg-gray-300 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
               <label for="inline-2-radio"
                 class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">เงินโอนธนาคาร</label>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <input id="inline-2-radio" type="radio" value="" name="inline-radio-group"
-                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                class="w-4 h-4 text-blue-600 bg-gray-300 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
               <label for="inline-2-radio"
                 class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">เช็คธนาคาร</label>
 
             </div>
           </v-col>
 
-          <v-col>
-            <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">หักภาษี ณ
-              ที่จ่าย</label>
-            <input type="text" id="base-input" v-model="surname_thai"
-              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-          </v-col>
-
-          <v-col>
-            <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">เลขที่เช็ค
-              วันที่เช็ค</label>
-            <input type="text" id="small-input" v-model="address"
-              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-          </v-col>
+            <v-row>
+              <v-col align="left" cols="5">
+              <br>
+              <label >หักภาษี ณ ที่จ่าย : </label>
+              </v-col> 
+              <v-col align="left" cols="5">
+              <br>
+              <label >เลขที่เช็ค วันที่เช็ค : </label>
+              </v-col>
+              <v-col>
+              <label ></label>   
+              </v-col> 
+            </v-row>
 
         </v-row>
       </v-col>
