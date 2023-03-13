@@ -168,6 +168,10 @@
                   <th scope="col" class="px-6 py-3">ส่วนลด </th>
                   <th scope="col" class="px-6 py-3">จำนวนเงิน</th>
                   <th scope="col" class="px-6 py-3">ภาษี</th>
+                  <th scope="col" class="px-6 py-3">
+                    จัดการ <br />
+                    Manage
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -196,11 +200,34 @@
                     {{ item.fields.date_outcome.stringValue }}
                   </td>
                   <td class="px-6 py-4">{{ item.fields.dob.stringValue }}</td>
+                  <td class="px-6 py-4"><v-btn
+                      block
+                      variant="tonal"
+                      @click="addMember"
+                      style="margin-top: 5px"
+                      color="red-accent-4"
+                      >ลบข้อมูล</v-btn></td>
                 </tr>
               </tbody>
             </table>
           </section>
         </div>
+        <br>
+          <v-row>
+            <v-col>
+            <label ></label>   
+              </v-col> 
+              <v-col align="right" cols="9">
+            <label >รวมเงิน <br>
+              มัดจำ 100%<br>
+              มูลค่าคิดภาษี<br>
+              ภาษีมูลค่าเพิ่ม 7%<br> 
+              ยอดสุทธ <br><br></label>
+              </v-col>
+              <v-col>
+            <label ></label>   
+              </v-col> 
+            </v-row>
       </VCol>
     </VRow>
   </div>
