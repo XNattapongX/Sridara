@@ -4,7 +4,7 @@
       <v-col class="shadow-card">
         <h1
           class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">
-          เพิ่มข้อมูลใบกำกับภาษี / ใบส่งของ
+          ใบเสร็จรับเงิน
         </h1>
         <v-row>
           <v-col cols="4">
