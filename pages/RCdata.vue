@@ -12,78 +12,43 @@
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
       <table class="w-full text-sm text-left dark:text-gray-400" style="background-color: #e8f5e9">
         <tr>
-          <td colspan="5" class="pb-1 pt-2 px-3">
+          <td colspan="8" class="pb-1 pt-2 px-3">
             <h3>
               ชื่อลูกค้า :
             </h3>
           </td>
           <td colspan="3" class="pb-1 pt-2 px-3">
-            เลขที่ :
+            วันที่รับชำระ :
           </td>
 
         </tr>
         <tr>
-          <td colspan="5" class="py-1 pt-2 px-3">
+          <td colspan="8" class="py-1 pt-2 px-3">
             <h3>
-              ID TAX :
+              ที่อยู่:
             </h3>
           </td>
           <td colspan="3" class="py-1 px-3">
-            วันที่ :
-
-          </td>
-        </tr>
-
-        <tr>
-          <td colspan="5" class="py-1 pt-2 px-3">
-            <h3>
-              ชื่อผู้ติดต่อ :
-            </h3>
-          </td>
-          <td colspan="3" class="py-1 px-3">
-            รหัสลูกค้า :
-          </td>
-        </tr>
-        <tr>
-          <td colspan="5" class="py-1 px-3">
-            <h3>ที่อยู่ : </h3>
-          </td>
-          <td colspan="3" class="py-1 px-3">
-            ผู้เสนอขาย :
-          </td>
-
-        </tr>
-
-        <tr>
-          <td colspan="3" class="py-1 px-3">
-            ฝ่าย :
-          </td>
-          <td colspan="3" class="py-1 pt-2 px-3">
-            โทร :
+            เลขที่ใบกำกับภาษี :
           </td>
         </tr>
         <tr>
           <td colspan="3" class="py-1 px-3">
-            Fax :
-
+            สาขา :
           </td>
-          <td colspan="3" class="py-1 px-3">
-            ยืนยันราคาวันที่ :
+        </tr>
+        <tr>
 
-          </td>
         </tr>
       </table>
-      <table class="w-full text-sm text-left dark:text-gray-400" style="max-height: 400px">
+      <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400" style="max-height: 400px">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:text-gray-400" style="background-color: #81c784">
           <tr>
-            <th scope="col" class="px-6 py-3">ลำดับ</th>
-            <th scope="col" class="px-6 py-3">รหัสสินค้า</th>
-            <th scope="col" class="px-6 py-3">รายการสินค้า</th>
-            <th scope="col" class="px-6 py-3">จำนวน</th>
-            <th scope="col" class="px-6 py-3">หน่วย</th>
-            <th scope="col" class="px-6 py-3">ราคาต่อหน่วย</th>
-            <th scope="col" class="px-6 py-3">ส่วนลด</th>
-            <th scope="col" class="px-6 py-3">จำนวนเงิน</th>
+            <th scope="col" class="px-3 py-3">ลำดับ</th>
+            <th scope="col" class="px-6 py-3">วันที่</th>
+            <th scope="col" class="px-6 py-3">เลขที่ใบกำกับภาษี</th>
+            <th scope="col" class="px-20 py-3">รายระเอียด</th>
+            <th scope="col" class="px-8 py-3">จำนวนเงิน</th>
 
           </tr>
         </thead>

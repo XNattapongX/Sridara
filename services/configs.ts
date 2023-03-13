@@ -7,6 +7,11 @@ export const api = axios.create({
     "https://firestore.googleapis.com/v1/projects/sridara-tour/databases/(default)/documents/",
 });
 
+export const genRanDec = (size: number) =>
+  [...Array(size)]
+    .map(() => Math.floor(Math.random() * 10).toString(10))
+    .join("");
+
 export const create_data = async (collection: string, data: any) => {
   const response = await api.post(collection, {
     fields: { add: { stringValue: "adding" } },
@@ -27,6 +32,18 @@ export const read_all_data = async (collection: string) => {
 export const read_one_data = async (collection: string, id: string) => {
   const response = await api.get(`${collection}/${id}`);
   return response.data;
+};
+
+export const read_one_data_conditions = async (
+  collection: string,
+  fields: string,
+  values: string
+) => {
+  const response = await api.get(collection);
+  const data = response.data.documents.filter(
+    (doc: any) => doc.fields[fields].stringValue === values
+  );
+  return data;
 };
 
 export const update_data = async (

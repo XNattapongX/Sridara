@@ -1,3 +1,4 @@
+<template>asdasd</template>
 <template>
   <body>
     <div class="page"></div>
