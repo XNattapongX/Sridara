@@ -323,7 +323,7 @@ export const quotation_detail_with_product = (
   examiner_siging_date: Date,
   Authorized_person_siging_name: string,
   Authorized_person_siging_date: Date
-  ) => {
+) => {
   return {
     fields: {
       tour_id: {
@@ -419,8 +419,8 @@ export const quotation_detail_with_product = (
         stringValue: dayjs(Authorized_person_siging_date).format("DD/MM/BBBB"),
       },
     },
-}
-
+  };
+};
 
 export const quotation_detail = (
   tour_id: string,
