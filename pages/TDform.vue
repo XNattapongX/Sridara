@@ -184,8 +184,8 @@
                     Amount
                   </th>
                   <th scope="col" class="px-6 py-3">
-                    แก้ไขข้อมูล <br />
-                    Edit
+                    จัดการ <br />
+                    Manage
                   </th>
                 </tr>
               </thead>
@@ -217,8 +217,8 @@
                       variant="tonal"
                       @click="addMember"
                       style="margin-top: 5px"
-                      color="yellow-accent-4"
-                      >แก้ไขข้อมูล</v-btn></td>
+                      color="red-accent-4"
+                      >ลบข้อมูล</v-btn></td>
                   
                 </tr>
               </tbody>
@@ -231,11 +231,8 @@
               &nbsp;&nbsp;ใดๆทั้งสิ้น <br>
               &nbsp;&nbsp;- กรรมสิทธิ์สินค้าตามใบส่งของนี้ยังถือว่าเป็นของผู้ขายอยู่จนกว่าผู้ซื้อจะได้ชำระเงินหรือเช็คขึ้นเงินเรียบร้อย <br>
               &nbsp;&nbsp;- หากชำระเงินด้วยเช็คโปรดขีดคร่อมในนาม “บริษัท ศรีดาราทัวร์จำกัด” และขีดฆ่าหรือผู้ถือออก</label>   
-              </v-col>
-              <v-col cols="6">
-            <label></label>   
-              </v-col>
-              <v-col>
+              </v-col> 
+              <v-col align="right">
             <label >รวมเงิน Sub Total <br>
               หักส่วนลดพิเศษ Less Cash Disc<br>
               มูลค่ายกเว้นภาษี Tax Exempt<br>
