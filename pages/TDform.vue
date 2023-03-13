@@ -3,129 +3,72 @@
     <v-row style="margin: 1rem; align-items: left">
       <v-col class="shadow-card">
         <h1
-          v-if="tour_detail"
-          class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">
-          ข้อมูลลูกทัวร์ | {{ tour_detail.fields.trip_name.stringValue }}
-        </h1>
-        <h1
-          v-else
           class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">
           เพิ่มข้อมูลใบกำกับภาษี / ใบส่งของ
         </h1>
         <v-row>
           <v-col>
-            <label
-              for="base-input"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >ชื่อลูกค้า</label
-            >
-            <input
-              type="text"
-              id="base-input"
-              v-model="surname_thai"
+            <label for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ชื่อลูกค้า</label>
+            <input type="text" id="base-input" v-model="surname_thai"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
 
           <v-col>
-            <label
-              for="base-input"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >ที่อยู่</label
-            >
-            <input
-              type="text"
-              id="small-input"
-              v-model="address"
-              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-          </v-col>
-          <v-col>
-            <label
-              for="base-input"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >เลขประจำตัวผู้เสียภาษี</label
-            >
-            <input
-              type="text"
-              id="base-input"
-              v-model="tax_id"
+            <label for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">เลขประจำตัวผู้เสียภาษี</label>
+            <input type="text" id="base-input" v-model="tax_id"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
         </v-row>
 
         <v-row>
           <v-col>
-            <label
-              for="base-input"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >สาขาที่ทำรายการ
-            </label>
-            <input
-              type="text"
-              id="small-input"
-              v-model="branch_name"
+            <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ที่อยู่</label>
+            <input type="text" id="small-input" v-model="address"
+              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+          </v-col>
+        </v-row>
+
+        <v-row>
+          <v-col cols="4">
+            <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">สาขา
+              (ไม่ต้องกรอกหากเป็นสำนักงานใหญ่)</label>
+            <input type="text" id="small-input" v-model="branch_name"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
           <v-col>
-            <label
-              for="base-input"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >เลขที่</label
-            >
-            <input
-              type="text"
-              id="small-input"
-              v-model="id_card"
+            <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">เลขที่</label>
+            <input type="text" id="small-input" v-model="id_card"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
           <v-col>
-            <label
-              for="base-input"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >วันที่</label
-            >
-            <a-date-picker
-              :locale="locale"
-              v-model:value="dob"
-              class="date-picker"
-              format="DD/MM/YYYY" />
+            <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">วันที่</label>
+            <a-date-picker :locale="locale" v-model:value="dob" class="date-picker" format="DD/MM/YYYY" />
+          </v-col>
+          <v-col>
+            <label for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">กำหนดการชำระ</label>
+            <a-date-picker :locale="locale" v-model:value="dob" class="date-picker" format="DD/MM/YYYY" />
           </v-col>
         </v-row>
 
         <v-row>
           <v-col>
-            <label
-              for="base-input"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >ผู้ขาย
+            <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ผู้ขาย
             </label>
-            <input
-              type="text"
-              id="small-input"
-              v-model="lastname_eng"
+            <input type="text" id="small-input" v-model="lastname_eng"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
           <v-col>
-            <label
-              for="base-input"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >รหัสลูกค้า
+            <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">รหัสลูกค้า
             </label>
-            <input
-              type="text"
-              id="small-input"
-              v-model="customer_id"
+            <input type="text" id="small-input" v-model="customer_id"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
           <v-col cols="2">
             <br />
-            <v-btn
-              block
-              variant="tonal"
-              @click="addMember"
-              style="margin-top: 5px"
-              color="green-accent-4"
-              >บันทึก</v-btn
-            >
+            <v-btn block variant="tonal" @click="addMember" style="margin-top: 5px" color="green-accent-4">บันทึก</v-btn>
           </v-col>
         </v-row>
         <br />
@@ -136,103 +79,55 @@
   <div style="border-radius: 1rem; margin: 1rem">
     <v-row style="margin: 1rem; align-items: left">
       <v-col class="shadow-card">
-        <h1
-          v-if="tour_detail"
+        <h1 v-if="tour_detail"
           class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">
           ข้อมูลลูกทัวร์ | {{ tour_detail.fields.trip_name.stringValue }}
         </h1>
-        <h1
-          v-else
+        <h1 v-else
           class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">
           เพิ่มข้อมูลรายการสินค้า
         </h1>
         <v-row>
           <v-col>
-            <label
-              for="base-input"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >รหัสสินค้า</label
-            >
-            <input
-              type="text"
-              id="base-input"
-              v-model="surname_thai"
+            <label for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">รหัสสินค้า</label>
+            <input type="text" id="base-input" v-model="surname_thai"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
 
           <v-col>
-            <label
-              for="base-input"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >รายการสินค้า</label
-            >
-            <input
-              type="text"
-              id="small-input"
-              v-model="address"
+            <label for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">รายการสินค้า</label>
+            <input type="text" id="small-input" v-model="address"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
           <v-col>
-            <label
-              for="base-input"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >จำนวน</label
-            >
-            <input
-              type="text"
-              id="base-input"
-              v-model="tax_id"
+            <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">จำนวน</label>
+            <input type="text" id="base-input" v-model="tax_id"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
           <v-col>
-            <label
-              for="base-input"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >ราคาต่อหน่วย</label
-            >
-            <input
-              type="text"
-              id="base-input"
-              v-model="tax_id"
+            <label for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ราคาต่อหน่วย</label>
+            <input type="text" id="base-input" v-model="tax_id"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
         </v-row>
 
         <v-row>
           <v-col>
-            <label
-              for="base-input"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >ส่วนลด</label
-            >
-            <input
-              type="text"
-              id="base-input"
-              v-model="tax_id"
+            <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ส่วนลด</label>
+            <input type="text" id="base-input" v-model="tax_id"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
           <v-col>
-            <label
-              for="base-input"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >ภาษี</label
-            >
-            <input
-              type="text"
-              id="small-input"
-              v-model="branch_name"
+            <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ภาษี</label>
+            <input type="text" id="small-input" v-model="branch_name"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
           <v-col>
-            <label
-              for="base-input"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >จำนวนเงิน</label
-            >
-            <input
-              type="text"
-              id="small-input"
-              v-model="id_card"
+            <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">จำนวนเงิน</label>
+            <input type="text" id="small-input" v-model="id_card"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
           <v-col cols="2">
@@ -243,23 +138,18 @@
               @click="addMember"
               style="margin-top: 5px"
               color="green-accent-4"
-              >บันทึก</v-btn
-            >
+              >เพิ่มข้อมูล</v-btn>
           </v-col>
         </v-row>
         <br />
-        <div
-          class="relative overflow-x-auto"
-          style="
-            border-radius: 0.5rem;
-            box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
-              rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
-          ">
+        <div class="relative overflow-x-auto" style="
+                    border-radius: 0.5rem;
+                    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+                      rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+                  ">
           <section class="bg-gray-50 dark:bg-gray-900">
-            <table
-              class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-              <thead
-                class="text-xs text-gray-700 uppercase bg-gray-50 dark:text-gray-400"
+            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+              <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:text-gray-400"
                 style="background-color: #81c784">
                 <tr>
                   <th scope="col" class="px-6 py-3">
@@ -297,9 +187,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr
-                  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
-                  v-for="(item, index) in members_ls"
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700" v-for="(item, index) in members_ls"
                   :key="index">
                   <td class="px-6 py-4">{{ index + 1 }}</td>
                   <td class="px-6 py-4">
@@ -426,10 +314,10 @@ export default defineComponent({
     rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
   margin: 1rem;
 }
+
 .date-picker {
   height: 4.7vmin;
   background-color: #f9fafb;
   border-radius: 0.4rem;
   width: 100%;
-}
-</style>
+}</style>
