@@ -671,16 +671,13 @@ export const billing_note_detail = (
         stringValue: customer_code,
       },
       customer_tel: {
-        stringValue: customer_tel,
+        stringValue: tel,
       },
       customer_fax: {
         stringValue: customer_fax,
       },
       contact_name: {
         stringValue: contact_name,
-      },
-      contact_tel: {
-        stringValue: contact_tel,
       },
       seller_name: {
         stringValue: seller_name,
@@ -719,10 +716,10 @@ export const billing_note_detail = (
         stringValue: dayjs(deliverer_siging_date).format("DD/MM/BBBB"),
       },
       coodinator_siging_name: {
-        stringValue: coodinator_siging_name,
+        stringValue: coordinator_siging_name,
       },
       coodinator_siging_date: {
-        stringValue: dayjs(coodinator_siging_date).format("DD/MM/BBBB"),
+        stringValue: dayjs(coordinator_siging_date).format("DD/MM/BBBB"),
       },
       Authorized_person_siging_name: {
         stringValue: Authorized_person_siging_name,
