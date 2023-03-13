@@ -239,7 +239,10 @@
               v-model="product_tax"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
-          <v-col>
+        
+        </v-row>
+          <v-row>
+            <v-col>
             <label
               for="base-input"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -251,6 +254,19 @@
               v-model="product_total"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
+          <v-col>
+            <label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >กำหนดยืนราคากี่  วัน</label
+            >
+            <input
+              type="text"
+              id="small-input"
+              v-model="product_total"
+              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+            </v-col>
+           
           <v-col cols="2">
             <br />
             <v-btn
@@ -281,6 +297,9 @@
                   <th scope="col" class="px-6 py-3">ส่วนลด</th>
                   <th scope="col" class="px-6 py-3">ภาษี</th>
                   <th scope="col" class="px-6 py-3">จำนวนเงิน</th>
+                  <th scope="col" class="px-6 py-3"> จัดการ <br /> Manage </th>
+                  
+                  
                 </tr>
               </thead>
               <tbody>
@@ -308,24 +327,38 @@
                     {{ item.product_tax }}
                   </td>
                   <td class="px-6 py-4">{{ item.product_total }}</td>
+                  <td class="px-6 py-4"><v-btn
+                      block
+                      variant="tonal"
+                      @click="addMember"
+                      style="margin-top: 5px"
+                      color="red-accent-4"
+                      >ลบข้อมูล</v-btn></td>
                 </tr>
               </tbody>
             </table>
           </section>
         </div>
-        <v-col cols="2">
-          <br />
-          <v-btn
-            block
-            variant="tonal"
-            @click="onAddQuotation"
-            style="margin-top: 5px"
-            color="green-accent-4"
-            >ยืนยัน</v-btn
-          >
-        </v-col>
-      </v-col>
-    </v-row>
+        <br>
+          <v-row>
+            <v-col>
+            <label ></label>   
+              </v-col> 
+              <v-col align="right" cols="9">
+            <label >มัดจำ <br>
+              รวมเงิน<br>
+              ส่วนลดสินค้า<br>
+              มูลค่าสินค้า<br> 
+              ภาษีมูลค่าเพิ่ม 7% <br>
+              จำนวนเงินทั้งสิ้น<br> <br></label>
+              </v-col>
+              <v-col>
+            <label ></label>   
+              </v-col> 
+            </v-row>
+          </v-col> 
+            </v-row>
+    
   </div>
 </template>
 
