@@ -138,12 +138,7 @@
               @click="addMember"
               style="margin-top: 5px"
               color="green-accent-4"
-<<<<<<<<< Temporary merge branch 1
-              >เพิ่มข้อมูล</v-btn
-=========
-              >บันทึก</v-btn
->>>>>>>>> Temporary merge branch 2
-            >
+              >เพิ่มข้อมูล</v-btn>
           </v-col>
         </v-row>
         <br />
