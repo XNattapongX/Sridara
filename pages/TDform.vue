@@ -32,7 +32,8 @@
 
         <v-row>
           <v-col cols="4">
-            <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">สาขาที่ทำรายการ</label>
+            <label for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">สาขาที่ทำรายการ</label>
             <input type="text" id="small-input" v-model="branch_name"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
@@ -131,21 +132,16 @@
           </v-col>
           <v-col cols="2">
             <br />
-            <v-btn
-              block
-              variant="tonal"
-              @click="addMember"
-              style="margin-top: 5px"
-              color="green-accent-4"
-              >เพิ่มข้อมูล</v-btn>
+            <v-btn block variant="tonal" @click="addMember" style="margin-top: 5px"
+              color="green-accent-4">เพิ่มข้อมูล</v-btn>
           </v-col>
         </v-row>
         <br />
         <div class="relative overflow-x-auto" style="
-                    border-radius: 0.5rem;
-                    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
-                      rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
-                  ">
+                      border-radius: 0.5rem;
+                      box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+                        rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+                    ">
           <section class="bg-gray-50 dark:bg-gray-900">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
               <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:text-gray-400"
@@ -212,36 +208,32 @@
                     {{ item.fields.date_outcome.stringValue }}
                   </td>
                   <td class="px-6 py-4">{{ item.fields.dob.stringValue }}</td>
-                  <td class="px-6 py-4"><v-btn
-                      block
-                      variant="tonal"
-                      @click="addMember"
-                      style="margin-top: 5px"
-                      color="red-accent-4"
-                      >ลบข้อมูล</v-btn></td>
-                  
+                  <td class="px-6 py-4"><v-btn block variant="tonal" @click="addMember" style="margin-top: 5px"
+                      color="red-accent-4">ลบข้อมูล</v-btn></td>
+
                 </tr>
               </tbody>
             </table>
           </section>
         </div>
-          <br>
-          <v-row>
-            <v-col>
-            <label ></label>   
-              </v-col> 
-              <v-col align="right" cols="9">
-            <label >รวมเงิน Sub Total <br>
+        <br>
+        <v-row>
+          <v-col>
+            <label></label>
+          </v-col>
+          <v-col align="right" cols="9">
+            <label>รวมเงิน Sub Total <br>
               หักส่วนลดพิเศษ Less Cash Disc<br>
               มูลค่ายกเว้นภาษี Tax Exempt<br>
-              มูลค่าคิดภาษี Before Vat <br> 
+              มูลค่าคิดภาษี Before Vat <br>
               ภาษีมูลค่าเพิ่ม Total Vat <br><br>
-              ยอดสุทธิ Grand Total  </label>
-              </v-col>
-              <v-col>
-            <label ></label>   
-              </v-col> 
-            </v-row>
+              ยอดสุทธิ Grand Total 
+            </label>
+          </v-col>
+          <v-col>
+            <label></label>
+          </v-col>
+        </v-row>
       </v-col>
     </v-row>
   </div>
@@ -348,4 +340,5 @@ export default defineComponent({
   background-color: #f9fafb;
   border-radius: 0.4rem;
   width: 100%;
-}</style>
+}
+</style>

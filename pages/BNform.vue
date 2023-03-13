@@ -91,55 +91,48 @@
       </VCol>
     </VRow>
   </div>
+
   <div style="border-radius: 1rem; margin: 1rem">
     <VRow style="margin: 1rem">
       <VCol class="shadow-card">
-        <h1 v-if="tour_detail"
-          class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">
-          ข้อมูลลูกทัวร์ | {{ tour_detail.fields.trip_name.stringValue }}
-        </h1>
-        <h1 v-else
+        <h1
           class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">
           ใบวางบิล/ใบแจ้งหนี้
         </h1>
         <VRow>
-
-
           <VCol>
             <label for="base-input"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">รหัสสินค้า</label>
-            <input type="text" id="small-input" v-model="lastname_thai"
+            <input type="text" id="small-input" v-model="product_code"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </VCol>
           <VCol>
             <label for="base-input"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">รายการสินค้า</label>
-            <input type="text" id="base-input" v-model="surname_eng"
+            <input type="text" id="base-input" v-model="product_name"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </VCol>
           <VCol>
             <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">จำนวน</label>
-            <input type="text" id="small-input" v-model="lastname_eng"
+            <input type="text" id="small-input" v-model="aomunt"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </VCol>
         </VRow>
-
         <VRow>
           <VCol>
             <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">หน่วย</label>
-            <input type="text" id="base-input" v-model="nationality"
+            <input type="text" id="base-input" v-model="unit"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </VCol>
           <VCol>
             <label for="base-input"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ราคาต่อหน่วย</label>
-            <input type="text" id="small-input" v-model="id_card"
+            <input type="text" id="small-input" v-model="unit_price"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </VCol>
-
           <VCol>
             <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ส่วนลด</label>
-            <input type="text" id="small-input" v-model="telephone_number"
+            <input type="text" id="small-input" v-model="discount"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </VCol>
           <VCol>
@@ -222,25 +215,27 @@ export default defineComponent({
   data() {
     return {
       tour_id:"",
-      billing_note_id: "",
       paper_limit: "",
       
       customer_name: "",
       contact_name: "",
       customer_address: "",
-      tel: "",
+      custome_tel: "",
       customer_fax: "",
+      billing_note_id: "",
       billing_note_date: "",
       customer_code: "",
       seller_name: "",
       seller_department: "",
       confirm_price_within_date: "",
 
-      sub_total: "",
-      full_earnest_money: "",
-      taxable_value: "",
-      vat: "",
-      grand_total: "",
+      sub_total: 0,
+      full_earnest_money: 0,
+      taxable_value: 0,
+      vat: 0,
+      grand_total: 0,
+
+      product_ls: [] as any,
 
       receiver_siging_name: "",
       receiver_siging_date: "",
@@ -250,6 +245,14 @@ export default defineComponent({
       coordinator_siging_date: "",
       Authorized_person_siging_name: "",
       Authorized_person_siging_date: "",
+
+      product_code: "",
+      product_name: "",
+      quantity: 0,
+      unit: 0,
+      unit_price: 0,
+      discount: 0,
+      aomunt: 0,
     };
   },
   watch: {
@@ -278,31 +281,23 @@ export default defineComponent({
     });
   },
   methods: {
-    addMember() {
-      const raw = group_members(
-        String(this.$route.params.tourId),
-        `${this.surname_thai} ${this.lastname_thai}`,
-        `${this.surname_eng} ${this.lastname_eng}`,
-        this.id_card,
-        this.bed_type,
-        this.passport,
-        new Date(this.in),
-        new Date(this.out),
-        new Date(this.dob),
-        this.nationality,
-        this.gender,
-        this.address,
-        this.stamp_number
-      );
-      create_data("member_tour", raw).then(() => {
-        read_all_data("member_tour").then((result) => {
-          const filter = result.filter(
-            (v: any) =>
-              v.fields.tour_id.stringValue == String(this.$route.params.tourId)
-          );
-          this.members_ls = filter;
-        });
+    onAddProduct() {
+      this.product_ls.push({
+        product_code: this.product_code,
+        product_name: this.product_name,
+        product_amount: this.product_amount,
+        product_price_per_unit: this.product_price_per_unit,
+        product_discount: this.product_discount,
+        product_tax: this.product_tax,
+        product_total: this.product_total,
       });
+      this.product_code = "";
+      this.product_name = "";
+      this.product_amount = "";
+      this.product_price_per_unit = "";
+      this.product_discount = "";
+      this.product_tax = "";
+      this.product_total = "";
     },
   },
 });
