@@ -32,8 +32,7 @@
 
         <v-row>
           <v-col cols="4">
-            <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">สาขา
-              (ไม่ต้องกรอกหากเป็นสำนักงานใหญ่)</label>
+            <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">สาขาที่ทำรายการ</label>
             <input type="text" id="small-input" v-model="branch_name"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
@@ -184,6 +183,10 @@
                     จำนวนเงิน <br />
                     Amount
                   </th>
+                  <th scope="col" class="px-6 py-3">
+                    แก้ไขข้อมูล <br />
+                    Edit
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -209,9 +212,38 @@
                     {{ item.fields.date_outcome.stringValue }}
                   </td>
                   <td class="px-6 py-4">{{ item.fields.dob.stringValue }}</td>
+                  <td class="px-6 py-4"><v-btn
+                      block
+                      variant="tonal"
+                      @click="addMember"
+                      style="margin-top: 5px"
+                      color="yellow-accent-4"
+                      >แก้ไขข้อมูล</v-btn></td>
+                  
                 </tr>
               </tbody>
             </table>
+            <br>
+            <v-row>
+            <v-col>
+            <label ><b>&nbsp;&nbsp;หมายเหตุ :</b> <br>
+              &nbsp;&nbsp;- หากสินค้าไม่ครบถ้วนกรุณาแจ้งกลับบริษัทฯ ภายใน 7 วัน หลังจากได้รับสินค้าแล้ว มิฉะนั้นบริษัทฯ จะไม่รับผิดชอบ<br>
+              &nbsp;&nbsp;ใดๆทั้งสิ้น <br>
+              &nbsp;&nbsp;- กรรมสิทธิ์สินค้าตามใบส่งของนี้ยังถือว่าเป็นของผู้ขายอยู่จนกว่าผู้ซื้อจะได้ชำระเงินหรือเช็คขึ้นเงินเรียบร้อย <br>
+              &nbsp;&nbsp;- หากชำระเงินด้วยเช็คโปรดขีดคร่อมในนาม “บริษัท ศรีดาราทัวร์จำกัด” และขีดฆ่าหรือผู้ถือออก</label>   
+              </v-col>
+              <v-col cols="6">
+            <label></label>   
+              </v-col>
+              <v-col>
+            <label >รวมเงิน Sub Total <br>
+              หักส่วนลดพิเศษ Less Cash Disc<br>
+              มูลค่ายกเว้นภาษี Tax Exempt<br>
+              มูลค่าคิดภาษี Before Vat <br> 
+              ภาษีมูลค่าเพิ่ม Total Vat <br><br>
+              ยอดสุทธิ Grand Total  </label>
+              </v-col>
+            </v-row>
           </section>
         </div>
       </v-col>
