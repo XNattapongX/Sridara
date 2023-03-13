@@ -292,10 +292,11 @@ export const tax_invoice_product = (
   };
 };
 
-export const quotation_detail = (
+export const quotation_detail_with_product = (
   tour_id: string,
   quotation_id: string,
   quotation_date: Date,
+  tax_id: string,
   customer_name: string,
   customer_address: string,
   customer_code: string,
@@ -304,7 +305,137 @@ export const quotation_detail = (
   contact_email: string,
   seller_name: string,
   seller_department: string,
-  confirm_price_within: string,
+  confirm_price_within: number,
+  delivery_date: Date,
+  product: Array<any>,
+  earnest_money: number,
+  price_validity_period: string,
+  sub_total: number,
+  less_cash_discount: number,
+  product_value: number,
+  vat: number,
+  grand_total: number,
+  seller_siging_name: string,
+  seller_siging_date: Date,
+  payee_siging_name: string,
+  payee_siging_date: Date,
+  examiner_siging_name: string,
+  examiner_siging_date: Date,
+  Authorized_person_siging_name: string,
+  Authorized_person_siging_date: Date
+  ) => {
+  return {
+    fields: {
+      tour_id: {
+        stringValue: tour_id,
+      },
+      quotation_id: {
+        stringValue: quotation_id,
+      },
+      quotation_date: {
+        stringValue: dayjs(quotation_date).format("DD/MM/BBBB"),
+      },
+      tax_id: {
+        stringValue: tax_id,
+      },
+      customer_name: {
+        stringValue: customer_name,
+      },
+      customer_address: {
+        stringValue: customer_address,
+      },
+      customer_code: {
+        stringValue: customer_code,
+      },
+      contact_name: {
+        stringValue: contact_name,
+      },
+      contact_tel: {
+        stringValue: contact_tel,
+      },
+      contact_email: {
+        stringValue: contact_email,
+      },
+      seller_name: {
+        stringValue: seller_name,
+      },
+      seller_department: {
+        stringValue: seller_department,
+      },
+      confirm_price_within: {
+        stringValue: String(confirm_price_within),
+      },
+      delivery_date: {
+        stringValue: dayjs(delivery_date).format("DD/MM/BBBB"),
+      },
+      product: {
+        arrayValue: {
+          values: product,
+        },
+      },
+      earnest_money: {
+        stringValue: String(earnest_money),
+      },
+      price_validity_period: {
+        stringValue: price_validity_period,
+      },
+      sub_total: {
+        stringValue: String(sub_total),
+      },
+      less_cash_discount: {
+        stringValue: String(less_cash_discount),
+      },
+      product_value: {
+        stringValue: String(product_value),
+      },
+      vat: {
+        stringValue: String(vat),
+      },
+      grand_total: {
+        stringValue: String(grand_total),
+      },
+      seller_siging_name: {
+        stringValue: seller_siging_name,
+      },
+      seller_siging_date: {
+        stringValue: dayjs(seller_siging_date).format("DD/MM/BBBB"),
+      },
+      payee_siging_name: {
+        stringValue: payee_siging_name,
+      },
+      payee_siging_date: {
+        stringValue: dayjs(payee_siging_date).format("DD/MM/BBBB"),
+      },
+      examiner_siging_name: {
+        stringValue: examiner_siging_name,
+      },
+      examiner_siging_date: {
+        stringValue: dayjs(examiner_siging_date).format("DD/MM/BBBB"),
+      },
+      Authorized_person_siging_name: {
+        stringValue: Authorized_person_siging_name,
+      },
+      Authorized_person_siging_date: {
+        stringValue: dayjs(Authorized_person_siging_date).format("DD/MM/BBBB"),
+      },
+    },
+}
+
+
+export const quotation_detail = (
+  tour_id: string,
+  quotation_id: string,
+  quotation_date: Date,
+  tax_id: string,
+  customer_name: string,
+  customer_address: string,
+  customer_code: string,
+  contact_name: string,
+  contact_tel: string,
+  contact_email: string,
+  seller_name: string,
+  seller_department: string,
+  confirm_price_within: number,
   delivery_date: Date,
   earnest_money: number,
   price_validity_period: string,
@@ -333,6 +464,9 @@ export const quotation_detail = (
       quotation_date: {
         stringValue: dayjs(quotation_date).format("DD/MM/BBBB"),
       },
+      tax_id: {
+        stringValue: tax_id,
+      },
       customer_name: {
         stringValue: customer_name,
       },
@@ -358,7 +492,7 @@ export const quotation_detail = (
         stringValue: seller_department,
       },
       confirm_price_within: {
-        stringValue: confirm_price_within,
+        stringValue: String(confirm_price_within),
       },
       delivery_date: {
         stringValue: dayjs(delivery_date).format("DD/MM/BBBB"),
@@ -457,6 +591,7 @@ export const billing_note_detail = (
   billing_note_id: string,
   billing_note_date: Date,
   paper_limit: string,
+  tax_id: string,
   customer_name: string,
   customer_address: string,
   customer_code: string,
@@ -485,6 +620,9 @@ export const billing_note_detail = (
     fields: {
       tour_id: {
         stringValue: tour_id,
+      },
+      tax_id: {
+        stringValue: tax_id,
       },
       billing_note_id: {
         stringValue: billing_note_id,
