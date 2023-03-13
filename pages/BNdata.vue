@@ -1,7 +1,5 @@
 <template>
-  <section
-    class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5"
-    style="margin-top: 1rem">
+  <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5" style="margin-top: 1rem">
     <!-- <v-card color="teal-darken-4">
       <v-card-text>
         กำลังโหลดข้อมูล กรุณารอ...
@@ -12,41 +10,38 @@
       </v-card-text>
     </v-card> -->
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-      <table
-        
-        class="w-full text-sm text-left dark:text-gray-400"
-        style="background-color: #e8f5e9">
+      <table class="w-full text-sm text-left dark:text-gray-400" style="background-color: #e8f5e9">
         <tr>
           <td colspan="5" class="pb-1 pt-2 px-3">
             <h3>
-              ชื่อลูกค้า : 
+              ชื่อลูกค้า :
             </h3>
           </td>
           <td colspan="3" class="pb-1 pt-2 px-3">
-            เลขที่ : 
+            เลขที่ :
           </td>
-          
+
         </tr>
         <tr>
           <td colspan="5" class="py-1 pt-2 px-3">
             <h3>
-              ID TAX : 
+              ID TAX :
             </h3>
           </td>
           <td colspan="3" class="py-1 px-3">
-            วันที่ :  
-             
+            วันที่ :
+
           </td>
         </tr>
 
-<tr>
+        <tr>
           <td colspan="5" class="py-1 pt-2 px-3">
             <h3>
-              ชื่อผู้ติดต่อ : 
+              ชื่อผู้ติดต่อ :
             </h3>
           </td>
           <td colspan="3" class="py-1 px-3">
-            รหัสลูกค้า :    
+            รหัสลูกค้า :
           </td>
         </tr>
         <tr>
@@ -54,36 +49,32 @@
             <h3>ที่อยู่ : </h3>
           </td>
           <td colspan="3" class="py-1 px-3">
-            ผู้เสนอขาย : 
+            ผู้เสนอขาย :
           </td>
-          
+
         </tr>
 
         <tr>
-            <td colspan="3" class="py-1 px-3">
-              ฝ่าย : 
-            </td>
-            <td colspan="3" class="py-1 pt-2 px-3">       
-              โทร :             
-            </td>
+          <td colspan="3" class="py-1 px-3">
+            ฝ่าย :
+          </td>
+          <td colspan="3" class="py-1 pt-2 px-3">
+            โทร :
+          </td>
         </tr>
         <tr>
           <td colspan="3" class="py-1 px-3">
-            Fax :  
-             
+            Fax :
+
           </td>
-         <td colspan="3" class="py-1 px-3">
-            ยืนยันราคาวันที่ :  
-             
+          <td colspan="3" class="py-1 px-3">
+            ยืนยันราคาวันที่ :
+
           </td>
         </tr>
       </table>
-      <table
-        class="w-full text-sm text-left dark:text-gray-400"
-        style="max-height: 400px">
-        <thead
-          class="text-xs text-gray-700 uppercase bg-gray-50 dark:text-gray-400"
-          style="background-color: #81c784">
+      <table class="w-full text-sm text-left dark:text-gray-400" style="max-height: 400px">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:text-gray-400" style="background-color: #81c784">
           <tr>
             <th scope="col" class="px-6 py-3">ลำดับ</th>
             <th scope="col" class="px-6 py-3">รหัสสินค้า</th>
@@ -93,7 +84,7 @@
             <th scope="col" class="px-6 py-3">ราคาต่อหน่วย</th>
             <th scope="col" class="px-6 py-3">ส่วนลด</th>
             <th scope="col" class="px-6 py-3">จำนวนเงิน</th>
-         
+
           </tr>
         </thead>
         <tbody v-if="!members_ls.length">
@@ -104,12 +95,10 @@
           </tr>
         </tbody>
         <tbody v-if="members_ls.length">
-          <tr
-            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
-            >
+          <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
             <td class="px-6 py-4" style="font-size: 13px">{{ index + 1 }}</td>
             <td class="px-6 py-4" style="font-size: 13px">
-              
+
             </td>
             <td class="px-6 py-4" style="font-size: 13px">
             </td>
@@ -137,32 +126,16 @@
     </div>
   </section>
   <v-row justify="end">
-    <v-col cols="2" style="text-align: end"
-      ><v-btn
-        style="margin-right: -10.3rem"
-        variant="tonal"
-        color="red-accent-4"
-        @click="handleDelete"
-        >ลบทัวร์</v-btn
-      ></v-col
-    >
-    <v-col cols="2" style="text-align: end"
-      ><v-btn
-        style="margin-right: -5.2rem"
-        variant="tonal"
+    <v-col cols="2" style="text-align: end"><v-btn style="margin-right: -10.3rem" variant="tonal" color="red-accent-4"
+        @click="handleDelete">ลบทัวร์</v-btn>
+    </v-col>
+    <v-col cols="2" style="text-align: end"><v-btn style="margin-right: -5.2rem" variant="tonal"
         @click="$router.push(`/addusertour/${$route.params.tourdataid}`)"
-        color="lime-darken-4"
-        >แก้ไขข้อมูลลูกทัวร์</v-btn
-      ></v-col
-    >
-    <v-col
-      cols="2"
-      style="text-align: end"
-      @click="$router.push(`/edittour/${$route.params.tourdataid}`)"
-      ><v-btn style="margin-right: 1.2rem" variant="tonal" color="cyan-darken-4"
-        >แก้ไขข้อมูลทัวร์</v-btn
-      ></v-col
-    >
+        color="lime-darken-4">แก้ไขข้อมูลลูกทัวร์</v-btn>
+    </v-col>
+    <v-col cols="2" style="text-align: end" @click="$router.push(`/edittour/${$route.params.tourdataid}`)">
+      <v-btn style="margin-right: 1.2rem" variant="tonal" color="cyan-darken-4">แก้ไขข้อมูลทัวร์</v-btn>
+    </v-col>
   </v-row>
 </template>
 
