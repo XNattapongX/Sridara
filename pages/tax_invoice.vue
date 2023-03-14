@@ -56,87 +56,32 @@
                   Quatation
                 </td>
               </tr>
-              <tr style="text-align: center">
+              <tr>
                 <td
-                  colspan="2"
                   style="
-                    border-top: 1px solid #000000;
-                    border-right: 1px solid #000000;
-                    border-bottom: 1px none #000000;
-                    border-left: 1px solid #000000;
-                    width: 170px;
+                    border: 1px solid black;
+                    width: 50px;
                     font-weight: bold;
                   "
                 >
-                  ใบเสนอราคา/ยืนยันการสั่งซื้อ
+                  เลขที่
                 </td>
+                <td style="border: 1px solid black">184648456</td>
               </tr>
-              <tr style="text-align: center">
+              <tr>
                 <td
-                  colspan="2"
                   style="
-                    border-top: 1px none #000000;
-                    border-right: 1px solid #000000;
-                    border-bottom: 1px solid #000000;
-                    border-left: 1px solid #000000;
+                    border: 1px solid black;
+                    width: 50px;
+                    font-weight: bold;
                   "
                 >
-                  Quatation
+                  วันที่
                 </td>
+                <td style="border: 1px solid black">20/02/66</td>
               </tr>
             </v-table></v-col
           >
-        </v-row>
-
-        <v-row style="padding: 1px; margin: auto">
-          <v-col style="padding: 1px; height: 400px; border: 1px solid black">
-            <v-table density="compact" height="300px">
-              <thead style="font-weight: bold; font-size: 14px">
-                <tr>
-                  <td class="text-center">ลำดับ</td>
-                  <td class="text-center">รหัสสินค้า</td>
-                  <td class="text-center">รายการสินค้า</td>
-                  <td class="text-center">จำนวน</td>
-                  <td class="text-center">ราคาต่อหน่วย</td>
-                  <td class="text-center">ส่วนลด</td>
-                  <td class="text-center">ภาษี</td>
-                  <td class="text-center">จำนวนเงิน</td>
-                </tr>
-              </thead>
-              <tbody style="font-weight: normal; font-size: 14px">
-                <tr>
-                  <td class="text-center">fdsaffs</td>
-                  <td class="text-center">dasfdasf</td>
-                  <td class="text-center">fasdfs</td>
-                  <td class="text-center">fdsaff</td>
-                  <td class="text-center">fdsafas</td>
-                  <td class="text-center">dsafas</td>
-                  <td class="text-center">dsafasdf</td>
-                  <td class="text-center">dasfads</td>
-                </tr>
-                <tr>
-                  <td class="text-center">fdsaffs</td>
-                  <td class="text-center">dasfdasf</td>
-                  <td class="text-center">fasdfs</td>
-                  <td class="text-center">fdsaff</td>
-                  <td class="text-center">fdsafas</td>
-                  <td class="text-center">dsafas</td>
-                  <td class="text-center">dsafasdf</td>
-                  <td class="text-center">dasfads</td>
-                </tr>
-                <tr>
-                  <td class="text-center">fdsaffs</td>
-                  <td class="text-center">dasfdasf</td>
-                  <td class="text-center">fasdfs</td>
-                  <td class="text-center">fdsaff</td>
-                  <td class="text-center">fdsafas</td>
-                  <td class="text-center">dsafas</td>
-                  <td class="text-center">dsafasdf</td>
-                  <td class="text-center">dasfads</td>
-                </tr>
-              </tbody>
-            </v-table>
-          </v-col>
         </v-row>
       </v-container>
     </div>
@@ -161,6 +106,52 @@ export default defineComponent({
       window.print();
     },
   },
+  data() {
+    return {
+      desserts: [
+        {
+          name: "Frozen Yogurt",
+          calories: 159,
+        },
+        {
+          name: "Ice cream sandwich",
+          calories: 237,
+        },
+        {
+          name: "Eclair",
+          calories: 262,
+        },
+        {
+          name: "Cupcake",
+          calories: 305,
+        },
+        {
+          name: "Gingerbread",
+          calories: 356,
+        },
+        {
+          name: "Jelly bean",
+          calories: 375,
+        },
+        {
+          name: "Lollipop",
+          calories: 392,
+        },
+        {
+          name: "Honeycomb",
+          calories: 408,
+        },
+        {
+          name: "Donut",
+          calories: 452,
+        },
+        {
+          name: "KitKat",
+          calories: 518,
+        },
+      ],
+    };
+  },
 });
 </script>
 
@@ -173,10 +164,11 @@ export default defineComponent({
 * {
   box-sizing: border-box;
 }
+
 .page {
   width: 210mm;
   min-height: 297mm;
-  padding: 2mm;
+  padding: 3mm;
   margin: 10mm auto;
   border: 1px #d3d3d3 solid;
   border-radius: 5px;
@@ -188,14 +180,17 @@ export default defineComponent({
   header {
     display: none;
   }
+
   .hide-btn {
     display: none;
   }
+
   html,
   body {
     width: 210mm;
     height: 297mm;
   }
+
   .page {
     margin: 0;
     border: initial;
