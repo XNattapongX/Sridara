@@ -23,7 +23,7 @@
             <label
               for="base-input"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >เลขกำกับภาษี</label
+              >เลขประจำตัวผู้เสียภาษี</label
             >
             <input
               type="text"
@@ -231,7 +231,7 @@
             <label
               for="base-input"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >ภาษี</label
+              >ภาษี (0% 7% 9%)</label
             >
             <input
               type="text"
@@ -239,10 +239,9 @@
               v-model="product_tax"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
-        
         </v-row>
-          <v-row>
-            <v-col>
+        <v-row>
+          <v-col>
             <label
               for="base-input"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -258,15 +257,15 @@
             <label
               for="base-input"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >กำหนดยืนราคากี่  วัน</label
+              >กำหนดยืนราคา (กี่วัน)</label
             >
             <input
               type="text"
               id="small-input"
               v-model="product_total"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-            </v-col>
-           
+          </v-col>
+
           <v-col cols="2">
             <br />
             <v-btn
@@ -297,12 +296,15 @@
                   <th scope="col" class="px-6 py-3">ส่วนลด</th>
                   <th scope="col" class="px-6 py-3">ภาษี</th>
                   <th scope="col" class="px-6 py-3">จำนวนเงิน</th>
-                  <th scope="col" class="px-6 py-3"> จัดการ <br /> Manage </th>
-                  
-                  
+                  <th scope="col" class="px-6 py-3">จัดการ <br /></th>
                 </tr>
               </thead>
               <tbody>
+                <tr v-if="!product_ls.length">
+                  <td class="px-6 py-4" colspan="9" style="text-align: center">
+                    ไม่มีรายการ
+                  </td>
+                </tr>
                 <tr
                   class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
                   v-for="(item, index) in product_ls"
@@ -327,38 +329,113 @@
                     {{ item.product_tax }}
                   </td>
                   <td class="px-6 py-4">{{ item.product_total }}</td>
-                  <td class="px-6 py-4"><v-btn
+                  <td class="px-6 py-4">
+                    <v-btn
                       block
                       variant="tonal"
-                      @click="addMember"
+                      @click="onDeleteProduct(index)"
                       style="margin-top: 5px"
                       color="red-accent-4"
-                      >ลบข้อมูล</v-btn></td>
+                      >ลบข้อมูล</v-btn
+                    >
+                  </td>
                 </tr>
               </tbody>
             </table>
           </section>
         </div>
-        <br>
-          <v-row>
-            <v-col>
-            <label ></label>   
-              </v-col> 
-              <v-col align="right" cols="9">
-            <label >มัดจำ <br>
-              รวมเงิน<br>
-              ส่วนลดสินค้า<br>
-              มูลค่าสินค้า<br> 
-              ภาษีมูลค่าเพิ่ม 7% <br>
-              จำนวนเงินทั้งสิ้น<br> <br></label>
-              </v-col>
-              <v-col>
-            <label ></label>   
-              </v-col> 
-            </v-row>
-          </v-col> 
-            </v-row>
-    
+        <br />
+        <v-row
+          style="
+            margin: 0.1rem;
+            border-radius: 0.5rem;
+            background-color: #e0f7fa;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+          ">
+          <v-col
+            ><label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >ค่ามัดจำ</label
+            ><input
+              type="text"
+              id="small-input"
+              v-model="deposit"
+              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          /></v-col>
+          <v-col>
+            <label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >รวมเงิน</label
+            ><input
+              type="text"
+              id="small-input"
+              disabled
+              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          /></v-col>
+          <v-col>
+            <label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >ส่วนลดสินค้า</label
+            ><input
+              type="text"
+              id="small-input"
+              disabled
+              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          /></v-col>
+          <v-col>
+            <label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >มูลค่าสินค้า</label
+            ><input
+              type="text"
+              disabled
+              id="small-input"
+              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          /></v-col>
+          <v-col>
+            <label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >ภาษีมูลค่าเพิ่ม</label
+            ><input
+              type="text"
+              id="small-input"
+              disabled
+              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          /></v-col>
+          <v-col
+            style="
+              background-color: #c5cae9;
+              border-top-right-radius: 0.5rem;
+              border-bottom-right-radius: 0.5rem;
+            "
+            ><label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >จำนวนเงินทั้งสิ้น</label
+            ><input
+              type="text"
+              disabled
+              id="small-input"
+              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+          </v-col>
+        </v-row>
+        <v-row justify="end">
+          <v-col cols="2" style="text-align: end"
+            ><v-btn
+              variant="tonal"
+              color="yellow-darken-3"
+              @click="onAddQuotation"
+              >สร้างใบเสนอราคา</v-btn
+            ></v-col
+          >
+        </v-row>
+      </v-col>
+    </v-row>
   </div>
 </template>
 
@@ -389,6 +466,7 @@ export default defineComponent({
       product_tax: "",
       product_total: "",
       product_ls: [] as any,
+      deposit: "",
     };
   },
   setup() {
@@ -398,22 +476,27 @@ export default defineComponent({
   },
   methods: {
     onAddProduct() {
-      this.product_ls.push({
-        product_code: this.product_code,
-        product_name: this.product_name,
-        product_amount: this.product_amount,
-        product_price_per_unit: this.product_price_per_unit,
-        product_discount: this.product_discount,
-        product_tax: this.product_tax,
-        product_total: this.product_total,
-      });
-      this.product_code = "";
-      this.product_name = "";
-      this.product_amount = "";
-      this.product_price_per_unit = "";
-      this.product_discount = "";
-      this.product_tax = "";
-      this.product_total = "";
+      if (this.validateProductDetail()) {
+        this.product_ls.push({
+          product_code: this.product_code,
+          product_name: this.product_name,
+          product_amount: this.product_amount,
+          product_price_per_unit: this.product_price_per_unit,
+          product_discount: this.product_discount,
+          product_tax: this.product_tax,
+          product_total: this.product_total,
+        });
+        this.product_code = "";
+        this.product_name = "";
+        this.product_amount = "";
+        this.product_price_per_unit = "";
+        this.product_discount = "";
+        this.product_tax = "";
+        this.product_total = "";
+      }
+    },
+    onDeleteProduct(index: number) {
+      this.product_ls.splice(index, 1);
     },
     onAddQuotation() {
       const json = quotation_detail_with_product(
@@ -448,9 +531,95 @@ export default defineComponent({
         "",
         new Date()
       );
-      create_data("quotation_detail", json).then((res) => {
-        console.log(res);
-      });
+      if (this.validateQuotationDetail() == false) {
+        return;
+      } else {
+        create_data("quotation_detail", json).then((res) => {
+          console.log(res);
+        });
+      }
+    },
+    validateProductDetail() {
+      if (this.product_code == "") {
+        this.$message.error("กรุณากรอกรหัสสินค้า", 3);
+        return false;
+      }
+      if (this.product_name == "") {
+        this.$message.error("กรุณากรอกชื่อสินค้า", 3);
+        return false;
+      }
+      if (this.product_amount == "") {
+        this.$message.error("กรุณากรอกจำนวนสินค้า", 3);
+        return false;
+      }
+      if (this.product_price_per_unit == "") {
+        this.$message.error("กรุณากรอกราคาต่อหน่วย", 3);
+        return false;
+      }
+      if (this.product_discount == "") {
+        this.$message.error("กรุณากรอกส่วนลดสินค้า", 3);
+        return false;
+      }
+      if (this.product_tax == "") {
+        this.$message.error("กรุณากรอกภาษีมูลค่าเพิ่ม", 3);
+        return false;
+      }
+      if (this.product_total == "") {
+        this.$message.error("กรุณากรอกมูลค่าสินค้า", 3);
+        return false;
+      }
+      return true;
+    },
+    validateQuotationDetail() {
+      if (this.customer_name == "") {
+        this.$message.error("กรุณากรอกชื่อลูกค้า", 3);
+        return false;
+      }
+      if (this.tax_id == "") {
+        this.$message.error("กรุณากรอกเลขประจำตัวผู้เสียภาษี", 3);
+        return false;
+      }
+      if (this.contact_name == "") {
+        this.$message.error("กรุณากรอกชื่อผู้ติดต่อ", 3);
+        return false;
+      }
+      if (this.customer_address == "") {
+        this.$message.error("กรุณากรอกที่อยู่ลูกค้า", 3);
+        return false;
+      }
+      if (this.customer_code == "") {
+        this.$message.error("กรุณากรอกรหัสลูกค้า", 3);
+        return false;
+      }
+      if (this.confirm_price_within == "") {
+        this.$message.error("กรุณาเลือกกำหนดวันยืนยันราคา", 3);
+        return false;
+      }
+      if (this.delivery_date == "") {
+        this.$message.error("กรุณาเลือกวันที่ส่งสินค้า", 3);
+        return false;
+      }
+      if (this.sales_person == "") {
+        this.$message.error("กรุณากรอกชื่อพนักงานขาย", 3);
+        return false;
+      }
+      if (this.sale_department == "") {
+        this.$message.error("กรุณากรอกแผนกขาย", 3);
+        return false;
+      }
+      if (this.contact_tel == "") {
+        this.$message.error("กรุณากรอกเบอร์โทรติดต่อ", 3);
+        return false;
+      }
+      if (this.contact_email == "") {
+        this.$message.error("กรุณากรอกอีเมลล์ติดต่อ", 3);
+        return false;
+      }
+      if (this.delivery_date == "") {
+        this.$message.error("กรุณากรอกวันที่ส่งสินค้า", 3);
+        return false;
+      }
+      return true;
     },
   },
 });

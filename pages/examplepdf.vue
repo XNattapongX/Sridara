@@ -1,19 +1,17 @@
 <template>
-  <div
-    style="display: flex; background-color: rgb(225, 225, 241); z-index: -111"
-  >
+  <body>
     <div class="page">
-      <v-container>
-        <v-row style="font-size: 12px; padding: 1px; margin: 1px auto">
-          <v-col style="padding: 1px; margin: 0 auto"
-            ><img
+      <v-table>
+        <tr>
+          <td>
+            <img
               src="https://www.adt.or.th/image/ADT1%20-%201108%20-%200263.jpg"
               class="w-141px h-47px"
               style="margin: auto"
-              alt="sridara Logo"
-          /></v-col>
-          <v-col style="padding: 1px; margin: 0 auto" cols="7"
-            ><v-sheet style="text-align: center; font-size: 12px">
+              alt="sridara Logo" />
+          </td>
+          <td>
+            <v-sheet style="text-align: center; font-size: 12px">
               บริษัท ศรีดาราทัวร์ จำกัด (สำนักงานใหญ่)
               <td></td>
               123 ถนน ชยางกูร หมู่ 19 ตำบล บุ่ง อำเภอเมืองอำนาจเจริญ
@@ -24,73 +22,48 @@
               www.facebook.com/sridaratourfanpage
               <td></td>
               ********************************************************
-            </v-sheet></v-col
-          >
-          <v-col style="padding: 1px; margin: 0 auto"
-            ><v-table>
-              <tr style="text-align: center">
-                <td
-                  colspan="2"
-                  style="
-                    border-top: 1px solid #000000;
-                    border-right: 1px solid #000000;
-                    border-bottom: 1px none #000000;
-                    border-left: 1px solid #000000;
-                    width: 170px;
-                    font-weight: bold;
-                  "
-                >
+            </v-sheet>
+          </td>
+          <td>
+            <v-table
+              style="border: 1px solid black; margin: auto; padding: 10px">
+              <thead style="text-align: center; font-size: 10px">
+                <tr style="font-size: 12px">
                   ใบเสนอราคา/ยืนยันการสั่งซื้อ
-                </td>
-              </tr>
-              <tr style="text-align: center">
-                <td
-                  colspan="2"
-                  style="
-                    border-top: 1px none #000000;
-                    border-right: 1px solid #000000;
-                    border-bottom: 1px solid #000000;
-                    border-left: 1px solid #000000;
-                  "
-                >
+                </tr>
+                <tr>
                   Quatation
-                </td>
-              </tr>
-              <tr>
-                <td
-                  style="
-                    border: 1px solid black;
-                    width: 50px;
-                    font-weight: bold;
-                    padding: 0px 0px 0px 3px;
-                  "
-                >
-                  เลขที่
-                </td>
-                <td style="border: 1px solid black; padding: 0px 0px 0px 3px">
-                  184648456
-                </td>
-              </tr>
-              <tr>
-                <td
-                  style="
-                    border: 1px solid black;
-                    width: 50px;
-                    font-weight: bold;
-                    padding: 0px 0px 0px 3px;
-                  "
-                >
-                  วันที่
-                </td>
-                <td style="border: 1px solid black; padding: 0px 0px 0px 3px">
-                  20/02/66
-                </td>
-              </tr>
-            </v-table></v-col
-          >
-        </v-row>
+                </tr>
+              </thead>
+              <tbody style="text-align: left; font-size: 12px">
+                <tr>
+                  <v-table>
+                    <td>
+                      <tr>
+                        <th>เลขที่</th>
+                      </tr>
+                      <tr>
+                        <th>วันที่</th>
+                      </tr>
+                    </td>
+                    <td>
+                      <tr>
+                        184648456
+                      </tr>
+                      <tr>
+                        20/02/66
+                      </tr>
+                    </td>
+                  </v-table>
+                </tr>
+              </tbody>
+            </v-table>
+          </td>
+        </tr>
+      </v-table>
 
-        <v-row style="font-size: 12px; padding: 1px; margin: auto">
+      <v-container style="padding: 13px; margin: auto">
+        <v-row style="font-size: 12px">
           <v-col style="padding: 0" cols="7">
             <v-table>
               <tr
@@ -100,8 +73,7 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td style="padding-left: 4px; font-weight: bold" width="25% ">
                   ชื่อลูกค้า:
                 </td>
@@ -114,8 +86,7 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td style="padding-left: 4px; font-weight: bold">ID TEX:</td>
                 <td>1150</td>
               </tr>
@@ -126,8 +97,7 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td style="padding-left: 4px; font-weight: bold">
                   ชื่อผู้ติดต่อ:
                 </td>
@@ -140,8 +110,7 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 80px;
-                "
-              >
+                ">
                 <td style="padding: auto; padding-left: 4px; font-weight: bold">
                   ที่อยู่:
                 </td>
@@ -154,8 +123,7 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td style="padding-left: 4px; font-weight: bold">โทร:</td>
                 <td>0661242478</td>
               </tr>
@@ -170,8 +138,7 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td style="padding-left: 4px; font-weight: bold" width="40%">
                   รหัสลูกค้า:
                 </td>
@@ -184,8 +151,7 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td style="padding-left: 4px; font-weight: bold">
                   ผู้เสนอขาย:
                 </td>
@@ -198,8 +164,7 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td style="padding-left: 4px; font-weight: bold">ฝ่าย:</td>
                 <td>หาของ</td>
               </tr>
@@ -210,8 +175,7 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td style="padding-left: 4px; font-weight: bold">
                   ยืนยันราคาภายใน:
                 </td>
@@ -224,8 +188,7 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td style="padding-left: 4px; font-weight: bold">
                   ยืนยันราคาภายใน:
                 </td>
@@ -238,72 +201,56 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td style="padding-left: 4px; font-weight: bold">Email:</td>
                 <td>fin@soft.com</td>
               </tr>
             </v-table></v-col
           >
         </v-row>
+      </v-container>
 
-        <v-row style="padding: 1px; margin: auto">
-          <v-col style="padding: 1px; height: 400px; border: 1px solid black">
-            <v-table density="compact" height="300px">
-              <thead style="font-weight: bold; font-size: 14px">
+      <v-container style="padding: 13px">
+        <v-row>
+          <v-col style="padding: 0">
+            <v-table
+              density="compact"
+              style="font-size: 12px; border: 1px solid black">
+              <thead>
                 <tr>
-                  <td class="text-center">ลำดับ</td>
-                  <td class="text-center">รหัสสินค้า</td>
-                  <td class="text-center">รายการสินค้า</td>
-                  <td class="text-center">จำนวน</td>
-                  <td class="text-center">ราคาต่อหน่วย</td>
-                  <td class="text-center">ส่วนลด</td>
-                  <td class="text-center">ภาษี</td>
-                  <td class="text-center">จำนวนเงิน</td>
+                  <th class="text-center">ลำดับ</th>
+                  <th class="text-center">รหัสสินค้า</th>
+                  <th class="text-center">รายการสินค้า</th>
+                  <th class="text-center">จำนวน</th>
+                  <th class="text-center">ราคาต่อหน่วย</th>
+                  <th class="text-center">ส่วนลด</th>
+                  <th class="text-center">ภาษี</th>
+                  <th class="text-center">จำนวนเงิน</th>
                 </tr>
               </thead>
-              <tbody style="font-weight: normal; font-size: 14px">
-                <tr>
-                  <td class="text-center">fdsaffs</td>
-                  <td class="text-center">dasfdasf</td>
-                  <td class="text-center">fasdfs</td>
-                  <td class="text-center">fdsaff</td>
-                  <td class="text-center">fdsafas</td>
-                  <td class="text-center">dsafas</td>
-                  <td class="text-center">dsafasdf</td>
-                  <td class="text-center">dasfads</td>
-                </tr>
-                <tr>
-                  <td class="text-center">fdsaffs</td>
-                  <td class="text-center">dasfdasf</td>
-                  <td class="text-center">fasdfs</td>
-                  <td class="text-center">fdsaff</td>
-                  <td class="text-center">fdsafas</td>
-                  <td class="text-center">dsafas</td>
-                  <td class="text-center">dsafasdf</td>
-                  <td class="text-center">dasfads</td>
-                </tr>
-                <tr>
-                  <td class="text-center">fdsaffs</td>
-                  <td class="text-center">dasfdasf</td>
-                  <td class="text-center">fasdfs</td>
-                  <td class="text-center">fdsaff</td>
-                  <td class="text-center">fdsafas</td>
-                  <td class="text-center">dsafas</td>
-                  <td class="text-center">dsafasdf</td>
-                  <td class="text-center">dasfads</td>
+              <tbody>
+                <tr v-for="item in desserts" :key="item.name">
+                  <td class="text-center">{{ item.name }}</td>
+                  <td class="text-center">{{ item.calories }}</td>
+                  <td class="text-center">{{ item.calories }}</td>
+                  <td class="text-center">{{ item.calories }}</td>
+                  <td class="text-center">{{ item.name }}</td>
+                  <td class="text-center">{{ item.calories }}</td>
+                  <td class="text-center">{{ item.calories }}</td>
+                  <td class="text-center">{{ item.calories }}</td>
                 </tr>
               </tbody>
             </v-table>
           </v-col>
         </v-row>
+      </v-container>
 
-        <v-row style="padding: 1px; margin: auto">
+      <v-container style="padding: 13px">
+        <v-row>
           <v-col style="padding: 0">
             <v-table
               density="compact"
-              style="font-size: 12px; border: 1px solid black; padding: 2px"
-            >
+              style="font-size: 12px; border: 1px solid black">
               <tr>
                 <td style="width: 570px; font-weight: bold">หมายเหตุ:</td>
                 <td style="width: 100px">มัดจำ</td>
@@ -312,9 +259,9 @@
               <tr>
                 <td>
                   <v-row>
-                    <v-col cols="3"> กำหนดยืนราคา </v-col>
-                    <v-col cols="2"> 50 </v-col>
-                    <v-col cols="2"> วัน </v-col>
+                    <v-col cols="2"> กำหนดยืนราคา </v-col>
+                    <v-col cols="1"> 50 </v-col>
+                    <v-col cols="1"> วัน </v-col>
                   </v-row>
                 </td>
                 <td>รวมเงิน</td>
@@ -353,16 +300,17 @@
             </v-table>
           </v-col>
         </v-row>
+      </v-container>
 
-        <v-table style="padding: 1px; margin: auto; font-size: 11px">
+      <v-container style="padding: 1px; margin: auto; font-size: 11px">
+        <v-table>
           <tr
             style="
               border-top: 1px solid #000000;
               border-right: 1px solid #000000;
               border-bottom: 1px none #000000;
               border-left: 1px solid #000000;
-            "
-          >
+            ">
             <td>&#32;</td>
             <td
               style="
@@ -370,8 +318,7 @@
                 border-right: 1px solid #000000;
                 border-bottom: 1px none #000000;
                 border-left: 1px solid #000000;
-              "
-            >
+              ">
               &#32;
             </td>
             <td
@@ -380,13 +327,10 @@
                 border-right: 1px solid #000000;
                 border-bottom: 1px none #000000;
                 border-left: 1px solid #000000;
-              "
-            >
+              ">
               &#32;
             </td>
-            <td style="padding: 3px 0px 3px 3px">
-              ข้าพเจ้าเห็นชอบตามรายการที่เสนอ
-            </td>
+            <td>ข้าพเจ้าเห็นชอบตามรายการที่เสนอ</td>
           </tr>
           <tr
             style="
@@ -394,8 +338,7 @@
               border-right: 1px solid #000000;
               border-bottom: 1px none #000000;
               border-left: 1px solid #000000;
-            "
-          >
+            ">
             <td>&#32;</td>
             <td
               style="
@@ -403,8 +346,7 @@
                 border-right: 1px solid #000000;
                 border-bottom: 1px none #000000;
                 border-left: 1px solid #000000;
-              "
-            >
+              ">
               &#32;
             </td>
             <td
@@ -413,13 +355,10 @@
                 border-right: 1px solid #000000;
                 border-bottom: 1px none #000000;
                 border-left: 1px solid #000000;
-              "
-            >
+              ">
               &#32;
             </td>
-            <td style="padding: 0px 0px 3px 3px">
-              และขอสั่งซื้อตามรายละเอียดนี้ทุกประการ
-            </td>
+            <td>และขอสั่งซื้อตามรายละเอียดนี้ทุกประการ</td>
           </tr>
           <tr>
             <td
@@ -429,8 +368,7 @@
                 border-bottom: 1px solid #000000;
                 border-left: 1px solid #000000;
                 width: 187px;
-              "
-            >
+              ">
               <v-table>
                 <tr style="height: 120px">
                   <td>&#32;</td>
@@ -442,7 +380,7 @@
                   <td>ผู้เสนอราคา</td>
                 </tr>
                 <tr>
-                  <td style="padding: 0px 0px 3px 3px">วันที่</td>
+                  <td>วันที่</td>
                 </tr>
               </v-table>
             </td>
@@ -453,8 +391,7 @@
                 border-bottom: 1px solid #000000;
                 border-left: 1px solid #000000;
                 width: 187px;
-              "
-            >
+              ">
               <v-table>
                 <tr style="height: 120px">
                   <td>&#32;</td>
@@ -466,7 +403,7 @@
                   <td>ผู้รับเงิน</td>
                 </tr>
                 <tr>
-                  <td style="padding: 0px 0px 3px 3px">วันที่</td>
+                  <td>วันที่</td>
                 </tr></v-table
               >
             </td>
@@ -477,8 +414,7 @@
                 border-bottom: 1px solid #000000;
                 border-left: 1px solid #000000;
                 width: 187px;
-              "
-            >
+              ">
               <v-table>
                 <tr style="height: 120px">
                   <td>&#32;</td>
@@ -490,7 +426,7 @@
                   <td>ผู้ตรวจสอบ</td>
                 </tr>
                 <tr>
-                  <td style="padding: 0px 0px 3px 3px">วันที่</td>
+                  <td>วันที่</td>
                 </tr></v-table
               >
             </td>
@@ -501,8 +437,7 @@
                 border-bottom: 1px solid #000000;
                 border-left: 1px solid #000000;
                 width: 187px;
-              "
-            >
+              ">
               <v-table>
                 <tr style="height: 120px">
                   <td>&#32;</td>
@@ -514,7 +449,7 @@
                   <td>ผู้อนุมัติสั่งซื้อ</td>
                 </tr>
                 <tr>
-                  <td style="padding: 0px 0px 3px 3px">วันที่</td>
+                  <td>วันที่</td>
                 </tr></v-table
               >
             </td>
@@ -522,31 +457,15 @@
         </v-table>
       </v-container>
     </div>
-  </div>
-  <v-row
-    justify="center"
-    style="margin-top: -2rem; background-color: rgb(225, 225, 241)"
-    class="hide-btn"
-    ><v-col style="text-align: center"
-      ><v-btn color="light-blue-accent-4" @click="print"
-        >สั่งพิมพ์ หรือ บันทึกเป็น PDF</v-btn
-      ></v-col
-    ></v-row
-  >
+  </body>
 </template>
-<script lang="ts">
-import { defineComponent } from "vue";
 
-export default defineComponent({
-  methods: {
-    print() {
-      window.print();
-    },
-  },
-});
-</script>
+<style>
+:root {
+  --bleeding: 0.5cm;
+  --margin: 0.1cm;
+}
 
-<style scope>
 @page {
   size: A4;
   margin: 0;
@@ -555,38 +474,156 @@ export default defineComponent({
 * {
   box-sizing: border-box;
 }
+
+body {
+  margin: 0 auto;
+  padding: 0;
+  background: rgb(204, 204, 204);
+  display: flex;
+  flex-direction: column;
+}
+
 .page {
+  display: inline-block;
+  position: relative;
+  height: 297mm;
   width: 210mm;
-  min-height: 297mm;
-  padding: 2mm;
-  margin: 10mm auto;
-  border: 1px #d3d3d3 solid;
-  border-radius: 5px;
+  font-size: 12pt;
+  margin: 2em auto;
+  padding: calc(var(--bleeding) + var(--margin));
+  box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
   background: white;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+@media screen {
+  .page::after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: calc(100% - var(--bleeding) * 2);
+    height: calc(100% - var(--bleeding) * 2);
+    margin: var(--bleeding);
+    pointer-events: none;
+    z-index: 9999;
+  }
 }
 
 @media print {
-  header {
-    display: none;
-  }
-  .hide-btn {
-    display: none;
-  }
-  html,
-  body {
-    width: 210mm;
-    height: 297mm;
-  }
   .page {
     margin: 0;
-    border: initial;
-    border-radius: initial;
-    width: initial;
-    min-height: initial;
-    box-shadow: initial;
-    background: initial;
-    page-break-after: always;
+    overflow: hidden;
   }
 }
 </style>
+
+<script>
+export default {
+  data() {
+    return {
+      desserts: [
+        {
+          name: "Frozen Yogurt",
+          calories: 159,
+          name: "Frozen Yogurt",
+          calories: 159,
+          name: "Frozen Yogurt",
+          calories: 159,
+          name: "Frozen Yogurt",
+          calories: 159,
+        },
+        {
+          name: "Frozen Yogurt",
+          calories: 159,
+          name: "Frozen Yogurt",
+          calories: 159,
+          name: "Frozen Yogurt",
+          calories: 159,
+          name: "Frozen Yogurt",
+          calories: 159,
+        },
+        {
+          name: "Frozen Yogurt",
+          calories: 159,
+          name: "Frozen Yogurt",
+          calories: 159,
+          name: "Frozen Yogurt",
+          calories: 159,
+          name: "Frozen Yogurt",
+          calories: 159,
+        },
+        {
+          name: "Frozen Yogurt",
+          calories: 159,
+          name: "Frozen Yogurt",
+          calories: 159,
+          name: "Frozen Yogurt",
+          calories: 159,
+          name: "Frozen Yogurt",
+          calories: 159,
+        },
+        {
+          name: "Frozen Yogurt",
+          calories: 159,
+          name: "Frozen Yogurt",
+          calories: 159,
+          name: "Frozen Yogurt",
+          calories: 159,
+          name: "Frozen Yogurt",
+          calories: 159,
+        },
+        {
+          name: "Frozen Yogurt",
+          calories: 159,
+          name: "Frozen Yogurt",
+          calories: 159,
+          name: "Frozen Yogurt",
+          calories: 159,
+          name: "Frozen Yogurt",
+          calories: 159,
+        },
+        {
+          name: "Frozen Yogurt",
+          calories: 159,
+          name: "Frozen Yogurt",
+          calories: 159,
+          name: "Frozen Yogurt",
+          calories: 159,
+          name: "Frozen Yogurt",
+          calories: 159,
+        },
+        {
+          name: "Frozen Yogurt",
+          calories: 159,
+          name: "Frozen Yogurt",
+          calories: 159,
+          name: "Frozen Yogurt",
+          calories: 159,
+          name: "Frozen Yogurt",
+          calories: 159,
+        },
+        {
+          name: "Frozen Yogurt",
+          calories: 159,
+          name: "Frozen Yogurt",
+          calories: 159,
+          name: "Frozen Yogurt",
+          calories: 159,
+          name: "Frozen Yogurt",
+          calories: 159,
+        },
+        {
+          name: "Frozen Yogurt",
+          calories: 159,
+          name: "Frozen Yogurt",
+          calories: 159,
+          name: "Frozen Yogurt",
+          calories: 159,
+          name: "Frozen Yogurt",
+          calories: 159,
+        },
+      ],
+    };
+  },
+};
+</script>

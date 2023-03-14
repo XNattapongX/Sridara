@@ -91,6 +91,9 @@
                 </tr>
               </thead>
               <tbody>
+                <tr v-if="!guide_tel.length">
+                  <td colspan="2" style="text-align: center">ไม่มีข้อมูล</td>
+                </tr>
                 <tr v-for="(j, l) in guide_tel" :key="l">
                   <td>{{ guide_name[l] }}</td>
                   <td>{{ j }}</td>
@@ -320,7 +323,6 @@ import { group_tours, hotel_tour } from "~~/services/payload";
 import { create_data, read_all_data } from "~~/services/configs";
 import { defineComponent } from "vue";
 import locale from "ant-design-vue/es/date-picker/locale/th_TH";
-import Swal from "sweetalert2";
 export default defineComponent({
   setup() {
     return {
@@ -366,6 +368,45 @@ export default defineComponent({
     },
   },
   methods: {
+    validateTourData() {
+      if (
+        this.tour_name == "" ||
+        this.tour_program == "" ||
+        this.go_date == "" ||
+        this.back_date == "" ||
+        this.day == 0 ||
+        this.night == 0 ||
+        this.vehicle_in == "" ||
+        this.vehicle_out == "" ||
+        this.guide_name == "" ||
+        this.guide_tel == "" ||
+        this.members == 0
+      ) {
+        this.$message.error("กรุณากรอกข้อมูลให้ครบถ้วน");
+        return false;
+      } else {
+        return true;
+      }
+    },
+    validateGuideData() {
+      if (this.g_name == "" || this.g_tel == "") {
+        this.$message.error("กรุณากรอกข้อมูลให้ครบถ้วน");
+        return false;
+      } else {
+        return true;
+      }
+    },
+    validateHotelData() {
+      if (
+        this.formHotel.name == "" ||
+        this.formHotel.amount_room == 0 ||
+        this.formHotel.check_in == "" ||
+        this.formHotel.check_out == ""
+      ) {
+        this.$message.error("กรุณากรอกข้อมูลให้ครบถ้วน");
+        return false;
+      }
+    },
     addTourPackage() {
       const raw = group_tours(
         this.tour_name,
@@ -380,17 +421,13 @@ export default defineComponent({
         this.guide_tel,
         this.members
       );
-      create_data("group_tour", raw).then((result) => {
-        this.lock_form = true;
-        this.tour_id = result;
-        Swal.fire({
-          icon: "success",
-          timer: 1500,
-          title: "เพิ่มข้อมูลสำเร็จ",
-          showConfirmButton: false,
-          timerProgressBar: true,
+      if (this.validateTourData()) {
+        create_data("group_tour", raw).then((result) => {
+          this.lock_form = true;
+          this.tour_id = result;
+          this.$message.success("เพิ่มข้อมูลสำเร็จ");
         });
-      });
+      }
     },
     addHotel() {
       const raw = hotel_tour(
@@ -410,7 +447,7 @@ export default defineComponent({
       });
     },
     addGuide() {
-      if (this.g_name && this.g_tel) {
+      if (this.validateGuideData()) {
         this.guide_name.push(this.g_name);
         this.guide_tel.push(this.g_tel);
       }
