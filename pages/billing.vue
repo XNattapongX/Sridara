@@ -48,7 +48,10 @@
       </v-table>
     </div>
   </div>
-  <v-row justify="center" style="margin-top: -2rem" class="hide-btn"
+  <v-row
+    justify="center"
+    style="margin-top: -2rem; background-color: rgb(225, 225, 241)"
+    class="hide-btn"
     ><v-col style="text-align: center"
       ><v-btn color="light-blue-accent-4" @click="print"
         >สั่งพิมพ์ หรือ บันทึกเป็น PDF</v-btn

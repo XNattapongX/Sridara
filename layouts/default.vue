@@ -39,12 +39,12 @@
             </li>
             <li v-if="raw !== 'login'">
               <v-btn
-                variant="tonal"
+                variant="plain"
                 icon
                 size="small"
                 color="indigo-darken-4"
                 @click="account = true">
-                <v-icon size="35">mdi-account-circle</v-icon>
+                <v-icon size="35">mdi-cog</v-icon>
               </v-btn>
             </li>
           </ul>
@@ -56,20 +56,14 @@
     <v-navigation-drawer v-model="account" temporary location="right">
       <v-list>
         <v-list-item
-          prepend-avatar="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
-          :title="profile_auth.email"
-          :subtitle="role_name"></v-list-item>
+          prepend-avatar="https://cdn-icons-png.flaticon.com/512/1802/1802979.png"
+          title="เครื่องมือ"
+          subtitle="ฟังก์ชัน"></v-list-item>
       </v-list>
 
       <v-divider></v-divider>
 
       <v-list density="compact" nav>
-        <v-list-item
-          v-if="role === 0"
-          @click="$router.push('/user_management')"
-          prepend-icon="mdi-badge-account-horizontal"
-          title="จัดการบุคลากร"
-          value="จัดการบุคลากร"></v-list-item>
         <v-list-item
           prepend-icon="mdi-transit-detour"
           @click="$router.push('/addtour')"
@@ -81,11 +75,11 @@
           title="จัดการโรงแรม"
           value="จัดการโรงแรม"></v-list-item>
         <v-list-item
-          prepend-icon="mdi-note-edit"
+          prepend-icon="mdi-cash-100"
           title="จัดการใบเสนอราคา"
           value="จัดการใบเสนอราคา"></v-list-item>
         <v-list-item
-          prepend-icon="mdi-note-edit"
+          prepend-icon="mdi-cash-fast"
           title="จัดการใบแจ้งหนี้"
           value="จัดการใบแจ้งหนี้"></v-list-item>
         <v-list-item
@@ -93,7 +87,7 @@
           title="จัดการใบกำกับภาษี"
           value="จัดการใบกำกับภาษี"></v-list-item>
         <v-list-item
-          prepend-icon="mdi-note-edit"
+          prepend-icon="mdi-receipt-text"
           title="จัดการใบเสร็จรับเงิน"
           value="จัดการใบเสร็จรับเงิน"></v-list-item>
         <v-list-item

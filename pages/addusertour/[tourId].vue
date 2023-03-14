@@ -387,6 +387,53 @@ export default defineComponent({
         }
       });
     },
+    validateMember() {
+      if (this.surname_thai == "") {
+        this.$message.error("กรุณากรอกชื่อ (ไทย)");
+        return false;
+      } else if (this.lastname_thai == "") {
+        this.$message.error("กรุณากรอกนามสกุล (ไทย)");
+        return false;
+      } else if (this.surname_eng == "") {
+        this.$message.error("กรุณากรอกชื่อ (อังกฤษ)");
+        return false;
+      } else if (this.lastname_eng == "") {
+        this.$message.error("กรุณากรอกนามสกุล (อังกฤษ)");
+        return false;
+      } else if (this.id_card == "") {
+        this.$message.error("กรุณากรอกเลขบัตรประชาชน");
+        return false;
+      } else if (this.bed_type == "") {
+        this.$message.error("กรุณาเลือกประเภทเตียง");
+        return false;
+      } else if (this.passport == "") {
+        this.$message.error("กรุณากรอกเลขที่หนังสือเดินทาง");
+        return false;
+      } else if (this.in == "") {
+        this.$message.error("กรุณาเลือกวันเข้าพัก");
+        return false;
+      } else if (this.out == "") {
+        this.$message.error("กรุณาเลือกวันออกพัก");
+        return false;
+      } else if (this.dob == "") {
+        this.$message.error("กรุณาเลือกวันเกิด");
+        return false;
+      } else if (this.nationality == "") {
+        this.$message.error("กรุณากรอกสัญชาติ");
+        return false;
+      } else if (this.gender == "") {
+        this.$message.error("กรุณาเลือกเพศ");
+        return false;
+      } else if (this.address == "") {
+        this.$message.error("กรุณากรอกที่อยู่");
+        return false;
+      } else if (this.stamp_number == "") {
+        this.$message.error("กรุณากรอกเลขที่ใบอนุญาต");
+        return false;
+      } else {
+        return true;
+      }
+    },
     addMember() {
       const raw = group_members(
         String(this.$route.params.tourId),
@@ -403,15 +450,18 @@ export default defineComponent({
         this.address,
         this.stamp_number
       );
-      create_data("member_tour", raw).then(() => {
-        read_all_data("member_tour").then((result) => {
-          const filter = result.filter(
-            (v) =>
-              v.fields.tour_id.stringValue == String(this.$route.params.tourId)
-          );
-          this.members_ls = filter;
+      if (this.validateMember()) {
+        create_data("member_tour", raw).then(() => {
+          read_all_data("member_tour").then((result) => {
+            const filter = result.filter(
+              (v) =>
+                v.fields.tour_id.stringValue ==
+                String(this.$route.params.tourId)
+            );
+            this.members_ls = filter;
+          });
         });
-      });
+      }
     },
   },
 });
