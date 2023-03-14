@@ -244,7 +244,7 @@
                   <td class="text-center" style="font-size: xx-small">
                     รหัสสินค้า
                   </td>
-                  <td class="text-center" style="font-size: xx-small">
+                  <td class="text-left" style="font-size: xx-small">
                     รายการสินค้า
                   </td>
                   <td class="text-center" style="font-size: xx-small">จำนวน</td>
@@ -332,7 +332,7 @@
                 </td>
                 <td>มูลค่าสินค้า</td>
                 <td style="text-align: end">
-                  {{ quotation.fields.product_value.stringValue }}
+                  {{ quotation.fields.vat.stringValue }}
                   บาท&nbsp;&nbsp;
                 </td>
               </tr>
@@ -353,7 +353,10 @@
                 </td>
                 <td>ภาษีมูลค่าเพิ่ม 7%</td>
                 <td style="text-align: end">
-                  {{ quotation.fields.vat.stringValue }} บาท&nbsp;&nbsp;
+                  {{
+                    quotation.fields.product_value.stringValue
+                  }}
+                  บาท&nbsp;&nbsp;
                 </td>
               </tr>
               <tr>

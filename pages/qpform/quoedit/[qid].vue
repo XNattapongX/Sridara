@@ -204,35 +204,6 @@
             <label
               for="base-input"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >จำนวนเงิน</label
-            >
-            <input
-              type="number"
-              id="small-input"
-              v-model.number="product_total"
-              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-          </v-col>
-        </v-row>
-
-        <v-row>
-          <v-col>
-            <label
-              for="base-input"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >รายการสินค้า</label
-            >
-            <textarea
-              type="text"
-              id="base-input"
-              v-model="product_name"
-              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-          </v-col>
-        </v-row>
-        <v-row>
-          <v-col>
-            <label
-              for="base-input"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >ส่วนลด</label
             >
             <input
@@ -255,6 +226,21 @@
               <option value="7%">7%</option>
               <option value="9%">9%</option>
             </select>
+          </v-col>
+        </v-row>
+
+        <v-row>
+          <v-col>
+            <label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >รายการสินค้า</label
+            >
+            <textarea
+              type="text"
+              id="base-input"
+              v-model="product_name"
+              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
           <v-col cols="2">
             <br />
@@ -369,7 +355,7 @@
             <label
               for="base-input"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >รวมเงิน (ราคาต่อหน่วย)</label
+              >รวมเงิน</label
             ><input
               type="number"
               id="small-input"
@@ -397,7 +383,7 @@
             ><input
               type="number"
               disabled
-              :value="calculateBeforeVat()"
+              :value="calculateVat()"
               id="small-input"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           /></v-col>
@@ -410,7 +396,7 @@
               type="number"
               id="small-input"
               disabled
-              :value="calculateVat()"
+              :value="calculateBeforeVat()"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           /></v-col>
           <v-col
@@ -427,9 +413,7 @@
             ><input
               type="number"
               disabled
-              :value="
-                sumAllProduct() - sumAllProductDiscount() + calculateVat()
-              "
+              :value="Math.floor(sumAllProduct() * 100) / 100"
               id="small-input"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
@@ -526,7 +510,7 @@ export default defineComponent({
       product_price_per_unit: "",
       product_discount: 0,
       product_tax: "",
-      product_total: "",
+      product_total: 0,
       product_ls: [] as any,
       price_validate_period: "",
       deposit: "",
@@ -561,7 +545,7 @@ export default defineComponent({
           sum += this.product_ls[i].product_total * (100 / 109);
         }
       }
-      return Math.ceil(sum);
+      return Math.floor(sum * 100) / 100;
     },
     calculateBeforeVat() {
       let sum = 0;
@@ -572,9 +556,10 @@ export default defineComponent({
           sum += this.product_ls[i].product_total;
         }
       }
-      return Math.ceil(sum - this.calculateVat());
+      return Math.floor((sum - this.calculateVat()) * 100) / 100;
     },
     validateProductDetail() {
+      console.log(this.product_discount);
       if (this.product_code == "") {
         this.$message.error("กรุณากรอกรหัสสินค้า", 3);
         return false;
@@ -594,13 +579,12 @@ export default defineComponent({
       if (this.product_discount < 0) {
         this.$message.error("กรุณากรอกส่วนลดสินค้า", 3);
         return false;
+      } else if (String(this.product_discount) == "") {
+        this.product_discount = 0;
+        return true;
       }
       if (this.product_tax == "") {
         this.$message.error("กรุณากรอกภาษีมูลค่าเพิ่ม", 3);
-        return false;
-      }
-      if (this.product_total == "") {
-        this.$message.error("กรุณากรอกมูลค่าสินค้า", 3);
         return false;
       }
       return true;
@@ -658,7 +642,7 @@ export default defineComponent({
         this.$message.error("กรุณากรอกระยะเวลาในการยืนยันราคา", 3);
         return false;
       }
-      if (this.deposit == "") {
+      if (Number(this.deposit) < 0) {
         this.$message.error("กรุณากรอกมูลค่ามัดจำ", 3);
         return false;
       }
@@ -670,6 +654,15 @@ export default defineComponent({
     },
     onAddProduct() {
       if (this.validateProductDetail()) {
+        let x =
+          Number(this.product_amount) * Number(this.product_price_per_unit);
+        if (this.product_tax === "7%") {
+          this.product_total = x + x * 0.07 - Number(this.product_discount);
+        } else if (this.product_tax === "9%") {
+          this.product_total = x + x * 0.09 - Number(this.product_discount);
+        } else {
+          this.product_total = x - Number(this.product_discount);
+        }
         this.product_ls.push({
           product_code: this.product_code,
           product_name: this.product_name,
@@ -685,7 +678,7 @@ export default defineComponent({
         this.product_price_per_unit = "";
         this.product_discount = 0;
         this.product_tax = "";
-        this.product_total = "";
+        this.product_total = 0;
       }
     },
     onDeleteProduct(index: number) {

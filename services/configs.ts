@@ -1,7 +1,5 @@
 import axios from "axios";
 
-const base =
-  "https://firestore.googleapis.com/v1/projects/sridara-tour/databases/(default)/documents";
 export const api = axios.create({
   baseURL:
     "https://firestore.googleapis.com/v1/projects/sridara-tour/databases/(default)/documents/",
@@ -86,4 +84,98 @@ export const delete_all_data_conditions = async (
       console.log("no document");
     });
   });
+};
+
+export const ArabicNumberToText = (number: number | string): string => {
+  var numbers: any = checkNumber(number);
+  const numberArray = [
+    "ศูนย์",
+    "หนึ่ง",
+    "สอง",
+    "สาม",
+    "สี่",
+    "ห้า",
+    "หก",
+    "เจ็ด",
+    "แปด",
+    "เก้า",
+    "สิบ",
+  ];
+  const digitArray = ["", "สิบ", "ร้อย", "พัน", "หมื่น", "แสน", "ล้าน"];
+  let bahtText = "";
+  if (isNaN(numbers as number)) {
+    return "ข้อมูลนำเข้าไม่ถูกต้อง";
+  }
+  if ((numbers as number) > 9999999.9999) {
+    return "ข้อมูลนำเข้าเกินขอบเขตที่ตั้งไว้";
+  }
+  numbers = number.toString().split(".");
+  if (numbers[1].length > 0) {
+    numbers[1] = numbers[1].substring(0, 2);
+  }
+  const wholeNumber = getWholeNumber(numbers[0], numberArray, digitArray);
+  const decimal = getDecimal(numbers[1], numberArray, digitArray);
+  bahtText = `${wholeNumber}บาท${decimal}`;
+  return bahtText;
+};
+
+const checkNumber = (number: number | string): number => {
+  if (typeof number === "string") {
+    return parseFloat(number);
+  }
+  return number;
+};
+
+const getWholeNumber = (
+  number: string,
+  numberArray: string[],
+  digitArray: string[]
+): string => {
+  let bahtText = "";
+  const numberLen = number.length - 0;
+  for (let i = 0; i < numberLen; i++) {
+    const tmp = Number(number.substring(i, i + 1)) - 0;
+    if (tmp !== 0) {
+      if (i === numberLen - 1 && tmp === 1) {
+        bahtText += "เอ็ด";
+      } else if (i === numberLen - 2 && tmp === 2) {
+        bahtText += "ยี่";
+      } else if (i === numberLen - 2 && tmp === 1) {
+        bahtText += "";
+      } else {
+        bahtText += numberArray[tmp];
+      }
+      bahtText += digitArray[numberLen - i - 1];
+    }
+  }
+  return bahtText;
+};
+
+const getDecimal = (
+  number: string,
+  numberArray: string[],
+  digitArray: string[]
+): string => {
+  if (number === "0" || number === "00") {
+    return "ถ้วน";
+  }
+  let bahtText = "";
+  const decimalLen = number.length - 0;
+  for (let i = 0; i < decimalLen; i++) {
+    const tmp = Number(number.substring(i, i + 1)) - 0;
+    if (tmp !== 0) {
+      if (i === decimalLen - 1 && tmp === 1) {
+        bahtText += "เอ็ด";
+      } else if (i === decimalLen - 2 && tmp === 2) {
+        bahtText += "ยี่";
+      } else if (i === decimalLen - 2 && tmp === 1) {
+        bahtText += "";
+      } else {
+        bahtText += numberArray[tmp];
+      }
+      bahtText += digitArray[decimalLen - i - 1];
+    }
+  }
+  bahtText += "สตางค์";
+  return bahtText;
 };

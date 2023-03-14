@@ -189,7 +189,12 @@
       >
     </v-col>
     <v-col style="text-align: center" v-else>
-      <v-btn variant="tonal" color="light-blue-accent-4">สร้างใบเสนอราคา</v-btn>
+      <v-btn
+        variant="tonal"
+        color="light-blue-accent-4"
+        @click="$router.push(`/qpform/${$route.params.tourdataid}`)"
+        >สร้างใบเสนอราคา</v-btn
+      >
     </v-col>
     <v-col style="text-align: center"
       ><v-btn
@@ -208,12 +213,17 @@
     >
   </v-row>
 
-  <a-modal
-    v-model:visible="dialog"
-    title="ฟอร์มสร้างใบแจ้งหนี้/ใบวางบิล"
-    ok-text="สร้าง"
-    cancel-text="ยกเลิก"
-    @ok="generateBilling">
+  <a-modal v-model:visible="dialog" title="ฟอร์มสร้างใบแจ้งหนี้/ใบวางบิล">
+    <template #footer>
+      <a-button key="back" @click="dialog = false">ยกเลิก</a-button>
+      <a-button
+        key="submit"
+        type="primary"
+        :loading="loadGenBill"
+        @click="generateBilling"
+        >สร้าง</a-button
+      >
+    </template>
     <v-row>
       <v-col>
         <label
@@ -356,15 +366,16 @@ export default {
     },
     generateBilling() {
       if (this.validateBilling()) {
+        this.loadGenBill = true;
         const raw = billing_note_detail(
           this.$route.params.tourdataid,
           this.billing.billing_note_no,
           this.billing.billing_note_date,
           this.billing.billing_note_fax
         );
-        create_data("billing_note", raw).then((res) => {
+        create_data("billing_note", raw).then(() => {
           this.dialog = false;
-          this.$router.push(`/billing-paper/${res}`);
+          this.$router.push(`/billing-paper/${this.$route.params.tourdataid}`);
         });
       }
     },
@@ -376,6 +387,7 @@ export default {
       haveQuotation: false,
       haveBilling: false,
       dialog: false,
+      loadGenBill: false,
       members_ls: [],
       hotels_ls: [],
       billing: {
