@@ -40,7 +40,7 @@
                     font-weight: bold;
                   "
                 >
-                  ใบเสนอราคา/ยืนยันการสั่งซื้อ
+                  ใบวางบิล/ใบแจ้งหนี้
                 </td>
               </tr>
               <tr style="text-align: center">
@@ -53,7 +53,7 @@
                     border-left: 1px solid #000000;
                   "
                 >
-                  Quatation
+                  Billing Note/Invoice
                 </td>
               </tr>
               <tr style="text-align: center">
@@ -68,7 +68,7 @@
                     font-weight: bold;
                   "
                 >
-                  ใบเสนอราคา/ยืนยันการสั่งซื้อ
+                  ต้นฉบับ/Original
                 </td>
               </tr>
               <tr style="text-align: center">
@@ -81,8 +81,18 @@
                     border-left: 1px solid #000000;
                   "
                 >
-                  Quatation
+                  เอกสารออกเป็นชุด
                 </td>
+              </tr>
+            </v-table></v-col
+          >
+        </v-row>
+
+        <v-row style="font-size: 12px; padding: 1px; margin: auto">
+          <v-col style="padding: 0" cols="7">
+            <v-table>
+              <tr>
+                <td>fdvdf</td>
               </tr>
             </v-table></v-col
           >
@@ -138,6 +148,157 @@
             </v-table>
           </v-col>
         </v-row>
+
+        <v-row style="padding: 1px; margin: auto">
+          <v-col style="padding: 0">
+            <v-table
+              density="compact"
+              style="font-size: 12px; border: 1px solid black; padding: 2px"
+            >
+              <tr>
+                <td style="width: 570px; font-weight: bold">หมายเหตุ:</td>
+                <td style="width: 100px">รวมเงิน</td>
+                <td style="width: 76px">100000</td>
+              </tr>
+              <tr>
+                <td>
+                  1.สินค้าตามรายการข้างต้น
+                  แม้จะได้รับมอบแก่ผู้ซื้อแล้วก็ยังคงเป็นสินทรัพย์ของผู้ขายจนกว่าผู้ซื้อจะชำระเงินเรียบร้อย
+                </td>
+                <td>มัดจำ 100%</td>
+                <td>150000</td>
+              </tr>
+              <tr>
+                <td>
+                  2.หากชำระเงินด้วยเช็คโปรดขีดคร่อมในนาม
+                  “บริษัทศรีดาราทัวร์จำกัด” และขีดฆ่าหรือผู้ถือออก
+                </td>
+                <td>มูลค่าคิดภาษี</td>
+                <td>200000</td>
+              </tr>
+
+              <tr>
+                <td>
+                  3.การชำระเงินด้วยเช็คจะสมบูรณ์เมื่อ
+                  บริษัทฯได้รับเงินตามเช็คเรียบร้อย
+                </td>
+                <td>ภาษีมูลค่าเพิ่ม 7%</td>
+                <td>10000</td>
+              </tr>
+              <tr>
+                <td style="font-weight: bold">
+                  <v-row>
+                    <v-col cols="3"> ตัวอักษร : </v-col>
+                    <v-col cols="8"> ห้าพันแปดร้อยสามสิบบาทท้วน </v-col>
+                  </v-row>
+                </td>
+                <td>ยอดสุทธิ</td>
+                <td>1000</td>
+              </tr>
+            </v-table>
+          </v-col>
+        </v-row>
+
+        <v-table style="padding: 1px; margin: auto; font-size: 11px">
+          <tr>
+            <td
+              style="
+                border-top: 1px solid #000000;
+                border-right: 1px solid #000000;
+                border-bottom: 1px solid #000000;
+                border-left: 1px solid #000000;
+                width: 187px;
+              "
+            >
+              <v-table>
+                <tr style="height: 120px">
+                  <td>&#32;</td>
+                </tr>
+                <tr style="text-align: center">
+                  <td>สมหอม นอมนม</td>
+                </tr>
+                <tr style="text-align: center">
+                  <td>ผู้เสนอราคา</td>
+                </tr>
+                <tr>
+                  <td style="padding: 0px 0px 3px 3px">วันที่</td>
+                </tr>
+              </v-table>
+            </td>
+            <td
+              style="
+                border-top: 1px solid #000000;
+                border-right: 1px solid #000000;
+                border-bottom: 1px solid #000000;
+                border-left: 1px solid #000000;
+                width: 187px;
+              "
+            >
+              <v-table>
+                <tr style="height: 120px">
+                  <td>&#32;</td>
+                </tr>
+                <tr style="text-align: center">
+                  <td>สมหอม นอมนม</td>
+                </tr>
+                <tr style="text-align: center">
+                  <td>ผู้รับเงิน</td>
+                </tr>
+                <tr>
+                  <td style="padding: 0px 0px 3px 3px">วันที่</td>
+                </tr></v-table
+              >
+            </td>
+            <td
+              style="
+                border-top: 1px solid #000000;
+                border-right: 1px solid #000000;
+                border-bottom: 1px solid #000000;
+                border-left: 1px solid #000000;
+                width: 187px;
+              "
+            >
+              <v-table>
+                <tr style="height: 120px">
+                  <td>&#32;</td>
+                </tr>
+                <tr style="text-align: center">
+                  <td>สมหอม นอมนม</td>
+                </tr>
+                <tr style="text-align: center">
+                  <td>ผู้ตรวจสอบ</td>
+                </tr>
+                <tr>
+                  <td style="padding: 0px 0px 3px 3px">วันที่</td>
+                </tr></v-table
+              >
+            </td>
+            <td
+              style="
+                border-top: 1px solid #000000;
+                border-right: 1px solid #000000;
+                border-bottom: 1px solid #000000;
+                border-left: 1px solid #000000;
+                width: 187px;
+              "
+            >
+              <v-table>
+                <tr style="height: 120px">
+                  <td>&#32;</td>
+                </tr>
+                <tr style="text-align: center">
+                  <td>สมหอม นอมนม</td>
+                </tr>
+                <tr style="text-align: center">
+                  <td>ผู้อนุมัติสั่งซื้อ</td>
+                </tr>
+                <tr>
+                  <td style="padding: 0px 0px 3px 3px">วันที่</td>
+                </tr></v-table
+              >
+            </td>
+          </tr>
+        </v-table>
       </v-container>
     </div>
   </div>

@@ -323,7 +323,7 @@
               <tr>
                 <td>
                   จึงเรียนมาเพื่อโปรดพิจารณาและหวังเป็นอย่างยิ่งว่าจะได้รับการพิจารณาสั่งซื้อจากท่าน
-                  ขอขอบพระคุณมา ณ ที่น
+                  ขอขอบพระคุณมา ณ ที่นี้
                 </td>
                 <td>มูลค่าสินค้า</td>
                 <td>200000</td>
@@ -432,7 +432,7 @@
               "
             >
               <v-table>
-                <tr style="height: 120px">
+                <tr style="height: 110px">
                   <td>&#32;</td>
                 </tr>
                 <tr style="text-align: center">
@@ -456,7 +456,7 @@
               "
             >
               <v-table>
-                <tr style="height: 120px">
+                <tr style="height: 110px">
                   <td>&#32;</td>
                 </tr>
                 <tr style="text-align: center">
@@ -480,7 +480,7 @@
               "
             >
               <v-table>
-                <tr style="height: 120px">
+                <tr style="height: 110px">
                   <td>&#32;</td>
                 </tr>
                 <tr style="text-align: center">
@@ -504,7 +504,7 @@
               "
             >
               <v-table>
-                <tr style="height: 120px">
+                <tr style="height: 110px">
                   <td>&#32;</td>
                 </tr>
                 <tr style="text-align: center">
