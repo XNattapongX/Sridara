@@ -133,38 +133,22 @@
                   height: 40px;
                 "
               >
-                <td colspan="2" style="padding-left: 4px; font-weight: bold">
-                  &nbsp;
-                </td>
-                <td colspan="2">&nbsp;</td>
-              </tr>
-              <tr
-                style="
-                  border-top: 1px solid #000000;
-                  border-right: none;
-                  border-bottom: 1px solid #000000;
-                  border-left: 1px solid #000000;
-                  height: 40px;
-                "
-              >
                 <td colspan="2" style="font-weight: bold; padding-left: 4px">
                   เลขประจำตัวผู้เสียภาษี:
                 </td>
-                <td colspan="2">สมหอม ยอมทุกอย่าง</td>
+                <td colspan="2">1235588745</td>
               </tr>
-
               <tr
                 style="
                   border-top: 1px solid #000000;
-                  border-right: none;
+                  border-right: none #000000;
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
-                  height: 40px;
+                  height: 80px;
                 "
               >
                 <td colspan="2">
                   <v-checkbox
-                    style="height: 20px"
                     class="shrink mr-2"
                     hide-details
                     label="สำนักงานใหญ่"
@@ -172,7 +156,6 @@
                 </td>
                 <td colspan="2">
                   <v-checkbox
-                    style="height: 40px"
                     class="shrink mr-2"
                     hide-details
                     label="สาขาที่:"
