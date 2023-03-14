@@ -180,24 +180,36 @@
             <label
               for="base-input"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >รายการสินค้า</label
+              >จำนวน</label
             >
             <input
-              type="text"
-              id="base-input"
-              v-model="product_name"
+              type="number"
+              id="small-input"
+              v-model.number="product_amount"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
           <v-col>
             <label
               for="base-input"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >จำนวน</label
+              >ราคาต่อหน่วย</label
             >
             <input
-              type="text"
+              type="number"
+              id="base-input"
+              v-model.number="product_price_per_unit"
+              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+          </v-col>
+          <v-col>
+            <label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >จำนวนเงิน</label
+            >
+            <input
+              type="number"
               id="small-input"
-              v-model="product_amount"
+              v-model.number="product_total"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
         </v-row>
@@ -207,14 +219,16 @@
             <label
               for="base-input"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >ราคาต่อหน่วย</label
+              >รายการสินค้า</label
             >
-            <input
+            <textarea
               type="text"
               id="base-input"
-              v-model="product_price_per_unit"
+              v-model="product_name"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
+        </v-row>
+        <v-row>
           <v-col>
             <label
               for="base-input"
@@ -222,9 +236,9 @@
               >ส่วนลด</label
             >
             <input
-              type="text"
+              type="number"
               id="base-input"
-              v-model="product_discount"
+              v-model.number="product_discount"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
           <v-col>
@@ -233,39 +247,15 @@
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >ภาษี (0% 7% 9%)</label
             >
-            <input
-              type="text"
-              id="small-input"
+            <select
+              style="height: 55%"
               v-model="product_tax"
-              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              <option value="0%">0%</option>
+              <option value="7%">7%</option>
+              <option value="9%">9%</option>
+            </select>
           </v-col>
-        </v-row>
-        <v-row>
-          <v-col>
-            <label
-              for="base-input"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >จำนวนเงิน</label
-            >
-            <input
-              type="text"
-              id="small-input"
-              v-model="product_total"
-              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-          </v-col>
-          <v-col>
-            <label
-              for="base-input"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >กำหนดยืนราคา (กี่วัน)</label
-            >
-            <input
-              type="text"
-              id="small-input"
-              v-model="product_total"
-              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-          </v-col>
-
           <v-col cols="2">
             <br />
             <v-btn
@@ -351,27 +341,40 @@
             border-radius: 0.5rem;
             background-color: #e0f7fa;
             box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-          ">
+          "
+          ><v-col>
+            <label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >กำหนดยืนราคา (กี่วัน)</label
+            >
+            <input
+              type="number"
+              id="small-input"
+              v-model="price_validate_period"
+              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+          </v-col>
           <v-col
             ><label
               for="base-input"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >ค่ามัดจำ</label
             ><input
-              type="text"
+              type="number"
               id="small-input"
-              v-model="deposit"
+              v-model.number="deposit"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           /></v-col>
           <v-col>
             <label
               for="base-input"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >รวมเงิน</label
+              >รวมเงิน (ราคาต่อหน่วย)</label
             ><input
               type="text"
               id="small-input"
               disabled
+              :value="sumAllProduct()"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           /></v-col>
           <v-col>
@@ -382,6 +385,7 @@
             ><input
               type="text"
               id="small-input"
+              :value="sumAllProductDiscount()"
               disabled
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           /></v-col>
@@ -389,10 +393,11 @@
             <label
               for="base-input"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >มูลค่าสินค้า</label
+              >มูลค่าสินค้าก่อนคำนวนภาษี</label
             ><input
               type="text"
               disabled
+              :value="calculateBeforeVat()"
               id="small-input"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           /></v-col>
@@ -405,11 +410,13 @@
               type="text"
               id="small-input"
               disabled
+              :value="calculateVat()"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           /></v-col>
           <v-col
             style="
               background-color: #c5cae9;
+
               border-top-right-radius: 0.5rem;
               border-bottom-right-radius: 0.5rem;
             "
@@ -420,13 +427,16 @@
             ><input
               type="text"
               disabled
+              :value="
+                sumAllProduct() - sumAllProductDiscount() + calculateVat()
+              "
               id="small-input"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
         </v-row>
-        <v-row justify="end">
+        <v-row justify="end" style="margin-top: -1rem">
           <v-col cols="2" style="text-align: end"
-            ><v-btn
+            ><br /><v-btn
               variant="tonal"
               color="yellow-darken-3"
               @click="onAddQuotation"
@@ -462,10 +472,11 @@ export default defineComponent({
       product_name: "",
       product_amount: "",
       product_price_per_unit: "",
-      product_discount: "",
+      product_discount: 0,
       product_tax: "",
       product_total: "",
       product_ls: [] as any,
+      price_validate_period: "",
       deposit: "",
     };
   },
@@ -475,6 +486,44 @@ export default defineComponent({
     };
   },
   methods: {
+    sumAllProduct() {
+      let sum = 0;
+      for (let i = 0; i < this.product_ls.length; i++) {
+        sum += this.product_ls[i].product_total;
+      }
+      return sum;
+    },
+    sumAllProductDiscount() {
+      let sum = 0;
+      for (let i = 0; i < this.product_ls.length; i++) {
+        sum += this.product_ls[i].product_discount;
+      }
+      return sum;
+    },
+    calculateVat() {
+      let sum = 0;
+      for (let i = 0; i < this.product_ls.length; i++) {
+        if (this.product_ls[i].product_tax === "7%") {
+          sum += this.product_ls[i].product_total * (100 / 107);
+        } else if (this.product_ls[i].product_tax === "0%") {
+          sum += 0;
+        } else if (this.product_ls[i].product_tax === "9%") {
+          sum += this.product_ls[i].product_total * (100 / 109);
+        }
+      }
+      return Math.ceil(sum);
+    },
+    calculateBeforeVat() {
+      let sum = 0;
+      for (let i = 0; i < this.product_ls.length; i++) {
+        if (this.product_ls[i].product_tax === "7%") {
+          sum += this.product_ls[i].product_total;
+        } else if (this.product_ls[i].product_tax === "9%") {
+          sum += this.product_ls[i].product_total;
+        }
+      }
+      return Math.ceil(sum - this.calculateVat());
+    },
     onAddProduct() {
       if (this.validateProductDetail()) {
         this.product_ls.push({
@@ -490,7 +539,7 @@ export default defineComponent({
         this.product_name = "";
         this.product_amount = "";
         this.product_price_per_unit = "";
-        this.product_discount = "";
+        this.product_discount = 0;
         this.product_tax = "";
         this.product_total = "";
       }
@@ -515,21 +564,13 @@ export default defineComponent({
         new Date(this.confirm_price_within),
         new Date(this.delivery_date),
         this.product_ls,
-        0,
-        "6",
-        100,
-        20,
-        100,
-        100,
-        1000,
-        "",
-        new Date(),
-        "",
-        new Date(),
-        "",
-        new Date(),
-        "",
-        new Date()
+        Number(this.deposit),
+        this.price_validate_period,
+        this.sumAllProduct(),
+        this.sumAllProductDiscount(),
+        this.calculateBeforeVat(),
+        this.calculateVat(),
+        this.sumAllProduct() - this.sumAllProductDiscount()
       );
       if (this.validateQuotationDetail() == false) {
         return;
@@ -556,7 +597,7 @@ export default defineComponent({
         this.$message.error("กรุณากรอกราคาต่อหน่วย", 3);
         return false;
       }
-      if (this.product_discount == "") {
+      if (this.product_discount < 0) {
         this.$message.error("กรุณากรอกส่วนลดสินค้า", 3);
         return false;
       }
@@ -617,6 +658,18 @@ export default defineComponent({
       }
       if (this.delivery_date == "") {
         this.$message.error("กรุณากรอกวันที่ส่งสินค้า", 3);
+        return false;
+      }
+      if (this.price_validate_period == "") {
+        this.$message.error("กรุณากรอกระยะเวลาในการยืนยันราคา", 3);
+        return false;
+      }
+      if (this.deposit == "") {
+        this.$message.error("กรุณากรอกมูลค่ามัดจำ", 3);
+        return false;
+      }
+      if (this.product_ls.length == 0) {
+        this.$message.error("กรุณาเพิ่มรายการสินค้า", 3);
         return false;
       }
       return true;

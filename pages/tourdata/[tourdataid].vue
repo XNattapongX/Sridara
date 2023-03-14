@@ -163,6 +163,15 @@
         >ลบทัวร์</v-btn
       ></v-col
     >
+    <v-col v-if="haveQuotation">
+      <v-btn
+        style="margin-right: -10.3rem"
+        variant="tonal"
+        color="light-blue-accent-4"
+        @click="$router.push(`/qpform/${$route.params.tourdataid}`)"
+        >ดูใบเสนอราคา</v-btn
+      >
+    </v-col>
     <v-col cols="2" style="text-align: end">
       <v-btn
         style="margin-right: -10.3rem"
@@ -199,6 +208,7 @@ import {
   read_one_data,
   delete_data,
   delete_all_data_conditions,
+  read_one_data_conditions,
 } from "~~/services/configs";
 export default {
   mounted() {
@@ -221,6 +231,15 @@ export default {
           v.fields.tour_id.stringValue == String(this.$route.params.tourdataid)
       );
       this.members_ls = filter;
+    });
+    read_one_data_conditions(
+      "quotation_detail",
+      "tour_id",
+      this.$route.params.tourdataid
+    ).then((result) => {
+      if (result.length) {
+        this.haveQuotation = true;
+      }
     });
   },
   methods: {
@@ -256,6 +275,7 @@ export default {
     return {
       tour_data: "",
       loading: true,
+      haveQuotation: false,
       members_ls: [],
       hotels_ls: [],
     };
