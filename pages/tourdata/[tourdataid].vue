@@ -166,7 +166,7 @@
       <v-btn
         variant="tonal"
         color="light-blue-accent-4"
-        @click="$router.push(`/quotation`)"
+        @click="$router.push(`/quotation-paper/${$route.params.tourdataid}`)"
         >ดูใบเสนอราคา</v-btn
       >
     </v-col>

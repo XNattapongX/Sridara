@@ -371,7 +371,7 @@
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >รวมเงิน (ราคาต่อหน่วย)</label
             ><input
-              type="text"
+              type="number"
               id="small-input"
               disabled
               :value="sumAllProduct()"
@@ -383,7 +383,7 @@
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >ส่วนลดสินค้า</label
             ><input
-              type="text"
+              type="number"
               id="small-input"
               :value="sumAllProductDiscount()"
               disabled
@@ -395,7 +395,7 @@
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >มูลค่าสินค้าก่อนคำนวนภาษี</label
             ><input
-              type="text"
+              type="number"
               disabled
               :value="calculateBeforeVat()"
               id="small-input"
@@ -407,7 +407,7 @@
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >ภาษีมูลค่าเพิ่ม</label
             ><input
-              type="text"
+              type="number"
               id="small-input"
               disabled
               :value="calculateVat()"
@@ -425,7 +425,7 @@
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >จำนวนเงินทั้งสิ้น</label
             ><input
-              type="text"
+              type="number"
               disabled
               :value="
                 sumAllProduct() - sumAllProductDiscount() + calculateVat()
@@ -435,12 +435,17 @@
           </v-col>
         </v-row>
         <v-row justify="end" style="margin-top: -1rem">
+          <v-col cols="2" style="text-align: end; margin-right: -4rem"
+            ><br /><v-btn variant="tonal" color="green-accent-4" @click="goBack"
+              >ย้อนกลับก่อนหน้า</v-btn
+            ></v-col
+          >
           <v-col cols="2" style="text-align: end"
             ><br /><v-btn
               variant="tonal"
               color="yellow-darken-3"
-              @click="onAddQuotation"
-              >สร้างใบเสนอราคา</v-btn
+              @click="onUpdateQuotation"
+              >แก้ไขใบเสนอราคา</v-btn
             ></v-col
           >
         </v-row>
@@ -448,15 +453,62 @@
     </v-row>
   </div>
 </template>
-
 <script lang="ts">
-import { read_all_data, create_data, genRanDec } from "~~/services/configs";
-import { quotation_detail_with_product } from "~~/services/payload";
 import { defineComponent } from "vue";
+import { read_one_data, update_data } from "~~/services/configs";
+import { quotation_detail_with_product } from "~~/services/payload";
 import locale from "ant-design-vue/es/date-picker/locale/th_TH";
 export default defineComponent({
+  setup() {
+    return {
+      locale,
+    };
+  },
+  mounted() {
+    read_one_data("quotation_detail", String(this.$route.params.qid)).then(
+      (res) => {
+        const fields = res.fields;
+        this.tour_id = fields.tour_id.stringValue;
+        this.quotation_id = fields.quotation_id.stringValue;
+        this.quotation_date = new Date();
+        this.customer_name = fields.customer_name.stringValue;
+        this.tax_id = fields.tax_id.stringValue;
+        this.contact_name = fields.contact_name.stringValue;
+        this.customer_address = fields.customer_address.stringValue;
+        this.customer_code = fields.customer_code.stringValue;
+        this.sales_person = fields.seller_name.stringValue;
+        this.sale_department = fields.seller_department.stringValue;
+        this.contact_tel = fields.contact_tel.stringValue;
+        this.contact_email = fields.contact_email.stringValue;
+        this.price_validate_period = fields.price_validity_period.stringValue;
+        this.deposit = fields.earnest_money.stringValue;
+        fields.product.arrayValue.values.forEach((element: any) => {
+          this.product_ls.push({
+            product_code: element.mapValue.fields.product_code.stringValue,
+            product_name: element.mapValue.fields.product_name.stringValue,
+            product_amount: Number(
+              element.mapValue.fields.product_amount.stringValue
+            ),
+            product_price_per_unit: Number(
+              element.mapValue.fields.product_price_per_unit.stringValue
+            ),
+            product_discount: Number(
+              element.mapValue.fields.product_discount.stringValue
+            ),
+            product_tax: element.mapValue.fields.product_tax.stringValue,
+            product_total: Number(
+              element.mapValue.fields.product_total.stringValue
+            ),
+          });
+        });
+      }
+    );
+  },
   data() {
     return {
+      tour_id: "",
+      quotation_id: "",
+      quotation_date: "" as any,
       customer_name: "",
       tax_id: "",
       contact_name: "",
@@ -480,12 +532,10 @@ export default defineComponent({
       deposit: "",
     };
   },
-  setup() {
-    return {
-      locale,
-    };
-  },
   methods: {
+    goBack() {
+      this.$router.back();
+    },
     sumAllProduct() {
       let sum = 0;
       for (let i = 0; i < this.product_ls.length; i++) {
@@ -523,62 +573,6 @@ export default defineComponent({
         }
       }
       return Math.ceil(sum - this.calculateVat());
-    },
-    onAddProduct() {
-      if (this.validateProductDetail()) {
-        this.product_ls.push({
-          product_code: this.product_code,
-          product_name: this.product_name,
-          product_amount: this.product_amount,
-          product_price_per_unit: this.product_price_per_unit,
-          product_discount: this.product_discount,
-          product_tax: this.product_tax,
-          product_total: this.product_total,
-        });
-        this.product_code = "";
-        this.product_name = "";
-        this.product_amount = "";
-        this.product_price_per_unit = "";
-        this.product_discount = 0;
-        this.product_tax = "";
-        this.product_total = "";
-      }
-    },
-    onDeleteProduct(index: number) {
-      this.product_ls.splice(index, 1);
-    },
-    onAddQuotation() {
-      const json = quotation_detail_with_product(
-        String(this.$route.params.tid),
-        genRanDec(5),
-        new Date(),
-        this.tax_id,
-        this.customer_name,
-        this.customer_address,
-        this.customer_code,
-        this.contact_name,
-        this.contact_tel,
-        this.contact_email,
-        this.sales_person,
-        this.sale_department,
-        new Date(this.confirm_price_within),
-        new Date(this.delivery_date),
-        this.product_ls,
-        Number(this.deposit),
-        this.price_validate_period,
-        this.sumAllProduct(),
-        this.sumAllProductDiscount(),
-        this.calculateBeforeVat(),
-        this.calculateVat(),
-        this.sumAllProduct() - this.sumAllProductDiscount()
-      );
-      if (this.validateQuotationDetail() == false) {
-        return;
-      } else {
-        create_data("quotation_detail", json).then((res) => {
-          this.$router.push(`/tourdata/${this.$route.params.tid}`);
-        });
-      }
     },
     validateProductDetail() {
       if (this.product_code == "") {
@@ -673,6 +667,68 @@ export default defineComponent({
         return false;
       }
       return true;
+    },
+    onAddProduct() {
+      if (this.validateProductDetail()) {
+        this.product_ls.push({
+          product_code: this.product_code,
+          product_name: this.product_name,
+          product_amount: this.product_amount,
+          product_price_per_unit: this.product_price_per_unit,
+          product_discount: this.product_discount,
+          product_tax: this.product_tax,
+          product_total: this.product_total,
+        });
+        this.product_code = "";
+        this.product_name = "";
+        this.product_amount = "";
+        this.product_price_per_unit = "";
+        this.product_discount = 0;
+        this.product_tax = "";
+        this.product_total = "";
+      }
+    },
+    onDeleteProduct(index: number) {
+      this.product_ls.splice(index, 1);
+    },
+    onUpdateQuotation() {
+      const json: any = quotation_detail_with_product(
+        this.tour_id,
+        this.quotation_id,
+        this.quotation_date,
+        this.tax_id,
+        this.customer_name,
+        this.customer_address,
+        this.customer_code,
+        this.contact_name,
+        this.contact_tel,
+        this.contact_email,
+        this.sales_person,
+        this.sale_department,
+        new Date(this.confirm_price_within),
+        new Date(this.delivery_date),
+        this.product_ls,
+        Number(this.deposit),
+        this.price_validate_period,
+        this.sumAllProduct(),
+        this.sumAllProductDiscount(),
+        this.calculateBeforeVat(),
+        this.calculateVat(),
+        this.sumAllProduct() - this.sumAllProductDiscount()
+      );
+      json.fields.id = { stringValue: this.$route.params.qid };
+      update_data(
+        "quotation_detail",
+        String(this.$route.params.qid),
+        json
+      ).then((res) => {
+        if (res) {
+          this.$message.success("อัพเดทข้อมูลเรียบร้อยแล้ว", 3);
+          this.$router.push(`/quotation-paper/${this.tour_id}`);
+        } else {
+          this.$message.error("เกิดข้อผิดพลาด", 3);
+        }
+      });
     },
   },
 });
