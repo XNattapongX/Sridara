@@ -314,15 +314,7 @@ export const quotation_detail_with_product = (
   less_cash_discount: number,
   product_value: number,
   vat: number,
-  grand_total: number,
-  seller_siging_name: string,
-  seller_siging_date: Date,
-  payee_siging_name: string,
-  payee_siging_date: Date,
-  examiner_siging_name: string,
-  examiner_siging_date: Date,
-  Authorized_person_siging_name: string,
-  Authorized_person_siging_date: Date
+  grand_total: number
 ) => {
   const arrayValue = product.map((item) => {
     return {
@@ -392,7 +384,7 @@ export const quotation_detail_with_product = (
         stringValue: seller_department,
       },
       confirm_price_within: {
-        stringValue: String(confirm_price_within),
+        stringValue: dayjs(confirm_price_within).format("DD/MM/BBBB"),
       },
       delivery_date: {
         stringValue: dayjs(delivery_date).format("DD/MM/BBBB"),
@@ -406,7 +398,7 @@ export const quotation_detail_with_product = (
         stringValue: String(earnest_money),
       },
       price_validity_period: {
-        stringValue: price_validity_period,
+        stringValue: String(price_validity_period),
       },
       sub_total: {
         stringValue: String(sub_total),
@@ -422,30 +414,6 @@ export const quotation_detail_with_product = (
       },
       grand_total: {
         stringValue: String(grand_total),
-      },
-      seller_siging_name: {
-        stringValue: seller_siging_name,
-      },
-      seller_siging_date: {
-        stringValue: dayjs(seller_siging_date).format("DD/MM/BBBB"),
-      },
-      payee_siging_name: {
-        stringValue: payee_siging_name,
-      },
-      payee_siging_date: {
-        stringValue: dayjs(payee_siging_date).format("DD/MM/BBBB"),
-      },
-      examiner_siging_name: {
-        stringValue: examiner_siging_name,
-      },
-      examiner_siging_date: {
-        stringValue: dayjs(examiner_siging_date).format("DD/MM/BBBB"),
-      },
-      Authorized_person_siging_name: {
-        stringValue: Authorized_person_siging_name,
-      },
-      Authorized_person_siging_date: {
-        stringValue: dayjs(Authorized_person_siging_date).format("DD/MM/BBBB"),
       },
     },
   };
@@ -472,15 +440,7 @@ export const quotation_detail = (
   less_cash_discount: number,
   product_value: number,
   vat: number,
-  grand_total: number,
-  seller_siging_name: string,
-  seller_siging_date: Date,
-  payee_siging_name: string,
-  payee_siging_date: Date,
-  examiner_siging_name: string,
-  examiner_siging_date: Date,
-  Authorized_person_siging_name: string,
-  Authorized_person_siging_date: Date
+  grand_total: number
 ) => {
   return {
     fields: {
@@ -546,30 +506,6 @@ export const quotation_detail = (
       },
       grand_total: {
         stringValue: String(grand_total),
-      },
-      seller_siging_name: {
-        stringValue: seller_siging_name,
-      },
-      seller_siging_date: {
-        stringValue: dayjs(seller_siging_date).format("DD/MM/BBBB"),
-      },
-      payee_siging_name: {
-        stringValue: payee_siging_name,
-      },
-      payee_siging_date: {
-        stringValue: dayjs(payee_siging_date).format("DD/MM/BBBB"),
-      },
-      examiner_siging_name: {
-        stringValue: examiner_siging_name,
-      },
-      examiner_siging_date: {
-        stringValue: dayjs(examiner_siging_date).format("DD/MM/BBBB"),
-      },
-      Authorized_person_siging_name: {
-        stringValue: Authorized_person_siging_name,
-      },
-      Authorized_person_siging_date: {
-        stringValue: dayjs(Authorized_person_siging_date).format("DD/MM/BBBB"),
       },
     },
   };

@@ -90,12 +90,6 @@
           prepend-icon="mdi-receipt-text"
           title="จัดการใบเสร็จรับเงิน"
           value="จัดการใบเสร็จรับเงิน"></v-list-item>
-        <v-list-item
-          color="indigo-accent-4"
-          prepend-icon="mdi-logout"
-          title="ลงชื่อออก"
-          value="ลงชื่อออก">
-        </v-list-item>
       </v-list>
     </v-navigation-drawer>
   </v-layout>
