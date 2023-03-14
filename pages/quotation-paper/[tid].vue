@@ -1,8 +1,7 @@
 <template>
   <div
-    style="display: flex; background-color: rgb(225, 225, 241); z-index: -111"
-  >
-    <div class="page">
+    style="display: flex; background-color: rgb(225, 225, 241); z-index: -111">
+    <div class="page" v-if="go">
       <v-container>
         <v-row style="font-size: 12px; padding: 1px; margin: 1px auto">
           <v-col style="padding: 1px; margin: 0 auto"
@@ -39,8 +38,7 @@
                     border-left: 1px solid #000000;
                     width: 170px;
                     font-weight: bold;
-                  "
-                >
+                  ">
                   ใบเสนอราคา/ยืนยันการสั่งซื้อ
                 </td>
               </tr>
@@ -52,8 +50,7 @@
                     border-right: 1px solid #000000;
                     border-bottom: 1px solid #000000;
                     border-left: 1px solid #000000;
-                  "
-                >
+                  ">
                   Quatation
                 </td>
               </tr>
@@ -64,12 +61,11 @@
                     width: 50px;
                     font-weight: bold;
                     padding: 0px 0px 0px 3px;
-                  "
-                >
+                  ">
                   เลขที่
                 </td>
                 <td style="border: 1px solid black; padding: 0px 0px 0px 3px">
-                  184648456
+                  {{ quotation.fields.quotation_id.stringValue }}
                 </td>
               </tr>
               <tr>
@@ -79,12 +75,11 @@
                     width: 50px;
                     font-weight: bold;
                     padding: 0px 0px 0px 3px;
-                  "
-                >
+                  ">
                   วันที่
                 </td>
                 <td style="border: 1px solid black; padding: 0px 0px 0px 3px">
-                  20/02/66
+                  {{ quotation.fields.quotation_date.stringValue }}
                 </td>
               </tr>
             </v-table></v-col
@@ -101,12 +96,11 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td style="padding-left: 4px; font-weight: bold" width="25% ">
                   ชื่อลูกค้า:
                 </td>
-                <td>สมศรี หมีเรืองแสง</td>
+                <td>{{ quotation.fields.customer_name.stringValue }}</td>
               </tr>
               <tr
                 style="
@@ -115,10 +109,9 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td style="padding-left: 4px; font-weight: bold">ID TEX:</td>
-                <td>1150</td>
+                <td>{{ quotation.fields.tax_id.stringValue }}</td>
               </tr>
               <tr
                 style="
@@ -127,12 +120,11 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td style="padding-left: 4px; font-weight: bold">
                   ชื่อผู้ติดต่อ:
                 </td>
-                <td>สมหอม ยอมทุกอย่าง</td>
+                <td>{{ quotation.fields.contact_name.stringValue }}</td>
               </tr>
               <tr
                 style="
@@ -141,12 +133,11 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 80px;
-                "
-              >
+                ">
                 <td style="padding: auto; padding-left: 4px; font-weight: bold">
                   ที่อยู่:
                 </td>
-                <td>15/55 ตำบลศิลา อำเภอเมือง จังหวัดของแก่น 40000</td>
+                <td>{{ quotation.fields.customer_address.stringValue }}</td>
               </tr>
               <tr
                 style="
@@ -155,10 +146,9 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td style="padding-left: 4px; font-weight: bold">โทร:</td>
-                <td>0661242478</td>
+                <td>{{ quotation.fields.contact_tel.stringValue }}</td>
               </tr>
             </v-table></v-col
           >
@@ -171,12 +161,11 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td style="padding-left: 4px; font-weight: bold" width="40%">
                   รหัสลูกค้า:
                 </td>
-                <td>6111445875</td>
+                <td>{{ quotation.fields.customer_code.stringValue }}</td>
               </tr>
               <tr
                 style="
@@ -185,12 +174,11 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td style="padding-left: 4px; font-weight: bold">
                   ผู้เสนอขาย:
                 </td>
-                <td>สมัครใจ จำยอม</td>
+                <td>{{ quotation.fields.seller_name.stringValue }}</td>
               </tr>
               <tr
                 style="
@@ -199,10 +187,9 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td style="padding-left: 4px; font-weight: bold">ฝ่าย:</td>
-                <td>หาของ</td>
+                <td>{{ quotation.fields.seller_department.stringValue }}</td>
               </tr>
               <tr
                 style="
@@ -211,12 +198,11 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td style="padding-left: 4px; font-weight: bold">
                   ยืนยันราคาภายใน:
                 </td>
-                <td>20/05/66</td>
+                <td>{{ quotation.fields.confirm_price_within.stringValue }}</td>
               </tr>
               <tr
                 style="
@@ -225,12 +211,9 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
-                <td style="padding-left: 4px; font-weight: bold">
-                  ยืนยันราคาภายใน:
-                </td>
-                <td>20/05/66</td>
+                ">
+                <td style="padding-left: 4px; font-weight: bold">วันส่งของ:</td>
+                <td>{{ quotation.fields.delivery_date.stringValue }}</td>
               </tr>
               <tr
                 style="
@@ -239,10 +222,9 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td style="padding-left: 4px; font-weight: bold">Email:</td>
-                <td>fin@soft.com</td>
+                <td>{{ quotation.fields.contact_email.stringValue }}</td>
               </tr>
             </v-table></v-col
           >
@@ -250,8 +232,13 @@
 
         <v-row style="padding: 1px; margin: auto">
           <v-col style="padding: 1px; height: 400px; border: 1px solid black">
-            <v-table density="compact" height="300px">
-              <thead style="font-weight: bold; font-size: 14px">
+            <v-table density="compact" height="397px">
+              <thead
+                style="
+                  font-weight: bold;
+                  font-size: 14px;
+                  border-bottom: 1px solid black;
+                ">
                 <tr>
                   <td class="text-center">ลำดับ</td>
                   <td class="text-center">รหัสสินค้า</td>
@@ -264,35 +251,34 @@
                 </tr>
               </thead>
               <tbody style="font-weight: normal; font-size: 14px">
-                <tr>
-                  <td class="text-center">fdsaffs</td>
-                  <td class="text-center">dasfdasf</td>
-                  <td class="text-center">fasdfs</td>
-                  <td class="text-center">fdsaff</td>
-                  <td class="text-center">fdsafas</td>
-                  <td class="text-center">dsafas</td>
-                  <td class="text-center">dsafasdf</td>
-                  <td class="text-center">dasfads</td>
-                </tr>
-                <tr>
-                  <td class="text-center">fdsaffs</td>
-                  <td class="text-center">dasfdasf</td>
-                  <td class="text-center">fasdfs</td>
-                  <td class="text-center">fdsaff</td>
-                  <td class="text-center">fdsafas</td>
-                  <td class="text-center">dsafas</td>
-                  <td class="text-center">dsafasdf</td>
-                  <td class="text-center">dasfads</td>
-                </tr>
-                <tr>
-                  <td class="text-center">fdsaffs</td>
-                  <td class="text-center">dasfdasf</td>
-                  <td class="text-center">fasdfs</td>
-                  <td class="text-center">fdsaff</td>
-                  <td class="text-center">fdsafas</td>
-                  <td class="text-center">dsafas</td>
-                  <td class="text-center">dsafasdf</td>
-                  <td class="text-center">dasfads</td>
+                <tr
+                  v-for="(item, index) in quotation.fields.product.arrayValue
+                    .values"
+                  :key="index">
+                  <td class="text-center">{{ index + 1 }}</td>
+                  <td class="text-center">
+                    {{ item.mapValue.fields.product_code.stringValue }}
+                  </td>
+                  <td class="text-center">
+                    {{ item.mapValue.fields.product_name.stringValue }}
+                  </td>
+                  <td class="text-center">
+                    {{ item.mapValue.fields.product_amount.stringValue }}
+                  </td>
+                  <td class="text-center">
+                    {{
+                      item.mapValue.fields.product_price_per_unit.stringValue
+                    }}
+                  </td>
+                  <td class="text-center">
+                    {{ item.mapValue.fields.product_discount.stringValue }}
+                  </td>
+                  <td class="text-center">
+                    {{ item.mapValue.fields.product_tax.stringValue }}
+                  </td>
+                  <td class="text-center">
+                    {{ item.mapValue.fields.product_total.stringValue }}
+                  </td>
                 </tr>
               </tbody>
             </v-table>
@@ -303,23 +289,29 @@
           <v-col style="padding: 0">
             <v-table
               density="compact"
-              style="font-size: 12px; border: 1px solid black; padding: 2px"
-            >
+              style="font-size: 12px; border: 1px solid black; padding: 2px">
               <tr>
                 <td style="width: 570px; font-weight: bold">หมายเหตุ:</td>
                 <td style="width: 100px">มัดจำ</td>
-                <td style="width: 76px">100000</td>
+                <td style="width: 76px; text-align: end">
+                  {{ quotation.fields.earnest_money.stringValue }}
+                  บาท&nbsp;&nbsp;
+                </td>
               </tr>
               <tr>
                 <td>
                   <v-row>
                     <v-col cols="3"> กำหนดยืนราคา </v-col>
-                    <v-col cols="2"> 50 </v-col>
+                    <v-col cols="2">
+                      {{ quotation.fields.price_validity_period.stringValue }}
+                    </v-col>
                     <v-col cols="2"> วัน </v-col>
                   </v-row>
                 </td>
                 <td>รวมเงิน</td>
-                <td>150000</td>
+                <td style="text-align: end">
+                  {{ quotation.fields.sub_total.stringValue }} บาท&nbsp;&nbsp;
+                </td>
               </tr>
               <tr>
                 <td>
@@ -327,14 +319,20 @@
                   ขอขอบพระคุณมา ณ ที่นี้
                 </td>
                 <td>มูลค่าสินค้า</td>
-                <td>200000</td>
+                <td style="text-align: end">
+                  {{ quotation.fields.product_value.stringValue }}
+                  บาท&nbsp;&nbsp;
+                </td>
               </tr>
               <tr>
                 <td style="font-weight: bold">
                   ดังรายละเอียดธนาคารดังต่อไปนี้ :
                 </td>
                 <td>ส่วนลดสินค้า</td>
-                <td>1000</td>
+                <td style="text-align: end">
+                  {{ quotation.fields.less_cash_discount.stringValue }}
+                  บาท&nbsp;&nbsp;
+                </td>
               </tr>
               <tr>
                 <td>
@@ -342,14 +340,18 @@
                   โดยชำระเงินก่อนการติดตั้งอย่างน้อย 7 วัน
                 </td>
                 <td>ภาษีมูลค่าเพิ่ม 7%</td>
-                <td>10000</td>
+                <td style="text-align: end">
+                  {{ quotation.fields.vat.stringValue }} บาท&nbsp;&nbsp;
+                </td>
               </tr>
               <tr>
                 <td>
                   2.หลังติดตั้งและใช้งานได้เรียบร้อยแล้วให้ชำระเงินส่วนที่เหลือ
                 </td>
                 <td>จำนวนเงินทั้งสิ้น</td>
-                <td>1200000</td>
+                <td style="text-align: end">
+                  {{ quotation.fields.grand_total.stringValue }} บาท&nbsp;&nbsp;
+                </td>
               </tr>
             </v-table>
           </v-col>
@@ -362,8 +364,7 @@
               border-right: 1px solid #000000;
               border-bottom: 1px none #000000;
               border-left: 1px solid #000000;
-            "
-          >
+            ">
             <td>&#32;</td>
             <td
               style="
@@ -371,8 +372,7 @@
                 border-right: 1px solid #000000;
                 border-bottom: 1px none #000000;
                 border-left: 1px solid #000000;
-              "
-            >
+              ">
               &#32;
             </td>
             <td
@@ -381,8 +381,7 @@
                 border-right: 1px solid #000000;
                 border-bottom: 1px none #000000;
                 border-left: 1px solid #000000;
-              "
-            >
+              ">
               &#32;
             </td>
             <td style="padding: 3px 0px 3px 3px">
@@ -395,8 +394,7 @@
               border-right: 1px solid #000000;
               border-bottom: 1px none #000000;
               border-left: 1px solid #000000;
-            "
-          >
+            ">
             <td>&#32;</td>
             <td
               style="
@@ -404,8 +402,7 @@
                 border-right: 1px solid #000000;
                 border-bottom: 1px none #000000;
                 border-left: 1px solid #000000;
-              "
-            >
+              ">
               &#32;
             </td>
             <td
@@ -414,8 +411,7 @@
                 border-right: 1px solid #000000;
                 border-bottom: 1px none #000000;
                 border-left: 1px solid #000000;
-              "
-            >
+              ">
               &#32;
             </td>
             <td style="padding: 0px 0px 3px 3px">
@@ -430,14 +426,13 @@
                 border-bottom: 1px solid #000000;
                 border-left: 1px solid #000000;
                 width: 187px;
-              "
-            >
+              ">
               <v-table>
                 <tr style="height: 110px">
                   <td>&#32;</td>
                 </tr>
                 <tr style="text-align: center">
-                  <td>สมหอม นอมนม</td>
+                  <td></td>
                 </tr>
                 <tr style="text-align: center">
                   <td>ผู้เสนอราคา</td>
@@ -454,14 +449,13 @@
                 border-bottom: 1px solid #000000;
                 border-left: 1px solid #000000;
                 width: 187px;
-              "
-            >
+              ">
               <v-table>
                 <tr style="height: 110px">
                   <td>&#32;</td>
                 </tr>
                 <tr style="text-align: center">
-                  <td>สมหอม นอมนม</td>
+                  <td></td>
                 </tr>
                 <tr style="text-align: center">
                   <td>ผู้รับเงิน</td>
@@ -478,14 +472,13 @@
                 border-bottom: 1px solid #000000;
                 border-left: 1px solid #000000;
                 width: 187px;
-              "
-            >
+              ">
               <v-table>
                 <tr style="height: 110px">
                   <td>&#32;</td>
                 </tr>
                 <tr style="text-align: center">
-                  <td>สมหอม นอมนม</td>
+                  <td></td>
                 </tr>
                 <tr style="text-align: center">
                   <td>ผู้ตรวจสอบ</td>
@@ -502,14 +495,13 @@
                 border-bottom: 1px solid #000000;
                 border-left: 1px solid #000000;
                 width: 187px;
-              "
-            >
+              ">
               <v-table>
                 <tr style="height: 110px">
                   <td>&#32;</td>
                 </tr>
                 <tr style="text-align: center">
-                  <td>สมหอม นอมนม</td>
+                  <td></td>
                 </tr>
                 <tr style="text-align: center">
                   <td>ผู้อนุมัติสั่งซื้อ</td>
@@ -525,11 +517,20 @@
     </div>
   </div>
   <v-row
+    v-if="go"
     justify="center"
     style="margin-top: -2rem; background-color: rgb(225, 225, 241)"
     class="hide-btn"
-    ><v-col style="text-align: center"
-      ><v-btn color="light-blue-accent-4" @click="print"
+    ><v-col style="text-align: right">
+      <v-btn
+        color="yellow-darken-4"
+        @click="
+          $router.push(`/qpform/quoedit/${quotation.fields.id.stringValue}`)
+        "
+        >แก้ไขเอกสารใบเสนอราคา</v-btn
+      ></v-col
+    ><v-col style="text-align: left">
+      <v-btn color="light-blue-accent-4" @click="print"
         >สั่งพิมพ์ หรือ บันทึกเป็น PDF</v-btn
       ></v-col
     ></v-row
@@ -537,8 +538,30 @@
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
-
+import { read_one_data_conditions } from "~~/services/configs";
+const key = "updatable";
 export default defineComponent({
+  data() {
+    return {
+      quotation: {} as any,
+      go: false,
+    };
+  },
+  mounted() {
+    this.$message.loading({
+      content: "กำลังโหลดข้อมูลใบเสนอราคา และสร้างเป็นเอกสาร",
+      key,
+    });
+    read_one_data_conditions(
+      "quotation_detail",
+      "tour_id",
+      String(this.$route.params.tid)
+    ).then((res) => {
+      this.$message.success({ content: "สำเร็จ", key, duration: 1 });
+      this.go = true;
+      this.quotation = res[0];
+    });
+  },
   methods: {
     print() {
       window.print();
