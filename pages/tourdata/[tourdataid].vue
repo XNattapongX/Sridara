@@ -162,21 +162,34 @@
         >ลบทัวร์</v-btn
       ></v-col
     >
+    <v-col style="text-align: center" v-if="haveQuotation && !haveBilling">
+      <v-btn variant="tonal" color="light-blue-accent-4" @click="dialog = true"
+        >สร้างใบแจ้งหนี้</v-btn
+      >
+    </v-col>
+    <v-col style="text-align: center" v-if="haveBilling && haveQuotation">
+      <v-btn
+        variant="tonal"
+        color="light-blue-accent-4"
+        @click="$router.push(`/billing-paper/${$route.params.tourdataid}`)"
+        >ดูใบแจ้งหนี้</v-btn
+      >
+    </v-col>
+    <v-col style="text-align: center">
+      <v-btn variant="tonal" color="light-blue-accent-4"
+        >สร้างใบกำกับภาษี</v-btn
+      >
+    </v-col>
     <v-col style="text-align: center" v-if="haveQuotation">
       <v-btn
         variant="tonal"
         color="light-blue-accent-4"
-        @click="$router.push(`/quotation`)"
+        @click="$router.push(`/quotation-paper/${$route.params.tourdataid}`)"
         >ดูใบเสนอราคา</v-btn
       >
     </v-col>
     <v-col style="text-align: center" v-else>
-      <v-btn
-        variant="tonal"
-        color="light-blue-accent-4"
-        @click="$router.push(`/qpform/${$route.params.tourdataid}`)"
-        >สร้างใบเสนอราคา</v-btn
-      >
+      <v-btn variant="tonal" color="light-blue-accent-4">สร้างใบเสนอราคา</v-btn>
     </v-col>
     <v-col style="text-align: center"
       ><v-btn
@@ -194,6 +207,53 @@
       ></v-col
     >
   </v-row>
+
+  <a-modal
+    v-model:visible="dialog"
+    title="ฟอร์มสร้างใบแจ้งหนี้/ใบวางบิล"
+    ok-text="สร้าง"
+    cancel-text="ยกเลิก"
+    @ok="generateBilling">
+    <v-row>
+      <v-col>
+        <label
+          for="base-input"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >เลขที่</label
+        >
+        <input
+          type="text"
+          id="base-input"
+          v-model="billing.billing_note_no"
+          class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+      </v-col>
+      <v-col>
+        <label
+          for="base-input"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >วันที่</label
+        >
+        <a-date-picker
+          :locale="locale"
+          style="z-index: 999"
+          v-model:value="billing.billing_note_date"
+          class="date-picker"
+          format="DD/MM/YYYY" />
+      </v-col>
+      <v-col>
+        <label
+          for="base-input"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >หมายเลขแฟกซ์</label
+        >
+        <input
+          type="text"
+          id="base-input"
+          v-model="billing.billing_note_fax"
+          class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+      </v-col>
+    </v-row>
+  </a-modal>
 </template>
 
 <script>
@@ -205,7 +265,15 @@ import {
   delete_all_data_conditions,
   read_one_data_conditions,
 } from "~~/services/configs";
+import locale from "ant-design-vue/es/date-picker/locale/th_TH";
+import { create_data } from "~~/services/configs";
+import { billing_note_detail } from "~~/services/payload";
 export default {
+  setup() {
+    return {
+      locale,
+    };
+  },
   mounted() {
     read_one_data("group_tour", this.$route.params.tourdataid).then(
       (result) => {
@@ -234,6 +302,15 @@ export default {
     ).then((result) => {
       if (result.length) {
         this.haveQuotation = true;
+      }
+    });
+    read_one_data_conditions(
+      "billing_note",
+      "tour_id",
+      this.$route.params.tourdataid
+    ).then((result) => {
+      if (result.length) {
+        this.haveBilling = true;
       }
     });
   },
@@ -265,14 +342,47 @@ export default {
         }
       });
     },
+    validateBilling() {
+      if (
+        this.billing.billing_note_no == "" ||
+        this.billing.billing_note_date == "" ||
+        this.billing.billing_note_fax == ""
+      ) {
+        this.$message.error("กรุณากรอกข้อมูลให้ครบถ้วน");
+        return false;
+      } else {
+        return true;
+      }
+    },
+    generateBilling() {
+      if (this.validateBilling()) {
+        const raw = billing_note_detail(
+          this.$route.params.tourdataid,
+          this.billing.billing_note_no,
+          this.billing.billing_note_date,
+          this.billing.billing_note_fax
+        );
+        create_data("billing_note", raw).then((res) => {
+          this.dialog = false;
+          this.$router.push(`/billing-paper/${res}`);
+        });
+      }
+    },
   },
   data() {
     return {
       tour_data: "",
       loading: true,
       haveQuotation: false,
+      haveBilling: false,
+      dialog: false,
       members_ls: [],
       hotels_ls: [],
+      billing: {
+        billing_note_no: "",
+        billing_note_date: "",
+        billing_note_fax: "",
+      },
     };
   },
 };
@@ -288,5 +398,11 @@ export default {
 .table-row-hover:hover {
   background-color: rgb(236, 236, 236);
   transition: 0.2s;
+}
+.date-picker {
+  height: 4.7vmin;
+  background-color: #f9fafb;
+  border-radius: 0.4rem;
+  width: 100%;
 }
 </style>

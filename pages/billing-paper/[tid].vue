@@ -1,7 +1,6 @@
 <template>
   <div
-    style="display: flex; background-color: rgb(225, 225, 241); z-index: -111"
-  >
+    style="display: flex; background-color: rgb(225, 225, 241); z-index: -111">
     <div class="page">
       <v-container>
         <v-row style="font-size: 12px; padding: 1px; margin: 1px auto">
@@ -38,9 +37,8 @@
                     border-left: 1px solid #000000;
                     width: 170px;
                     font-weight: bold;
-                  "
-                >
-                  ใบกำกับภาษี/ใบส่งของ
+                  ">
+                  ใบวางบิล/ใบแจ้งหนี้
                 </td>
               </tr>
               <tr style="text-align: center">
@@ -51,9 +49,8 @@
                     border-right: 1px solid #000000;
                     border-bottom: 1px solid #000000;
                     border-left: 1px solid #000000;
-                  "
-                >
-                  Tax Invoice/Delivery Order
+                  ">
+                  Billing Note/Invoice
                 </td>
               </tr>
               <tr style="text-align: center">
@@ -66,8 +63,7 @@
                     border-left: 1px solid #000000;
                     width: 170px;
                     font-weight: bold;
-                  "
-                >
+                  ">
                   ต้นฉบับ/Original
                 </td>
               </tr>
@@ -79,8 +75,7 @@
                     border-right: 1px solid #000000;
                     border-bottom: 1px solid #000000;
                     border-left: 1px solid #000000;
-                  "
-                >
+                  ">
                   เอกสารออกเป็นชุด
                 </td>
               </tr>
@@ -98,12 +93,40 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
-                <td colspan="2" style="padding-left: 4px; font-weight: bold">
+                ">
+                <td
+                  colspan="2"
+                  style="padding-left: 4px; font-weight: bold"
+                  width="25% ">
                   ชื่อลูกค้า:
                 </td>
                 <td colspan="2">สมศรี หมีเรืองแสง</td>
+              </tr>
+              <tr
+                style="
+                  border-top: 1px solid #000000;
+                  border-right: none;
+                  border-bottom: 1px solid #000000;
+                  border-left: 1px solid #000000;
+                  height: 40px;
+                ">
+                <td colspan="2" style="padding-left: 4px; font-weight: bold">
+                  ID TEX:
+                </td>
+                <td colspan="2">1150</td>
+              </tr>
+              <tr
+                style="
+                  border-top: 1px solid #000000;
+                  border-right: none;
+                  border-bottom: 1px solid #000000;
+                  border-left: 1px solid #000000;
+                  height: 40px;
+                ">
+                <td colspan="2" style="padding-left: 4px; font-weight: bold">
+                  ชื่อผู้ติดต่อ:
+                </td>
+                <td colspan="2">สมหอม ยอมทุกอย่าง</td>
               </tr>
               <tr
                 style="
@@ -112,12 +135,10 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 80px;
-                "
-              >
+                ">
                 <td
                   colspan="2"
-                  style="padding: auto; padding-left: 4px; font-weight: bold"
-                >
+                  style="padding: auto; padding-left: 4px; font-weight: bold">
                   ที่อยู่:
                 </td>
                 <td colspan="2">
@@ -131,39 +152,24 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
-                <td colspan="2" style="font-weight: bold; padding-left: 4px">
-                  เลขประจำตัวผู้เสียภาษี:
+                ">
+                <td style="padding-left: 4px; font-weight: bold">โทร:</td>
+                <td>0661242478</td>
+                <td
+                  style="
+                    padding-left: 4px;
+                    font-weight: bold;
+                    border-top: 1px none #000000;
+                    border-right: 1px none #000000;
+                    border-bottom: 1px none #000000;
+                    border-left: 1px solid #000000;
+                  ">
+                  Fax:
                 </td>
-                <td colspan="2">1235588745</td>
+                <td>12457888</td>
               </tr>
-              <tr
-                style="
-                  border-top: 1px solid #000000;
-                  border-right: none #000000;
-                  border-bottom: 1px solid #000000;
-                  border-left: 1px solid #000000;
-                  height: 80px;
-                "
-              >
-                <td colspan="2">
-                  <v-checkbox
-                    class="shrink mr-2"
-                    hide-details
-                    label="สำนักงานใหญ่"
-                  ></v-checkbox>
-                </td>
-                <td colspan="2">
-                  <v-checkbox
-                    class="shrink mr-2"
-                    hide-details
-                    label="สาขาที่:"
-                  ></v-checkbox>
-                </td>
-              </tr>
-            </v-table>
-          </v-col>
+            </v-table></v-col
+          >
           <v-col style="padding: 0" cols="5"
             ><v-table>
               <tr
@@ -173,8 +179,7 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td style="padding-left: 4px; font-weight: bold" width="40%">
                   เลขที่:
                 </td>
@@ -187,10 +192,9 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td style="padding-left: 4px; font-weight: bold">วันที่:</td>
-                <td>23/04/66</td>
+                <td>สมัครใจ จำยอม</td>
               </tr>
               <tr
                 style="
@@ -199,36 +203,11 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
-                <td style="padding-left: 4px; font-weight: bold">กำหนดชำระ:</td>
-                <td>28/06/66</td>
-              </tr>
-              <tr
-                style="
-                  border-top: 1px solid #000000;
-                  border-right: 1px solid #000000;
-                  border-bottom: 1px solid #000000;
-                  border-left: 1px solid #000000;
-                  height: 40px;
-                "
-              >
-                <td style="padding-left: 4px; font-weight: bold">ผู้ขาย:</td>
-                <td>พร้อมใจ สมยอม</td>
-              </tr>
-              <tr
-                style="
-                  border-top: 1px solid #000000;
-                  border-right: 1px solid #000000;
-                  border-bottom: 1px solid #000000;
-                  border-left: 1px solid #000000;
-                  height: 40px;
-                "
-              >
+                ">
                 <td style="padding-left: 4px; font-weight: bold">
                   รหัสลูกค้า:
                 </td>
-                <td>12587665</td>
+                <td>89999</td>
               </tr>
               <tr
                 style="
@@ -237,12 +216,35 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
+                <td style="padding-left: 4px; font-weight: bold">
+                  ผู้เสนอขาย:
+                </td>
+                <td>20/05/66</td>
+              </tr>
+              <tr
+                style="
+                  border-top: 1px solid #000000;
+                  border-right: 1px solid #000000;
+                  border-bottom: 1px solid #000000;
+                  border-left: 1px solid #000000;
+                  height: 40px;
+                ">
+                <td style="padding-left: 4px; font-weight: bold">ฝ่าย:</td>
+                <td>20/05/66</td>
+              </tr>
+              <tr
+                style="
+                  border-top: 1px solid #000000;
+                  border-right: 1px solid #000000;
+                  border-bottom: 1px solid #000000;
+                  border-left: 1px solid #000000;
+                  height: 40px;
+                ">
                 <td style="padding-left: 4px; font-weight: bold">
                   ยืนยันราคาวันที่:
                 </td>
-                <td>12/12/67</td>
+                <td>fin@soft.com</td>
               </tr>
             </v-table></v-col
           >
@@ -302,37 +304,34 @@
         <v-row style="padding: 1px; margin: auto">
           <v-col style="padding: 0">
             <v-table
-              style="font-size: 12px; border: 1px solid black; padding: 2px"
-            >
+              style="font-size: 12px; border: 1px solid black; padding: 2px">
               <tr>
-                <td style="width: 500px; font-weight: bold">หมายเหตุ:</td>
-                <td style="width: 80px">รวมเงิน</td>
+                <td style="width: 580px; font-weight: bold">หมายเหตุ:</td>
+                <td style="width: 95px">รวมเงิน</td>
                 <td style="width: 71px">100000</td>
               </tr>
               <tr>
                 <td>
-                  - หากสินค้าไม่ครบถ้วนกรุณาแจ้งกลับบริษัทฯ ภายใน 7 วัน
-                  หลังจากได้รับสินค้าแล้ว มิฉะนั้นบริษัทฯ จะไม่รับผิดชอบ
-                  ใดๆทั้งสิ้น
+                  1.สินค้าตามรายการข้างต้นแม้จะได้รับมอบแก่ผู้ซื้อแล้วก็ยังคงเป็นสินทรัพย์ของผู้ขายจนกว่าผู้ซื้อจะชำระเงินเรียบร้อย
                 </td>
-                <td>หักส่วนลดพิเศษ</td>
+                <td>มัดจำ 100%</td>
                 <td>150000</td>
               </tr>
               <tr>
                 <td>
-                  -
-                  กรรมสิทธิ์สินค้าตามใบส่งของนี้ยังถือว่าเป็นของผู้ขายอยู่จนกว่าผู้ซื้อจะได้ชำระเงินหรือเช็คขึ้นเงินเรียบร้อย
+                  2.หากชำระเงินด้วยเช็คโปรดขีดคร่อมในนาม
+                  “บริษัทศรีดาราทัวร์จำกัด” และขีดฆ่าหรือผู้ถือออก
                 </td>
-                <td>มูลค่ายกเว้นภาษี</td>
+                <td>มูลค่าคิดภาษี</td>
                 <td>200000</td>
               </tr>
 
               <tr>
                 <td>
-                  - หากชำระเงินด้วยเช็คโปรดขีดคร่อมในนาม
-                  “บริษัทศรีดาราทัวร์จำกัด” และขีดฆ่าหรือผู้ถือออก
+                  3.การชำระเงินด้วยเช็คจะสมบูรณ์เมื่อ
+                  บริษัทฯได้รับเงินตามเช็คเรียบร้อย
                 </td>
-                <td>มูลค่าคิดภาษี</td>
+                <td>ภาษีมูลค่าเพิ่ม 7%</td>
                 <td>10000</td>
               </tr>
               <tr>
@@ -346,13 +345,8 @@
                     </v-col>
                   </v-row>
                 </td>
-                <td>ภาษีมูลค่าเพิ่ม</td>
+                <td>ยอดสุทธิ</td>
                 <td>1000</td>
-              </tr>
-              <tr>
-                <td rowspan="2">&nbsp;</td>
-                <td style="font-weight: bold" rowspan="2">ยอดสุทธิ</td>
-                <td rowspan="2">1000</td>
               </tr>
             </v-table>
           </v-col>
@@ -367,8 +361,7 @@
                 border-bottom: 1px solid #000000;
                 border-left: 1px solid #000000;
                 width: 187px;
-              "
-            >
+              ">
               <v-table>
                 <tr style="height: 110px">
                   <td>&nbsp;</td>
@@ -391,8 +384,7 @@
                 border-bottom: 1px solid #000000;
                 border-left: 1px solid #000000;
                 width: 187px;
-              "
-            >
+              ">
               <v-table>
                 <tr style="height: 110px">
                   <td>&nbsp;</td>
@@ -415,8 +407,7 @@
                 border-bottom: 1px solid #000000;
                 border-left: 1px solid #000000;
                 width: 187px;
-              "
-            >
+              ">
               <v-table>
                 <tr style="height: 110px">
                   <td>&nbsp;</td>
@@ -439,8 +430,7 @@
                 border-bottom: 1px solid #000000;
                 border-left: 1px solid #000000;
                 width: 187px;
-              "
-            >
+              ">
               <v-table>
                 <tr style="height: 110px">
                   <td>&nbsp;</td>
@@ -465,8 +455,10 @@
     justify="center"
     style="margin-top: -2rem; background-color: rgb(225, 225, 241)"
     class="hide-btn"
-    ><v-col style="text-align: center"
-      ><v-btn color="light-blue-accent-4" @click="print"
+    ><v-col style="text-align: right">
+      <v-btn color="yellow-darken-4">แก้ไขเอกสารใบแจ้งหนี้</v-btn></v-col
+    ><v-col style="text-align: left">
+      <v-btn color="light-blue-accent-4" @click="print"
         >สั่งพิมพ์ หรือ บันทึกเป็น PDF</v-btn
       ></v-col
     ></v-row
