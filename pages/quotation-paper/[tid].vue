@@ -23,10 +23,11 @@
               www.facebook.com/sridaratourfanpage
               <td></td>
               ********************************************************
-            </v-sheet></v-col
-          >
-          <v-col style="padding: 1px; margin: 0 auto"
-            ><v-table>
+            </v-sheet>
+          </v-col>
+
+          <v-col style="padding: 1px; margin: 0 auto">
+            <v-table>
               <tr style="text-align: center">
                 <td
                   colspan="2"
