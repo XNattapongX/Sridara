@@ -1,7 +1,6 @@
 <template>
   <div
-    style="display: flex; background-color: rgb(225, 225, 241); z-index: -111"
-  >
+    style="display: flex; background-color: rgb(225, 225, 241); z-index: -111">
     <div class="page">
       <v-container
         ><v-row style="font-size: 12px; padding: 1px; margin: 1px auto">
@@ -38,8 +37,7 @@
                     border-left: 1px solid #000000;
                     width: 170px;
                     font-weight: bold;
-                  "
-                >
+                  ">
                   ใบวางบิล/ใบแจ้งหนี้
                 </td>
               </tr>
@@ -51,8 +49,7 @@
                     border-right: 1px solid #000000;
                     border-bottom: 1px solid #000000;
                     border-left: 1px solid #000000;
-                  "
-                >
+                  ">
                   Billing Note/Invoice
                 </td>
               </tr>
@@ -66,8 +63,7 @@
                     border-left: 1px solid #000000;
                     width: 170px;
                     font-weight: bold;
-                  "
-                >
+                  ">
                   ต้นฉบับ/Original
                 </td>
               </tr>
@@ -79,8 +75,7 @@
                     border-right: 1px solid #000000;
                     border-bottom: 1px solid #000000;
                     border-left: 1px solid #000000;
-                  "
-                >
+                  ">
                   เอกสารออกเป็นชุด
                 </td>
               </tr>
@@ -98,13 +93,11 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td
                   colspan="2"
                   style="padding-left: 4px; font-weight: bold"
-                  width="25% "
-                >
+                  width="25% ">
                   ชื่อลูกค้า:
                 </td>
                 <td colspan="2">สมศรี หมีเรืองแสง</td>
@@ -116,8 +109,7 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td colspan="2" style="padding-left: 4px; font-weight: bold">
                   ID TEX:
                 </td>
@@ -130,8 +122,7 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td colspan="2" style="padding-left: 4px; font-weight: bold">
                   ชื่อผู้ติดต่อ:
                 </td>
@@ -144,12 +135,10 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 80px;
-                "
-              >
+                ">
                 <td
                   colspan="2"
-                  style="padding: auto; padding-left: 4px; font-weight: bold"
-                >
+                  style="padding: auto; padding-left: 4px; font-weight: bold">
                   ที่อยู่:
                 </td>
                 <td colspan="2">
@@ -163,8 +152,7 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td style="padding-left: 4px; font-weight: bold">โทร:</td>
                 <td>0661242478</td>
                 <td
@@ -175,8 +163,7 @@
                     border-right: 1px none #000000;
                     border-bottom: 1px none #000000;
                     border-left: 1px solid #000000;
-                  "
-                >
+                  ">
                   Fax:
                 </td>
                 <td>12457888</td>
@@ -192,8 +179,7 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td style="padding-left: 4px; font-weight: bold" width="40%">
                   เลขที่:
                 </td>
@@ -206,8 +192,7 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td style="padding-left: 4px; font-weight: bold">วันที่:</td>
                 <td>สมัครใจ จำยอม</td>
               </tr>
@@ -218,8 +203,7 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td style="padding-left: 4px; font-weight: bold">
                   รหัสลูกค้า:
                 </td>
@@ -232,8 +216,7 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td style="padding-left: 4px; font-weight: bold">
                   ผู้เสนอขาย:
                 </td>
@@ -246,8 +229,7 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td style="padding-left: 4px; font-weight: bold">ฝ่าย:</td>
                 <td>20/05/66</td>
               </tr>
@@ -258,8 +240,7 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td style="padding-left: 4px; font-weight: bold">
                   ยืนยันราคาวันที่:
                 </td>
@@ -323,8 +304,7 @@
         <v-row style="padding: 1px; margin: auto">
           <v-col style="padding: 0">
             <v-table
-              style="font-size: 12px; border: 1px solid black; padding: 2px"
-            >
+              style="font-size: 12px; border: 1px solid black; padding: 2px">
               <tr>
                 <td style="width: 580px; font-weight: bold">หมายเหตุ:</td>
                 <td style="width: 95px">รวมเงิน</td>
@@ -381,8 +361,7 @@
                 border-bottom: 1px solid #000000;
                 border-left: 1px solid #000000;
                 width: 187px;
-              "
-            >
+              ">
               <v-table>
                 <tr style="height: 110px">
                   <td>&nbsp;</td>
@@ -405,8 +384,7 @@
                 border-bottom: 1px solid #000000;
                 border-left: 1px solid #000000;
                 width: 187px;
-              "
-            >
+              ">
               <v-table>
                 <tr style="height: 110px">
                   <td>&nbsp;</td>
@@ -429,8 +407,7 @@
                 border-bottom: 1px solid #000000;
                 border-left: 1px solid #000000;
                 width: 187px;
-              "
-            >
+              ">
               <v-table>
                 <tr style="height: 110px">
                   <td>&nbsp;</td>
@@ -453,8 +430,7 @@
                 border-bottom: 1px solid #000000;
                 border-left: 1px solid #000000;
                 width: 187px;
-              "
-            >
+              ">
               <v-table>
                 <tr style="height: 110px">
                   <td>&nbsp;</td>
@@ -479,8 +455,10 @@
     justify="center"
     style="margin-top: -2rem; background-color: rgb(225, 225, 241)"
     class="hide-btn"
-    ><v-col style="text-align: center"
-      ><v-btn color="light-blue-accent-4" @click="print"
+    ><v-col style="text-align: right">
+      <v-btn color="yellow-darken-4">แก้ไขเอกสารใบแจ้งหนี้</v-btn></v-col
+    ><v-col style="text-align: left">
+      <v-btn color="light-blue-accent-4" @click="print"
         >สั่งพิมพ์ หรือ บันทึกเป็น PDF</v-btn
       ></v-col
     ></v-row

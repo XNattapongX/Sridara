@@ -240,14 +240,24 @@
                   border-bottom: 1px solid black;
                 ">
                 <tr>
-                  <td class="text-center">ลำดับ</td>
-                  <td class="text-center">รหัสสินค้า</td>
-                  <td class="text-center">รายการสินค้า</td>
-                  <td class="text-center">จำนวน</td>
-                  <td class="text-center">ราคาต่อหน่วย</td>
-                  <td class="text-center">ส่วนลด</td>
-                  <td class="text-center">ภาษี</td>
-                  <td class="text-center">จำนวนเงิน</td>
+                  <td class="text-center" style="font-size: xx-small">ลำดับ</td>
+                  <td class="text-center" style="font-size: xx-small">
+                    รหัสสินค้า
+                  </td>
+                  <td class="text-center" style="font-size: xx-small">
+                    รายการสินค้า
+                  </td>
+                  <td class="text-center" style="font-size: xx-small">จำนวน</td>
+                  <td class="text-center" style="font-size: xx-small">
+                    ราคาต่อหน่วย
+                  </td>
+                  <td class="text-center" style="font-size: xx-small">
+                    ส่วนลด
+                  </td>
+                  <td class="text-center" style="font-size: xx-small">ภาษี</td>
+                  <td class="text-center" style="font-size: xx-small">
+                    จำนวนเงิน
+                  </td>
                 </tr>
               </thead>
               <tbody style="font-weight: normal; font-size: 14px">
@@ -255,28 +265,30 @@
                   v-for="(item, index) in quotation.fields.product.arrayValue
                     .values"
                   :key="index">
-                  <td class="text-center">{{ index + 1 }}</td>
-                  <td class="text-center">
+                  <td class="text-center" style="font-size: xx-small">
+                    {{ index + 1 }}
+                  </td>
+                  <td class="text-center" style="font-size: xx-small">
                     {{ item.mapValue.fields.product_code.stringValue }}
                   </td>
-                  <td class="text-center">
+                  <td class="text-left" style="font-size: xx-small">
                     {{ item.mapValue.fields.product_name.stringValue }}
                   </td>
-                  <td class="text-center">
+                  <td class="text-center" style="font-size: xx-small">
                     {{ item.mapValue.fields.product_amount.stringValue }}
                   </td>
-                  <td class="text-center">
+                  <td class="text-center" style="font-size: xx-small">
                     {{
                       item.mapValue.fields.product_price_per_unit.stringValue
                     }}
                   </td>
-                  <td class="text-center">
+                  <td class="text-center" style="font-size: xx-small">
                     {{ item.mapValue.fields.product_discount.stringValue }}
                   </td>
-                  <td class="text-center">
+                  <td class="text-center" style="font-size: xx-small">
                     {{ item.mapValue.fields.product_tax.stringValue }}
                   </td>
-                  <td class="text-center">
+                  <td class="text-center" style="font-size: xx-small">
                     {{ item.mapValue.fields.product_total.stringValue }}
                   </td>
                 </tr>
