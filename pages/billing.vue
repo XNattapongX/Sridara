@@ -3,8 +3,8 @@
     style="display: flex; background-color: rgb(225, 225, 241); z-index: -111"
   >
     <div class="page">
-      <v-container
-        ><v-row style="font-size: 12px; padding: 1px; margin: 1px auto">
+      <v-container>
+        <v-row style="font-size: 12px; padding: 1px; margin: 1px auto">
           <v-col style="padding: 1px; margin: 0 auto"
             ><img
               src="https://www.adt.or.th/image/ADT1%20-%201108%20-%200263.jpg"
@@ -471,8 +471,8 @@
               >
             </td>
           </tr>
-        </v-table></v-container
-      >
+        </v-table>
+      </v-container>
     </div>
   </div>
   <v-row
