@@ -304,8 +304,8 @@
           >
         </v-row>
 
-        <v-row>
-          <v-col>
+        <v-row style="font-size: 12px; padding: 1px; margin: auto">
+          <v-col style="padding: 0">
             <v-table
               ><tr
                 style="
@@ -317,9 +317,10 @@
                 "
               >
                 <td colspan="2" style="padding-left: 4px; font-weight: bold">
-                  รวมทั้งสิ้น ตัวอักษร:
+                  หมายเหตุ :
+                  ใบเสร็จรับเงินฉบับนี้จะสมบูรณ์ต่อเมื่อได้รับเงินตามเช็คเรียบร้อยและต้องมีลายมือชื่อกรรมการ
+                  ผู้มีอำนาจหรือผู้แทนที่ถูกต้องและผู้รับเงิน
                 </td>
-                <td colspan="2">สามหมื่นเจ็ดพันแปดร้อยเก้าสิบบาทถ้วน</td>
               </tr></v-table
             >
           </v-col>
