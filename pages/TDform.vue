@@ -138,10 +138,10 @@
         </v-row>
         <br />
         <div class="relative overflow-x-auto" style="
-                      border-radius: 0.5rem;
-                      box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
-                        rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
-                    ">
+                        border-radius: 0.5rem;
+                        box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+                          rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+                      ">
           <section class="bg-gray-50 dark:bg-gray-900">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
               <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:text-gray-400"
@@ -209,8 +209,8 @@
                   </td>
                   <td class="px-6 py-4">{{ item.fields.dob.stringValue }}</td>
                   <td class="px-6 py-4"><v-btn block variant="tonal" @click="addMember" style="margin-top: 5px"
-                      color="red-accent-4">ลบข้อมูล</v-btn></td>
-
+                      color="red-accent-4">ลบข้อมูล</v-btn>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -227,7 +227,7 @@
               มูลค่ายกเว้นภาษี Tax Exempt<br>
               มูลค่าคิดภาษี Before Vat <br>
               ภาษีมูลค่าเพิ่ม Total Vat <br><br>
-              ยอดสุทธิ Grand Total 
+              ยอดสุทธิ Grand Total
             </label>
           </v-col>
           <v-col>

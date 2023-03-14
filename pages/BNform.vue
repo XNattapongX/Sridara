@@ -10,12 +10,12 @@
           <VCol>
             <label for="base-input"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ชื่อลูกค้า</label>
-            <input type="text" id="base-input" v-model="name_thai"
+            <input type="text" id="base-input" v-model="customer_name"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </VCol>
           <VCol>
             <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ID TAX</label>
-            <input type="text" id="small-input" v-model="id_tax"
+            <input type="text" id="small-input" v-model="tax_id"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </VCol>
           <VCol>
@@ -29,7 +29,7 @@
         <VRow>
           <VCol>
             <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ที่อยู่</label>
-            <input type="text" id="small-input" v-model="address"
+            <input type="text" id="small-input" v-model="customer_address"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </VCol>
         </VRow>
@@ -37,17 +37,17 @@
         <VRow>
           <VCol>
             <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">เลขที่</label>
-            <input type="text" id="base-input" v-model="nationality"
+            <input type="text" id="base-input" v-model="billing_note_id"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </VCol>
           <VCol>
             <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">วันที่</label>
-            <a-date-picker :locale="locale" v-model:value="dob" class="date-picker" format="DD/MM/YYYY" />
+            <a-date-picker :locale="locale" v-model:value="billing_note_date" class="date-picker" format="DD/MM/YYYY" />
           </VCol>
           <VCol>
             <label for="base-input"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">รหัสลูกค้า</label>
-            <input type="text" id="small-input" v-model="telephone_number"
+            <input type="text" id="small-input" v-model="customer_code"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </VCol>
 
@@ -56,35 +56,32 @@
           <VCol>
             <label for="base-input"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ผู้เสนอขาย</label>
-            <input type="text" id="small-input" v-model="telephone_number"
+            <input type="text" id="small-input" v-model="seller_name"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </VCol>
           <VCol>
             <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ฝ่าย</label>
-            <input type="text" id="small-input" v-model="telephone_number"
+            <input type="text" id="small-input" v-model="seller_department"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </VCol>
           <VCol>
             <label for="base-input"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ยืนยันราคาวันที่</label>
-            <a-date-picker :locale="locale" v-model:value="dob" class="date-picker" format="DD/MM/YYYY" />
+            <a-date-picker :locale="locale" v-model:value="confirm_price_within_date" class="date-picker"
+              format="DD/MM/YYYY" />
           </VCol>
 
         </VRow>
         <VRow>
           <VCol>
             <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">เบอร์โทร</label>
-            <input type="text" id="small-input" v-model="id_card"
+            <input type="text" id="small-input" v-model="tel"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </VCol>
           <VCol>
             <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fax</label>
-            <input type="text" id="small-input" v-model="id_card"
+            <input type="text" id="small-input" v-model="customer_fax"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-          </VCol>
-          <VCol cols="2">
-            <br />
-            <VBtn block variant="tonal" @click="addMember" style="margin-top: 5px" color="green-accent-4">ยืนยัน</VBtn>
           </VCol>
         </VRow>
 
@@ -137,12 +134,12 @@
           </VCol>
           <VCol>
             <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">จำนวนเงิน</label>
-            <input type="text" id="small-input" v-model="telephone_number"
+            <input type="text" id="small-input" v-model="quantity"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </VCol>
           <VCol cols="2">
             <br />
-            <VBtn block variant="tonal" @click="addMember" style="margin-top: 5px" color="blue-accent-4">เพิ่มข้อมูล
+            <VBtn block variant="tonal" @click="addProduct" style="margin-top: 5px" color="blue-accent-4">เพิ่มข้อมูล
             </VBtn>
           </VCol>
 
@@ -150,10 +147,10 @@
 
         <br />
         <div class="relative overflow-x-auto" style="
-                      border-radius: 0.5rem;
-                      box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
-                        rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
-                    ">
+                            border-radius: 0.5rem;
+                            box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+                              rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+                          ">
           <section class="bg-gray-50 dark:bg-gray-900">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
               <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:text-gray-400"
@@ -200,34 +197,34 @@
                     {{ item.fields.date_outcome.stringValue }}
                   </td>
                   <td class="px-6 py-4">{{ item.fields.dob.stringValue }}</td>
-                  <td class="px-6 py-4"><v-btn
-                      block
-                      variant="tonal"
-                      @click="addMember"
-                      style="margin-top: 5px"
-                      color="red-accent-4"
-                      >ลบข้อมูล</v-btn></td>
+                  <td class="px-6 py-4"><v-btn block variant="tonal" @click="addProduct" style="margin-top: 5px"
+                      color="red-accent-4">ลบข้อมูล</v-btn></td>
                 </tr>
               </tbody>
             </table>
           </section>
         </div>
         <br>
-          <v-row>
-            <v-col>
-            <label ></label>   
-              </v-col> 
-              <v-col align="right" cols="9">
-            <label >รวมเงิน <br>
+        <v-row>
+          <v-col>
+            <label></label>
+          </v-col>
+          <v-col align="right" cols="9">
+            <label>รวมเงิน <br>
               มัดจำ 100%<br>
               มูลค่าคิดภาษี<br>
-              ภาษีมูลค่าเพิ่ม 7%<br> 
+              ภาษีมูลค่าเพิ่ม 7%<br>
               ยอดสุทธ <br><br></label>
-              </v-col>
-              <v-col>
-            <label ></label>   
-              </v-col> 
-            </v-row>
+          </v-col>
+          <v-col>
+            <label></label>
+          </v-col>
+          <VCol cols="2">
+            <br />
+            <VBtn block variant="tonal" @click="addBillingnote" style="margin-top: 5px" color="green-accent-4">ยืนยัน
+            </VBtn>
+          </VCol>
+        </v-row>
       </VCol>
     </VRow>
   </div>
@@ -236,33 +233,35 @@
 <script lang="ts">
 import { group_members } from "~~/services/payload";
 import { read_all_data, create_data, read_one_data } from "~~/services/configs";
+import { billing_note_detail } from "~~/services/payload";
 import { defineComponent } from "vue";
 import locale from "ant-design-vue/es/date-picker/locale/th_TH";
 export default defineComponent({
   data() {
     return {
-      tour_id:"",
-      paper_limit: "",
-      
+      tour_id: "",
+
       customer_name: "",
+      tax_id: "",
       contact_name: "",
       customer_address: "",
-      custome_tel: "",
-      customer_fax: "",
       billing_note_id: "",
       billing_note_date: "",
       customer_code: "",
       seller_name: "",
       seller_department: "",
       confirm_price_within_date: "",
-
-      sub_total: 0,
-      full_earnest_money: 0,
-      taxable_value: 0,
-      vat: 0,
-      grand_total: 0,
+      tel: "",
+      customer_fax: "",
 
       product_ls: [] as any,
+      product_code: "",
+      product_name: "",
+      aomunt: 0,
+      unit: 0,
+      unit_price: 0,
+      discount: 0,
+      quantity: 0,
 
       receiver_siging_name: "",
       receiver_siging_date: "",
@@ -272,14 +271,6 @@ export default defineComponent({
       coordinator_siging_date: "",
       Authorized_person_siging_name: "",
       Authorized_person_siging_date: "",
-
-      product_code: "",
-      product_name: "",
-      quantity: 0,
-      unit: 0,
-      unit_price: 0,
-      discount: 0,
-      aomunt: 0,
     };
   },
   watch: {
@@ -293,38 +284,24 @@ export default defineComponent({
       locale,
     };
   },
-  mounted() {
-    read_one_data("group_tour", String(this.$route.params.tourId)).then(
-      (result) => {
-        this.tour_detail = result;
-      }
-    );
-    read_all_data("member_tour").then((result) => {
-      const filter = result.filter(
-        (v: any) =>
-          v.fields.tour_id.stringValue == String(this.$route.params.tourId)
-      );
-      this.members_ls = filter;
-    });
-  },
   methods: {
     onAddProduct() {
       this.product_ls.push({
         product_code: this.product_code,
         product_name: this.product_name,
-        product_amount: this.product_amount,
-        product_price_per_unit: this.product_price_per_unit,
-        product_discount: this.product_discount,
-        product_tax: this.product_tax,
-        product_total: this.product_total,
+        aomunt: this.aomunt,
+        unit: this.unit,
+        unit_price: this.unit_price,
+        discount: this.discount,
+        quantity: this.quantity,
       });
       this.product_code = "";
       this.product_name = "";
-      this.product_amount = "";
-      this.product_price_per_unit = "";
-      this.product_discount = "";
-      this.product_tax = "";
-      this.product_total = "";
+      this.aomunt = 0;
+      this.unit = 0;
+      this.unit_price = 0;
+      this.discount = 0;
+      this.quantity = 0;
     },
   },
 });
