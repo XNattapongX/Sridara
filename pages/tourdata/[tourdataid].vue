@@ -153,37 +153,33 @@
       </table>
     </div>
   </section>
-  <v-row justify="end">
-    <v-col cols="2" style="text-align: end"
+  <v-row justify="space-between" style="margin: 0.5rem; margin-top: 0rem">
+    <v-col style="text-align: center"
       ><v-btn
-        style="margin-right: -15.5rem"
         variant="tonal"
         color="red-accent-4"
         @click="handleDelete(tour_data.fields.trip_name.stringValue)"
         >ลบทัวร์</v-btn
       ></v-col
     >
-    <v-col v-if="haveQuotation">
+    <v-col style="text-align: center" v-if="haveQuotation">
       <v-btn
-        style="margin-right: -10.3rem"
         variant="tonal"
         color="light-blue-accent-4"
-        @click="$router.push(`/qpform/${$route.params.tourdataid}`)"
+        @click="$router.push(`/quotation`)"
         >ดูใบเสนอราคา</v-btn
       >
     </v-col>
-    <v-col cols="2" style="text-align: end">
+    <v-col style="text-align: center" v-else>
       <v-btn
-        style="margin-right: -10.3rem"
         variant="tonal"
         color="light-blue-accent-4"
         @click="$router.push(`/qpform/${$route.params.tourdataid}`)"
         >สร้างใบเสนอราคา</v-btn
       >
     </v-col>
-    <v-col cols="2" style="text-align: end"
+    <v-col style="text-align: center"
       ><v-btn
-        style="margin-right: -5.2rem"
         variant="tonal"
         @click="$router.push(`/addusertour/${$route.params.tourdataid}`)"
         color="cyan-darken-4"
@@ -191,10 +187,9 @@
       ></v-col
     >
     <v-col
-      cols="2"
-      style="text-align: end"
+      style="text-align: center"
       @click="$router.push(`/edittour/${$route.params.tourdataid}`)"
-      ><v-btn style="margin-right: 1.2rem" variant="tonal" color="cyan-darken-4"
+      ><v-btn variant="tonal" color="cyan-darken-4"
         >แก้ไขข้อมูลทัวร์</v-btn
       ></v-col
     >
