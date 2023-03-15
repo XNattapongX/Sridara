@@ -44,7 +44,7 @@
             {{ tour_data.fields.back_date.stringValue }}
           </td>
           <td colspan="4" class="py-1 px-3">
-            จำนวนลูกทัวร์ : {{ tour_data.fields.amount_member.stringValue }}
+            จำนวนลูกทัวร์ : {{ members_ls.length }}
           </td>
         </tr>
 

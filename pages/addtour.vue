@@ -299,13 +299,6 @@
       </v-col>
     </v-row>
     <v-row justify="end"
-      ><v-col cols="2" style="margin-right: -10vmin; margin-top: -2vmin"
-        ><v-btn
-          variant="tonal"
-          color="deep-purple-darken-4"
-          @click="$router.push('/')"
-          >ไปหน้ารายการทัวร์</v-btn
-        ></v-col
       ><v-col cols="2" style="margin-right: -6vmin; margin-top: -2vmin"
         ><v-btn
           variant="tonal"
