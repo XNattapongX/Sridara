@@ -231,7 +231,7 @@
           style="margin-right: 1rem"
           variant="tonal"
           @click="$router.push(`/addusertour/${$route.params.tourdataid}`)"
-          color="cyan-darken-4"
+          color="yellow-darken-4"
           >แก้ไขข้อมูลลูกทัวร์</v-btn
         >
         <v-btn

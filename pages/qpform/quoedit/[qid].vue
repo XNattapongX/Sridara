@@ -439,7 +439,7 @@
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
-import { read_one_data, update_data } from "~~/services/configs";
+import { genRanDec, read_one_data, update_data } from "~~/services/configs";
 import { quotation_detail_with_product } from "~~/services/payload";
 import locale from "ant-design-vue/es/date-picker/locale/th_TH";
 export default defineComponent({
@@ -449,6 +449,7 @@ export default defineComponent({
     };
   },
   mounted() {
+    this.product_code = `PROD-${genRanDec(10)}`;
     read_one_data("quotation_detail", String(this.$route.params.qid)).then(
       (res) => {
         const fields = res.fields;
@@ -672,7 +673,7 @@ export default defineComponent({
           product_tax: this.product_tax,
           product_total: this.product_total,
         });
-        this.product_code = "";
+        this.product_code = `PROD-${genRanDec(10)}`;
         this.product_name = "";
         this.product_amount = "";
         this.product_price_per_unit = "";
