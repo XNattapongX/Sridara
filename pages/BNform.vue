@@ -303,6 +303,9 @@ export default defineComponent({
       this.discount = 0;
       this.quantity = 0;
     },
+    onDeleteProduct(index: number) {
+      this.product_ls.splice(index, 1);
+    },
   },
 });
 </script>
