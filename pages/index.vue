@@ -56,7 +56,7 @@
               {{ item.fields.vehicle_outcome.stringValue }}
             </td>
             <td class="px-6 py-4">
-              {{ item.fields.amount_member.stringValue }}
+              {{ get_amount_of_member(item.fields.id.stringValue) }}
             </td>
           </tr>
         </tbody>
@@ -71,6 +71,9 @@ const key = "updatable";
 export default {
   mounted() {
     this.$message.loading({ content: "กำลังโหลดข้อมูล รายการทัวร์...", key });
+    read_all_data("member_tour").then((res) => {
+      this.member_ls = res;
+    });
     read_all_data("group_tour").then((result) => {
       this.tour_ls = result;
       this.$message.success({ content: "สำเร็จ!", key, duration: 2 });
@@ -79,11 +82,21 @@ export default {
   data() {
     return {
       tour_ls: [],
+      member_ls: [],
     };
   },
   methods: {
     detail_tour(id) {
       this.$router.push({ path: `/tourdata/${id}` });
+    },
+    get_amount_of_member(id) {
+      let count = 0;
+      this.member_ls.forEach((item) => {
+        if (item.fields.tour_id.stringValue == id) {
+          count++;
+        }
+      });
+      return count;
     },
   },
 };

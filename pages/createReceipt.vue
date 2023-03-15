@@ -47,7 +47,7 @@
           <label
             for="base-input"
             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >สาขา</label
+            >สาขา (ถ้าไม่กรอกจะเป็นสำนักงานใหญ่)</label
           >
           <input
             type="text"
@@ -180,8 +180,8 @@ export default {
         return false;
       }
       if (this.receipt_branch == "") {
-        this.$message.error("กรุณากรอกสาขา");
-        return false;
+        this.receipt_branch = "สำนักงานใหญ่";
+        return true;
       }
       if (this.receipt_pay_type == "") {
         this.$message.error("กรุณากรอกประเภทการชำระ");
