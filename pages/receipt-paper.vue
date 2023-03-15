@@ -1,32 +1,36 @@
 <template>
   <div
-    style="display: flex; background-color: rgb(225, 225, 241); z-index: -111">
+    style="display: flex; background-color: rgb(225, 225, 241); z-index: -111"
+  >
     <div class="page" v-if="onLoad">
       <v-container>
-        <v-row style="font-size: 12px; padding: 1px; margin: 1px auto">
-          <v-col style="padding: 1px; margin: 0 auto"
-            ><img
-              src="https://www.adt.or.th/image/ADT1%20-%201108%20-%200263.jpg"
-              class="w-141px h-47px"
-              style="margin: auto"
-              alt="sridara Logo"
-          /></v-col>
-          <v-col style="padding: 1px; margin: 0 auto" cols="7"
-            ><v-sheet style="text-align: center; font-size: 12px">
-              บริษัท ศรีดาราทัวร์ จำกัด (สำนักงานใหญ่)
-              <td></td>
-              123 ถนน ชยางกูร หมู่ 19 ตำบล บุ่ง อำเภอเมืองอำนาจเจริญ
-              จังหวัดอำนาจเจริญ 37000
-              <td></td>
-              เลขประจำตัวผู้เสียภาษี0375552000037 โทร.082-3656514
-              <td></td>
-              www.facebook.com/sridaratourfanpage
-              <td></td>
-              ********************************************************
-            </v-sheet></v-col
-          >
-          <v-col style="padding: 1px; margin: 0 auto">
-            <v-table>
+        <v-row>
+          <v-col cols="8"
+            ><v-row
+              ><v-col>
+                <img
+                  src="https://www.adt.or.th/image/ADT1%20-%201108%20-%200263.jpg"
+                  class="w-141px h-47px"
+                  alt="sridara Logo"
+                />
+                <v-sheet style="text-align: left; font-size: 12px">
+                  บริษัท ศรีดาราทัวร์ จำกัด (สำนักงานใหญ่)
+                  <td></td>
+                  123 ถนนชยางกูร หมู่ 19 ตำบลบุ่ง อำเภอเมืองอำนาจเจริญ
+                  จังหวัดอำนาจเจริญ 37000
+                  <td></td>
+                  เลขประจำตัวผู้เสียภาษี: 0375552000037
+                  <td></td>
+                  โทร.082-3656514
+                  <td></td>
+                  www.facebook.com/sridaratourfanpage
+                </v-sheet>
+              </v-col></v-row
+            >
+            <v-row><v-col></v-col></v-row
+          ></v-col>
+          <v-col cols="4"
+            ><v-table>
               <tr style="text-align: center">
                 <td
                   colspan="2"
@@ -37,7 +41,8 @@
                     border-left: 1px solid #000000;
                     width: 170px;
                     font-weight: bold;
-                  ">
+                  "
+                >
                   ใบเสร็จรับเงิน
                 </td>
               </tr>
@@ -49,7 +54,8 @@
                     border-right: 1px solid #000000;
                     border-bottom: 1px solid #000000;
                     border-left: 1px solid #000000;
-                  ">
+                  "
+                >
                   Receipt
                 </td>
               </tr>
@@ -63,7 +69,8 @@
                     border-left: 1px solid #000000;
                     width: 170px;
                     font-weight: bold;
-                  ">
+                  "
+                >
                   ต้นฉบับ/Original
                 </td>
               </tr>
@@ -75,12 +82,13 @@
                     border-right: 1px solid #000000;
                     border-bottom: 1px solid #000000;
                     border-left: 1px solid #000000;
-                  ">
+                  "
+                >
                   เอกสารออกเป็นชุด
                 </td>
               </tr>
-            </v-table>
-          </v-col>
+            </v-table></v-col
+          >
         </v-row>
 
         <v-row style="font-size: 12px; padding: 1px; margin: auto">
@@ -93,7 +101,8 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                ">
+                "
+              >
                 <td colspan="2" style="padding-left: 4px; font-weight: bold">
                   ชื่อลูกค้า:
                 </td>
@@ -106,10 +115,12 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 80px;
-                ">
+                "
+              >
                 <td
                   colspan="2"
-                  style="padding: auto; padding-left: 4px; font-weight: bold">
+                  style="padding: auto; padding-left: 4px; font-weight: bold"
+                >
                   ที่อยู่:
                 </td>
                 <td colspan="2">
@@ -127,7 +138,8 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                ">
+                "
+              >
                 <td style="padding-left: 4px; font-weight: bold" width="40%">
                   วันที่รับชำระ:
                 </td>
@@ -140,7 +152,8 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                ">
+                "
+              >
                 <td style="padding-left: 4px; font-weight: bold">
                   เลขที่ใบเสร็จรับเงิน:
                 </td>
@@ -153,7 +166,8 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                ">
+                "
+              >
                 <td style="padding-left: 4px; font-weight: bold">สาขา:</td>
                 <td>{{ ob.receipt_branch }}</td>
               </tr>
@@ -214,7 +228,8 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                ">
+                "
+              >
                 <td colspan="2" style="padding-left: 4px; font-weight: bold">
                   รวมทั้งสิ้น ตัวอักษร:
                 </td>
@@ -227,7 +242,8 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                ">
+                "
+              >
                 <td colspan="2" style="font-weight: bold; padding-left: 4px">
                   ชำระ:
                 </td>
@@ -240,7 +256,8 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                ">
+                "
+              >
                 <td colspan="2" style="font-weight: bold; padding-left: 4px">
                   หักภาษี ณ ที่จ่าย :
                 </td>
@@ -257,7 +274,8 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px none #000000;
                   height: 40px;
-                ">
+                "
+              >
                 <td style="padding-left: 4px; font-weight: bold" width="40%">
                   &nbsp;
                 </td>
@@ -270,7 +288,8 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px none #000000;
                   height: 40px;
-                ">
+                "
+              >
                 <td style="padding-left: 4px; font-weight: bold">&nbsp;</td>
                 <td>&nbsp;</td>
               </tr>
@@ -281,7 +300,8 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                ">
+                "
+              >
                 <td style="padding-left: 4px; font-weight: bold">
                   เลขที่เช็ค // วันที่เช็ค
                 </td>
@@ -304,7 +324,8 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                ">
+                "
+              >
                 <td colspan="2" style="padding-left: 4px; font-weight: bold">
                   หมายเหตุ :
                   ใบเสร็จรับเงินฉบับนี้จะสมบูรณ์ต่อเมื่อได้รับเงินตามเช็คเรียบร้อยและต้องมีลายมือชื่อกรรมการ
@@ -324,7 +345,8 @@
                 border-bottom: 1px solid #000000;
                 border-left: 1px solid #000000;
                 width: 187px;
-              ">
+              "
+            >
               <v-table>
                 <tr style="height: 110px">
                   <td>&nbsp;</td>
@@ -347,7 +369,8 @@
                 border-bottom: 1px solid #000000;
                 border-left: 1px solid #000000;
                 width: 187px;
-              ">
+              "
+            >
               <v-table>
                 <tr style="height: 110px">
                   <td>&nbsp;</td>
@@ -370,7 +393,8 @@
                 border-bottom: 1px solid #000000;
                 border-left: 1px solid #000000;
                 width: 187px;
-              ">
+              "
+            >
               <v-table>
                 <tr style="height: 110px">
                   <td>&nbsp;</td>
