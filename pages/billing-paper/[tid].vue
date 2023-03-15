@@ -490,13 +490,13 @@
 import { defineComponent } from "vue";
 import {
   read_one_data_conditions,
-  number_to_thai_text,
   ArabicNumberToText,
 } from "~~/services/configs";
+
+const key = "updated";
 export default defineComponent({
   setup() {
     return {
-      number_to_thai_text,
       ArabicNumberToText,
     };
   },
@@ -508,6 +508,10 @@ export default defineComponent({
     };
   },
   mounted() {
+    this.$message.loading({
+      content: "กำลังโหลดข้อมูลใบแจ้งหนี้ และสร้างเป็นเอกสาร",
+      key,
+    });
     read_one_data_conditions(
       "billing_note",
       "tour_id",
@@ -520,6 +524,11 @@ export default defineComponent({
         String(this.$route.params.tid)
       ).then((res: any) => {
         this.onLoad = true;
+        this.$message.success({
+          content: "สำเร็จ",
+          key,
+          duration: 1,
+        });
         this.quo = res[0].fields;
       });
     });
