@@ -22,77 +22,26 @@
           <ul
             style="margin-bottom: 0; align-items: center"
             class="flex flex-col font-medium lg:flex-row lg:space-x-8 lg:mt-0">
-            <li @click="$router.push('/')">
-              <v-btn variant="flat">รายการทัวร์</v-btn>
+            <li>
+              <v-btn variant="flat" @click="$router.push('/')"
+                >รายการทัวร์</v-btn
+              >
             </li>
             <li>
-              <v-btn variant="flat">รายการใบเสนอราคา</v-btn>
+              <v-btn variant="flat" @click="$router.push('/addtour')"
+                >สร้างทัวร์</v-btn
+              >
             </li>
             <li>
-              <v-btn variant="flat">รายการใบแจ้งหนี้</v-btn>
-            </li>
-            <li>
-              <v-btn variant="flat">รายการใบกำกับภาษี</v-btn>
-            </li>
-            <li>
-              <v-btn variant="flat">รายการใบเสร็จรับเงิน</v-btn>
-            </li>
-            <li v-if="raw !== 'login'">
-              <v-btn
-                variant="plain"
-                icon
-                size="small"
-                color="indigo-darken-4"
-                @click="account = true">
-                <v-icon size="35">mdi-cog</v-icon>
-              </v-btn>
+              <v-btn variant="flat" @click="$router.push('/createreceipt')"
+                >สร้างใบเสร็จรับเงิน</v-btn
+              >
             </li>
           </ul>
         </div>
       </div>
     </nav>
   </header>
-  <v-layout>
-    <v-navigation-drawer v-model="account" temporary location="right">
-      <v-list>
-        <v-list-item
-          prepend-avatar="https://cdn-icons-png.flaticon.com/512/1802/1802979.png"
-          title="เครื่องมือ"
-          subtitle="ฟังก์ชัน"></v-list-item>
-      </v-list>
-
-      <v-divider></v-divider>
-
-      <v-list density="compact" nav>
-        <v-list-item
-          prepend-icon="mdi-transit-detour"
-          @click="$router.push('/addtour')"
-          title="จัดการทัวร์"
-          value="จัดการทัวร์"></v-list-item>
-        <v-list-item
-          prepend-icon="mdi-bed"
-          @click="$router.push('/addhotel')"
-          title="จัดการโรงแรม"
-          value="จัดการโรงแรม"></v-list-item>
-        <v-list-item
-          prepend-icon="mdi-cash-100"
-          title="จัดการใบเสนอราคา"
-          value="จัดการใบเสนอราคา"></v-list-item>
-        <v-list-item
-          prepend-icon="mdi-cash-fast"
-          title="จัดการใบแจ้งหนี้"
-          value="จัดการใบแจ้งหนี้"></v-list-item>
-        <v-list-item
-          prepend-icon="mdi-note-edit"
-          title="จัดการใบกำกับภาษี"
-          value="จัดการใบกำกับภาษี"></v-list-item>
-        <v-list-item
-          prepend-icon="mdi-receipt-text"
-          title="จัดการใบเสร็จรับเงิน"
-          value="จัดการใบเสร็จรับเงิน"></v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-  </v-layout>
   <div>
     <main><slot></slot></main>
   </div>

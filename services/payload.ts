@@ -142,156 +142,6 @@ export const hotel_tour = (
   };
 };
 
-export const tax_invoice_detail = (
-  tour_id: string,
-  customer_name: string,
-  customer_address: string,
-  customer_code: string,
-  tax_payer_id: string,
-  place_of_issuing_tax_invoice: string,
-  date_of_issuing_tax_invoice: Date,
-  tax_invoice_number: string,
-  tax_payment_schedule: string,
-  seller_name: string,
-  sub_total: number,
-  less_cash_discount: number,
-  tax_exemption: number,
-  before_vat: number,
-  vat: number,
-  grand_total: number,
-  receiver_name: string,
-  receiver_siging_date: Date,
-  Delivery_name: string,
-  Delivery_siging_date: Date,
-  project_coordinator_name: string,
-  project_coordinator_siging_date: Date,
-  Authorized_person_name: string,
-  Authorized_person_siging_date: Date
-) => {
-  return {
-    fields: {
-      tour_id: {
-        stringValue: tour_id,
-      },
-      customer_name: {
-        stringValue: customer_name,
-      },
-      customer_address: {
-        stringValue: customer_address,
-      },
-      customer_code: {
-        stringValue: customer_code,
-      },
-      tax_payer_id: {
-        stringValue: tax_payer_id,
-      },
-      place_of_issuing_tax_invoice: {
-        stringValue: place_of_issuing_tax_invoice,
-      },
-      date_of_issuing_tax_invoice: {
-        stringValue: dayjs(date_of_issuing_tax_invoice).format("DD/MM/BBBB"),
-      },
-      tax_invoice_number: {
-        stringValue: tax_invoice_number,
-      },
-      tax_payment_schedule: {
-        stringValue: tax_payment_schedule,
-      },
-      seller_name: {
-        stringValue: seller_name,
-      },
-      sub_total: {
-        stringValue: String(sub_total),
-      },
-      less_cash_discount: {
-        stringValue: String(less_cash_discount),
-      },
-      tax_exemption: {
-        stringValue: String(tax_exemption),
-      },
-      before_vat: {
-        stringValue: String(before_vat),
-      },
-      vat: {
-        stringValue: String(vat),
-      },
-      grand_total: {
-        stringValue: String(grand_total),
-      },
-      receiver_name: {
-        stringValue: receiver_name,
-      },
-      receiver_siging_date: {
-        stringValue: dayjs(receiver_siging_date).format("DD/MM/BBBB"),
-      },
-      Delivery_name: {
-        stringValue: Delivery_name,
-      },
-      Delivery_siging_date: {
-        stringValue: dayjs(Delivery_siging_date).format("DD/MM/BBBB"),
-      },
-      project_coordinator_name: {
-        stringValue: project_coordinator_name,
-      },
-      project_coordinator_siging_date: {
-        stringValue: dayjs(project_coordinator_siging_date).format(
-          "DD/MM/BBBB"
-        ),
-      },
-      Authorized_person_name: {
-        stringValue: Authorized_person_name,
-      },
-      Authorized_person_siging_date: {
-        stringValue: dayjs(Authorized_person_siging_date).format("DD/MM/BBBB"),
-      },
-    },
-  };
-};
-
-export const tax_invoice_product = (
-  tax_invoice_id: string,
-  product_code: string,
-  product_name: string,
-  product_amount: number,
-  product_unit: string,
-  product_price_per_unit: number,
-  product_discount: number,
-  product_tax: number,
-  product_total: number
-) => {
-  return {
-    fields: {
-      tax_invoice_id: {
-        stringValue: tax_invoice_id,
-      },
-      product_code: {
-        stringValue: product_code,
-      },
-      product_name: {
-        stringValue: product_name,
-      },
-      product_amount: {
-        stringValue: String(product_amount),
-      },
-      product_unit: {
-        stringValue: product_unit,
-      },
-      product_price_per_unit: {
-        stringValue: String(product_price_per_unit),
-      },
-      product_discount: {
-        stringValue: String(product_discount),
-      },
-      product_tax: {
-        stringValue: String(product_tax),
-      },
-      product_total: {
-        stringValue: String(product_total),
-      },
-    },
-  };
-};
-
 export const quotation_detail_with_product = (
   tour_id: string,
   quotation_id: string,
@@ -443,109 +293,29 @@ export const billing_note_detail = (
   };
 };
 
-export const receipt_detail = (
+export const tax_invoice_detail = (
   tour_id: string,
-  receipt_id: string,
-  receipt_date: Date,
-  store_branch: string,
-  customer_name: string,
-  customer_address: string,
-  total_at_alphabet: string,
-  total_at_number: number,
-  payment_method: string,
-  withholding_tax: number,
-  no_of_check: string,
-  date_of_check: Date,
-  orgainze_siging_name: string,
-  orgainze_siging_date: Date,
-  payee_siging_name: string,
-  payee_siging_date: Date,
-  Authorized_person_siging_name: string,
-  Authorized_person_siging_date: Date
+  tax_invoice_no: string,
+  tax_invoice_date: Date,
+  tax_invoice_pay_date: Date,
+  tax_invoice_branch: string
 ) => {
   return {
     fields: {
       tour_id: {
         stringValue: tour_id,
       },
-      receipt_id: {
-        stringValue: receipt_id,
+      tax_invoice_no: {
+        stringValue: tax_invoice_no,
       },
-      receipt_date: {
-        stringValue: dayjs(receipt_date).format("DD/MM/BBBB"),
+      tax_invoice_date: {
+        stringValue: dayjs(tax_invoice_date).format("DD/MM/BBBB"),
       },
-      store_branch: {
-        stringValue: store_branch,
+      tax_invoice_pay_date: {
+        stringValue: dayjs(tax_invoice_pay_date).format("DD/MM/BBBB"),
       },
-      customer_name: {
-        stringValue: customer_name,
-      },
-      customer_address: {
-        stringValue: customer_address,
-      },
-      total_at_alphabet: {
-        stringValue: total_at_alphabet,
-      },
-      total_at_number: {
-        stringValue: String(total_at_number),
-      },
-      payment_method: {
-        stringValue: payment_method,
-      },
-      withholding_tax: {
-        stringValue: String(withholding_tax),
-      },
-      no_of_check: {
-        stringValue: no_of_check,
-      },
-      date_of_check: {
-        stringValue: dayjs(date_of_check).format("DD/MM/BBBB"),
-      },
-      orgainze_siging_name: {
-        stringValue: orgainze_siging_name,
-      },
-      orgainze_siging_date: {
-        stringValue: dayjs(orgainze_siging_date).format("DD/MM/BBBB"),
-      },
-      payee_siging_name: {
-        stringValue: payee_siging_name,
-      },
-      payee_siging_date: {
-        stringValue: dayjs(payee_siging_date).format("DD/MM/BBBB"),
-      },
-      Authorized_person_siging_name: {
-        stringValue: Authorized_person_siging_name,
-      },
-      Authorized_person_siging_date: {
-        stringValue: dayjs(Authorized_person_siging_date).format("DD/MM/BBBB"),
-      },
-    },
-  };
-};
-
-export const receipt_invoices = (
-  receipt_id: string,
-  invoice_id: string,
-  invoice_date: Date,
-  invoice_total: number,
-  tax_invoice_detail: string
-) => {
-  return {
-    fields: {
-      receipt_id: {
-        stringValue: receipt_id,
-      },
-      invoice_id: {
-        stringValue: invoice_id,
-      },
-      invoice_date: {
-        stringValue: dayjs(invoice_date).format("DD/MM/BBBB"),
-      },
-      invoice_total: {
-        stringValue: String(invoice_total),
-      },
-      tax_invoice_detail: {
-        stringValue: tax_invoice_detail,
+      tax_invoice_branch: {
+        stringValue: tax_invoice_branch,
       },
     },
   };

@@ -1,8 +1,7 @@
 <template>
   <div
-    style="display: flex; background-color: rgb(225, 225, 241); z-index: -111"
-  >
-    <div class="page">
+    style="display: flex; background-color: rgb(225, 225, 241); z-index: -111">
+    <div class="page" v-if="onLoad">
       <v-container>
         <v-row style="font-size: 12px; padding: 1px; margin: 1px auto">
           <v-col style="padding: 1px; margin: 0 auto"
@@ -38,8 +37,7 @@
                     border-left: 1px solid #000000;
                     width: 170px;
                     font-weight: bold;
-                  "
-                >
+                  ">
                   ใบเสร็จรับเงิน
                 </td>
               </tr>
@@ -51,8 +49,7 @@
                     border-right: 1px solid #000000;
                     border-bottom: 1px solid #000000;
                     border-left: 1px solid #000000;
-                  "
-                >
+                  ">
                   Receipt
                 </td>
               </tr>
@@ -66,8 +63,7 @@
                     border-left: 1px solid #000000;
                     width: 170px;
                     font-weight: bold;
-                  "
-                >
+                  ">
                   ต้นฉบับ/Original
                 </td>
               </tr>
@@ -79,8 +75,7 @@
                     border-right: 1px solid #000000;
                     border-bottom: 1px solid #000000;
                     border-left: 1px solid #000000;
-                  "
-                >
+                  ">
                   เอกสารออกเป็นชุด
                 </td>
               </tr>
@@ -98,12 +93,11 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td colspan="2" style="padding-left: 4px; font-weight: bold">
                   ชื่อลูกค้า:
                 </td>
-                <td colspan="2">สมศรี หมีเรืองแสง</td>
+                <td colspan="2">{{ quo.customer_name.stringValue }}</td>
               </tr>
               <tr
                 style="
@@ -112,16 +106,14 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 80px;
-                "
-              >
+                ">
                 <td
                   colspan="2"
-                  style="padding: auto; padding-left: 4px; font-weight: bold"
-                >
+                  style="padding: auto; padding-left: 4px; font-weight: bold">
                   ที่อยู่:
                 </td>
                 <td colspan="2">
-                  15/55 ตำบลศิลา อำเภอเมือง จังหวัดของแก่น 40000
+                  {{ quo.customer_address.stringValue }}
                 </td>
               </tr>
             </v-table>
@@ -135,12 +127,11 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td style="padding-left: 4px; font-weight: bold" width="40%">
                   วันที่รับชำระ:
                 </td>
-                <td>27/06/66</td>
+                <td>{{ dayjs(ob.receipt_date).format("DD/MM/BBBB") }}</td>
               </tr>
               <tr
                 style="
@@ -149,12 +140,11 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td style="padding-left: 4px; font-weight: bold">
                   เลขที่ใบเสร็จรับเงิน:
                 </td>
-                <td>12584775669</td>
+                <td>{{ ob.receipt_no }}</td>
               </tr>
               <tr
                 style="
@@ -163,10 +153,9 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td style="padding-left: 4px; font-weight: bold">สาขา:</td>
-                <td>ขอนแก่น</td>
+                <td>{{ ob.receipt_branch }}</td>
               </tr>
             </v-table></v-col
           >
@@ -177,34 +166,38 @@
             <v-table density="compact" height="auto">
               <thead style="font-weight: bold; font-size: 14px">
                 <tr>
-                  <td class="text-center">ลำดับ</td>
-                  <td class="text-center">วันที่</td>
-                  <td class="text-center">เลขที่ใบกำกับภาษี</td>
-                  <td class="text-center">รายละเอียด</td>
-                  <td class="text-center">จำนวนเงิน</td>
+                  <td class="text-center" style="font-size: xx-small">ลำดับ</td>
+                  <td class="text-center" style="font-size: xx-small">
+                    วันที่
+                  </td>
+                  <td class="text-center" style="font-size: xx-small">
+                    เลขที่ใบกำกับภาษี
+                  </td>
+                  <td class="text-center" style="font-size: xx-small">
+                    รายละเอียด
+                  </td>
+                  <td class="text-center" style="font-size: xx-small">
+                    จำนวนเงิน
+                  </td>
                 </tr>
               </thead>
               <tbody style="font-weight: normal; font-size: 14px">
-                <tr>
-                  <td class="text-center">fdsaffs</td>
-                  <td class="text-center">dasfdasf</td>
-                  <td class="text-center">fasdfs</td>
-                  <td class="text-center">fdsaff</td>
-                  <td class="text-center">fdsafas</td>
-                </tr>
-                <tr>
-                  <td class="text-center">fdsaffs</td>
-                  <td class="text-center">dasfdasf</td>
-                  <td class="text-center">fasdfs</td>
-                  <td class="text-center">fdsaff</td>
-                  <td class="text-center">fdsafas</td>
-                </tr>
-                <tr>
-                  <td class="text-center">fdsaffs</td>
-                  <td class="text-center">dasfdasf</td>
-                  <td class="text-center">fasdfs</td>
-                  <td class="text-center">fdsaff</td>
-                  <td class="text-center">fdsafas</td>
+                <tr v-for="(item, index) in ob.tax_invoice" :key="index">
+                  <td class="text-center" style="font-size: xx-small">
+                    {{ index + 1 }}
+                  </td>
+                  <td class="text-center" style="font-size: xx-small">
+                    {{ item.date }}
+                  </td>
+                  <td class="text-center" style="font-size: xx-small">
+                    {{ item.tax_invoice_no }}
+                  </td>
+                  <td class="text-center" style="font-size: xx-small">
+                    {{ item.desc }}
+                  </td>
+                  <td class="text-center" style="font-size: xx-small">
+                    {{ parseFloat(item.total).toFixed(2) }}
+                  </td>
                 </tr>
               </tbody>
             </v-table>
@@ -221,12 +214,11 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td colspan="2" style="padding-left: 4px; font-weight: bold">
                   รวมทั้งสิ้น ตัวอักษร:
                 </td>
-                <td colspan="2">สามหมื่นเจ็ดพันแปดร้อยเก้าสิบบาทถ้วน</td>
+                <td colspan="2">{{ ArabicNumberToText(last_total) }}</td>
               </tr>
               <tr
                 style="
@@ -235,12 +227,11 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td colspan="2" style="font-weight: bold; padding-left: 4px">
                   ชำระ:
                 </td>
-                <td colspan="2">เงินสด/เงินโอนธนาคาร/เช็คธนาคาร</td>
+                <td colspan="2">{{ ob.receipt_pay_type }}</td>
               </tr>
               <tr
                 style="
@@ -249,12 +240,11 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td colspan="2" style="font-weight: bold; padding-left: 4px">
                   หักภาษี ณ ที่จ่าย :
                 </td>
-                <td colspan="2">2000</td>
+                <td colspan="2">{{ ob.receipt_tax }}</td>
               </tr>
             </v-table>
           </v-col>
@@ -267,8 +257,7 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px none #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td style="padding-left: 4px; font-weight: bold" width="40%">
                   &nbsp;
                 </td>
@@ -281,8 +270,7 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px none #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td style="padding-left: 4px; font-weight: bold">&nbsp;</td>
                 <td>&nbsp;</td>
               </tr>
@@ -293,12 +281,14 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td style="padding-left: 4px; font-weight: bold">
-                  เลขที่เช็ค วันที่เช็ค //
+                  เลขที่เช็ค // วันที่เช็ค
                 </td>
-                <td>11255256116 // 28/06/66</td>
+                <td>
+                  {{ ob.receipt_check_no }} //
+                  {{ dayjs(ob.receipt_check_date).format("DD/MM/BBBB") }}
+                </td>
               </tr>
             </v-table></v-col
           >
@@ -314,8 +304,7 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                "
-              >
+                ">
                 <td colspan="2" style="padding-left: 4px; font-weight: bold">
                   หมายเหตุ :
                   ใบเสร็จรับเงินฉบับนี้จะสมบูรณ์ต่อเมื่อได้รับเงินตามเช็คเรียบร้อยและต้องมีลายมือชื่อกรรมการ
@@ -335,14 +324,13 @@
                 border-bottom: 1px solid #000000;
                 border-left: 1px solid #000000;
                 width: 187px;
-              "
-            >
+              ">
               <v-table>
                 <tr style="height: 110px">
                   <td>&nbsp;</td>
                 </tr>
                 <tr style="text-align: center">
-                  <td>สมหอม นอมนม</td>
+                  <td></td>
                 </tr>
                 <tr style="text-align: center">
                   <td>ผู้จัดทำ</td>
@@ -359,14 +347,13 @@
                 border-bottom: 1px solid #000000;
                 border-left: 1px solid #000000;
                 width: 187px;
-              "
-            >
+              ">
               <v-table>
                 <tr style="height: 110px">
                   <td>&nbsp;</td>
                 </tr>
                 <tr style="text-align: center">
-                  <td>สมหอม นอมนม</td>
+                  <td></td>
                 </tr>
                 <tr style="text-align: center">
                   <td>ผู้รับเงิน</td>
@@ -383,14 +370,13 @@
                 border-bottom: 1px solid #000000;
                 border-left: 1px solid #000000;
                 width: 187px;
-              "
-            >
+              ">
               <v-table>
                 <tr style="height: 110px">
                   <td>&nbsp;</td>
                 </tr>
                 <tr style="text-align: center">
-                  <td>สมหอม นอมนม</td>
+                  <td></td>
                 </tr>
                 <tr style="text-align: center">
                   <td>กรรมการผู้มีอำนาจหรือตัวแทน</td>
@@ -417,9 +403,47 @@
   >
 </template>
 <script lang="ts">
+import dayjs from "dayjs";
 import { defineComponent } from "vue";
-
+import buddhistEra from "dayjs/plugin/buddhistEra";
+import {
+  read_one_data_conditions,
+  ArabicNumberToText,
+} from "~~/services/configs";
 export default defineComponent({
+  setup() {
+    dayjs.extend(buddhistEra);
+    return {
+      dayjs,
+      ArabicNumberToText,
+    };
+  },
+  mounted() {
+    const obj = JSON.parse(String(this.$route.query.data));
+    this.ob = obj;
+
+    this.last_total = obj.tax_invoice.reduce(
+      (a: any, b: any) => Number(a) + Number(b.total),
+      0
+    );
+    console.log(this.last_total);
+    read_one_data_conditions(
+      "quotation_detail",
+      "tour_id",
+      obj.tax_invoice[0].tour_id
+    ).then((res) => {
+      this.onLoad = true;
+      this.quo = res[0].fields;
+    });
+  },
+  data() {
+    return {
+      onLoad: false,
+      quo: {} as any,
+      ob: {} as any,
+      last_total: 0,
+    };
+  },
   methods: {
     print() {
       window.print();
