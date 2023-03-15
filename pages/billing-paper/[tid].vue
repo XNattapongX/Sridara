@@ -1,7 +1,7 @@
 <template>
   <div
     style="display: flex; background-color: rgb(225, 225, 241); z-index: -111">
-    <div class="page">
+    <div class="page" v-if="onLoad">
       <v-container>
         <v-row style="font-size: 12px; padding: 1px; margin: 1px auto">
           <v-col style="padding: 1px; margin: 0 auto"
@@ -100,7 +100,7 @@
                   width="25% ">
                   ชื่อลูกค้า:
                 </td>
-                <td colspan="2">สมศรี หมีเรืองแสง</td>
+                <td colspan="2">{{ quo.customer_name.stringValue }}</td>
               </tr>
               <tr
                 style="
@@ -113,7 +113,7 @@
                 <td colspan="2" style="padding-left: 4px; font-weight: bold">
                   ID TEX:
                 </td>
-                <td colspan="2">1150</td>
+                <td colspan="2">{{ quo.tax_id.stringValue }}</td>
               </tr>
               <tr
                 style="
@@ -126,7 +126,7 @@
                 <td colspan="2" style="padding-left: 4px; font-weight: bold">
                   ชื่อผู้ติดต่อ:
                 </td>
-                <td colspan="2">สมหอม ยอมทุกอย่าง</td>
+                <td colspan="2">{{ quo.contact_name.stringValue }}</td>
               </tr>
               <tr
                 style="
@@ -142,7 +142,7 @@
                   ที่อยู่:
                 </td>
                 <td colspan="2">
-                  15/55 ตำบลศิลา อำเภอเมือง จังหวัดของแก่น 40000
+                  {{ quo.customer_address.stringValue }}
                 </td>
               </tr>
               <tr
@@ -154,7 +154,7 @@
                   height: 40px;
                 ">
                 <td style="padding-left: 4px; font-weight: bold">โทร:</td>
-                <td>0661242478</td>
+                <td>{{ quo.contact_tel.stringValue }}</td>
                 <td
                   style="
                     padding-left: 4px;
@@ -166,7 +166,7 @@
                   ">
                   Fax:
                 </td>
-                <td>12457888</td>
+                <td>{{ bill.billing_note_fax.stringValue }}</td>
               </tr>
             </v-table></v-col
           >
@@ -183,7 +183,7 @@
                 <td style="padding-left: 4px; font-weight: bold" width="40%">
                   เลขที่:
                 </td>
-                <td>6111445875</td>
+                <td>{{ bill.billing_note_no.stringValue }}</td>
               </tr>
               <tr
                 style="
@@ -194,7 +194,7 @@
                   height: 40px;
                 ">
                 <td style="padding-left: 4px; font-weight: bold">วันที่:</td>
-                <td>สมัครใจ จำยอม</td>
+                <td>{{ bill.billing_note_date.stringValue }}</td>
               </tr>
               <tr
                 style="
@@ -207,7 +207,7 @@
                 <td style="padding-left: 4px; font-weight: bold">
                   รหัสลูกค้า:
                 </td>
-                <td>89999</td>
+                <td>{{ quo.customer_code.stringValue }}</td>
               </tr>
               <tr
                 style="
@@ -220,7 +220,7 @@
                 <td style="padding-left: 4px; font-weight: bold">
                   ผู้เสนอขาย:
                 </td>
-                <td>20/05/66</td>
+                <td>{{ quo.seller_name.stringValue }}</td>
               </tr>
               <tr
                 style="
@@ -231,7 +231,7 @@
                   height: 40px;
                 ">
                 <td style="padding-left: 4px; font-weight: bold">ฝ่าย:</td>
-                <td>20/05/66</td>
+                <td>{{ quo.seller_department.stringValue }}</td>
               </tr>
               <tr
                 style="
@@ -244,7 +244,7 @@
                 <td style="padding-left: 4px; font-weight: bold">
                   ยืนยันราคาวันที่:
                 </td>
-                <td>fin@soft.com</td>
+                <td>{{ quo.confirm_price_within.stringValue }}</td>
               </tr>
             </v-table></v-col
           >
@@ -255,46 +255,56 @@
             <v-table density="compact" height="auto">
               <thead style="font-weight: bold; font-size: 14px">
                 <tr>
-                  <td class="text-center">ลำดับ</td>
-                  <td class="text-center">รหัสสินค้า</td>
-                  <td class="text-center">รายการสินค้า</td>
-                  <td class="text-center">จำนวน</td>
-                  <td class="text-center">ราคาต่อหน่วย</td>
-                  <td class="text-center">ส่วนลด</td>
-                  <td class="text-center">ภาษี</td>
-                  <td class="text-center">จำนวนเงิน</td>
+                  <td class="text-center" style="font-size: xx-small">ลำดับ</td>
+                  <td class="text-center" style="font-size: xx-small">
+                    รหัสสินค้า
+                  </td>
+                  <td class="text-left" style="font-size: xx-small">
+                    รายการสินค้า
+                  </td>
+                  <td class="text-center" style="font-size: xx-small">จำนวน</td>
+                  <td class="text-center" style="font-size: xx-small">
+                    ราคาต่อหน่วย
+                  </td>
+                  <td class="text-center" style="font-size: xx-small">
+                    ส่วนลด
+                  </td>
+                  <td class="text-center" style="font-size: xx-small">ภาษี</td>
+                  <td class="text-center" style="font-size: xx-small">
+                    จำนวนเงิน
+                  </td>
                 </tr>
               </thead>
               <tbody style="font-weight: normal; font-size: 14px">
-                <tr>
-                  <td class="text-center">fdsaffs</td>
-                  <td class="text-center">dasfdasf</td>
-                  <td class="text-center">fasdfs</td>
-                  <td class="text-center">fdsaff</td>
-                  <td class="text-center">fdsafas</td>
-                  <td class="text-center">dsafas</td>
-                  <td class="text-center">dsafasdf</td>
-                  <td class="text-center">dasfads</td>
-                </tr>
-                <tr>
-                  <td class="text-center">fdsaffs</td>
-                  <td class="text-center">dasfdasf</td>
-                  <td class="text-center">fasdfs</td>
-                  <td class="text-center">fdsaff</td>
-                  <td class="text-center">fdsafas</td>
-                  <td class="text-center">dsafas</td>
-                  <td class="text-center">dsafasdf</td>
-                  <td class="text-center">dasfads</td>
-                </tr>
-                <tr>
-                  <td class="text-center">fdsaffs</td>
-                  <td class="text-center">dasfdasf</td>
-                  <td class="text-center">fasdfs</td>
-                  <td class="text-center">fdsaff</td>
-                  <td class="text-center">fdsafas</td>
-                  <td class="text-center">dsafas</td>
-                  <td class="text-center">dsafasdf</td>
-                  <td class="text-center">dasfads</td>
+                <tr
+                  v-for="(item, index) in quo.product.arrayValue.values"
+                  :key="index">
+                  <td class="text-center" style="font-size: xx-small">
+                    {{ index + 1 }}
+                  </td>
+                  <td class="text-center" style="font-size: xx-small">
+                    {{ item.mapValue.fields.product_code.stringValue }}
+                  </td>
+                  <td class="text-left" style="font-size: xx-small">
+                    {{ item.mapValue.fields.product_name.stringValue }}
+                  </td>
+                  <td class="text-center" style="font-size: xx-small">
+                    {{ item.mapValue.fields.product_amount.stringValue }}
+                  </td>
+                  <td class="text-center" style="font-size: xx-small">
+                    {{
+                      item.mapValue.fields.product_price_per_unit.stringValue
+                    }}
+                  </td>
+                  <td class="text-center" style="font-size: xx-small">
+                    {{ item.mapValue.fields.product_discount.stringValue }}
+                  </td>
+                  <td class="text-center" style="font-size: xx-small">
+                    {{ item.mapValue.fields.product_tax.stringValue }}
+                  </td>
+                  <td class="text-center" style="font-size: xx-small">
+                    {{ item.mapValue.fields.product_total.stringValue }}
+                  </td>
                 </tr>
               </tbody>
             </v-table>
@@ -308,14 +318,18 @@
               <tr>
                 <td style="width: 580px; font-weight: bold">หมายเหตุ:</td>
                 <td style="width: 95px">รวมเงิน</td>
-                <td style="width: 71px">100000</td>
+                <td style="width: 71px; text-align: end">
+                  {{ quo.sub_total.stringValue }} บาท&nbsp;&nbsp;
+                </td>
               </tr>
               <tr>
                 <td>
                   1.สินค้าตามรายการข้างต้นแม้จะได้รับมอบแก่ผู้ซื้อแล้วก็ยังคงเป็นสินทรัพย์ของผู้ขายจนกว่าผู้ซื้อจะชำระเงินเรียบร้อย
                 </td>
                 <td>มัดจำ 100%</td>
-                <td>150000</td>
+                <td style="text-align: end">
+                  {{ quo.earnest_money.stringValue }} บาท&nbsp;&nbsp;
+                </td>
               </tr>
               <tr>
                 <td>
@@ -323,7 +337,9 @@
                   “บริษัทศรีดาราทัวร์จำกัด” และขีดฆ่าหรือผู้ถือออก
                 </td>
                 <td>มูลค่าคิดภาษี</td>
-                <td>200000</td>
+                <td style="text-align: end">
+                  {{ quo.vat.stringValue }} บาท&nbsp;&nbsp;
+                </td>
               </tr>
 
               <tr>
@@ -331,8 +347,10 @@
                   3.การชำระเงินด้วยเช็คจะสมบูรณ์เมื่อ
                   บริษัทฯได้รับเงินตามเช็คเรียบร้อย
                 </td>
-                <td>ภาษีมูลค่าเพิ่ม 7%</td>
-                <td>10000</td>
+                <td>ภาษีมูลค่าเพิ่ม</td>
+                <td style="text-align: end">
+                  {{ quo.product_value.stringValue }} บาท&nbsp;&nbsp;
+                </td>
               </tr>
               <tr>
                 <td style="font-weight: bold">
@@ -341,12 +359,16 @@
                       ตัวอักษร :
                     </v-col>
                     <v-col style="margin: auto; padding: 1px" cols="8">
-                      ห้าพันแปดร้อยสามสิบบาทท้วน
+                      {{
+                        ArabicNumberToText(Number(quo.grand_total.stringValue))
+                      }}
                     </v-col>
                   </v-row>
                 </td>
                 <td>ยอดสุทธิ</td>
-                <td>1000</td>
+                <td style="text-align: end">
+                  {{ quo.grand_total.stringValue }} บาท&nbsp;&nbsp;
+                </td>
               </tr>
             </v-table>
           </v-col>
@@ -367,7 +389,7 @@
                   <td>&nbsp;</td>
                 </tr>
                 <tr style="text-align: center">
-                  <td>สมหอม นอมนม</td>
+                  <td></td>
                 </tr>
                 <tr style="text-align: center">
                   <td>ผู้รับสินค้า</td>
@@ -390,7 +412,7 @@
                   <td>&nbsp;</td>
                 </tr>
                 <tr style="text-align: center">
-                  <td>สมหอม นอมนม</td>
+                  <td></td>
                 </tr>
                 <tr style="text-align: center">
                   <td>ผู้ส่งสินค้า</td>
@@ -413,7 +435,7 @@
                   <td>&nbsp;</td>
                 </tr>
                 <tr style="text-align: center">
-                  <td>สมหอม นอมนม</td>
+                  <td></td>
                 </tr>
                 <tr style="text-align: center">
                   <td>ผู้ประสานงาน</td>
@@ -436,7 +458,7 @@
                   <td>&nbsp;</td>
                 </tr>
                 <tr style="text-align: center">
-                  <td>สมหอม นอมนม</td>
+                  <td></td>
                 </tr>
                 <tr style="text-align: center">
                   <td>ผู้อนุมัติ</td>
@@ -466,8 +488,42 @@
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
-
+import {
+  read_one_data_conditions,
+  number_to_thai_text,
+  ArabicNumberToText,
+} from "~~/services/configs";
 export default defineComponent({
+  setup() {
+    return {
+      number_to_thai_text,
+      ArabicNumberToText,
+    };
+  },
+  data() {
+    return {
+      quo: {} as any,
+      bill: {} as any,
+      onLoad: false,
+    };
+  },
+  mounted() {
+    read_one_data_conditions(
+      "billing_note",
+      "tour_id",
+      String(this.$route.params.tid)
+    ).then((res: any) => {
+      this.bill = res[0].fields;
+      read_one_data_conditions(
+        "quotation_detail",
+        "tour_id",
+        String(this.$route.params.tid)
+      ).then((res: any) => {
+        this.onLoad = true;
+        this.quo = res[0].fields;
+      });
+    });
+  },
   methods: {
     print() {
       window.print();
