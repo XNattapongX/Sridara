@@ -153,20 +153,19 @@
                   border-left: 1px solid #000000;
                   height: 40px;
                 ">
-                <td style="padding-left: 4px; font-weight: bold">โทร:</td>
-                <td>{{ quo.contact_tel.stringValue }}</td>
+                <td style="padding-left: 4px" colspan="3">
+                  <b>โทร:</b> {{ quo.contact_tel.stringValue }}
+                </td>
                 <td
                   style="
                     padding-left: 4px;
-                    font-weight: bold;
                     border-top: 1px none #000000;
                     border-right: 1px none #000000;
                     border-bottom: 1px none #000000;
                     border-left: 1px solid #000000;
                   ">
-                  Fax:
+                  <b>Fax:</b> {{ bill.billing_note_fax.stringValue }}
                 </td>
-                <td>{{ bill.billing_note_fax.stringValue }}</td>
               </tr>
             </v-table></v-col
           >
@@ -474,30 +473,88 @@
     </div>
   </div>
   <v-row
+    v-if="onLoad"
     justify="center"
     style="margin-top: -2rem; background-color: rgb(225, 225, 241)"
     class="hide-btn"
     ><v-col style="text-align: right">
-      <v-btn color="yellow-darken-4">แก้ไขเอกสารใบแจ้งหนี้</v-btn></v-col
+      <v-btn color="yellow-darken-4" @click="dialog = true"
+        >แก้ไขเอกสารใบแจ้งหนี้</v-btn
+      ></v-col
     ><v-col style="text-align: left">
       <v-btn color="light-blue-accent-4" @click="print"
         >สั่งพิมพ์ หรือ บันทึกเป็น PDF</v-btn
       ></v-col
     ></v-row
   >
+
+  <a-modal v-model:visible="dialog" title="ฟอร์มสร้างแก้ไขแจ้งหนี้/ใบวางบิล">
+    <template #footer>
+      <a-button key="back" @click="dialog = false">ยกเลิก</a-button>
+      <a-button
+        key="submit"
+        type="primary"
+        :loading="loadGenBill"
+        @click="updateBilling"
+        >แก้ไข</a-button
+      >
+    </template>
+    <v-row>
+      <v-col>
+        <label
+          for="base-input"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >เลขที่</label
+        >
+        <input
+          type="text"
+          id="base-input"
+          v-model="billing.billing_note_no"
+          class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+      </v-col>
+      <v-col>
+        <label
+          for="base-input"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >วันที่</label
+        >
+        <a-date-picker
+          :locale="locale"
+          style="z-index: 999"
+          v-model:value="billing.billing_note_date"
+          class="date-picker"
+          format="DD/MM/YYYY" />
+      </v-col>
+      <v-col>
+        <label
+          for="base-input"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >หมายเลขแฟกซ์</label
+        >
+        <input
+          type="text"
+          id="base-input"
+          v-model="billing.billing_note_fax"
+          class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+      </v-col>
+    </v-row>
+  </a-modal>
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
 import {
   read_one_data_conditions,
   ArabicNumberToText,
+  update_data,
 } from "~~/services/configs";
-
+import { billing_note_detail } from "~~/services/payload";
+import locale from "ant-design-vue/es/date-picker/locale/th_TH";
 const key = "updated";
 export default defineComponent({
   setup() {
     return {
       ArabicNumberToText,
+      locale,
     };
   },
   data() {
@@ -505,6 +562,13 @@ export default defineComponent({
       quo: {} as any,
       bill: {} as any,
       onLoad: false,
+      dialog: false,
+      billing: {
+        billing_note_no: "",
+        billing_note_date: "",
+        billing_note_fax: "",
+      },
+      loadGenBill: false,
     };
   },
   mounted() {
@@ -536,6 +600,44 @@ export default defineComponent({
   methods: {
     print() {
       window.print();
+    },
+    validateBillingForm() {
+      if (this.billing.billing_note_no == "") {
+        this.$message.error("กรุณากรอกเลขที่ใบแจ้งหนี้");
+        return false;
+      }
+      if (this.billing.billing_note_date == "") {
+        this.$message.error("กรุณากรอกวันที่ใบแจ้งหนี้");
+        return false;
+      }
+      if (this.billing.billing_note_fax == "") {
+        this.$message.error("กรุณากรอกหมายเลขแฟกซ์");
+        return false;
+      }
+      return true;
+    },
+    updateBilling() {
+      if (this.validateBillingForm()) {
+        this.loadGenBill = true;
+        const raw: any = billing_note_detail(
+          String(this.$route.params.tid),
+          this.billing.billing_note_no,
+          new Date(this.billing.billing_note_date),
+          this.billing.billing_note_fax
+        );
+        raw.fields.id = { stringValue: this.bill.id.stringValue };
+        update_data("billing_note", this.bill.id.stringValue, raw).then(
+          (res: any) => {
+            this.$message.success({
+              content: "สำเร็จ",
+              key,
+              duration: 1,
+            });
+            this.loadGenBill = false;
+            window.location.reload();
+          }
+        );
+      }
     },
   },
 });
@@ -583,5 +685,11 @@ export default defineComponent({
     background: initial;
     page-break-after: always;
   }
+}
+.date-picker {
+  height: 4.7vmin;
+  background-color: #f9fafb;
+  border-radius: 0.4rem;
+  width: 100%;
 }
 </style>

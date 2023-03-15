@@ -398,8 +398,8 @@ export default defineComponent({
   },
   methods: {
     removeGuide(index: number) {
-      this.guide_name.pop(index);
-      this.guide_tel.pop(index);
+      this.guide_name.splice(index, 1);
+      this.guide_tel.splice(index, 1);
     },
     removeHotel(id: string) {
       delete_data("hotel_tour", id).then(() => {

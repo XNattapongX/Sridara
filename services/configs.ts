@@ -1,3 +1,4 @@
+import { async } from "@firebase/util";
 import axios from "axios";
 
 export const api = axios.create({
@@ -88,6 +89,7 @@ export const delete_all_data_conditions = async (
 
 export const ArabicNumberToText = (number: number | string): string => {
   var numbers: any = checkNumber(number);
+  console.log(numbers);
   const numberArray = [
     "ศูนย์",
     "หนึ่ง",
@@ -109,7 +111,7 @@ export const ArabicNumberToText = (number: number | string): string => {
   if ((numbers as number) > 9999999.9999) {
     return "ข้อมูลนำเข้าเกินขอบเขตที่ตั้งไว้";
   }
-  numbers = number.toString().split(".");
+  numbers = Number(number).toFixed(2).split(".");
   if (numbers[1].length > 0) {
     numbers[1] = numbers[1].substring(0, 2);
   }
@@ -179,3 +181,26 @@ const getDecimal = (
   bahtText += "สตางค์";
   return bahtText;
 };
+
+export const ListTaxInvoice = async () => {
+  const response = await api.get("quotation_detail");
+  const documents = response.data.documents;
+
+  const promises = documents.map(async (x: any) => {
+    const res = await api.get("tax_invoice");
+    return res.data.documents.map((y: any) => ({
+      tour_id: x.fields.tour_id.stringValue,
+      date: y.fields.tax_invoice_date.stringValue,
+      no: y.fields.tax_invoice_no.stringValue,
+      desc: `ลูกค้า-${x.fields.customer_name.stringValue} ที่อยู่-${x.fields.customer_address.stringValue}`,
+      total: x.fields.grand_total.stringValue,
+    }));
+  });
+
+  const results = await Promise.all(promises);
+  return results.flat().filter(onlyUnique);
+};
+
+export function onlyUnique(v: any, i: any) {
+  return i % 2 == 0;
+}

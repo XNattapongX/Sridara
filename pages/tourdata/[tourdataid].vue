@@ -153,62 +153,94 @@
       </table>
     </div>
   </section>
-  <v-row justify="space-between" style="margin: 0.5rem; margin-top: 0rem">
-    <v-col style="text-align: center"
-      ><v-btn
-        variant="tonal"
-        color="red-accent-4"
-        @click="handleDelete(tour_data.fields.trip_name.stringValue)"
-        >ลบทัวร์</v-btn
+  <v-row
+    justify="space-between"
+    style="
+      background-color: #eceff1;
+      box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
+        rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+      width: 100%;
+      margin: 0;
+      position: fixed;
+      bottom: 0;
+    ">
+    <v-col cols="5">
+      <v-row>
+        <v-col style="text-align: left"
+          ><v-btn
+            variant="tonal"
+            color="red-accent-4"
+            @click="handleDelete(tour_data.fields.trip_name.stringValue)"
+            >ลบทัวร์</v-btn
+          ></v-col
+        ></v-row
       ></v-col
     >
-    <v-col style="text-align: center" v-if="haveQuotation && !haveBilling">
-      <v-btn variant="tonal" color="light-blue-accent-4" @click="dialog = true"
-        >สร้างใบแจ้งหนี้</v-btn
-      >
-    </v-col>
-    <v-col style="text-align: center" v-if="haveBilling && haveQuotation">
-      <v-btn
-        variant="tonal"
-        color="light-blue-accent-4"
-        @click="$router.push(`/billing-paper/${$route.params.tourdataid}`)"
-        >ดูใบแจ้งหนี้</v-btn
-      >
-    </v-col>
-    <v-col style="text-align: center">
-      <v-btn variant="tonal" color="light-blue-accent-4"
-        >สร้างใบกำกับภาษี</v-btn
-      >
-    </v-col>
-    <v-col style="text-align: center" v-if="haveQuotation">
-      <v-btn
-        variant="tonal"
-        color="light-blue-accent-4"
-        @click="$router.push(`/quotation-paper/${$route.params.tourdataid}`)"
-        >ดูใบเสนอราคา</v-btn
-      >
-    </v-col>
-    <v-col style="text-align: center" v-else>
-      <v-btn
-        variant="tonal"
-        color="light-blue-accent-4"
-        @click="$router.push(`/qpform/${$route.params.tourdataid}`)"
-        >สร้างใบเสนอราคา</v-btn
-      >
-    </v-col>
-    <v-col style="text-align: center"
-      ><v-btn
-        variant="tonal"
-        @click="$router.push(`/addusertour/${$route.params.tourdataid}`)"
-        color="cyan-darken-4"
-        >แก้ไขข้อมูลลูกทัวร์</v-btn
-      ></v-col
-    >
-    <v-col
-      style="text-align: center"
-      @click="$router.push(`/edittour/${$route.params.tourdataid}`)"
-      ><v-btn variant="tonal" color="cyan-darken-4"
-        >แก้ไขข้อมูลทัวร์</v-btn
+    <v-col style="display: flex; align-items: center">
+      <v-row justify="end">
+        <v-btn
+          v-if="haveQuotation"
+          style="margin-right: 1rem"
+          variant="tonal"
+          color="light-blue-accent-4"
+          @click="$router.push(`/quotation-paper/${$route.params.tourdataid}`)"
+          >ดูใบเสนอราคา</v-btn
+        >
+        <v-btn
+          v-else
+          style="margin-right: 1rem"
+          variant="tonal"
+          color="light-blue-accent-4"
+          @click="$router.push(`/qpform/${$route.params.tourdataid}`)"
+          >สร้างใบเสนอราคา</v-btn
+        >
+
+        <v-btn
+          v-if="haveQuotation && !haveBilling"
+          style="margin-right: 1rem"
+          variant="tonal"
+          color="light-blue-accent-4"
+          @click="dialog = true"
+          >สร้างใบแจ้งหนี้</v-btn
+        >
+
+        <v-btn
+          v-else-if="haveQuotation && haveBilling"
+          style="margin-right: 1rem"
+          variant="tonal"
+          color="light-blue-accent-4"
+          @click="$router.push(`/billing-paper/${$route.params.tourdataid}`)"
+          >ดูใบแจ้งหนี้</v-btn
+        >
+
+        <v-btn
+          variant="tonal"
+          style="margin-right: 1rem"
+          color="light-blue-accent-4"
+          v-if="haveBilling && haveQuotation && !haveTaxInvoice"
+          @click="dialog2 = true"
+          >สร้างใบกำกับภาษี</v-btn
+        ><v-btn
+          variant="tonal"
+          style="margin-right: 1rem"
+          color="light-blue-accent-4"
+          v-else-if="haveBilling && haveQuotation && haveTaxInvoice"
+          @click="$router.push(`/tax-invoice/${this.$route.params.tourdataid}`)"
+          >ดูใบกำกับภาษี</v-btn
+        ><v-btn
+          style="margin-right: 1rem"
+          variant="tonal"
+          @click="$router.push(`/addusertour/${$route.params.tourdataid}`)"
+          color="cyan-darken-4"
+          >แก้ไขข้อมูลลูกทัวร์</v-btn
+        >
+        <v-btn
+          style="margin-right: 1rem"
+          @click="$router.push(`/edittour/${$route.params.tourdataid}`)"
+          variant="tonal"
+          color="cyan-darken-4"
+          >แก้ไขข้อมูลทัวร์</v-btn
+        ></v-row
       ></v-col
     >
   </v-row>
@@ -264,6 +296,74 @@
       </v-col>
     </v-row>
   </a-modal>
+
+  <a-modal
+    v-model:visible="dialog2"
+    width="65rem"
+    title="ฟอร์มสร้างใบกำกับภาษี/ใบส่งของ">
+    <template #footer>
+      <a-button key="back" @click="dialog2 = false">ยกเลิก</a-button>
+      <a-button
+        key="submit"
+        type="primary"
+        :loading="loadGenBill"
+        @click="generateTaxInvoice"
+        >สร้าง</a-button
+      >
+    </template>
+    <v-row>
+      <v-col>
+        <label
+          for="base-input"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >เลขที่</label
+        >
+        <input
+          type="text"
+          id="base-input"
+          v-model="tax.tax_no"
+          class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+      </v-col>
+      <v-col>
+        <label
+          for="base-input"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >วันที่</label
+        >
+        <a-date-picker
+          :locale="locale"
+          style="z-index: 999"
+          v-model:value="tax.tax_date"
+          class="date-picker"
+          format="DD/MM/YYYY" />
+      </v-col>
+      <v-col>
+        <label
+          for="base-input"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >กำหนดการชำระ</label
+        >
+        <a-date-picker
+          :locale="locale"
+          style="z-index: 999"
+          v-model:value="tax.tax_pay_date"
+          class="date-picker"
+          format="DD/MM/YYYY" />
+      </v-col>
+      <v-col>
+        <label
+          for="base-input"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >สาขา (ถ้าไม่กรอกจะเป็นสำนักงานใหญ่)</label
+        >
+        <input
+          type="text"
+          id="base-input"
+          v-model="tax.tax_branch"
+          class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+      </v-col>
+    </v-row>
+  </a-modal>
 </template>
 
 <script>
@@ -277,7 +377,7 @@ import {
 } from "~~/services/configs";
 import locale from "ant-design-vue/es/date-picker/locale/th_TH";
 import { create_data } from "~~/services/configs";
-import { billing_note_detail } from "~~/services/payload";
+import { billing_note_detail, tax_invoice_detail } from "~~/services/payload";
 export default {
   setup() {
     return {
@@ -321,6 +421,15 @@ export default {
     ).then((result) => {
       if (result.length) {
         this.haveBilling = true;
+      }
+    });
+    read_one_data_conditions(
+      "tax_invoice",
+      "tour_id",
+      this.$route.params.tourdataid
+    ).then((result) => {
+      if (result.length) {
+        this.haveTaxInvoice = true;
       }
     });
   },
@@ -379,6 +488,34 @@ export default {
         });
       }
     },
+    validateTax() {
+      if (
+        this.tax.tax_no == "" ||
+        this.tax.tax_date == "" ||
+        this.tax.tax_pay_date == ""
+      ) {
+        this.$message.error("กรุณากรอกข้อมูลให้ครบถ้วน");
+        return false;
+      } else {
+        return true;
+      }
+    },
+    generateTaxInvoice() {
+      if (this.validateTax()) {
+        this.loadGenBill = true;
+        const raw = tax_invoice_detail(
+          this.$route.params.tourdataid,
+          this.tax.tax_no,
+          this.tax.tax_date,
+          this.tax.tax_pay_date,
+          this.tax.tax_branch
+        );
+        create_data("tax_invoice", raw).then(() => {
+          this.dialog2 = false;
+          this.$router.push(`/tax-invoice/${this.$route.params.tourdataid}`);
+        });
+      }
+    },
   },
   data() {
     return {
@@ -386,7 +523,9 @@ export default {
       loading: true,
       haveQuotation: false,
       haveBilling: false,
+      haveTaxInvoice: false,
       dialog: false,
+      dialog2: false,
       loadGenBill: false,
       members_ls: [],
       hotels_ls: [],
@@ -394,6 +533,12 @@ export default {
         billing_note_no: "",
         billing_note_date: "",
         billing_note_fax: "",
+      },
+      tax: {
+        tax_no: "",
+        tax_date: "",
+        tax_pay_date: "",
+        tax_branch: "",
       },
     };
   },
