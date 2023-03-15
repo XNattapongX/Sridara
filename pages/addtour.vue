@@ -150,19 +150,6 @@
         </v-row>
 
         <v-row>
-          <v-col cols="3">
-            <label
-              for="base-input"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >จำนวนลูกทัวร์</label
-            >
-            <input
-              type="number"
-              v-model.number="members"
-              :disabled="lock_form"
-              id="small-input"
-              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-          </v-col>
           <v-col>
             <label
               for="base-input"
@@ -372,8 +359,7 @@ export default defineComponent({
         this.vehicle_in == "" ||
         this.vehicle_out == "" ||
         this.guide_name == "" ||
-        this.guide_tel == "" ||
-        this.members == 0
+        this.guide_tel == ""
       ) {
         this.$message.error("กรุณากรอกข้อมูลให้ครบถ้วน");
         return false;

@@ -2,6 +2,12 @@ import dayjs from "dayjs";
 import buddhistEra from "dayjs/plugin/buddhistEra";
 dayjs.extend(buddhistEra);
 
+const genRanDec = (size: number) => {
+  return [...Array(size)]
+    .map(() => Math.floor(Math.random() * 10).toString(10))
+    .join("");
+};
+
 export const group_members = (
   tour_id: string,
   thai_name: string,
@@ -109,6 +115,9 @@ export const group_tours = (
       },
       amount_member: {
         stringValue: String(amount_member),
+      },
+      custumer_code: {
+        stringValue: `SRI-T${genRanDec(6)}`,
       },
     },
   };
