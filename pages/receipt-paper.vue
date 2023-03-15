@@ -5,181 +5,86 @@
     <div class="page" v-if="onLoad">
       <v-container>
         <v-row>
-          <v-col cols="8"
-            ><v-row
-              ><v-col>
+          <v-col cols="8">
+            <v-row>
+              <v-col>
                 <img
                   src="https://www.adt.or.th/image/ADT1%20-%201108%20-%200263.jpg"
                   class="w-141px h-47px"
                   alt="sridara Logo"
                 />
                 <v-sheet style="text-align: left; font-size: 12px">
-                  บริษัท ศรีดาราทัวร์ จำกัด (สำนักงานใหญ่)
-                  <td></td>
-                  123 ถนนชยางกูร หมู่ 19 ตำบลบุ่ง อำเภอเมืองอำนาจเจริญ
-                  จังหวัดอำนาจเจริญ 37000
-                  <td></td>
-                  เลขประจำตัวผู้เสียภาษี: 0375552000037
-                  <td></td>
+                  <div>บริษัท ศรีดาราทัวร์ จำกัด (สำนักงานใหญ่)</div>
+                  <div>
+                    123 ถนนชยางกูร หมู่ 19 ตำบลบุ่ง อำเภอเมืองอำนาจเจริญ
+                    จังหวัดอำนาจเจริญ 37000
+                  </div>
+                  <div>เลขประจำตัวผู้เสียภาษี: 0375552000037</div>
                   โทร.082-3656514
-                  <td></td>
-                  www.facebook.com/sridaratourfanpage
+                  <div><a>www.facebook.com/sridaratourfanpage</a></div>
                 </v-sheet>
-              </v-col></v-row
-            >
-            <v-row><v-col></v-col></v-row
-          ></v-col>
-          <v-col cols="4"
-            ><v-table>
-              <tr style="text-align: center">
-                <td
-                  colspan="2"
-                  style="
-                    border-top: 1px solid #000000;
-                    border-right: 1px solid #000000;
-                    border-bottom: 1px none #000000;
-                    border-left: 1px solid #000000;
-                    width: 170px;
-                    font-weight: bold;
-                  "
-                >
-                  ใบเสร็จรับเงิน
-                </td>
-              </tr>
-              <tr style="text-align: center">
-                <td
-                  colspan="2"
-                  style="
-                    border-top: 1px none #000000;
-                    border-right: 1px solid #000000;
-                    border-bottom: 1px solid #000000;
-                    border-left: 1px solid #000000;
-                  "
-                >
-                  Receipt
-                </td>
-              </tr>
-              <tr style="text-align: center">
-                <td
-                  colspan="2"
-                  style="
-                    border-top: 1px solid #000000;
-                    border-right: 1px solid #000000;
-                    border-bottom: 1px none #000000;
-                    border-left: 1px solid #000000;
-                    width: 170px;
-                    font-weight: bold;
-                  "
-                >
-                  ต้นฉบับ/Original
-                </td>
-              </tr>
-              <tr style="text-align: center">
-                <td
-                  colspan="2"
-                  style="
-                    border-top: 1px none #000000;
-                    border-right: 1px solid #000000;
-                    border-bottom: 1px solid #000000;
-                    border-left: 1px solid #000000;
-                  "
-                >
-                  เอกสารออกเป็นชุด
-                </td>
-              </tr>
-            </v-table></v-col
-          >
-        </v-row>
+              </v-col>
+            </v-row>
 
-        <v-row style="font-size: 12px; padding: 1px; margin: auto">
-          <v-col style="padding: 0" cols="7">
-            <v-table>
-              <tr
-                style="
-                  border-top: 1px solid #000000;
-                  border-right: none;
-                  border-bottom: 1px solid #000000;
-                  border-left: 1px solid #000000;
-                  height: 40px;
-                "
-              >
-                <td colspan="2" style="padding-left: 4px; font-weight: bold">
-                  ชื่อลูกค้า:
-                </td>
-                <td colspan="2">{{ quo.customer_name.stringValue }}</td>
-              </tr>
-              <tr
-                style="
-                  border-top: 1px solid #000000;
-                  border-right: none #000000;
-                  border-bottom: 1px solid #000000;
-                  border-left: 1px solid #000000;
-                  height: 80px;
-                "
-              >
-                <td
-                  colspan="2"
-                  style="padding: auto; padding-left: 4px; font-weight: bold"
-                >
-                  ที่อยู่:
-                </td>
+            <v-row style="font-size: 12px">
+              <v-col cols="4">
+                <v-table style="padding: 5px">
+                  <tr style="height: 30px">
+                    <td><b>ชื่อลูกค้า: </b></td>
+                    <td>{{ quo.customer_name.stringValue }}</td>
+                  </tr>
+                  <tr style="height: 30px">
+                    <td><b>ที่อยู่: </b></td>
+                    <td>{{ quo.customer_address.stringValue }}</td>
+                  </tr>
+                  <tr style="height: 30px">
+                    <td><b>สาขา: </b></td>
+                    <td>{{ ob.receipt_branch }}</td>
+                  </tr>
+                </v-table>
+              </v-col>
+            </v-row>
+          </v-col>
+
+          <v-col>
+            <v-table style="font-size: 12px">
+              <tr style="text-align: center">
                 <td colspan="2">
-                  {{ quo.customer_address.stringValue }}
+                  <div style="font-size: 14px"><b>ใบเสร็จรับเงิน</b></div>
+                  <div>Receipt</div>
                 </td>
+              </tr>
+              <tr style="text-align: center">
+                <td colspan="2" style="border-top: 1px solid #000000">
+                  ต้นฉบับ/Original (เอกสารออกเป็นชุด)
+                </td>
+              </tr>
+              <tr>
+                <td><b>วันที่รับชำระ:</b></td>
+                <td style="text-align: center">
+                  {{ dayjs(ob.receipt_date).format("DD/MM/BBBB") }}
+                </td>
+              </tr>
+              <tr>
+                <td><b>เลขที่ใบเสร็จรับเงิน:</b></td>
+                <td style="text-align: center">{{ ob.receipt_no }}</td>
               </tr>
             </v-table>
           </v-col>
-          <v-col style="padding: 0" cols="5"
-            ><v-table>
-              <tr
-                style="
-                  border-top: 1px solid #000000;
-                  border-right: 1px solid #000000;
-                  border-bottom: 1px solid #000000;
-                  border-left: 1px solid #000000;
-                  height: 40px;
-                "
-              >
-                <td style="padding-left: 4px; font-weight: bold" width="40%">
-                  วันที่รับชำระ:
-                </td>
-                <td>{{ dayjs(ob.receipt_date).format("DD/MM/BBBB") }}</td>
-              </tr>
-              <tr
-                style="
-                  border-top: 1px solid #000000;
-                  border-right: 1px solid #000000;
-                  border-bottom: 1px solid #000000;
-                  border-left: 1px solid #000000;
-                  height: 40px;
-                "
-              >
-                <td style="padding-left: 4px; font-weight: bold">
-                  เลขที่ใบเสร็จรับเงิน:
-                </td>
-                <td>{{ ob.receipt_no }}</td>
-              </tr>
-              <tr
-                style="
-                  border-top: 1px solid #000000;
-                  border-right: 1px solid #000000;
-                  border-bottom: 1px solid #000000;
-                  border-left: 1px solid #000000;
-                  height: 40px;
-                "
-              >
-                <td style="padding-left: 4px; font-weight: bold">สาขา:</td>
-                <td>{{ ob.receipt_branch }}</td>
-              </tr>
-            </v-table></v-col
-          >
         </v-row>
 
-        <v-row style="padding: 1px; margin: auto">
-          <v-col style="padding: 1px; height: 400px; border: 1px solid black">
+        <v-row
+          style="padding: 1px; margin: auto; border-bottom: 1px solid black"
+        >
+          <v-col style="padding: 1px; height: 400px">
             <v-table density="compact" height="auto">
               <thead style="font-weight: bold; font-size: 14px">
-                <tr>
+                <tr
+                  style="
+                    border-top: 1px solid black;
+                    border-bottom: 1px solid black;
+                  "
+                >
                   <td class="text-center" style="font-size: xx-small">ลำดับ</td>
                   <td class="text-center" style="font-size: xx-small">
                     วันที่
@@ -196,7 +101,11 @@
                 </tr>
               </thead>
               <tbody style="font-weight: normal; font-size: 14px">
-                <tr v-for="(item, index) in ob.tax_invoice" :key="index">
+                <tr
+                  v-for="(item, index) in ob.tax_invoice"
+                  :key="index"
+                  style="border-bottom: 1px solid black"
+                >
                   <td class="text-center" style="font-size: xx-small">
                     {{ index + 1 }}
                   </td>
@@ -218,197 +127,106 @@
           </v-col>
         </v-row>
 
-        <v-row style="font-size: 12px; padding: 1px; margin: auto">
+        <v-row style="font-size: 12px; padding-left: 4px; margin: auto">
           <v-col style="padding: 0" cols="6">
             <v-table>
-              <tr
-                style="
-                  border-top: 1px solid #000000;
-                  border-right: none;
-                  border-bottom: 1px solid #000000;
-                  border-left: 1px solid #000000;
-                  height: 40px;
-                "
-              >
-                <td colspan="2" style="padding-left: 4px; font-weight: bold">
+              <tr style="height: 20px">
+                <td colspan="2" style="font-weight: bold">&nbsp;</td>
+              </tr>
+              <tr style="height: 30px">
+                <td colspan="2" style="font-weight: bold">
                   รวมทั้งสิ้น ตัวอักษร:
                 </td>
                 <td colspan="2">{{ ArabicNumberToText(last_total) }}</td>
               </tr>
-              <tr
-                style="
-                  border-top: 1px solid #000000;
-                  border-right: none;
-                  border-bottom: 1px solid #000000;
-                  border-left: 1px solid #000000;
-                  height: 40px;
-                "
-              >
-                <td colspan="2" style="font-weight: bold; padding-left: 4px">
-                  ชำระ:
-                </td>
+              <tr style="height: 30px">
+                <td colspan="2" style="font-weight: bold">ชำระ:</td>
                 <td colspan="2">{{ ob.receipt_pay_type }}</td>
               </tr>
-              <tr
-                style="
-                  border-top: 1px solid #000000;
-                  border-right: none;
-                  border-bottom: 1px solid #000000;
-                  border-left: 1px solid #000000;
-                  height: 40px;
-                "
-              >
-                <td colspan="2" style="font-weight: bold; padding-left: 4px">
+              <tr style="height: 30px">
+                <td colspan="2" style="font-weight: bold">
                   หักภาษี ณ ที่จ่าย :
                 </td>
                 <td colspan="2">{{ ob.receipt_tax }}</td>
               </tr>
-            </v-table>
-          </v-col>
-          <v-col style="padding: 0" cols="6"
-            ><v-table>
-              <tr
-                style="
-                  border-top: 1px solid #000000;
-                  border-right: 1px solid #000000;
-                  border-bottom: 1px solid #000000;
-                  border-left: 1px none #000000;
-                  height: 40px;
-                "
-              >
-                <td style="padding-left: 4px; font-weight: bold" width="40%">
-                  &nbsp;
-                </td>
-                <td>&nbsp;</td>
-              </tr>
-              <tr
-                style="
-                  border-top: 1px solid #000000;
-                  border-right: 1px solid #000000;
-                  border-bottom: 1px solid #000000;
-                  border-left: 1px none #000000;
-                  height: 40px;
-                "
-              >
-                <td style="padding-left: 4px; font-weight: bold">&nbsp;</td>
-                <td>&nbsp;</td>
-              </tr>
-              <tr
-                style="
-                  border-top: 1px solid #000000;
-                  border-right: 1px solid #000000;
-                  border-bottom: 1px solid #000000;
-                  border-left: 1px solid #000000;
-                  height: 40px;
-                "
-              >
-                <td style="padding-left: 4px; font-weight: bold">
+              <tr style="height: 30px">
+                <td colspan="2" style="font-weight: bold">
                   เลขที่เช็ค // วันที่เช็ค
                 </td>
-                <td>
+                <td colspan="2">
                   {{ ob.receipt_check_no }} //
                   {{ dayjs(ob.receipt_check_date).format("DD/MM/BBBB") }}
                 </td>
               </tr>
-            </v-table></v-col
-          >
-        </v-row>
-
-        <v-row style="font-size: 12px; padding: 1px; margin: auto">
-          <v-col style="padding: 0">
-            <v-table
-              ><tr
-                style="
-                  border-top: 1px solid #000000;
-                  border-right: 1px solid #000000;
-                  border-bottom: 1px solid #000000;
-                  border-left: 1px solid #000000;
-                  height: 40px;
-                "
-              >
-                <td colspan="2" style="padding-left: 4px; font-weight: bold">
-                  หมายเหตุ :
-                  ใบเสร็จรับเงินฉบับนี้จะสมบูรณ์ต่อเมื่อได้รับเงินตามเช็คเรียบร้อยและต้องมีลายมือชื่อกรรมการ
-                  ผู้มีอำนาจหรือผู้แทนที่ถูกต้องและผู้รับเงิน
-                </td>
-              </tr></v-table
-            >
+            </v-table>
           </v-col>
         </v-row>
 
-        <v-table style="padding: 1px; margin: auto; font-size: 11px">
+        <v-row style="font-size: 12px; padding-left: 4px; margin: auto">
+          <v-col style="padding: 0">
+            <v-table>
+              <tr style="height: 30px">
+                <td>
+                  <b>หมายเหตุ: </b>
+                  ใบเสร็จรับเงินฉบับนี้จะสมบูรณ์ต่อเมื่อได้รับเงินตามเช็คเรียบร้อยและต้องมีลายมือชื่อกรรมการ
+                  ผู้มีอำนาจหรือผู้แทนที่ถูกต้องและผู้รับเงิน
+                </td>
+              </tr>
+              <tr style="height: 20px">
+                <td
+                  colspan="2"
+                  style="font-weight: bold; border-bottom: 1px solid black"
+                >
+                  &nbsp;
+                </td>
+              </tr>
+            </v-table>
+          </v-col>
+        </v-row>
+
+        <v-table style="margin: auto; font-size: 12px">
           <tr>
-            <td
-              style="
-                border-top: 1px solid #000000;
-                border-right: 1px solid #000000;
-                border-bottom: 1px solid #000000;
-                border-left: 1px solid #000000;
-                width: 187px;
-              "
-            >
+            <td style="width: 187px">
               <v-table>
                 <tr style="height: 110px">
                   <td>&nbsp;</td>
-                </tr>
-                <tr style="text-align: center">
-                  <td></td>
                 </tr>
                 <tr style="text-align: center">
                   <td>ผู้จัดทำ</td>
                 </tr>
                 <tr>
-                  <td style="padding: 0px 0px 3px 3px">วันที่</td>
+                  <td>วันที่</td>
                 </tr>
               </v-table>
             </td>
-            <td
-              style="
-                border-top: 1px solid #000000;
-                border-right: 1px solid #000000;
-                border-bottom: 1px solid #000000;
-                border-left: 1px solid #000000;
-                width: 187px;
-              "
-            >
+            <td style="width: 187px">
               <v-table>
                 <tr style="height: 110px">
                   <td>&nbsp;</td>
-                </tr>
-                <tr style="text-align: center">
-                  <td></td>
                 </tr>
                 <tr style="text-align: center">
                   <td>ผู้รับเงิน</td>
                 </tr>
                 <tr>
-                  <td style="padding: 0px 0px 3px 3px">วันที่</td>
+                  <td>วันที่</td>
                 </tr></v-table
               >
             </td>
-            <td
-              style="
-                border-top: 1px solid #000000;
-                border-right: 1px solid #000000;
-                border-bottom: 1px solid #000000;
-                border-left: 1px solid #000000;
-                width: 187px;
-              "
-            >
-              <v-table>
+            <td style="width: 187px">
+              <v-table style="text-align: center">
                 <tr style="height: 110px">
                   <td>&nbsp;</td>
                 </tr>
-                <tr style="text-align: center">
-                  <td></td>
-                </tr>
-                <tr style="text-align: center">
+                <tr>
                   <td>กรรมการผู้มีอำนาจหรือตัวแทน</td>
                 </tr>
                 <tr>
-                  <td style="padding: 0px 0px 3px 3px">วันที่</td>
-                </tr></v-table
-              >
+                  <td>วันที่</td>
+                </tr>
+                <tr style="height: 30px; border-bottom: 1px solid black">
+                  <td>&nbsp;</td>
+                </tr>
+              </v-table>
             </td>
           </tr>
         </v-table>
