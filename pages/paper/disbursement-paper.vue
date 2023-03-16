@@ -163,7 +163,35 @@
             </v-table>
           </v-col>
         </v-row>
-
+        <v-row style="font-size: 12px; padding-left: 4px; margin: auto">
+          <v-col style="padding: 0">
+            <v-table>
+              <tr style="height: 20px">
+                <td colspan="5" style="font-weight: bold">&nbsp;</td>
+              </tr>
+              <tr style="height: 30px">
+                <tr style="height: 30px">
+                <td colspan="2" style="font-weight: bold">ตัวหนังสือ:</td>
+              </tr> <td align="right" colspan="2" style="font-weight: bold">รวมสุทธิ :</td>
+                <td align="center" colspan="2">xxx</td>
+              </tr>
+             
+            </v-table>
+          </v-col>
+        </v-row>
+         <v-row style="font-size: 12px; padding-left: 4px; margin: auto">
+          <v-col style="padding: 0">
+            <v-table>
+              
+              <tr style="height: 30px">
+                <td colspan="2" style="font-weight: bold">ผู้อนุมัติ (แบบอิเล็กทอรนิกส์) :&nbsp;&nbsp;&nbsp;&nbsp;:</td>
+              </tr>
+              <tr style="height: 20px">
+                <td colspan="3" style="font-weight: bold; border-bottom: 1px solid black">&nbsp;</td>
+              </tr>
+            </v-table>
+          </v-col>
+        </v-row>
         <v-row style="margin: auto; font-size: 12px">
           <v-col>
             <v-table style="text-align: center">
