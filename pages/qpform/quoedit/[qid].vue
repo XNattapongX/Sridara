@@ -185,7 +185,7 @@
             <input
               type="number"
               id="small-input"
-              v-model.number="product_amount"
+              v-model.number="product_qty"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
           <v-col>
@@ -287,29 +287,30 @@
                   :key="index">
                   <td class="px-6 py-4">{{ index + 1 }}</td>
                   <td class="px-6 py-4">
-                    {{ item.product_code }}
+                    {{ item.code }}
                   </td>
                   <td class="px-6 py-4">
-                    {{ item.product_name }}
+                    {{ item.name }}
                   </td>
                   <td class="px-6 py-4">
-                    {{ item.product_amount }}
+                    {{ item.amount }}
                   </td>
                   <td class="px-6 py-4">
-                    {{ item.product_price_per_unit }}
+                    {{ item.price_per_unit }}
                   </td>
                   <td class="px-6 py-4">
-                    {{ item.product_discount }}
+                    {{ item.discount }}
                   </td>
                   <td class="px-6 py-4">
-                    {{ item.product_tax }}
+                    {{ item.tax }}
                   </td>
-                  <td class="px-6 py-4">{{ item.product_total }}</td>
+                  <td class="px-6 py-4">{{ item.amount }}</td>
                   <td class="px-6 py-4">
                     <v-btn
                       block
+                      :disabled="item.unit == 'ทัวร์'"
                       variant="tonal"
-                      @click="onDeleteProduct(index)"
+                      @click="onDeleteProduct(item.id, index)"
                       style="margin-top: 5px"
                       color="red-accent-4"
                       >ลบข้อมูล</v-btn
@@ -383,7 +384,7 @@
             ><input
               type="number"
               disabled
-              :value="calculateVat()"
+              :value="beforeCalculateVat()"
               id="small-input"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           /></v-col>
@@ -396,7 +397,7 @@
               type="number"
               id="small-input"
               disabled
-              :value="calculateBeforeVat()"
+              :value="calculateVat()"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           /></v-col>
           <v-col
@@ -439,61 +440,49 @@
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
-import { genRanDec, read_one_data, update_data } from "~~/services/configs";
-import { quotation_detail_with_product } from "~~/services/payload";
+import {
+  read_all_data,
+  create_data,
+  update_data,
+  delete_data,
+  genRanDec,
+} from "~~/services/pyapi";
 import locale from "ant-design-vue/es/date-picker/locale/th_TH";
+import dayjs from "dayjs";
+import buddhistEra from "dayjs/plugin/buddhistEra";
+dayjs.extend(buddhistEra);
 export default defineComponent({
   setup() {
     return {
       locale,
     };
   },
-  mounted() {
-    this.product_code = `PROD-${genRanDec(10)}`;
-    read_one_data("quotation_detail", String(this.$route.params.qid)).then(
-      (res) => {
-        const fields = res.fields;
-        this.tour_id = fields.tour_id.stringValue;
-        this.quotation_id = fields.quotation_id.stringValue;
-        this.quotation_date = new Date();
-        this.customer_name = fields.customer_name.stringValue;
-        this.tax_id = fields.tax_id.stringValue;
-        this.contact_name = fields.contact_name.stringValue;
-        this.customer_address = fields.customer_address.stringValue;
-        this.customer_code = fields.customer_code.stringValue;
-        this.sales_person = fields.seller_name.stringValue;
-        this.sale_department = fields.seller_department.stringValue;
-        this.contact_tel = fields.contact_tel.stringValue;
-        this.contact_email = fields.contact_email.stringValue;
-        this.price_validate_period = fields.price_validity_period.stringValue;
-        this.deposit = fields.earnest_money.stringValue;
-        fields.product.arrayValue.values.forEach((element: any) => {
-          this.product_ls.push({
-            product_code: element.mapValue.fields.product_code.stringValue,
-            product_name: element.mapValue.fields.product_name.stringValue,
-            product_amount: Number(
-              element.mapValue.fields.product_amount.stringValue
-            ),
-            product_price_per_unit: Number(
-              element.mapValue.fields.product_price_per_unit.stringValue
-            ),
-            product_discount: Number(
-              element.mapValue.fields.product_discount.stringValue
-            ),
-            product_tax: element.mapValue.fields.product_tax.stringValue,
-            product_total: Number(
-              element.mapValue.fields.product_total.stringValue
-            ),
-          });
-        });
-      }
-    );
+  async mounted() {
+    this.tour_id = String(this.$route.params.qid);
+    this.product_code = `Q-${genRanDec(10)}`;
+    const data = await read_all_data(`quotations?tour_id=${this.tour_id}`);
+    this.quo_id = data[0].id;
+    this.no = data[0].no;
+    this.customer_name = data[0].customer_name;
+    this.tax_id = data[0].tax_id;
+    this.contact_name = data[0].contact_name;
+    this.customer_address = data[0].address;
+    this.customer_code = data[0].customer_code;
+    this.sales_person = data[0].sales_person;
+    this.sale_department = data[0].sale_department;
+    this.contact_tel = data[0].customer_tel;
+    this.contact_email = data[0].email;
+    this.deposit = data[0].earnest_money;
+    this.price_validate_period = data[0].price_validate_period;
+
+    const pro = await read_all_data(`products?tour_id=${this.tour_id}`);
+    this.product_ls = pro;
   },
   data() {
     return {
       tour_id: "",
-      quotation_id: "",
-      quotation_date: "" as any,
+      quo_id: "",
+      no: "",
       customer_name: "",
       tax_id: "",
       contact_name: "",
@@ -507,16 +496,14 @@ export default defineComponent({
       delivery_date: "",
       product_code: "",
       product_name: "",
-      product_amount: "",
-      product_price_per_unit: "",
+      product_qty: 0,
+      product_price_per_unit: 0,
       product_discount: 0,
       product_tax: "",
-      product_total: 0,
+      product_amount: 0,
       product_ls: [] as any,
       price_validate_period: "",
       deposit: "",
-
-      
     };
   },
   methods: {
@@ -526,40 +513,40 @@ export default defineComponent({
     sumAllProduct() {
       let sum = 0;
       for (let i = 0; i < this.product_ls.length; i++) {
-        sum += this.product_ls[i].product_total;
+        sum += this.product_ls[i].amount;
       }
       return sum;
     },
     sumAllProductDiscount() {
       let sum = 0;
       for (let i = 0; i < this.product_ls.length; i++) {
-        sum += this.product_ls[i].product_discount;
+        sum += this.product_ls[i].discount;
       }
       return sum;
     },
-    calculateVat() {
+    beforeCalculateVat() {
       let sum = 0;
       for (let i = 0; i < this.product_ls.length; i++) {
-        if (this.product_ls[i].product_tax === "7%") {
-          sum += this.product_ls[i].product_total * (100 / 107);
-        } else if (this.product_ls[i].product_tax === "0%") {
+        if (this.product_ls[i].tax === "7%") {
+          sum += this.product_ls[i].amount * (100 / 107);
+        } else if (this.product_ls[i].tax === "0%") {
           sum += 0;
-        } else if (this.product_ls[i].product_tax === "9%") {
-          sum += this.product_ls[i].product_total * (100 / 109);
+        } else if (this.product_ls[i].tax === "9%") {
+          sum += this.product_ls[i].amount * (100 / 109);
         }
       }
       return Math.floor(sum * 100) / 100;
     },
-    calculateBeforeVat() {
+    calculateVat() {
       let sum = 0;
       for (let i = 0; i < this.product_ls.length; i++) {
-        if (this.product_ls[i].product_tax === "7%") {
-          sum += this.product_ls[i].product_total;
-        } else if (this.product_ls[i].product_tax === "9%") {
-          sum += this.product_ls[i].product_total;
+        if (this.product_ls[i].tax === "7%") {
+          sum += this.product_ls[i].amount;
+        } else if (this.product_ls[i].tax === "9%") {
+          sum += this.product_ls[i].amount;
         }
       }
-      return Math.floor((sum - this.calculateVat()) * 100) / 100;
+      return Math.floor((sum - this.beforeCalculateVat()) * 100) / 100;
     },
     validateProductDetail() {
       console.log(this.product_discount);
@@ -571,11 +558,11 @@ export default defineComponent({
         this.$message.error("กรุณากรอกชื่อสินค้า", 3);
         return false;
       }
-      if (this.product_amount == "") {
+      if (this.product_qty <= 0) {
         this.$message.error("กรุณากรอกจำนวนสินค้า", 3);
         return false;
       }
-      if (this.product_price_per_unit == "") {
+      if (this.product_price_per_unit <= 0) {
         this.$message.error("กรุณากรอกราคาต่อหน่วย", 3);
         return false;
       }
@@ -657,74 +644,83 @@ export default defineComponent({
     },
     onAddProduct() {
       if (this.validateProductDetail()) {
-        let x =
-          Number(this.product_amount) * Number(this.product_price_per_unit);
+        let x = this.product_qty * this.product_price_per_unit;
         if (this.product_tax === "7%") {
-          this.product_total = x + x * 0.07 - Number(this.product_discount);
+          this.product_amount = x + x * 0.07 - this.product_discount;
         } else if (this.product_tax === "9%") {
-          this.product_total = x + x * 0.09 - Number(this.product_discount);
+          this.product_amount = x + x * 0.09 - this.product_discount;
         } else {
-          this.product_total = x - Number(this.product_discount);
+          this.product_amount = x - this.product_discount;
         }
-        this.product_ls.push({
-          product_code: this.product_code,
-          product_name: this.product_name,
-          product_amount: this.product_amount,
-          product_price_per_unit: this.product_price_per_unit,
-          product_discount: this.product_discount,
-          product_tax: this.product_tax,
-          product_total: this.product_total,
+        const payload: any = {
+          tour_id: this.tour_id,
+          code: this.product_code,
+          name: this.product_name,
+          desc: "-",
+          unit: "จำนวน",
+          qty: this.product_qty,
+          price_per_unit: this.product_price_per_unit,
+          discount: this.product_discount,
+          tax: this.product_tax,
+          amount: this.product_amount,
+        };
+        create_data("product", payload).then((result) => {
+          payload.id = result.id;
+          this.product_ls.push(payload);
         });
-        this.product_code = `PROD-${genRanDec(10)}`;
+        this.product_code = `Q-${genRanDec(10)}`;
         this.product_name = "";
-        this.product_amount = "";
-        this.product_price_per_unit = "";
+        this.product_qty = 0;
+        this.product_price_per_unit = 0;
         this.product_discount = 0;
         this.product_tax = "";
-        this.product_total = 0;
+        this.product_amount = 0;
       }
     },
-    onDeleteProduct(index: number) {
-      this.product_ls.splice(index, 1);
+    onDeleteProduct(id: string, index: number) {
+      delete_data("product", id).then(() => {
+        this.product_ls.splice(index, 1);
+      });
     },
     onUpdateQuotation() {
-      const json: any = quotation_detail_with_product(
-        this.tour_id,
-        this.quotation_id,
-        this.quotation_date,
-        this.tax_id,
-        this.customer_name,
-        this.customer_address,
-        this.customer_code,
-        this.contact_name,
-        this.contact_tel,
-        this.contact_email,
-        this.sales_person,
-        this.sale_department,
-        new Date(this.confirm_price_within),
-        new Date(this.delivery_date),
-        this.product_ls,
-        Number(this.deposit),
-        this.price_validate_period,
-        this.sumAllProduct(),
-        this.sumAllProductDiscount(),
-        this.calculateBeforeVat(),
-        this.calculateVat(),
-        this.sumAllProduct() - this.sumAllProductDiscount()
-      );
-      json.fields.id = { stringValue: this.$route.params.qid };
-      update_data(
-        "quotation_detail",
-        String(this.$route.params.qid),
-        json
-      ).then((res) => {
-        if (res) {
-          this.$message.success("อัพเดทข้อมูลเรียบร้อยแล้ว", 3);
-          this.$router.push(`/quotation-paper/${this.tour_id}`);
-        } else {
-          this.$message.error("เกิดข้อผิดพลาด", 3);
-        }
-      });
+      if (this.validateQuotationDetail()) {
+        const payload = {
+          tour_id: this.tour_id,
+          date: dayjs(new Date()).format("DD/MM/BBBB"),
+          no: this.no,
+          customer_name: this.customer_name,
+          tax_id: this.tax_id,
+          contact_name: this.contact_name,
+          address: this.customer_address,
+          customer_code: this.customer_code,
+          confirm_price_within: dayjs(this.confirm_price_within).format(
+            "DD/MM/BBBB"
+          ),
+          delivery_date: dayjs(this.delivery_date).format("DD/MM/BBBB"),
+          sales_person: this.sales_person,
+          sale_department: this.sale_department,
+          customer_tel: this.contact_tel,
+          email: this.contact_email,
+          earnest_money: this.deposit,
+          price_validate_period: this.price_validate_period,
+          total_price: this.sumAllProduct(),
+          less_cash_discount: this.sumAllProductDiscount(),
+          net_price: this.sumAllProduct() - this.sumAllProductDiscount(),
+          vat: this.calculateVat(),
+          total_net_price:
+            this.sumAllProduct() -
+            this.sumAllProductDiscount() +
+            this.calculateVat(),
+        };
+        update_data("quotation", this.quo_id, payload)
+          .then((res) => {
+            this.$message.success("อัพเดทใบเสนอราคาสำเร็จ", 3);
+            this.$router.push(`/paper/quotation-paper?tid=${this.tour_id}`);
+          })
+          .catch((err) => {
+            this.$message.error("อัพเดทใบเสนอราคาไม่สำเร็จ", 3);
+          });
+      }
     },
   },
 });
