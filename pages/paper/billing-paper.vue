@@ -142,7 +142,7 @@
                   ที่อยู่:
                 </td>
                 <td colspan="2">
-                  {{ quo.customer_address }}
+                  {{ quo.address }}
                 </td>
               </tr>
               <tr
@@ -154,7 +154,7 @@
                   height: 40px;
                 ">
                 <td style="padding-left: 4px" colspan="3">
-                  <b>โทร:</b> {{ quo.contact_tel }}
+                  <b>โทร:</b> {{ quo.customer_tel }}
                 </td>
                 <td
                   style="
@@ -164,7 +164,7 @@
                     border-bottom: 1px none #000000;
                     border-left: 1px solid #000000;
                   ">
-                  <b>Fax:</b> {{ bill.billing_note_fax }}
+                  <b>Fax:</b> {{ bill.fax }}
                 </td>
               </tr>
             </v-table></v-col
@@ -182,7 +182,7 @@
                 <td style="padding-left: 4px; font-weight: bold" width="40%">
                   เลขที่:
                 </td>
-                <td>{{ bill.billing_note_no }}</td>
+                <td>{{ bill.no }}</td>
               </tr>
               <tr
                 style="
@@ -193,7 +193,7 @@
                   height: 40px;
                 ">
                 <td style="padding-left: 4px; font-weight: bold">วันที่:</td>
-                <td>{{ bill.billing_note_date }}</td>
+                <td>{{ bill.date }}</td>
               </tr>
               <tr
                 style="
@@ -219,7 +219,7 @@
                 <td style="padding-left: 4px; font-weight: bold">
                   ผู้เสนอขาย:
                 </td>
-                <td>{{ quo.seller_name }}</td>
+                <td>{{ quo.sales_person }}</td>
               </tr>
               <tr
                 style="
@@ -230,7 +230,7 @@
                   height: 40px;
                 ">
                 <td style="padding-left: 4px; font-weight: bold">ฝ่าย:</td>
-                <td>{{ quo.seller_department }}</td>
+                <td>{{ quo.sale_department }}</td>
               </tr>
               <tr
                 style="
@@ -280,25 +280,25 @@
                     {{ index + 1 }}
                   </td>
                   <td class="text-center" style="font-size: xx-small">
-                    {{ item.product_code }}
+                    {{ item.code }}
                   </td>
                   <td class="text-left" style="font-size: xx-small">
-                    {{ item.product_name }}
+                    {{ item.name }}
                   </td>
                   <td class="text-center" style="font-size: xx-small">
-                    {{ item.product_amount }}
+                    {{ item.amount }}
                   </td>
                   <td class="text-center" style="font-size: xx-small">
-                    {{ item.product_price_per_unit }}
+                    {{ item.price_per_unit }}
                   </td>
                   <td class="text-center" style="font-size: xx-small">
-                    {{ item.product_discount }}
+                    {{ item.discount }}
                   </td>
                   <td class="text-center" style="font-size: xx-small">
-                    {{ item.product_tax }}
+                    {{ item.tax }}
                   </td>
                   <td class="text-center" style="font-size: xx-small">
-                    {{ item.product_total }}
+                    {{ item.amount }}
                   </td>
                 </tr>
               </tbody>
@@ -314,7 +314,7 @@
                 <td style="width: 580px; font-weight: bold">หมายเหตุ:</td>
                 <td style="width: 95px">รวมเงิน</td>
                 <td style="width: 71px; text-align: end">
-                  {{ quo.sub_total }} บาท&nbsp;&nbsp;
+                  {{ quo.total_price }} บาท&nbsp;&nbsp;
                 </td>
               </tr>
               <tr>
@@ -332,7 +332,9 @@
                   “บริษัทศรีดาราทัวร์จำกัด” และขีดฆ่าหรือผู้ถือออก
                 </td>
                 <td>มูลค่าคิดภาษี</td>
-                <td style="text-align: end">{{ quo.vat }} บาท&nbsp;&nbsp;</td>
+                <td style="text-align: end">
+                  {{ quo.net_price }} บาท&nbsp;&nbsp;
+                </td>
               </tr>
 
               <tr>
@@ -341,9 +343,7 @@
                   บริษัทฯได้รับเงินตามเช็คเรียบร้อย
                 </td>
                 <td>ภาษีมูลค่าเพิ่ม</td>
-                <td style="text-align: end">
-                  {{ quo.product_value }} บาท&nbsp;&nbsp;
-                </td>
+                <td style="text-align: end">{{ quo.vat }} บาท&nbsp;&nbsp;</td>
               </tr>
               <tr>
                 <td style="font-weight: bold">
@@ -352,13 +352,13 @@
                       ตัวอักษร :
                     </v-col>
                     <v-col style="margin: auto; padding: 1px" cols="8">
-                      {{ ArabicNumberToText(Number(quo.grand_total)) }}
+                      {{ ArabicNumberToText(Number(quo.total_net_price)) }}
                     </v-col>
                   </v-row>
                 </td>
                 <td>ยอดสุทธิ</td>
                 <td style="text-align: end">
-                  {{ quo.grand_total }} บาท&nbsp;&nbsp;
+                  {{ quo.total_net_price }} บาท&nbsp;&nbsp;
                 </td>
               </tr>
             </v-table>
@@ -570,8 +570,10 @@ export default defineComponent({
       content: "กำลังโหลดข้อมูลใบแจ้งหนี้ และสร้างเป็นเอกสาร",
       key,
     });
-    this.quo = await read_all_data(`quotations?tour_id=${this.tour_id}`);
-    this.bill = await read_all_data(`billings?tour_id=${this.tour_id}`);
+    let q = await read_all_data(`quotations?tour_id=${this.tour_id}`);
+    this.quo = q[0];
+    let b = await read_all_data(`billings?tour_id=${this.tour_id}`);
+    this.bill = b[0];
     this.prod = await read_all_data(`products?tid=${this.tour_id}`);
     this.onLoad = true;
   },

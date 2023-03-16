@@ -327,7 +327,7 @@
                 </td>
                 <td>มูลค่าสินค้า</td>
                 <td style="text-align: end">
-                  {{ quo.vat }}
+                  {{ quo.net_price }}
                   บาท&nbsp;&nbsp;
                 </td>
               </tr>
@@ -348,7 +348,7 @@
                 </td>
                 <td>ภาษีมูลค่าเพิ่ม 7%</td>
                 <td style="text-align: end">
-                  {{ quo.net_price }}
+                  {{ quo.vat }}
                   บาท&nbsp;&nbsp;
                 </td>
               </tr>

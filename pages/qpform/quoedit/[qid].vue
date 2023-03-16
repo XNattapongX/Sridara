@@ -293,7 +293,7 @@
                     {{ item.name }}
                   </td>
                   <td class="px-6 py-4">
-                    {{ item.amount }}
+                    {{ item.qty }}
                   </td>
                   <td class="px-6 py-4">
                     {{ item.price_per_unit }}
@@ -705,12 +705,9 @@ export default defineComponent({
           price_validate_period: this.price_validate_period,
           total_price: this.sumAllProduct(),
           less_cash_discount: this.sumAllProductDiscount(),
-          net_price: this.sumAllProduct() - this.sumAllProductDiscount(),
+          net_price: this.beforeCalculateVat(),
           vat: this.calculateVat(),
-          total_net_price:
-            this.sumAllProduct() -
-            this.sumAllProductDiscount() +
-            this.calculateVat(),
+          total_net_price: this.sumAllProduct() - this.sumAllProductDiscount(),
         };
         update_data("quotation", this.quo_id, payload)
           .then((res) => {
