@@ -21,7 +21,6 @@
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
         </v-row>
-
         <v-row>
           <v-col>
             <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ที่อยู่</label>
@@ -138,10 +137,10 @@
         </v-row>
         <br />
         <div class="relative overflow-x-auto" style="
-                        border-radius: 0.5rem;
-                        box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
-                          rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
-                      ">
+                          border-radius: 0.5rem;
+                          box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+                            rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+                        ">
           <section class="bg-gray-50 dark:bg-gray-900">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
               <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:text-gray-400"
@@ -247,29 +246,33 @@ import locale from "ant-design-vue/es/date-picker/locale/th_TH";
 export default defineComponent({
   data() {
     return {
-      surname_thai: "",
-      lastname_thai: "",
-      surname_eng: "",
-      lastname_eng: "",
-      nationality: "",
-      gender: "",
-      branch: "",
-      branch_name: "",
-      tax_id: "",
-      id_card: "",
-      customer_id: "",
-      bed_type: "",
-      telephone_number: "",
-      passport: "",
-      stamp_number: "",
-      address: "",
-      email: "",
-      dob: "",
-      out: "",
-      in: "",
-      d_range: [],
-      members_ls: [] as any,
-      tour_detail: "" as any,
+      tour_id: "",
+
+      customer_name: "",
+      customer_address: '""',
+      tax_payer_id: "",
+      place_of_issuing_tax_invoice: "",
+      date_of_issuing_tax_invoice: "",
+      tax_invoice_number: "",
+      tax_payment_schedule: "",
+      seller_name: "",
+      customer_code: "",
+
+      sub_total: "",
+      less_cash_discount: "",
+      tax_exemption: "", 
+      before_vat: "",
+      vat: "",
+      grand_total: "",
+
+      receiver_name: "",
+      receiver_siging_date: "",
+      Delivery_name: "",
+      Delivery_siging_date: "",
+      project_coordinator_name: "",
+      project_coordinator_siging_date: "",
+      Authorized_person_name: "",
+      Authorized_person_siging_date: "",
     };
   },
   watch: {

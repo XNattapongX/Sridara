@@ -139,7 +139,7 @@
           </VCol>
           <VCol cols="2">
             <br />
-            <VBtn block variant="tonal" @click="addProduct" style="margin-top: 5px" color="blue-accent-4">เพิ่มข้อมูล
+            <VBtn block variant="tonal" @click="onAddProduct" style="margin-top: 5px" color="blue-accent-4">เพิ่มข้อมูล
             </VBtn>
           </VCol>
 
@@ -147,10 +147,10 @@
 
         <br />
         <div class="relative overflow-x-auto" style="
-                            border-radius: 0.5rem;
-                            box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
-                              rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
-                          ">
+                                  border-radius: 0.5rem;
+                                  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+                                    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+                                ">
           <section class="bg-gray-50 dark:bg-gray-900">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
               <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:text-gray-400"
@@ -172,7 +172,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700" v-for="(item, index) in members_ls"
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700" v-for="(item, index) in product_ls"
                   :key="index">
                   <td class="px-6 py-4">{{ index + 1 }}</td>
                   <td class="px-6 py-4">
@@ -197,7 +197,7 @@
                     {{ item.fields.date_outcome.stringValue }}
                   </td>
                   <td class="px-6 py-4">{{ item.fields.dob.stringValue }}</td>
-                  <td class="px-6 py-4"><v-btn block variant="tonal" @click="addProduct" style="margin-top: 5px"
+                  <td class="px-6 py-4"><v-btn block variant="tonal" @click="deleteData" style="margin-top: 5px"
                       color="red-accent-4">ลบข้อมูล</v-btn></td>
                 </tr>
               </tbody>
@@ -221,7 +221,7 @@
           </v-col>
           <VCol cols="2">
             <br />
-            <VBtn block variant="tonal" @click="addBillingnote" style="margin-top: 5px" color="green-accent-4">ยืนยัน
+            <VBtn block variant="tonal" @click="adddata" style="margin-top: 5px" color="green-accent-4">ยืนยัน
             </VBtn>
           </VCol>
         </v-row>
@@ -302,6 +302,9 @@ export default defineComponent({
       this.unit_price = 0;
       this.discount = 0;
       this.quantity = 0;
+    },
+    onDeleteProduct(index: number) {
+      this.product_ls.splice(index, 1);
     },
   },
 });

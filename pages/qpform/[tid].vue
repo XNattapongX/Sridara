@@ -70,7 +70,6 @@
             <input
               type="text"
               id="small-input"
-              disabled
               v-model="customer_code"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
@@ -174,7 +173,6 @@
             <input
               type="text"
               id="small-input"
-              disabled
               v-model="product_code"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
@@ -469,6 +467,7 @@ export default defineComponent({
       product_ls: [] as any,
       price_validate_period: "",
       deposit: "",
+      tour_member: 0,
     };
   },
   async mounted() {
@@ -708,6 +707,7 @@ export default defineComponent({
   border-radius: 0.4rem;
   width: 100%;
 }
+
 .shadow {
   border-radius: 0.5rem;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,

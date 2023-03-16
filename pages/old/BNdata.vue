@@ -148,26 +148,6 @@ import {
 } from "~~/services/configs";
 export default {
   mounted() {
-    // read_one_data("group_tour", this.$route.params.tourdataid).then(
-    //   (result) => {
-    //     this.tour_data = result;
-    //     this.loading = false;
-    //   }
-    // );
-    // read_all_data("hotel_tour").then((result) => {
-    //   const filter = result.filter(
-    //     (v) =>
-    //       v.fields.tour_id.stringValue == String(this.$route.params.tourdataid)
-    //   );
-    //   this.hotels_ls = filter;
-    // });
-    // read_all_data("member_tour").then((result) => {
-    //   const filter = result.filter(
-    //     (v) =>
-    //       v.fields.tour_id.stringValue == String(this.$route.params.tourdataid)
-    //   );
-    //   this.members_ls = filter;
-    // });
   },
   methods: {
     // handleDelete() {
