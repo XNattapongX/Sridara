@@ -87,9 +87,9 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="(j, l) in guide_tel" :key="l">
-                  <td>{{ guide_name[l] }}</td>
-                  <td>{{ j }}</td>
+                <tr v-for="(j, l) in guided_ls" :key="l">
+                  <td>{{ j.name }}</td>
+                  <td>{{ j.tel }}</td>
                   <td style="text-align: center; width: 10%">
                     <v-btn
                       variant="text"
@@ -148,18 +148,6 @@
         </v-row>
 
         <v-row>
-          <v-col cols="3">
-            <label
-              for="base-input"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >จำนวนลูกทัวร์</label
-            >
-            <input
-              type="number"
-              v-model.number="members"
-              id="small-input"
-              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-          </v-col>
           <v-col>
             <label
               for="base-input"
@@ -280,15 +268,15 @@
           </thead>
           <tbody>
             <tr v-for="(item, index) in formHotel.hotel_ls" :key="index">
-              <td>{{ item.fields.name.stringValue }}</td>
-              <td>{{ item.fields.amount_room.stringValue }}</td>
-              <td>{{ item.fields.check_in.stringValue }}</td>
-              <td>{{ item.fields.check_out.stringValue }}</td>
+              <td>{{ item.name }}</td>
+              <td>{{ item.amount_of_rooms }}</td>
+              <td>{{ item.check_in }}</td>
+              <td>{{ item.check_out }}</td>
               <td style="text-align: center; width: 10%">
                 <v-btn
                   variant="text"
                   color="red-darken-4"
-                  @click="removeHotel(item.fields.id.stringValue)"
+                  @click="removeHotel(item.id)"
                   >ลบ</v-btn
                 >
               </td>
@@ -320,63 +308,55 @@
 import { group_tours, hotel_tour } from "~~/services/payload";
 import Swal from "sweetalert2";
 import {
+  read_all_data,
   read_one_data,
   create_data,
-  read_all_data_conditions,
   delete_data,
   update_data,
-} from "~~/services/configs";
+} from "~~/services/pyapi";
 import { defineComponent } from "vue";
 import locale from "ant-design-vue/es/date-picker/locale/th_TH";
+import dayjs from "dayjs";
+import buddhistEra from "dayjs/plugin/buddhistEra";
+dayjs.extend(buddhistEra);
 export default defineComponent({
   setup() {
     return {
       locale,
     };
   },
-  mounted() {
-    read_one_data("group_tour", String(this.$route.params.tid)).then(
-      (result) => {
-        const field = result.fields;
-        this.tour_name = field.trip_name.stringValue;
-        this.tour_program = field.program_tour.stringValue;
-        this.guide_name = field.guide_name.stringValue.split(", ");
-        this.guide_tel = field.guide_tel.stringValue.split(", ");
-        this.day = field.day.stringValue;
-        this.night = field.night.stringValue;
-        this.members = field.amount_member.stringValue;
-        this.vehicle_in = field.vehicle_income.stringValue;
-        this.vehicle_out = field.vehicle_outcome.stringValue;
-        this.go_date = field.go_date.stringValue;
-        this.back_date = field.back_date.stringValue;
-      }
-    );
-    read_all_data_conditions(
-      "hotel_tour",
-      "tour_id",
-      String(this.$route.params.tid)
-    ).then((result) => {
-      this.formHotel.hotel_ls = result;
-    });
+  async mounted() {
+    this.tour_id = String(this.$route.params.tid);
+
+    const tour_data = await read_one_data("tour", this.tour_id);
+    this.tour_name = tour_data.name;
+    this.tour_program = tour_data.program_name;
+    this.guided_ls = tour_data.guided_tour;
+    this.day = tour_data.amount_of_days;
+    this.night = tour_data.amount_of_nights;
+    this.go_date = tour_data.date_go;
+    this.back_date = tour_data.date_back;
+    this.vehicle_in = tour_data.vehicle_in;
+    this.vehicle_out = tour_data.vehicle_out;
+    const hotel_ls = await read_all_data(`hotels?tour_id=${this.tour_id}`);
+    this.formHotel.hotel_ls = hotel_ls;
   },
   data() {
     return {
+      tour_id: "",
       tour_name: "",
       tour_program: "",
-      guide_name: [] as any,
-      guide_tel: [] as any,
+      guided_ls: [] as any,
       day: 0,
       night: 0,
       go_date: "",
       back_date: "",
-      members: 0,
       vehicle_in: "",
       vehicle_out: "",
       g_name: "",
       g_tel: "",
       d_range: [] as any,
       d_range2: [],
-      tour_id: "",
       formHotel: {
         name: "",
         amount_room: 0,
@@ -398,17 +378,12 @@ export default defineComponent({
   },
   methods: {
     removeGuide(index: number) {
-      this.guide_name.splice(index, 1);
-      this.guide_tel.splice(index, 1);
+      this.guided_ls.splice(index, 1);
     },
     removeHotel(id: string) {
-      delete_data("hotel_tour", id).then(() => {
-        read_all_data_conditions(
-          "hotel_tour",
-          "tour_id",
-          String(this.$route.params.tid)
-        ).then((result) => {
-          this.formHotel.hotel_ls = result;
+      delete_data("hotel", id).then(() => {
+        read_all_data(`hotels?tour_id=${this.tour_id}`).then((data) => {
+          this.formHotel.hotel_ls = data;
         });
       });
     },
@@ -439,29 +414,44 @@ export default defineComponent({
         }
       );
     },
+    validateHotelData() {
+      if (
+        this.formHotel.name == "" ||
+        this.formHotel.amount_room < 0 ||
+        this.formHotel.check_in == "" ||
+        this.formHotel.check_out == ""
+      ) {
+        this.$message.error("กรุณากรอกข้อมูลให้ครบถ้วน");
+        return false;
+      }
+    },
     addHotel() {
-      const raw = hotel_tour(
-        String(this.$route.params.tid),
-        this.formHotel.name,
-        this.formHotel.amount_room,
-        new Date(this.formHotel.check_in),
-        new Date(this.formHotel.check_out)
-      );
-      console.log(raw);
-      create_data("hotel_tour", raw).then(() => {
-        read_all_data_conditions(
-          "hotel_tour",
-          "tour_id",
-          String(this.$route.params.tid)
-        ).then((result) => {
-          this.formHotel.hotel_ls = result;
+      const payload = {
+        tour_id: this.tour_id,
+        name: this.formHotel.name,
+        amount_of_rooms: this.formHotel.amount_room,
+        check_in: dayjs(this.formHotel.check_in).format("DD/MM/BBBB"),
+        check_out: dayjs(this.formHotel.check_out).format("DD/MM/BBBB"),
+      };
+      if (this.validateHotelData()) {
+        create_data("hotel", payload).then(() => {
+          read_all_data(`hotels?tour_id=${this.tour_id}`).then((result) => {
+            this.formHotel.hotel_ls = result;
+          });
         });
-      });
+      }
+    },
+    validateGuideData() {
+      if (this.g_name == "" || this.g_tel == "") {
+        this.$message.error("กรุณากรอกข้อมูลให้ครบถ้วน");
+        return false;
+      } else {
+        return true;
+      }
     },
     addGuide() {
-      if (this.g_name && this.g_tel) {
-        this.guide_name.push(this.g_name);
-        this.guide_tel.push(this.g_tel);
+      if (this.validateGuideData()) {
+        this.guided_ls.push({ name: this.g_name, tel: this.g_tel });
       }
       this.g_name = "";
       this.g_tel = "";

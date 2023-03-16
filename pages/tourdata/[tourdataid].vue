@@ -18,30 +18,26 @@
         style="background-color: #e8f5e9">
         <tr>
           <td colspan="5" class="pb-1 pt-2 px-3">
-            <h3>
-              ชื่อทริปทัวร์ : {{ tour_data.fields.trip_name.stringValue }}
-            </h3>
+            <h3>ชื่อทริปทัวร์ : {{ tour_data.name }}</h3>
           </td>
           <td colspan="2" class="pb-1 pt-2 px-3">
-            ชื่อไกด์ : {{ tour_data.fields.guide_name.stringValue }}
+            ชื่อไกด์ : {{ tour_data.guided_tour.map((v) => v.name).join(", ") }}
           </td>
           <td colspan="4" class="pb-1 pt-2 px-3">
-            เบอร์โทร : {{ tour_data.fields.guide_tel.stringValue }}
+            เบอร์โทร : {{ tour_data.guided_tour.map((v) => v.tel).join(", ") }}
           </td>
         </tr>
         <tr>
           <td colspan="3" class="py-1 pt-2 px-3">
-            <h3>
-              โปรแกรมทัวร์ : {{ tour_data.fields.program_tour.stringValue }}
-            </h3>
+            <h3>โปรแกรมทัวร์ : {{ tour_data.program_name }}</h3>
           </td>
           <td colspan="2" class="py-1 px-3">
-            จำนวน : {{ tour_data.fields.day.stringValue }} วัน
-            {{ tour_data.fields.night.stringValue }} คืน
+            จำนวน : {{ tour_data.amount_of_days }} วัน
+            {{ tour_data.amount_of_nights }} คืน
           </td>
           <td colspan="2" class="py-1 px-3">
-            วันที่เดือนปี {{ tour_data.fields.go_date.stringValue }} ถึง
-            {{ tour_data.fields.back_date.stringValue }}
+            วันที่เดือนปี {{ tour_data.date_go }} ถึง
+            {{ tour_data.date_go }}
           </td>
           <td colspan="4" class="py-1 px-3">
             จำนวนลูกทัวร์ : {{ members_ls.length }}
@@ -53,16 +49,16 @@
           v-for="(item, index) in hotels_ls"
           :key="index">
           <td colspan="3" class="py-1 px-3">
-            <h3>ชื่อโรงแรม : {{ item.fields.name.stringValue }}</h3>
+            <h3>ชื่อโรงแรม : {{ item.name }}</h3>
           </td>
           <td colspan="2" class="py-1 px-3">
-            จำนวนห้องพัก : {{ item.fields.amount_room.stringValue }}
+            จำนวนห้องพัก : {{ item.amount_of_rooms }}
           </td>
           <td colspan="2" class="py-1 px-3">
-            วันที่เช็คอินน์ : {{ item.fields.check_in.stringValue }}
+            วันที่เช็คอินน์ : {{ item.check_in }}
           </td>
           <td colspan="4" class="py-1 px-3">
-            วันที่เช็คเอ้าท์ : {{ item.fields.check_out.stringValue }}
+            วันที่เช็คเอ้าท์ : {{ item.check_out }}
           </td>
         </tr>
 
@@ -70,20 +66,24 @@
           <td colspan="5" class="py-1 px-3">
             <h3>
               เที่ยวบินหรือพาหนะอื่น ๆ ขาไป :
-              {{ tour_data.fields.vehicle_income.stringValue }}
+              {{ tour_data.vehicle_in }}
             </h3>
           </td>
           <td colspan="5" class="py-1 px-3">
             <h3>
               เที่ยวบินหรือพาหนะอื่น ๆ ขากลับ :
-              {{ tour_data.fields.vehicle_outcome.stringValue }}
+              {{ tour_data.vehicle_out }}
             </h3>
           </td>
         </tr>
       </table>
       <table
         class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
-        style="max-height: 400px; margin-bottom: 2.5rem">
+        :style="
+          members_ls.length >= 10
+            ? { 'max-height': '400px', 'margin-bottom': '2.5rem' }
+            : { 'max-height': '400px' }
+        ">
         <thead
           class="text-xs text-gray-700 uppercase bg-gray-50 dark:text-gray-400"
           style="background-color: #81c784">
@@ -116,37 +116,37 @@
             :key="index">
             <td class="px-6 py-4" style="font-size: 13px">{{ index + 1 }}</td>
             <td class="px-6 py-4" style="font-size: 13px">
-              {{ item.fields.thai_name.stringValue }}
+              {{ item.thai_name }}
             </td>
             <td class="px-6 py-4" style="font-size: 13px">
-              {{ item.fields.national_id.stringValue }}
+              {{ item.national_id }}
             </td>
             <td class="px-6 py-4" style="font-size: 13px">
-              {{ item.fields.eng_name.stringValue }}
+              {{ item.eng_name }}
             </td>
             <td class="px-6 py-4" style="font-size: 13px">
-              {{ item.fields.passport_id.stringValue }}
+              {{ item.passport_no }}
             </td>
             <td class="px-6 py-4" style="font-size: 13px">
-              {{ item.fields.date_income.stringValue }}
+              {{ item.passport_issue }}
             </td>
             <td class="px-6 py-4" style="font-size: 13px">
-              {{ item.fields.date_outcome.stringValue }}
+              {{ item.passport_exp }}
             </td>
             <td class="px-6 py-4" style="font-size: 13px">
-              {{ item.fields.dob.stringValue }}
+              {{ item.date_of_birth }}
             </td>
             <td class="px-6 py-4" style="font-size: 13px">
-              {{ item.fields.nationality.stringValue }}
+              {{ item.nationality }}
             </td>
             <td class="px-6 py-4" style="font-size: 13px">
-              {{ item.fields.gender.stringValue }}
+              {{ item.gender }}
             </td>
             <td class="px-6 py-4" style="font-size: 13px">
-              {{ item.fields.bed_type.stringValue }}
+              {{ item.bed_type }}
             </td>
             <td class="px-6 py-4" style="font-size: 13px">
-              {{ item.fields.check_stamp_number.stringValue }}
+              {{ item.stamp_no }}
             </td>
           </tr>
         </tbody>
@@ -170,7 +170,7 @@
           ><v-btn
             variant="tonal"
             color="red-accent-4"
-            @click="handleDelete(tour_data.fields.trip_name.stringValue)"
+            @click="handleDelete(tour_data.name)"
             >ลบทัวร์</v-btn
           ></v-col
         ></v-row
@@ -183,7 +183,7 @@
           style="margin-right: 1rem"
           variant="tonal"
           color="light-blue-accent-4"
-          @click="$router.push(`/quotation-paper/${$route.params.tourdataid}`)"
+          @click="$router.push(`/quotation-paper/${tour_id}`)"
           >ดูใบเสนอราคา</v-btn
         >
         <v-btn
@@ -191,7 +191,7 @@
           style="margin-right: 1rem"
           variant="tonal"
           color="light-blue-accent-4"
-          @click="$router.push(`/qpform/${$route.params.tourdataid}`)"
+          @click="$router.push(`/qpform/${tour_id}`)"
           >สร้างใบเสนอราคา</v-btn
         >
 
@@ -209,7 +209,7 @@
           style="margin-right: 1rem"
           variant="tonal"
           color="light-blue-accent-4"
-          @click="$router.push(`/billing-paper/${$route.params.tourdataid}`)"
+          @click="$router.push(`/billing-paper/${tour_id}`)"
           >ดูใบแจ้งหนี้</v-btn
         >
 
@@ -225,18 +225,18 @@
           style="margin-right: 1rem"
           color="light-blue-accent-4"
           v-else-if="haveBilling && haveQuotation && haveTaxInvoice"
-          @click="$router.push(`/tax-invoice/${this.$route.params.tourdataid}`)"
+          @click="$router.push(`/tax-invoice/${this.tour_id}`)"
           >ดูใบกำกับภาษี</v-btn
         ><v-btn
           style="margin-right: 1rem"
           variant="tonal"
-          @click="$router.push(`/addusertour/${$route.params.tourdataid}`)"
+          @click="$router.push(`/addusertour/${tour_id}`)"
           color="yellow-darken-4"
           >แก้ไขข้อมูลลูกทัวร์</v-btn
         >
         <v-btn
           style="margin-right: 1rem"
-          @click="$router.push(`/edittour/${$route.params.tourdataid}`)"
+          @click="$router.push(`/edittour/${tour_id}`)"
           variant="tonal"
           color="cyan-darken-4"
           >แก้ไขข้อมูลทัวร์</v-btn
@@ -368,15 +368,8 @@
 
 <script>
 import Swal from "sweetalert2/dist/sweetalert2.js";
-import {
-  read_all_data,
-  read_one_data,
-  delete_data,
-  delete_all_data_conditions,
-  read_one_data_conditions,
-} from "~~/services/configs";
+import { read_all_data, read_one_data, delete_data } from "~~/services/pyapi";
 import locale from "ant-design-vue/es/date-picker/locale/th_TH";
-import { create_data } from "~~/services/configs";
 import { billing_note_detail, tax_invoice_detail } from "~~/services/payload";
 export default {
   setup() {
@@ -384,54 +377,12 @@ export default {
       locale,
     };
   },
-  mounted() {
-    read_one_data("group_tour", this.$route.params.tourdataid).then(
-      (result) => {
-        this.tour_data = result;
-        this.loading = false;
-      }
-    );
-    read_all_data("hotel_tour").then((result) => {
-      const filter = result.filter(
-        (v) =>
-          v.fields.tour_id.stringValue == String(this.$route.params.tourdataid)
-      );
-      this.hotels_ls = filter;
-    });
-    read_all_data("member_tour").then((result) => {
-      const filter = result.filter(
-        (v) =>
-          v.fields.tour_id.stringValue == String(this.$route.params.tourdataid)
-      );
-      this.members_ls = filter;
-    });
-    read_one_data_conditions(
-      "quotation_detail",
-      "tour_id",
-      this.$route.params.tourdataid
-    ).then((result) => {
-      if (result.length) {
-        this.haveQuotation = true;
-      }
-    });
-    read_one_data_conditions(
-      "billing_note",
-      "tour_id",
-      this.$route.params.tourdataid
-    ).then((result) => {
-      if (result.length) {
-        this.haveBilling = true;
-      }
-    });
-    read_one_data_conditions(
-      "tax_invoice",
-      "tour_id",
-      this.$route.params.tourdataid
-    ).then((result) => {
-      if (result.length) {
-        this.haveTaxInvoice = true;
-      }
-    });
+  async mounted() {
+    this.tour_id = this.$route.params.tourdataid;
+    this.tour_data = await read_one_data("tour", this.tour_id);
+    this.hotels_ls = await read_all_data("hotels?tour_id=" + this.tour_id);
+    this.members_ls = await read_all_data("members?tour_id=" + this.tour_id);
+    this.loading = false;
   },
   methods: {
     handleDelete(name) {
@@ -443,22 +394,20 @@ export default {
         showCancelButton: true,
         cancelButtonText: "ยกเลิก",
         focusConfirm: false,
-      }).then((click) => {
-        if (click.isConfirmed) {
-          delete_all_data_conditions(
-            "member_tour",
-            "tour_id",
-            this.$route.params.tourdataid
-          );
-          delete_all_data_conditions(
-            "hotel_tour",
-            "tour_id",
-            this.$route.params.tourdataid
-          );
-          delete_data("group_tour", this.$route.params.tourdataid).then(() => {
-            this.$router.push("/");
-          });
-        }
+        showLoaderOnConfirm: true,
+        preConfirm: () => {
+          return delete_data("tour", this.tour_id)
+            .then(() => {
+              delete_data(`hotel?tid=${this.tour_id}`).then(() => {
+                delete_data(`member?tid=${this.tour_id}`).then(() => {
+                  this.$router.push("/");
+                });
+              });
+            })
+            .catch((error) => {
+              Swal.showValidationMessage(`Request failed: ${error}`);
+            });
+        },
       });
     },
     validateBilling() {
@@ -477,14 +426,14 @@ export default {
       if (this.validateBilling()) {
         this.loadGenBill = true;
         const raw = billing_note_detail(
-          this.$route.params.tourdataid,
+          this.tour_id,
           this.billing.billing_note_no,
           this.billing.billing_note_date,
           this.billing.billing_note_fax
         );
         create_data("billing_note", raw).then(() => {
           this.dialog = false;
-          this.$router.push(`/billing-paper/${this.$route.params.tourdataid}`);
+          this.$router.push(`/billing-paper/${this.tour_id}`);
         });
       }
     },
@@ -504,7 +453,7 @@ export default {
       if (this.validateTax()) {
         this.loadGenBill = true;
         const raw = tax_invoice_detail(
-          this.$route.params.tourdataid,
+          this.tour_id,
           this.tax.tax_no,
           this.tax.tax_date,
           this.tax.tax_pay_date,
@@ -512,13 +461,14 @@ export default {
         );
         create_data("tax_invoice", raw).then(() => {
           this.dialog2 = false;
-          this.$router.push(`/tax-invoice/${this.$route.params.tourdataid}`);
+          this.$router.push(`/tax-invoice/${this.tour_id}`);
         });
       }
     },
   },
   data() {
     return {
+      tour_id: "",
       tour_data: "",
       loading: true,
       haveQuotation: false,

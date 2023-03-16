@@ -5,7 +5,7 @@
         <h1
           v-if="tour_detail"
           class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">
-          ข้อมูลลูกทัวร์ | {{ tour_detail.fields.trip_name.stringValue }}
+          ข้อมูลลูกทัวร์ | {{ tour_detail.name }}
         </h1>
         <h1
           v-else
@@ -207,6 +207,7 @@
               block
               variant="tonal"
               @click="addMember"
+              :loading="addLoading"
               style="margin-top: 5px"
               color="light-blue-darken-4"
               >เพิ่มลูกทัวร์</v-btn
@@ -251,44 +252,39 @@
                 <tr
                   class="table-row-hover"
                   v-for="(item, index) in members_ls"
-                  @click="
-                    deleteAlert(
-                      item.fields.id.stringValue,
-                      item.fields.thai_name.stringValue
-                    )
-                  "
+                  @click="deleteAlert(item.id, item.thai_name)"
                   :key="index">
                   <td class="px-6 py-4">{{ index + 1 }}</td>
                   <td class="px-6 py-4">
-                    {{ item.fields.thai_name.stringValue }}
+                    {{ item.thai_name }}
                   </td>
                   <td class="px-6 py-4">
-                    {{ item.fields.national_id.stringValue }}
+                    {{ item.national_id }}
                   </td>
                   <td class="px-6 py-4">
-                    {{ item.fields.eng_name.stringValue }}
+                    {{ item.eng_name }}
                   </td>
                   <td class="px-6 py-4">
-                    {{ item.fields.passport_id.stringValue }}
+                    {{ item.passport_no }}
                   </td>
                   <td class="px-6 py-4">
-                    {{ item.fields.date_income.stringValue }}
+                    {{ item.passport_issue }}
                   </td>
                   <td class="px-6 py-4">
-                    {{ item.fields.date_outcome.stringValue }}
+                    {{ item.passport_exp }}
                   </td>
-                  <td class="px-6 py-4">{{ item.fields.dob.stringValue }}</td>
+                  <td class="px-6 py-4">{{ item.date_of_birth }}</td>
                   <td class="px-6 py-4">
-                    {{ item.fields.nationality.stringValue }}
-                  </td>
-                  <td class="px-6 py-4">
-                    {{ item.fields.gender.stringValue }}
+                    {{ item.nationality }}
                   </td>
                   <td class="px-6 py-4">
-                    {{ item.fields.bed_type.stringValue }}
+                    {{ item.gender }}
                   </td>
                   <td class="px-6 py-4">
-                    {{ item.fields.check_stamp_number.stringValue }}
+                    {{ item.bed_type }}
+                  </td>
+                  <td class="px-6 py-4">
+                    {{ item.stamp_no }}
                   </td>
                 </tr>
               </tbody>
@@ -302,14 +298,16 @@
 
 <script>
 import Swal from "sweetalert2/dist/sweetalert2.js";
-import { group_members } from "~~/services/payload";
 import {
   read_all_data,
   create_data,
   read_one_data,
   delete_data,
-} from "~~/services/configs";
+} from "~~/services/pyapi";
 import { defineComponent } from "vue";
+import dayjs from "dayjs";
+import buddhistEra from "dayjs/plugin/buddhistEra";
+dayjs.extend(buddhistEra);
 import locale from "ant-design-vue/es/date-picker/locale/th_TH";
 export default defineComponent({
   data() {
@@ -332,6 +330,7 @@ export default defineComponent({
       d_range: [],
       members_ls: [],
       tour_detail: "",
+      addLoading: false,
     };
   },
   watch: {
@@ -346,17 +345,14 @@ export default defineComponent({
     };
   },
   mounted() {
-    read_one_data("group_tour", String(this.$route.params.tourId)).then(
+    read_one_data("tour", String(this.$route.params.tourId)).then((result) => {
+      this.tour_detail = result;
+    });
+    read_all_data(`members?tour_id=${String(this.$route.params.tourId)}`).then(
       (result) => {
-        this.tour_detail = result;
+        this.members_ls = result;
       }
     );
-    read_all_data("member_tour").then((result) => {
-      const filter = result.filter(
-        (v) => v.fields.tour_id.stringValue == String(this.$route.params.tourId)
-      );
-      this.members_ls = filter;
-    });
   },
   methods: {
     deleteAlert(id, name) {
@@ -368,23 +364,16 @@ export default defineComponent({
         showCancelButton: true,
         cancelButtonText: "ยกเลิก",
         focusConfirm: false,
-      }).then((click) => {
-        if (click.isConfirmed) {
-          delete_data("member_tour", id).then(() => {
-            read_all_data("member_tour").then((result) => {
-              if (result) {
-                const filter = result.filter(
-                  (v) =>
-                    v.fields.tour_id.stringValue ==
-                    String(this.$route.params.tourId)
-                );
-                this.members_ls = filter;
-              } else {
-                this.members_ls = [];
-              }
+        showLoaderOnConfirm: true,
+        preConfirm: () => {
+          return delete_data("member", id).then(() => {
+            read_all_data(
+              `members?tour_id=${String(this.$route.params.tourId)}`
+            ).then((result) => {
+              this.members_ls = result;
             });
           });
-        }
+        },
       });
     },
     validateMember() {
@@ -430,37 +419,47 @@ export default defineComponent({
       } else if (this.stamp_number == "") {
         this.$message.error("กรุณากรอกเลขที่ใบอนุญาต");
         return false;
+      } else if (this.telephone_number == "") {
+        this.$message.error("กรุณากรอกเบอร์โทรศัพท์");
+        return false;
+      } else if (this.address == "") {
+        this.$message.error("กรุณากรอกที่อยู่");
+        return false;
       } else {
         return true;
       }
     },
     addMember() {
-      const raw = group_members(
-        String(this.$route.params.tourId),
-        `${this.surname_thai} ${this.lastname_thai}`,
-        `${this.surname_eng} ${this.lastname_eng}`,
-        this.id_card,
-        this.bed_type,
-        this.passport,
-        new Date(this.in),
-        new Date(this.out),
-        new Date(this.dob),
-        this.nationality,
-        this.gender,
-        this.address,
-        this.stamp_number
-      );
+      const paylaod = {
+        tour_id: String(this.$route.params.tourId),
+        thai_name: `${this.surname_thai} ${this.lastname_thai}`,
+        eng_name: `${this.surname_eng} ${this.lastname_eng}`,
+        national_id: this.id_card,
+        bed_type: this.bed_type,
+        passport_no: this.passport,
+        passport_issue: dayjs(this.in).format("DD/MM/BBBB"),
+        passport_exp: dayjs(this.out).format("DD/MM/BBBB"),
+        gender: this.gender,
+        nationality: this.nationality,
+        date_of_birth: dayjs(this.dob).format("DD/MM/BBBB"),
+        address: this.address,
+        stamp_no: this.stamp_number,
+        telephone: this.telephone_number,
+      };
       if (this.validateMember()) {
-        create_data("member_tour", raw).then(() => {
-          read_all_data("member_tour").then((result) => {
-            const filter = result.filter(
-              (v) =>
-                v.fields.tour_id.stringValue ==
-                String(this.$route.params.tourId)
-            );
-            this.members_ls = filter;
+        this.addLoading = true;
+        create_data("member", paylaod)
+          .then(() => {
+            read_all_data(
+              `members?tour_id=${String(this.$route.params.tourId)}`
+            ).then((result) => {
+              this.addLoading = false;
+              this.members_ls = result;
+            });
+          })
+          .catch((err) => {
+            this.$message.error(err.message);
           });
-        });
       }
     },
   },

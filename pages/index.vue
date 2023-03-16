@@ -30,34 +30,32 @@
             class="table-row-hover"
             v-for="(item, index) in tour_ls"
             :key="index"
-            @click="detail_tour(item.fields.id.stringValue)">
+            @click="detail_tour(item.id)">
             <td class="px-6 py-4">
-              {{ item.fields.trip_name.stringValue }}
+              {{ item.name }}
             </td>
             <td class="px-6 py-4">
-              {{ item.fields.program_tour.stringValue }}
+              {{ item.program_name }}
             </td>
             <td class="px-6 py-4">
-              {{ item.fields.go_date.stringValue }}
+              {{ item.date_go }}
             </td>
             <td class="px-6 py-4">
-              {{ item.fields.back_date.stringValue }}
+              {{ item.date_back }}
             </td>
             <td class="px-6 py-4">
-              {{ item.fields.day.stringValue }}
+              {{ item.amount_of_days }}
             </td>
             <td class="px-6 py-4">
-              {{ item.fields.night.stringValue }}
+              {{ item.amount_of_nights }}
             </td>
             <td class="px-6 py-4">
-              {{ item.fields.vehicle_income.stringValue }}
+              {{ item.vehicle_in }}
             </td>
             <td class="px-6 py-4">
-              {{ item.fields.vehicle_outcome.stringValue }}
+              {{ item.vehicle_out }}
             </td>
-            <td class="px-6 py-4">
-              {{ get_amount_of_member(item.fields.id.stringValue) }}
-            </td>
+            <td class="px-6 py-4">{{ member_ls[index] }}</td>
           </tr>
         </tbody>
       </table>
@@ -66,17 +64,19 @@
 </template>
 
 <script>
-import { read_all_data } from "~~/services/configs";
+import { read_all_data } from "~~/services/pyapi";
 const key = "updatable";
 export default {
   mounted() {
     this.$message.loading({ content: "กำลังโหลดข้อมูล รายการทัวร์...", key });
-    read_all_data("member_tour").then((res) => {
-      this.member_ls = res;
-    });
-    read_all_data("group_tour").then((result) => {
-      this.tour_ls = result;
-      this.$message.success({ content: "สำเร็จ!", key, duration: 2 });
+    read_all_data("tours").then((res) => {
+      res.forEach((element) => {
+        read_all_data(`member_amount?tour_id=${element.id}`).then((res) => {
+          this.member_ls.push(res);
+        });
+      });
+      this.tour_ls = res;
+      this.$message.success({ content: "โหลดข้อมูลสำเร็จ", key });
     });
   },
   data() {
@@ -88,15 +88,6 @@ export default {
   methods: {
     detail_tour(id) {
       this.$router.push({ path: `/tourdata/${id}` });
-    },
-    get_amount_of_member(id) {
-      let count = 0;
-      this.member_ls.forEach((item) => {
-        if (item.fields.tour_id.stringValue == id) {
-          count++;
-        }
-      });
-      return count;
     },
   },
 };
