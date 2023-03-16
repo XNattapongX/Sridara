@@ -5,7 +5,7 @@
         <h1
           v-if="tour_detail"
           class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">
-          ข้อมูลลูกทัวร์ | {{ tour_detail.name }}
+          แบบฟอร์มประมาณการเบิกเงินสดย่อย | {{ tour_detail.name }}
         </h1>
         <h1
           v-else
@@ -17,7 +17,7 @@
             <label
               for="base-input"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >ชื่อ</label
+              >ชื่อผู้ขอเบิก</label
             >
             <input
               type="text"
@@ -30,7 +30,7 @@
             <label
               for="base-input"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >นามสกุล</label
+              >แผนก</label
             >
             <input
               type="text"
@@ -42,26 +42,28 @@
             <label
               for="base-input"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >Surname</label
+              >วันที่ต้องการใช้เงิน</label
             >
-            <input
-              type="text"
-              id="base-input"
-              v-model="surname_eng"
-              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+            <a-date-picker
+              :locale="locale"
+              v-model:value="dob"
+              class="date-picker"
+              format="DD/MM/YYYY" />
           </v-col>
-
           <v-col>
             <label
               for="base-input"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >Lastname</label
+              >โครงการ</label
             >
-            <input
-              type="text"
-              id="small-input"
-              v-model="lastname_eng"
-              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+            <select
+              style="height: 55%"
+              v-model="gender"
+              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              <option value="ทัวร์ 1">ทัวร์ 1</option>
+              <option value="ทัวร์ 2">ทัวร์ 2</option>
+              <option value="ทัวร์ 3">ทัวร์ 3</option>
+            </select>
           </v-col>
           <v-col>
             <label
