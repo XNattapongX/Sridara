@@ -304,6 +304,8 @@ export default defineComponent({
       ) {
         this.$message.error("กรุณากรอกข้อมูลให้ครบถ้วน");
         return false;
+      } else {
+        return true;
       }
     },
     addTourPackage() {

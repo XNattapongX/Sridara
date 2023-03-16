@@ -8,29 +8,54 @@
         </h1>
         <v-row>
           <v-col>
-            <label for="base-input"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ชื่อลูกค้า</label>
-            <input type="text" id="base-input" v-model="customer_name"
+            <label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >ชื่อลูกค้า</label
+            >
+            <input
+              type="text"
+              id="base-input"
+              v-model="customer_name"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
           <v-col>
-            <label for="base-input"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">เลขประจำตัวผู้เสียภาษี</label>
-            <input type="text" id="base-input" v-model="tax_id"
+            <label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >เลขประจำตัวผู้เสียภาษี</label
+            >
+            <input
+              type="text"
+              id="base-input"
+              v-model="tax_id"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
           <v-col>
-            <label for="base-input"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ชื่อผู้ติดต่อ</label>
-            <input type="text" id="base-input" v-model="contact_name"
+            <label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >ชื่อผู้ติดต่อ</label
+            >
+            <input
+              type="text"
+              id="base-input"
+              v-model="contact_name"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
         </v-row>
 
         <v-row>
           <v-col>
-            <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ที่อยู่</label>
-            <input type="text" id="small-input" v-model="customer_address"
+            <label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >ที่อยู่</label
+            >
+            <input
+              type="text"
+              id="small-input"
+              v-model="customer_address"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
         </v-row>
@@ -49,42 +74,81 @@
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
           <v-col>
-            <label for="base-input"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ยืนยันราคาภายใน</label>
-            <a-date-picker :locale="locale" v-model:value="confirm_price_within" class="date-picker"
+            <label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >ยืนยันราคาภายใน</label
+            >
+            <a-date-picker
+              :locale="locale"
+              v-model:value="confirm_price_within"
+              class="date-picker"
               format="DD/MM/YYYY" />
           </v-col>
           <v-col>
-            <label for="base-input"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">วันที่ส่งของ</label>
-            <a-date-picker :locale="locale" v-model:value="delivery_date" class="date-picker" format="DD/MM/YYYY" />
+            <label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >วันที่ส่งของ</label
+            >
+            <a-date-picker
+              :locale="locale"
+              v-model:value="delivery_date"
+              class="date-picker"
+              format="DD/MM/YYYY" />
           </v-col>
         </v-row>
 
         <v-row>
           <v-col>
-            <label for="base-input"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ผู้เสนอขาย</label>
-            <input type="text" id="small-input" v-model="sales_person"
+            <label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >ผู้เสนอขาย</label
+            >
+            <input
+              type="text"
+              id="small-input"
+              v-model="sales_person"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
           <v-col>
-            <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ฝ่าย</label>
-            <input type="text" id="base-input" v-model="sale_department"
+            <label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >ฝ่าย</label
+            >
+            <input
+              type="text"
+              id="base-input"
+              v-model="sale_department"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
         </v-row>
 
         <v-row>
           <v-col>
-            <label for="base-input"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">เบอร์โทรศัพท์</label>
-            <input type="text" id="small-input" v-model="contact_tel"
+            <label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >เบอร์โทรศัพท์</label
+            >
+            <input
+              type="text"
+              id="small-input"
+              v-model="contact_tel"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
           <v-col>
-            <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">อีเมล</label>
-            <input type="text" id="small-input" v-model="contact_email"
+            <label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >อีเมล</label
+            >
+            <input
+              type="text"
+              id="small-input"
+              v-model="contact_email"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
         </v-row>
@@ -113,25 +177,50 @@
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
           <v-col>
-            <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">จำนวน</label>
-            <input type="number" id="small-input" v-model.number="product_amount"
+            <label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >จำนวน</label
+            >
+            <input
+              type="number"
+              id="small-input"
+              v-model.number="product_qty"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
           <v-col>
-            <label for="base-input"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ราคาต่อหน่วย</label>
-            <input type="number" id="base-input" v-model.number="product_price_per_unit"
+            <label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >ราคาต่อหน่วย</label
+            >
+            <input
+              type="number"
+              id="base-input"
+              v-model.number="product_price_per_unit"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
           <v-col>
-            <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ส่วนลด</label>
-            <input type="number" id="base-input" v-model.number="product_discount"
+            <label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >ส่วนลด</label
+            >
+            <input
+              type="number"
+              id="base-input"
+              v-model.number="product_discount"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
           <v-col>
-            <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ภาษี (0% 7%
-              9%)</label>
-            <select style="height: 55%" v-model="product_tax"
+            <label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >ภาษี (0% 7% 9%)</label
+            >
+            <select
+              style="height: 55%"
+              v-model="product_tax"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
               <option value="0%">0%</option>
               <option value="7%">7%</option>
@@ -142,23 +231,37 @@
 
         <v-row>
           <v-col>
-            <label for="base-input"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">รายการสินค้า</label>
-            <textarea type="text" id="base-input" v-model="product_name"
+            <label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >รายการสินค้า</label
+            >
+            <textarea
+              type="text"
+              id="base-input"
+              v-model="product_name"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
           <v-col cols="2">
             <br />
-            <v-btn block variant="tonal" @click="onAddProduct" style="margin-top: 5px"
-              color="blue-accent-4">เพิ่มข้อมูล</v-btn>
+            <v-btn
+              block
+              variant="tonal"
+              @click="onAddProduct"
+              style="margin-top: 5px"
+              color="blue-accent-4"
+              >เพิ่มข้อมูล</v-btn
+            >
           </v-col>
         </v-row>
 
         <br /><br />
         <div class="relative overflow-x-auto shadow">
           <section class="bg-gray-50 dark:bg-gray-900">
-            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-              <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:text-gray-400"
+            <table
+              class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+              <thead
+                class="text-xs text-gray-700 uppercase bg-gray-50 dark:text-gray-400"
                 style="background-color: #81c784">
                 <tr>
                   <th scope="col" class="px-6 py-3">ลำดับ</th>
@@ -178,31 +281,40 @@
                     ไม่มีรายการ
                   </td>
                 </tr>
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700" v-for="(item, index) in product_ls"
+                <tr
+                  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                  v-for="(item, index) in product_ls"
                   :key="index">
                   <td class="px-6 py-4">{{ index + 1 }}</td>
                   <td class="px-6 py-4">
-                    {{ item.product_code }}
+                    {{ item.code }}
                   </td>
                   <td class="px-6 py-4">
-                    {{ item.product_name }}
+                    {{ item.name }}
                   </td>
                   <td class="px-6 py-4">
-                    {{ item.product_amount }}
+                    {{ item.qty }}
                   </td>
                   <td class="px-6 py-4">
-                    {{ item.product_price_per_unit }}
+                    {{ item.price_per_unit }}
                   </td>
                   <td class="px-6 py-4">
-                    {{ item.product_discount }}
+                    {{ item.discount }}
                   </td>
                   <td class="px-6 py-4">
-                    {{ item.product_tax }}
+                    {{ item.tax }}
                   </td>
-                  <td class="px-6 py-4">{{ item.product_total }}</td>
+                  <td class="px-6 py-4">{{ item.amount }}</td>
                   <td class="px-6 py-4">
-                    <v-btn v-if="index != 0" block variant="tonal" @click="onDeleteProduct(index)" style="margin-top: 5px"
-                      color="red-accent-4">ลบข้อมูล</v-btn>
+                    <v-btn
+                      :disabled="item.unit == 'ทัวร์'"
+                      block
+                      variant="tonal"
+                      @click="onDeleteProduct(item.id, index)"
+                      style="margin-top: 5px"
+                      color="red-accent-4"
+                      >ลบข้อมูล</v-btn
+                    >
                   </td>
                 </tr>
               </tbody>
@@ -210,55 +322,112 @@
           </section>
         </div>
         <br />
-        <v-row style="
-                      margin: 0.1rem;
-                      border-radius: 0.5rem;
-                      background-color: #e0f7fa;
-                      box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-                    "><v-col>
-            <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">กำหนดยืนราคา
-              (กี่วัน)</label>
-            <input type="number" id="small-input" v-model="price_validate_period"
+        <v-row
+          style="
+            margin: 0.1rem;
+            border-radius: 0.5rem;
+            background-color: #e0f7fa;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+          "
+          ><v-col>
+            <label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >กำหนดยืนราคา (กี่วัน)</label
+            >
+            <input
+              type="number"
+              id="small-input"
+              v-model="price_validate_period"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
-          <v-col><label for="base-input"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ค่ามัดจำ</label><input type="number"
-              id="small-input" v-model.number="deposit"
-              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" /></v-col>
+          <v-col
+            ><label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >ค่ามัดจำ</label
+            ><input
+              type="number"
+              id="small-input"
+              v-model.number="deposit"
+              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          /></v-col>
           <v-col>
-            <label for="base-input"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">รวมเงิน</label><input type="text"
-              id="small-input" disabled :value="sumAllProduct()"
-              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" /></v-col>
+            <label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >รวมเงิน</label
+            ><input
+              type="text"
+              id="small-input"
+              disabled
+              :value="sumAllProduct()"
+              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          /></v-col>
           <v-col>
-            <label for="base-input"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ส่วนลดสินค้า</label><input type="text"
-              id="small-input" :value="sumAllProductDiscount()" disabled
-              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" /></v-col>
+            <label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >ส่วนลดสินค้า</label
+            ><input
+              type="text"
+              id="small-input"
+              :value="sumAllProductDiscount()"
+              disabled
+              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          /></v-col>
           <v-col>
-            <label for="base-input"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">มูลค่าสินค้าก่อนคำนวนภาษี</label><input
-              type="text" disabled :value="calculateVat()" id="small-input"
-              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" /></v-col>
+            <label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >มูลค่าสินค้าก่อนคำนวนภาษี</label
+            ><input
+              type="text"
+              disabled
+              :value="beforeCalculateVat()"
+              id="small-input"
+              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          /></v-col>
           <v-col>
-            <label for="base-input"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ภาษีมูลค่าเพิ่ม</label><input
-              type="text" id="small-input" disabled :value="calculateBeforeVat()"
-              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" /></v-col>
-          <v-col style="
-                        background-color: #c5cae9;
+            <label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >ภาษีมูลค่าเพิ่ม</label
+            ><input
+              type="text"
+              id="small-input"
+              disabled
+              :value="calculateVat()"
+              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          /></v-col>
+          <v-col
+            style="
+              background-color: #c5cae9;
 
-                        border-top-right-radius: 0.5rem;
-                        border-bottom-right-radius: 0.5rem;
-                      "><label for="base-input"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">จำนวนเงินทั้งสิ้น</label><input
-              type="text" disabled :value="Math.floor(sumAllProduct() * 100) / 100" id="small-input"
+              border-top-right-radius: 0.5rem;
+              border-bottom-right-radius: 0.5rem;
+            "
+            ><label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >จำนวนเงินทั้งสิ้น</label
+            ><input
+              type="text"
+              disabled
+              :value="Math.floor(sumAllProduct() * 100) / 100"
+              id="small-input"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
         </v-row>
         <v-row justify="end" style="margin-top: -1rem">
-          <v-col cols="2" style="text-align: end"><br /><v-btn variant="tonal" color="yellow-darken-3"
-              @click="onAddQuotation">สร้างใบเสนอราคา</v-btn></v-col>
+          <v-col cols="2" style="text-align: end"
+            ><br /><v-btn
+              variant="tonal"
+              color="yellow-darken-3"
+              @click="onAddQuotation"
+              >สร้างใบเสนอราคา</v-btn
+            ></v-col
+          >
         </v-row>
       </v-col>
     </v-row>
@@ -266,36 +435,17 @@
 </template>
 
 <script lang="ts">
-import { read_all_data, create_data, genRanDec } from "~~/services/configs";
-import { quotation_detail_with_product } from "~~/services/payload";
+import { read_all_data, create_data, delete_data } from "~~/services/pyapi";
+import { genRanDec } from "~~/services/pyapi";
 import { defineComponent } from "vue";
 import locale from "ant-design-vue/es/date-picker/locale/th_TH";
+import dayjs from "dayjs";
+import buddhistEra from "dayjs/plugin/buddhistEra";
+dayjs.extend(buddhistEra);
 export default defineComponent({
-  mounted() {
-    read_all_data("member_tour").then((result) => {
-      const filter = result.filter(
-        (v) => v.fields.tour_id.stringValue == String(this.$route.params.tid)
-      );
-      this.tour_member = filter.length;
-      console.log(this.tour_member);
-    });
-    read_one_data("group_tour", String(this.$route.params.tid)).then((res) => {
-      const fields = res.fields;
-      // console.log(fields);
-      this.product_ls.push({
-        product_code: fields.id.stringValue,
-        product_name: fields.trip_name.stringValue,
-        product_amount: this.tour_member,
-        product_price_per_unit: fields.tour_price_unit.stringValue,
-        product_discount: fields.tour_discount.stringValue,
-        product_tax: fields.tour_tax.stringValue,
-        product_total: Number(this.tour_member) * Number(fields.tour_price_unit.stringValue)
-      });
-      console.log(this.product_ls)
-    })
-  },
   data() {
     return {
+      tour_id: "",
       customer_name: "",
       tax_id: "",
       contact_name: "",
@@ -309,26 +459,22 @@ export default defineComponent({
       delivery_date: "",
       product_code: "",
       product_name: "",
-      product_amount: "",
-      product_price_per_unit: "",
+      product_qty: 0,
+      product_price_per_unit: 0,
       product_discount: 0,
       product_tax: "",
-      product_total: 0,
+      product_amount: 0,
       product_ls: [] as any,
       price_validate_period: "",
       deposit: "",
       tour_member: 0,
     };
   },
-  mounted() {
-    read_one_data_conditions(
-      "group_tour",
-      "id",
-      String(this.$route.params.tid)
-    ).then((result) => {
-      this.customer_code = result[0].fields.custumer_code.stringValue;
-    });
-    this.product_code = `PROD-${genRanDec(10)}`;
+  async mounted() {
+    this.tour_id = String(this.$route.params.tid);
+    this.product_ls = await read_all_data(`products?tid=${this.tour_id}`);
+    this.customer_code = `C-${genRanDec(10)}`;
+    this.product_code = `Q-${genRanDec(10)}`;
   },
   setup() {
     return {
@@ -339,105 +485,115 @@ export default defineComponent({
     sumAllProduct() {
       let sum = 0;
       for (let i = 0; i < this.product_ls.length; i++) {
-        sum += this.product_ls[i].product_total;
+        sum += this.product_ls[i].amount;
       }
       return sum;
     },
     sumAllProductDiscount() {
       let sum = 0;
       for (let i = 0; i < this.product_ls.length; i++) {
-        sum += this.product_ls[i].product_discount;
+        sum += this.product_ls[i].discount;
       }
       return sum;
     },
-    calculateVat() {
+    beforeCalculateVat() {
       let sum = 0;
       for (let i = 0; i < this.product_ls.length; i++) {
-        if (this.product_ls[i].product_tax === "7%") {
-          sum += this.product_ls[i].product_total * (100 / 107);
-        } else if (this.product_ls[i].product_tax === "0%") {
+        if (this.product_ls[i].tax === "7%") {
+          sum += this.product_ls[i].amount * (100 / 107);
+        } else if (this.product_ls[i].tax === "0%") {
           sum += 0;
-        } else if (this.product_ls[i].product_tax === "9%") {
-          sum += this.product_ls[i].product_total * (100 / 109);
+        } else if (this.product_ls[i].tax === "9%") {
+          sum += this.product_ls[i].amount * (100 / 109);
         }
       }
       return Math.floor(sum * 100) / 100;
     },
-    calculateBeforeVat() {
+    calculateVat() {
       let sum = 0;
       for (let i = 0; i < this.product_ls.length; i++) {
-        if (this.product_ls[i].product_tax === "7%") {
-          sum += this.product_ls[i].product_total;
-        } else if (this.product_ls[i].product_tax === "9%") {
-          sum += this.product_ls[i].product_total;
+        if (this.product_ls[i].tax === "7%") {
+          sum += this.product_ls[i].amount;
+        } else if (this.product_ls[i].tax === "9%") {
+          sum += this.product_ls[i].amount;
         }
       }
-      const x = sum - this.calculateVat();
+      const x = sum - this.beforeCalculateVat();
 
       return Math.floor(x * 100) / 100;
     },
     onAddProduct() {
       if (this.validateProductDetail()) {
-        let x =
-          Number(this.product_amount) * Number(this.product_price_per_unit);
+        let x = this.product_qty * this.product_price_per_unit;
         if (this.product_tax === "7%") {
-          this.product_total = x + x * 0.07 - Number(this.product_discount);
+          this.product_amount = x + x * 0.07 - this.product_discount;
         } else if (this.product_tax === "9%") {
-          this.product_total = x + x * 0.09 - Number(this.product_discount);
+          this.product_amount = x + x * 0.09 - this.product_discount;
         } else {
-          this.product_total = x - Number(this.product_discount);
+          this.product_amount = x - this.product_discount;
         }
-        this.product_ls.push({
-          product_code: this.product_code,
-          product_name: this.product_name,
-          product_amount: this.product_amount,
-          product_price_per_unit: this.product_price_per_unit,
-          product_discount: this.product_discount,
-          product_tax: this.product_tax,
-          product_total: this.product_total,
+        const payload: any = {
+          tour_id: this.tour_id,
+          code: this.product_code,
+          name: this.product_name,
+          desc: "-",
+          unit: "จำนวน",
+          qty: this.product_qty,
+          price_per_unit: this.product_price_per_unit,
+          discount: this.product_discount,
+          tax: this.product_tax,
+          amount: this.product_amount,
+        };
+        create_data("product", payload).then((result) => {
+          payload.id = result.id;
+          this.product_ls.push(payload);
         });
-        this.product_code = `PROD-${genRanDec(10)}`;
+        this.product_code = `Q-${genRanDec(10)}`;
         this.product_name = "";
-        this.product_amount = "";
-        this.product_price_per_unit = "";
+        this.product_qty = 0;
+        this.product_price_per_unit = 0;
         this.product_discount = 0;
         this.product_tax = "";
-        this.product_total = 0;
+        this.product_amount = 0;
       }
     },
-    onDeleteProduct(index: number) {
-      this.product_ls.splice(index, 1);
+    onDeleteProduct(id: string, index: number) {
+      delete_data("product", id).then(() => {
+        this.product_ls.splice(index, 1);
+      });
     },
     onAddQuotation() {
-      const json = quotation_detail_with_product(
-        String(this.$route.params.tid),
-        genRanDec(5),
-        new Date(),
-        this.tax_id,
-        this.customer_name,
-        this.customer_address,
-        this.customer_code,
-        this.contact_name,
-        this.contact_tel,
-        this.contact_email,
-        this.sales_person,
-        this.sale_department,
-        new Date(this.confirm_price_within),
-        new Date(this.delivery_date),
-        this.product_ls,
-        Number(this.deposit),
-        this.price_validate_period,
-        this.sumAllProduct(),
-        this.sumAllProductDiscount(),
-        this.calculateBeforeVat(),
-        this.calculateVat(),
-        this.sumAllProduct() - this.sumAllProductDiscount()
-      );
-      if (this.validateQuotationDetail() == false) {
-        return;
-      } else {
-        create_data("quotation_detail", json).then((res) => {
-          this.$router.push(`/tourdata/${this.$route.params.tid}`);
+      const payload = {
+        tour_id: this.tour_id,
+        date: dayjs(new Date()).format("DD/MM/BBBB"),
+        no: genRanDec(5),
+        customer_name: this.customer_name,
+        tax_id: this.tax_id,
+        contact_name: this.contact_name,
+        address: this.customer_address,
+        customer_code: this.customer_code,
+        confirm_price_within: dayjs(this.confirm_price_within).format(
+          "DD/MM/BBBB"
+        ),
+        dalivery_date: dayjs(this.delivery_date).format("DD/MM/BBBB"),
+        sales_person: this.sales_person,
+        sale_department: this.sale_department,
+        customer_tel: this.contact_tel,
+        email: this.contact_email,
+        earnest_money: this.deposit,
+        price_validate_period: this.price_validate_period,
+        total_price: this.sumAllProduct(),
+        less_cash_discount: this.sumAllProductDiscount(),
+        net_price: this.sumAllProduct() - this.sumAllProductDiscount(),
+        vat: this.calculateVat(),
+        total_net_price:
+          this.sumAllProduct() -
+          this.sumAllProductDiscount() +
+          this.calculateVat(),
+      };
+      if (this.validateQuotationDetail()) {
+        create_data("quotation", payload).then((result) => {
+          this.$message.success("เพิ่มใบเสนอราคาสำเร็จ", 3);
         });
       }
     },
@@ -450,11 +606,11 @@ export default defineComponent({
         this.$message.error("กรุณากรอกชื่อสินค้า", 3);
         return false;
       }
-      if (this.product_amount == "") {
-        this.$message.error("กรุณากรอกจำนวนสินค้า", 3);
+      if (this.product_qty <= 0) {
+        this.$message.error("กรุณากรอกจำน0สินค้า", 3);
         return false;
       }
-      if (this.product_price_per_unit == "") {
+      if (this.product_price_per_unit == 0) {
         this.$message.error("กรุณากรอกราคาต่อหน่วย", 3);
         return false;
       }

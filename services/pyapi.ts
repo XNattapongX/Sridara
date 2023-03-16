@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const url = "http://localhost:8000/api/";
+const url =
+  "http://2f40-2403-6200-8830-bc90-31a5-c5bd-c542-2c21.ap.ngrok.io/api/";
 // const url = "https://back-end-tour.vercel.app/api/"
 
 const api = axios.create({
@@ -35,3 +36,8 @@ export const update_data = async (
   const response = await api.put(`${collection}/${id}`, data);
   return response.data;
 };
+
+export const genRanDec = (size: number) =>
+  [...Array(size)]
+    .map(() => Math.floor(Math.random() * 10).toString(10))
+    .join("");

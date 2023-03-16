@@ -191,7 +191,7 @@
           style="margin-right: 1rem"
           variant="tonal"
           color="light-blue-accent-4"
-          @click="$router.push(`/qpform/${tour_id}`)"
+          @click="dialog3 = true"
           >สร้างใบเสนอราคา</v-btn
         >
 
@@ -244,6 +244,62 @@
       ></v-col
     >
   </v-row>
+
+  <a-modal
+    v-model:visible="dialog3"
+    title="กรุณากรอกราคาของทัวน์ ก่อนสร้างใบเสนอราคา">
+    <template #footer>
+      <a-button key="back" @click="dialog3 = false">ยกเลิก</a-button>
+      <a-button
+        key="submit"
+        type="primary"
+        :loading="tour_program.loading"
+        @click="onCreateQuotation"
+        >สร้าง</a-button
+      >
+    </template>
+    <v-row>
+      <v-col>
+        <label
+          for="base-input"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >ราคาต่อหน่วย</label
+        >
+        <input
+          type="text"
+          id="base-input"
+          v-model.number="tour_program.price_per_unit"
+          class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+      </v-col>
+      <v-col>
+        <label
+          for="base-input"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >ภาษี (0% 7% 9%)</label
+        >
+        <select
+          style="height: 55%"
+          v-model="tour_program.tax"
+          class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+          <option value="0%">0%</option>
+          <option value="7%">7%</option>
+          <option value="9%">9%</option>
+        </select>
+      </v-col>
+      <v-col>
+        <label
+          for="base-input"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >ส่วนลด</label
+        >
+        <input
+          type="text"
+          id="base-input"
+          v-model.number="tour_program.discount"
+          class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+      </v-col>
+    </v-row>
+  </a-modal>
 
   <a-modal v-model:visible="dialog" title="ฟอร์มสร้างใบแจ้งหนี้/ใบวางบิล">
     <template #footer>
@@ -368,7 +424,13 @@
 
 <script>
 import Swal from "sweetalert2/dist/sweetalert2.js";
-import { read_all_data, read_one_data, delete_data } from "~~/services/pyapi";
+import {
+  read_all_data,
+  read_one_data,
+  delete_data,
+  create_data,
+  genRanDec,
+} from "~~/services/pyapi";
 import locale from "ant-design-vue/es/date-picker/locale/th_TH";
 import { billing_note_detail, tax_invoice_detail } from "~~/services/payload";
 export default {
@@ -385,6 +447,51 @@ export default {
     this.loading = false;
   },
   methods: {
+    validateQuotation() {
+      if (this.tour_program.price_per_unit == 0) {
+        this.$message.error("กรุณากรอกราคาต่อหน่วย");
+        return false;
+      }
+      if (this.tour_program.discount < 0) {
+        this.$message.error("กรุณากรอกส่วนลด");
+        return false;
+      }
+      if (this.tour_program.tax == "") {
+        this.$message.error("กรุณากรอกภาษี");
+        return false;
+      }
+      return true;
+    },
+    onCreateQuotation() {
+      if (!this.validateQuotation()) return;
+      let total = this.tour_program.price_per_unit;
+      var amount = 0;
+      if (this.tour_program.tax == "7%") {
+        amount = total + total * 0.07 - this.tour_program.discount;
+      } else if (this.tour_program.tax == "9%") {
+        amount = total + total * 0.09 - this.tour_program.discount;
+      } else {
+        amount = total - this.tour_program.discount;
+      }
+      this.tour_program.loading = true;
+      const payload = {
+        tour_id: this.tour_id,
+        code: `Q-${genRanDec(10)}`,
+        name: this.tour_data.name,
+        desc: this.tour_data.program_name,
+        qty: 1,
+        unit: "ทัวร์",
+        price_per_unit: this.tour_program.price_per_unit,
+        discount: this.tour_program.discount,
+        tax: this.tour_program.tax,
+        amount: amount,
+      };
+      create_data("product", payload).then(() => {
+        this.tour_program.loading = false;
+        this.$message.info("ไปสู่หน้าสร้างรายละเอียดใบเสนอราคา");
+        this.$router.push(`/qpform/${this.tour_id}`);
+      });
+    },
     handleDelete(name) {
       Swal.fire({
         title: "คุณกำลังจะลบทัวร์",
@@ -476,9 +583,16 @@ export default {
       haveTaxInvoice: false,
       dialog: false,
       dialog2: false,
+      dialog3: false,
       loadGenBill: false,
       members_ls: [],
       hotels_ls: [],
+      tour_program: {
+        loading: false,
+        price_per_unit: 0,
+        discount: 0,
+        tax: "",
+      },
       billing: {
         billing_note_no: "",
         billing_note_date: "",
