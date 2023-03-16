@@ -65,7 +65,7 @@
                 </td>
               </tr>
               <tr style="text-align: center">
-                <td colspan="2" style="border-top: 1px solid #000000">
+                <td colspan="2" style="border-bottom: 1px solid lightgray">
                   ต้นฉบับ/Original (เอกสารออกเป็นชุด)
                 </td>
               </tr>
@@ -111,11 +111,7 @@
                 </tr>
               </thead>
               <tbody style="font-weight: normal; font-size: 14px">
-                <tr
-                  v-for="(item, index) in ob.tax_invoice"
-                  :key="index"
-                  style="border-bottom: 1px solid black"
-                >
+                <tr v-for="(item, index) in ob.tax_invoice" :key="index">
                   <td class="text-center" style="font-size: xx-small">
                     {{ index + 1 }}
                   </td>
