@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const url =
-  "http://2f40-2403-6200-8830-bc90-31a5-c5bd-c542-2c21.ap.ngrok.io/api/";
-// const url = "https://back-end-tour.vercel.app/api/"
+// const url =
+//   "http://2f40-2403-6200-8830-bc90-31a5-c5bd-c542-2c21.ap.ngrok.io/api/";
+const url = "https://back-end-tour.vercel.app/api/";
 
 const api = axios.create({
   baseURL: url,
