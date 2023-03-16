@@ -118,92 +118,50 @@
                 >
                   <td class="text-center" style="font-size: xx-small">ลำดับ</td>
                   <td class="text-center" style="font-size: xx-small">
-                    วันที่
+                    รายละเอียดค่าใช้จ่าย
                   </td>
                   <td class="text-center" style="font-size: xx-small">
-                    เลขที่ใบกำกับภาษี
+                    ราคา
+                  </td>
+                  <td colspan="5" class="text-center" style="font-size: xx-small">ค่าใช้จ่าย
                   </td>
                   <td class="text-center" style="font-size: xx-small">
-                    รายละเอียด
+                    จำนวน
                   </td>
                   <td class="text-center" style="font-size: xx-small">
-                    จำนวนเงิน
+                    ยอดสุทธิ
                   </td>
                 </tr>
               </thead>
               <tbody style="font-weight: normal; font-size: 14px">
                 <tr style="border-bottom: 1px solid black">
                   <td class="text-center" style="font-size: xx-small">
-                    fsdfsdf
+                  
                   </td>
                   <td class="text-center" style="font-size: xx-small">
-                    20/05/2566
+                   
                   </td>
                   <td class="text-center" style="font-size: xx-small">
-                    fdsfdsf
+              
                   </td>
                   <td class="text-center" style="font-size: xx-small">
-                    fdsfdsf
+                    เบี้ยเลี้ยง
                   </td>
                   <td class="text-center" style="font-size: xx-small">
-                    fsdfdsf
+                    ค่าที่พัก
                   </td>
+                  <td class="text-center" style="font-size: xx-small">
+                    ค่ายานพาหะนะ
+                  </td>
+                  <td class="text-center" style="font-size: xx-small">
+                    ค่าน้ำมัน
+                  </td>
+                  <td class="text-center" style="font-size: xx-small">
+                    อื่นๆ
+                  </td>
+                  
                 </tr>
               </tbody>
-            </v-table>
-          </v-col>
-        </v-row>
-
-        <v-row style="font-size: 12px; padding-left: 4px; margin: auto">
-          <v-col style="padding: 0" cols="6">
-            <v-table>
-              <tr style="height: 20px">
-                <td colspan="2" style="font-weight: bold">&nbsp;</td>
-              </tr>
-              <tr style="height: 30px">
-                <td colspan="2" style="font-weight: bold">
-                  รวมทั้งสิ้น ตัวอักษร:
-                </td>
-                <td colspan="2">fdsafasdfasd</td>
-              </tr>
-              <tr style="height: 30px">
-                <td colspan="2" style="font-weight: bold">ชำระ:</td>
-                <td colspan="2">dsafasdfasfs</td>
-              </tr>
-              <tr style="height: 30px">
-                <td colspan="2" style="font-weight: bold">
-                  หักภาษี ณ ที่จ่าย :
-                </td>
-                <td colspan="2">fdsafasdfasdf</td>
-              </tr>
-              <tr style="height: 30px">
-                <td colspan="2" style="font-weight: bold">
-                  เลขที่เช็ค // วันที่เช็ค
-                </td>
-                <td colspan="2">444894465 // 256546489</td>
-              </tr>
-            </v-table>
-          </v-col>
-        </v-row>
-
-        <v-row style="font-size: 12px; padding-left: 4px; margin: auto">
-          <v-col style="padding: 0">
-            <v-table>
-              <tr style="height: 30px">
-                <td>
-                  <b>หมายเหตุ: </b>
-                  ใบเสร็จรับเงินฉบับนี้จะสมบูรณ์ต่อเมื่อได้รับเงินตามเช็คเรียบร้อยและต้องมีลายมือชื่อกรรมการ
-                  ผู้มีอำนาจหรือผู้แทนที่ถูกต้องและผู้รับเงิน
-                </td>
-              </tr>
-              <tr style="height: 20px">
-                <td
-                  colspan="2"
-                  style="font-weight: bold; border-bottom: 1px solid black"
-                >
-                  &nbsp;
-                </td>
-              </tr>
             </v-table>
           </v-col>
         </v-row>
@@ -215,10 +173,10 @@
                 <td>&nbsp;</td>
               </tr>
               <tr>
-                <td>ผู้จัดทำ</td>
+                <td>(นางสาวสุริพร รัตนชัย)</td>
               </tr>
               <tr>
-                <td>วันที่</td>
+                <td>ผู้ขอเบิก</td>
               </tr>
               <tr style="border-bottom: 1px solid black">
                 <td>&nbsp;</td>
@@ -229,13 +187,29 @@
             <v-table style="text-align: center">
               <tr style="height: 110px">
                 <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>(………………………………….)</td>
+              </tr>
+              <tr>
+                <td>ผู้อนุมัติ/ตรวจสอบ</td>
+              </tr>
+              <tr style="border-bottom: 1px solid black">
+                <td>&nbsp;</td>
+              </tr>
+            </v-table>
+          </v-col>
+          <v-col>
+            <v-table style="text-align: center">
+              <tr style="height: 110px">
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>(………………………………….)</td>
               </tr>
               <tr>
                 <td>ผู้รับเงิน</td>
               </tr>
-              <tr>
-                <td>วันที่</td>
-              </tr>
               <tr style="border-bottom: 1px solid black">
                 <td>&nbsp;</td>
               </tr>
@@ -247,10 +221,10 @@
                 <td>&nbsp;</td>
               </tr>
               <tr>
-                <td>กรรมการผู้มีอำนาจหรือตัวแทน</td>
+                <td>(………………………………….)</td>
               </tr>
               <tr>
-                <td>วันที่</td>
+                <td>ผู้จ่ายเงิน</td>
               </tr>
               <tr style="border-bottom: 1px solid black">
                 <td>&nbsp;</td>
