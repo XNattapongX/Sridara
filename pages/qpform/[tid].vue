@@ -37,9 +37,15 @@
 
         <v-row>
           <v-col>
-            <label for="base-input"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">รหัสลูกค้า</label>
-            <input type="text" id="small-input" v-model="customer_code"
+            <label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >รหัสลูกค้า</label
+            >
+            <input
+              type="text"
+              id="small-input"
+              v-model="customer_code"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
           <v-col>
@@ -95,9 +101,15 @@
 
         <v-row>
           <v-col>
-            <label for="base-input"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">รหัสสินค้า</label>
-            <input type="text" id="small-input" v-model="product_code"
+            <label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >รหัสสินค้า</label
+            >
+            <input
+              type="text"
+              id="small-input"
+              v-model="product_code"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
           <v-col>
@@ -254,8 +266,8 @@
 </template>
 
 <script lang="ts">
-import { read_one_data, read_all_data, create_data, genRanDec } from "~~/services/configs";
-import { group_tours, quotation_detail_with_product } from "~~/services/payload";
+import { read_all_data, create_data, genRanDec } from "~~/services/configs";
+import { quotation_detail_with_product } from "~~/services/payload";
 import { defineComponent } from "vue";
 import locale from "ant-design-vue/es/date-picker/locale/th_TH";
 export default defineComponent({
@@ -307,6 +319,16 @@ export default defineComponent({
       deposit: "",
       tour_member: 0,
     };
+  },
+  mounted() {
+    read_one_data_conditions(
+      "group_tour",
+      "id",
+      String(this.$route.params.tid)
+    ).then((result) => {
+      this.customer_code = result[0].fields.custumer_code.stringValue;
+    });
+    this.product_code = `PROD-${genRanDec(10)}`;
   },
   setup() {
     return {
@@ -374,7 +396,7 @@ export default defineComponent({
           product_tax: this.product_tax,
           product_total: this.product_total,
         });
-        this.product_code = "";
+        this.product_code = `PROD-${genRanDec(10)}`;
         this.product_name = "";
         this.product_amount = "";
         this.product_price_per_unit = "";

@@ -52,12 +52,12 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-if="!guide_tel.length">
+                <tr v-if="!guide_ls.length">
                   <td colspan="2" style="text-align: center">ไม่มีข้อมูล</td>
                 </tr>
-                <tr v-for="(j, l) in guide_tel" :key="l">
-                  <td>{{ guide_name[l] }}</td>
-                  <td>{{ j }}</td>
+                <tr v-for="(j, l) in guide_ls" :key="l">
+                  <td>{{ j.name }}</td>
+                  <td>{{ j.tel }}</td>
                 </tr>
               </tbody>
             </v-table>
@@ -85,12 +85,6 @@
                   " /></v-col>
         </v-row>
         <v-row>
-          <v-col>
-            <label for="base-input"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">เที่ยวบินหรือพาหนะอื่นๆขาไป</label>
-            <input type="text" id="large-input" :disabled="lock_form" v-model="vehicle_out"
-              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-          </v-col>
           <v-col>
             <label for="base-input"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">เที่ยวบินหรือพาหนะอื่นๆขากลับ</label>
@@ -175,27 +169,38 @@
           </thead>
           <tbody>
             <tr v-for="(item, index) in formHotel.hotel_ls" :key="index">
-              <td>{{ item.fields.name.stringValue }}</td>
-              <td>{{ item.fields.amount_room.stringValue }}</td>
-              <td>{{ item.fields.check_in.stringValue }}</td>
-              <td>{{ item.fields.check_out.stringValue }}</td>
+              <td>{{ item.name }}</td>
+              <td>{{ item.amount_of_rooms }}</td>
+              <td>{{ item.check_in }}</td>
+              <td>{{ item.check_out }}</td>
             </tr>
           </tbody>
         </v-table>
       </v-col>
     </v-row>
-    <v-row justify="end"><v-col cols="2" style="margin-right: -10vmin; margin-top: -2vmin"><v-btn variant="tonal"
-          color="deep-purple-darken-4" @click="$router.push('/')">ไปหน้ารายการทัวร์</v-btn></v-col><v-col cols="2"
-        style="margin-right: -6vmin; margin-top: -2vmin"><v-btn variant="tonal" color="light-blue-accent-4"
+    <v-row justify="end"
+      ><v-col cols="2" style="margin-right: -10vmin; margin-top: -2vmin"
+        ><v-btn
+          variant="tonal"
+          color="deep-purple-darken-4"
+          @click="$router.push('/')"
+          >ไปหน้ารายการทัวร์</v-btn
+        ></v-col
+      ><v-col cols="2" style="margin-right: -6vmin; margin-top: -2vmin"
+        ><v-btn
+          variant="tonal"
+          color="light-blue-accent-4"
           @click="$router.push(`/addusertour/${tour_id}`)"
           :disabled="!lock_form">ไปหน้าเพิ่มลูกทัวร์</v-btn></v-col></v-row>
   </div>
 </template>
 <script lang="ts">
-import { group_tours, hotel_tour } from "~~/services/payload";
-import { create_data, read_all_data } from "~~/services/configs";
+import { create_data, read_all_data } from "~~/services/pyapi";
 import { defineComponent } from "vue";
 import locale from "ant-design-vue/es/date-picker/locale/th_TH";
+import dayjs from "dayjs";
+import buddhistEra from "dayjs/plugin/buddhistEra";
+dayjs.extend(buddhistEra);
 export default defineComponent({
   setup() {
     return {
@@ -206,8 +211,7 @@ export default defineComponent({
     return {
       tour_name: "",
       tour_program: "",
-      guide_name: [] as any,
-      guide_tel: [] as any,
+      guide_ls: [] as any,
       day: 0,
       night: 0,
       go_date: "",
@@ -250,16 +254,13 @@ export default defineComponent({
         this.tour_program == "" ||
         this.go_date == "" ||
         this.back_date == "" ||
-        this.day == 0 ||
-        this.night == 0 ||
+        this.day <= 0 ||
+        this.night <= 0 ||
         this.vehicle_in == "" ||
         this.vehicle_out == "" ||
         this.guide_name == "" ||
-        this.guide_tel == ""
-
-        || this.product_price_per_unit == "" ||
-        this.product_discount < 0 ||
-        this.product_tax == ""
+        this.guide_tel == "" ||
+        this.members == 0
       ) {
         this.$message.error("กรุณากรอกข้อมูลให้ครบถ้วน");
         return false;
@@ -317,41 +318,46 @@ export default defineComponent({
         this.vehicle_out,
         this.guide_name,
         this.guide_tel,
-        this.members,
-        this.product_price_per_unit,
-        this.product_discount,
-        this.product_tax
+        this.members
       );
-      console.log(raw)
       if (this.validateTourData()) {
-        create_data("group_tour", raw).then((result) => {
+        const payload = {
+          name: this.tour_name,
+          program_name: this.tour_program,
+          date_go: dayjs(this.go_date).format("DD/MM/BBBB"),
+          date_back: dayjs(this.back_date).format("DD/MM/BBBB"),
+          amount_of_days: this.day,
+          amount_of_nights: this.night,
+          vehicle_in: this.vehicle_in,
+          vehicle_out: this.vehicle_out,
+          guided_tour: this.guide_ls,
+        };
+        create_data("tour", payload).then((result) => {
           this.lock_form = true;
-          this.tour_id = result;
+          this.tour_id = result.id;
           this.$message.success("เพิ่มข้อมูลสำเร็จ");
         });
       }
     },
     addHotel() {
-      const raw = hotel_tour(
-        this.tour_id,
-        this.formHotel.name,
-        this.formHotel.amount_room,
-        new Date(this.formHotel.check_in),
-        new Date(this.formHotel.check_out)
-      );
-      create_data("hotel_tour", raw).then(() => {
-        read_all_data("hotel_tour").then((result) => {
-          const filter = result.filter(
-            (v: any) => v.fields.tour_id.stringValue == this.tour_id
-          );
-          this.formHotel.hotel_ls = filter;
+      const payload = {
+        tour_id: this.tour_id,
+        name: this.formHotel.name,
+        amount_of_rooms: this.formHotel.amount_room,
+        check_in: dayjs(this.formHotel.check_in).format("DD/MM/BBBB"),
+        check_out: dayjs(this.formHotel.check_out).format("DD/MM/BBBB"),
+      };
+      if (this.validateHotelData()) {
+        create_data("hotel", payload).then(() => {
+          read_all_data(`hotels?tour_id=${this.tour_id}`).then((result) => {
+            this.formHotel.hotel_ls = result;
+          });
         });
-      });
+      }
     },
     addGuide() {
       if (this.validateGuideData()) {
-        this.guide_name.push(this.g_name);
-        this.guide_tel.push(this.g_tel);
+        this.guide_ls.push({ name: this.g_name, tel: this.g_tel });
       }
       this.g_name = "";
       this.g_tel = "";
