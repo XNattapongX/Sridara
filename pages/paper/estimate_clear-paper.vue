@@ -103,37 +103,21 @@
                   "
                 >
                   <td class="text-center" style="font-size: xx-small">ลำดับ</td>
-                  <td class="text-center" style="font-size: xx-small">
-                    วันที่
-                  </td>
-                  <td class="text-center" style="font-size: xx-small">
-                    เลขที่ใบกำกับภาษี
-                  </td>
-                  <td class="text-center" style="font-size: xx-small">
-                    รายละเอียด
-                  </td>
-                  <td class="text-center" style="font-size: xx-small">
-                    จำนวนเงิน
-                  </td>
+                  <td class="text-center" style="font-size: xx-small">รายละเอียดค่าใช้จ่าย</td>
+                  <td class="text-center" style="font-size: xx-small">เลขที่และวันที่ใบเสร็จ</td>
+                  <td class="text-center" style="font-size: xx-small">เลขประจำตัวผู้เสียภาษี</td>
+                  <td class="text-center" style="font-size: xx-small">รายการค่าใช้จ่าย</td>
+                  <td class="text-center" style="font-size: xx-small">ยอดสุทธิ</td>
                 </tr>
               </thead>
               <tbody style="font-weight: normal; font-size: 14px">
                 <tr style="border-bottom: 1px solid black">
-                  <td class="text-center" style="font-size: xx-small">
-                    fsdfsdf
-                  </td>
-                  <td class="text-center" style="font-size: xx-small">
-                    20/05/2566
-                  </td>
-                  <td class="text-center" style="font-size: xx-small">
-                    fdsfdsf
-                  </td>
-                  <td class="text-center" style="font-size: xx-small">
-                    fdsfdsf
-                  </td>
-                  <td class="text-center" style="font-size: xx-small">
-                    fsdfdsf
-                  </td>
+                  <td class="text-center" style="font-size: xx-small">xxxxx</td>
+                  <td class="text-center" style="font-size: xx-small">xxxxx</td>
+                  <td class="text-center" style="font-size: xx-small">xxxxx</td>
+                  <td class="text-center" style="font-size: xx-small">xxxxx</td>
+                  <td class="text-center" style="font-size: xx-small">xxxxx</td>
+                  <td class="text-center" style="font-size: xx-small">xxxxx</td>
                 </tr>
               </tbody>
             </v-table>
@@ -141,32 +125,26 @@
         </v-row>
 
         <v-row style="font-size: 12px; padding-left: 4px; margin: auto">
-          <v-col style="padding: 0" cols="6">
+          <v-col style="padding: 0">
             <v-table>
               <tr style="height: 20px">
-                <td colspan="2" style="font-weight: bold">&nbsp;</td>
+                <td colspan="5" style="font-weight: bold">&nbsp;</td>
               </tr>
               <tr style="height: 30px">
-                <td colspan="2" style="font-weight: bold">
-                  รวมทั้งสิ้น ตัวอักษร:
-                </td>
-                <td colspan="2">fdsafasdfasd</td>
+                <td align="right" colspan="2" style="font-weight: bold">รวมสุทธิ :</td>
+                <td align="center" colspan="2">xxx</td>
               </tr>
               <tr style="height: 30px">
-                <td colspan="2" style="font-weight: bold">ชำระ:</td>
-                <td colspan="2">dsafasdfasfs</td>
+                <td align="right" colspan="2" style="font-weight: bold">ยอกเงินประมาณการ :</td>
+                <td align="center" colspan="2">xxx</td>
               </tr>
               <tr style="height: 30px">
-                <td colspan="2" style="font-weight: bold">
-                  หักภาษี ณ ที่จ่าย :
-                </td>
-                <td colspan="2">fdsafasdfasdf</td>
+                <td align="right" colspan="2" style="font-weight: bold">ยอดเงินส่งคืน :</td>
+                <td align="center" colspan="2">xxx</td>
               </tr>
               <tr style="height: 30px">
-                <td colspan="2" style="font-weight: bold">
-                  เลขที่เช็ค // วันที่เช็ค
-                </td>
-                <td colspan="2">444894465 // 256546489</td>
+                <td align="right" colspan="2" style="font-weight: bold">ยอดเงินเบิกเพิ่ม :</td>
+                <td align="center" colspan="2">xxx</td>
               </tr>
             </v-table>
           </v-col>
@@ -176,19 +154,13 @@
           <v-col style="padding: 0">
             <v-table>
               <tr style="height: 30px">
-                <td>
-                  <b>หมายเหตุ: </b>
-                  ใบเสร็จรับเงินฉบับนี้จะสมบูรณ์ต่อเมื่อได้รับเงินตามเช็คเรียบร้อยและต้องมีลายมือชื่อกรรมการ
-                  ผู้มีอำนาจหรือผู้แทนที่ถูกต้องและผู้รับเงิน
-                </td>
+                <td colspan="2" style="font-weight: bold">รายละเอียดโครงการ/กิจกรรม :</td>
+              </tr>
+              <tr style="height: 30px">
+                <td colspan="2" style="font-weight: bold">ผู้อนุมัติ (แบบอิเล็กทอรนิกส์)&nbsp;&nbsp;&nbsp;&nbsp;:</td>
               </tr>
               <tr style="height: 20px">
-                <td
-                  colspan="2"
-                  style="font-weight: bold; border-bottom: 1px solid black"
-                >
-                  &nbsp;
-                </td>
+                <td colspan="3" style="font-weight: bold; border-bottom: 1px solid black">&nbsp;</td>
               </tr>
             </v-table>
           </v-col>
