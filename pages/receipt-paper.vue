@@ -26,20 +26,30 @@
               </v-col>
             </v-row>
 
-            <v-row style="font-size: 12px">
-              <v-col cols="4">
-                <v-table style="padding: 5px">
-                  <tr style="height: 30px">
-                    <td><b>ชื่อลูกค้า: </b></td>
-                    <td>{{ quo.customer_name.stringValue }}</td>
+            <v-row style="font-size: 12px; padding-left: 4px; margin: auto">
+              <v-col style="padding: 0" cols="10">
+                <v-table>
+                  <tr style="height: 20px">
+                    <td colspan="2" style="font-weight: bold">&nbsp;</td>
                   </tr>
                   <tr style="height: 30px">
-                    <td><b>ที่อยู่: </b></td>
-                    <td>{{ quo.customer_address.stringValue }}</td>
+                    <td colspan="2">
+                      <b>ชื่อลูกค้า: </b>
+                    </td>
+                    <td colspan="2">{{ quo.customer_name.stringValue }}</td>
                   </tr>
                   <tr style="height: 30px">
-                    <td><b>สาขา: </b></td>
-                    <td>{{ ob.receipt_branch }}</td>
+                    <td colspan="2"><b>ที่อยู่: </b></td>
+                    <td colspan="2">{{ quo.customer_address.stringValue }}</td>
+                  </tr>
+                  <tr style="height: 30px">
+                    <td colspan="2">
+                      <b>สาขา: </b>
+                    </td>
+                    <td colspan="2">{{ ob.receipt_branch }}</td>
+                  </tr>
+                  <tr style="height: 20px">
+                    <td colspan="2" style="font-weight: bold">&nbsp;</td>
                   </tr>
                 </v-table>
               </v-col>
@@ -184,52 +194,56 @@
           </v-col>
         </v-row>
 
-        <v-table style="margin: auto; font-size: 12px">
-          <tr>
-            <td style="width: 187px">
-              <v-table>
-                <tr style="height: 110px">
-                  <td>&nbsp;</td>
-                </tr>
-                <tr style="text-align: center">
-                  <td>ผู้จัดทำ</td>
-                </tr>
-                <tr>
-                  <td>วันที่</td>
-                </tr>
-              </v-table>
-            </td>
-            <td style="width: 187px">
-              <v-table>
-                <tr style="height: 110px">
-                  <td>&nbsp;</td>
-                </tr>
-                <tr style="text-align: center">
-                  <td>ผู้รับเงิน</td>
-                </tr>
-                <tr>
-                  <td>วันที่</td>
-                </tr></v-table
-              >
-            </td>
-            <td style="width: 187px">
-              <v-table style="text-align: center">
-                <tr style="height: 110px">
-                  <td>&nbsp;</td>
-                </tr>
-                <tr>
-                  <td>กรรมการผู้มีอำนาจหรือตัวแทน</td>
-                </tr>
-                <tr>
-                  <td>วันที่</td>
-                </tr>
-                <tr style="height: 30px; border-bottom: 1px solid black">
-                  <td>&nbsp;</td>
-                </tr>
-              </v-table>
-            </td>
-          </tr>
-        </v-table>
+        <v-row style="margin: auto; font-size: 12px">
+          <v-col>
+            <v-table style="text-align: center">
+              <tr style="height: 110px">
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>ผู้จัดทำ</td>
+              </tr>
+              <tr>
+                <td>วันที่</td>
+              </tr>
+              <tr style="border-bottom: 1px solid black">
+                <td>&nbsp;</td>
+              </tr>
+            </v-table>
+          </v-col>
+          <v-col>
+            <v-table style="text-align: center">
+              <tr style="height: 110px">
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>ผู้รับเงิน</td>
+              </tr>
+              <tr>
+                <td>วันที่</td>
+              </tr>
+              <tr style="border-bottom: 1px solid black">
+                <td>&nbsp;</td>
+              </tr>
+            </v-table>
+          </v-col>
+          <v-col>
+            <v-table style="text-align: center">
+              <tr style="height: 110px">
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>กรรมการผู้มีอำนาจหรือตัวแทน</td>
+              </tr>
+              <tr>
+                <td>วันที่</td>
+              </tr>
+              <tr style="border-bottom: 1px solid black">
+                <td>&nbsp;</td>
+              </tr>
+            </v-table>
+          </v-col>
+        </v-row>
       </v-container>
     </div>
   </div>
