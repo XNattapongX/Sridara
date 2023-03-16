@@ -426,6 +426,7 @@ export default defineComponent({
       billing: {
         billing_note_no: "",
         billing_note_date: "" as any,
+        billing_note_date: "" as any,
         billing_note_fax: "",
       },
       loadGenBill: false,
