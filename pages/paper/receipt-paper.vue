@@ -1,7 +1,6 @@
 <template>
   <div
-    style="display: flex; background-color: rgb(225, 225, 241); z-index: -111"
-  >
+    style="display: flex; background-color: rgb(225, 225, 241); z-index: -111">
     <div class="page" v-if="onLoad">
       <v-container>
         <v-row>
@@ -11,8 +10,7 @@
                 <img
                   src="https://www.adt.or.th/image/ADT1%20-%201108%20-%200263.jpg"
                   class="w-141px h-47px"
-                  alt="sridara Logo"
-                />
+                  alt="sridara Logo" />
                 <v-sheet style="text-align: left; font-size: 12px">
                   <div>บริษัท ศรีดาราทัวร์ จำกัด (สำนักงานใหญ่)</div>
                   <div>
@@ -36,11 +34,11 @@
                     <td colspan="2">
                       <b>ชื่อลูกค้า: </b>
                     </td>
-                    <td colspan="2">{{ quo.customer_name.stringValue }}</td>
+                    <td colspan="2">{{ quo.customer_name }}</td>
                   </tr>
                   <tr style="height: 30px">
                     <td colspan="2"><b>ที่อยู่: </b></td>
-                    <td colspan="2">{{ quo.customer_address.stringValue }}</td>
+                    <td colspan="2">{{ quo.address }}</td>
                   </tr>
                   <tr style="height: 30px">
                     <td colspan="2">
@@ -84,8 +82,7 @@
         </v-row>
 
         <v-row
-          style="padding: 1px; margin: auto; border-bottom: 1px solid black"
-        >
+          style="padding: 1px; margin: auto; border-bottom: 1px solid black">
           <v-col style="padding: 1px; height: 400px">
             <v-table density="compact" height="auto">
               <thead style="font-weight: bold; font-size: 14px">
@@ -93,8 +90,7 @@
                   style="
                     border-top: 1px solid black;
                     border-bottom: 1px solid black;
-                  "
-                >
+                  ">
                   <td class="text-center" style="font-size: xx-small">ลำดับ</td>
                   <td class="text-center" style="font-size: xx-small">
                     วันที่
@@ -114,8 +110,7 @@
                 <tr
                   v-for="(item, index) in ob.tax_invoice"
                   :key="index"
-                  style="border-bottom: 1px solid black"
-                >
+                  style="border-bottom: 1px solid black">
                   <td class="text-center" style="font-size: xx-small">
                     {{ index + 1 }}
                   </td>
@@ -185,8 +180,7 @@
               <tr style="height: 20px">
                 <td
                   colspan="2"
-                  style="font-weight: bold; border-bottom: 1px solid black"
-                >
+                  style="font-weight: bold; border-bottom: 1px solid black">
                   &nbsp;
                 </td>
               </tr>
@@ -262,10 +256,7 @@
 import dayjs from "dayjs";
 import { defineComponent } from "vue";
 import buddhistEra from "dayjs/plugin/buddhistEra";
-import {
-  read_one_data_conditions,
-  ArabicNumberToText,
-} from "~~/services/configs";
+import { read_all_data, ArabicNumberToText } from "~~/services/pyapi";
 export default defineComponent({
   setup() {
     dayjs.extend(buddhistEra);
@@ -274,7 +265,7 @@ export default defineComponent({
       ArabicNumberToText,
     };
   },
-  mounted() {
+  async mounted() {
     const obj = JSON.parse(String(this.$route.query.data));
     this.ob = obj;
 
@@ -282,15 +273,12 @@ export default defineComponent({
       (a: any, b: any) => Number(a) + Number(b.total),
       0
     );
-    console.log(this.last_total);
-    read_one_data_conditions(
-      "quotation_detail",
-      "tour_id",
-      obj.tax_invoice[0].tour_id
-    ).then((res) => {
-      this.onLoad = true;
-      this.quo = res[0].fields;
-    });
+
+    const q = await read_all_data(
+      `quotations?tour_id=${obj.tax_invoice[0].tour_id}`
+    );
+    this.quo = q[0];
+    this.onLoad = true;
   },
   data() {
     return {

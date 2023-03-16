@@ -584,12 +584,9 @@ export default defineComponent({
         price_validate_period: this.price_validate_period,
         total_price: this.sumAllProduct(),
         less_cash_discount: this.sumAllProductDiscount(),
-        net_price: this.sumAllProduct() - this.sumAllProductDiscount(),
+        net_price: this.beforeCalculateVat(),
         vat: this.calculateVat(),
-        total_net_price:
-          this.sumAllProduct() -
-          this.sumAllProductDiscount() +
-          this.calculateVat(),
+        total_net_price: this.sumAllProduct() - this.sumAllProductDiscount(),
       };
       if (this.validateQuotationDetail()) {
         create_data("quotation", payload).then((result) => {

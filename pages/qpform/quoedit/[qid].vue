@@ -293,7 +293,7 @@
                     {{ item.name }}
                   </td>
                   <td class="px-6 py-4">
-                    {{ item.amount }}
+                    {{ item.qty }}
                   </td>
                   <td class="px-6 py-4">
                     {{ item.price_per_unit }}
@@ -475,6 +475,12 @@ export default defineComponent({
     this.deposit = data[0].earnest_money;
     this.price_validate_period = data[0].price_validate_period;
 
+    this.confirm_price_within = dayjs(
+      data[0].confirm_price_within,
+      "DD/MM/BBBB"
+    );
+    this.delivery_date = dayjs(data[0].delivery_date, "DD/MM/BBBB");
+
     const pro = await read_all_data(`products?tour_id=${this.tour_id}`);
     this.product_ls = pro;
   },
@@ -488,12 +494,12 @@ export default defineComponent({
       contact_name: "",
       customer_address: "",
       customer_code: "",
-      confirm_price_within: "",
+      confirm_price_within: "" as any,
       sales_person: "",
       sale_department: "",
       contact_tel: "",
       contact_email: "",
-      delivery_date: "",
+      delivery_date: "" as any,
       product_code: "",
       product_name: "",
       product_qty: 0,
@@ -705,12 +711,9 @@ export default defineComponent({
           price_validate_period: this.price_validate_period,
           total_price: this.sumAllProduct(),
           less_cash_discount: this.sumAllProductDiscount(),
-          net_price: this.sumAllProduct() - this.sumAllProductDiscount(),
+          net_price: this.beforeCalculateVat(),
           vat: this.calculateVat(),
-          total_net_price:
-            this.sumAllProduct() -
-            this.sumAllProductDiscount() +
-            this.calculateVat(),
+          total_net_price: this.sumAllProduct() - this.sumAllProductDiscount(),
         };
         update_data("quotation", this.quo_id, payload)
           .then((res) => {

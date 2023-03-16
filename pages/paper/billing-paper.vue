@@ -1,8 +1,88 @@
 <template>
   <div
-    style="display: flex; background-color: rgb(225, 225, 241); z-index: -111">
+    style="display: flex; background-color: rgb(225, 225, 241); z-index: -111"
+  >
     <div class="page" v-if="onLoad">
       <v-container>
+        <v-row>
+          <v-col cols="8">
+            <v-row>
+              <v-col>
+                <img
+                  src="https://www.adt.or.th/image/ADT1%20-%201108%20-%200263.jpg"
+                  class="w-141px h-47px"
+                  alt="sridara Logo"
+                />
+                <v-sheet style="text-align: left; font-size: 12px">
+                  <div>บริษัท ศรีดาราทัวร์ จำกัด (สำนักงานใหญ่)</div>
+                  <div>
+                    123 ถนนชยางกูร หมู่ 19 ตำบลบุ่ง อำเภอเมืองอำนาจเจริญ
+                    จังหวัดอำนาจเจริญ 37000
+                  </div>
+                  <div>เลขประจำตัวผู้เสียภาษี: 0375552000037</div>
+                  โทร.082-3656514
+                  <div><a>www.facebook.com/sridaratourfanpage</a></div>
+                </v-sheet>
+              </v-col>
+            </v-row>
+
+            <v-row style="font-size: 12px; padding-left: 4px; margin: auto">
+              <v-col style="padding: 0" cols="10">
+                <v-table>
+                  <tr style="height: 20px">
+                    <td colspan="2" style="font-weight: bold">&nbsp;</td>
+                  </tr>
+                  <tr style="height: 30px">
+                    <td colspan="2">
+                      <b>ชื่อลูกค้า: </b>
+                    </td>
+                    <td colspan="2">{{ quo.customer_name.stringValue }}</td>
+                  </tr>
+                  <tr style="height: 30px">
+                    <td colspan="2"><b>ที่อยู่: </b></td>
+                    <td colspan="2">{{ quo.customer_address.stringValue }}</td>
+                  </tr>
+                  <tr style="height: 30px">
+                    <td colspan="2">
+                      <b>สาขา: </b>
+                    </td>
+                    <td colspan="2">{{ ob.receipt_branch }}</td>
+                  </tr>
+                  <tr style="height: 20px">
+                    <td colspan="2" style="font-weight: bold">&nbsp;</td>
+                  </tr>
+                </v-table>
+              </v-col>
+            </v-row>
+          </v-col>
+
+          <v-col>
+            <v-table style="font-size: 12px">
+              <tr style="text-align: center">
+                <td colspan="2">
+                  <div style="font-size: 14px"><b>ใบเสร็จรับเงิน</b></div>
+                  <div>Receipt</div>
+                </td>
+              </tr>
+              <tr style="text-align: center">
+                <td colspan="2" style="border-top: 1px solid #000000">
+                  ต้นฉบับ/Original (เอกสารออกเป็นชุด)
+                </td>
+              </tr>
+              <tr>
+                <td><b>วันที่รับชำระ:</b></td>
+                <td style="text-align: center">
+                  {{ dayjs(ob.receipt_date).format("DD/MM/BBBB") }}
+                </td>
+              </tr>
+              <tr>
+                <td><b>เลขที่ใบเสร็จรับเงิน:</b></td>
+                <td style="text-align: center">{{ ob.receipt_no }}</td>
+              </tr>
+            </v-table>
+          </v-col>
+        </v-row>
+
         <v-row style="font-size: 12px; padding: 1px; margin: 1px auto">
           <v-col style="padding: 1px; margin: 0 auto"
             ><img
@@ -37,7 +117,8 @@
                     border-left: 1px solid #000000;
                     width: 170px;
                     font-weight: bold;
-                  ">
+                  "
+                >
                   ใบวางบิล/ใบแจ้งหนี้
                 </td>
               </tr>
@@ -49,7 +130,8 @@
                     border-right: 1px solid #000000;
                     border-bottom: 1px solid #000000;
                     border-left: 1px solid #000000;
-                  ">
+                  "
+                >
                   Billing Note/Invoice
                 </td>
               </tr>
@@ -63,7 +145,8 @@
                     border-left: 1px solid #000000;
                     width: 170px;
                     font-weight: bold;
-                  ">
+                  "
+                >
                   ต้นฉบับ/Original
                 </td>
               </tr>
@@ -75,7 +158,8 @@
                     border-right: 1px solid #000000;
                     border-bottom: 1px solid #000000;
                     border-left: 1px solid #000000;
-                  ">
+                  "
+                >
                   เอกสารออกเป็นชุด
                 </td>
               </tr>
@@ -93,11 +177,13 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                ">
+                "
+              >
                 <td
                   colspan="2"
                   style="padding-left: 4px; font-weight: bold"
-                  width="25% ">
+                  width="25% "
+                >
                   ชื่อลูกค้า:
                 </td>
                 <td colspan="2">{{ quo.customer_name }}</td>
@@ -109,7 +195,8 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                ">
+                "
+              >
                 <td colspan="2" style="padding-left: 4px; font-weight: bold">
                   ID TEX:
                 </td>
@@ -122,7 +209,8 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                ">
+                "
+              >
                 <td colspan="2" style="padding-left: 4px; font-weight: bold">
                   ชื่อผู้ติดต่อ:
                 </td>
@@ -135,14 +223,16 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 80px;
-                ">
+                "
+              >
                 <td
                   colspan="2"
-                  style="padding: auto; padding-left: 4px; font-weight: bold">
+                  style="padding: auto; padding-left: 4px; font-weight: bold"
+                >
                   ที่อยู่:
                 </td>
                 <td colspan="2">
-                  {{ quo.customer_address }}
+                  {{ quo.address }}
                 </td>
               </tr>
               <tr
@@ -152,9 +242,10 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                ">
+                "
+              >
                 <td style="padding-left: 4px" colspan="3">
-                  <b>โทร:</b> {{ quo.contact_tel }}
+                  <b>โทร:</b> {{ quo.customer_tel }}
                 </td>
                 <td
                   style="
@@ -163,8 +254,9 @@
                     border-right: 1px none #000000;
                     border-bottom: 1px none #000000;
                     border-left: 1px solid #000000;
-                  ">
-                  <b>Fax:</b> {{ bill.billing_note_fax }}
+                  "
+                >
+                  <b>Fax:</b> {{ bill.fax }}
                 </td>
               </tr>
             </v-table></v-col
@@ -178,11 +270,12 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                ">
+                "
+              >
                 <td style="padding-left: 4px; font-weight: bold" width="40%">
                   เลขที่:
                 </td>
-                <td>{{ bill.billing_note_no }}</td>
+                <td>{{ bill.no }}</td>
               </tr>
               <tr
                 style="
@@ -191,9 +284,10 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                ">
+                "
+              >
                 <td style="padding-left: 4px; font-weight: bold">วันที่:</td>
-                <td>{{ bill.billing_note_date }}</td>
+                <td>{{ bill.date }}</td>
               </tr>
               <tr
                 style="
@@ -202,7 +296,8 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                ">
+                "
+              >
                 <td style="padding-left: 4px; font-weight: bold">
                   รหัสลูกค้า:
                 </td>
@@ -215,11 +310,12 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                ">
+                "
+              >
                 <td style="padding-left: 4px; font-weight: bold">
                   ผู้เสนอขาย:
                 </td>
-                <td>{{ quo.seller_name }}</td>
+                <td>{{ quo.sales_person }}</td>
               </tr>
               <tr
                 style="
@@ -228,9 +324,10 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                ">
+                "
+              >
                 <td style="padding-left: 4px; font-weight: bold">ฝ่าย:</td>
-                <td>{{ quo.seller_department }}</td>
+                <td>{{ quo.sale_department }}</td>
               </tr>
               <tr
                 style="
@@ -239,7 +336,8 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                ">
+                "
+              >
                 <td style="padding-left: 4px; font-weight: bold">
                   ยืนยันราคาวันที่:
                 </td>
@@ -280,25 +378,25 @@
                     {{ index + 1 }}
                   </td>
                   <td class="text-center" style="font-size: xx-small">
-                    {{ item.product_code }}
+                    {{ item.code }}
                   </td>
                   <td class="text-left" style="font-size: xx-small">
-                    {{ item.product_name }}
+                    {{ item.name }}
                   </td>
                   <td class="text-center" style="font-size: xx-small">
-                    {{ item.product_amount }}
+                    {{ item.qty }}
                   </td>
                   <td class="text-center" style="font-size: xx-small">
-                    {{ item.product_price_per_unit }}
+                    {{ item.price_per_unit }}
                   </td>
                   <td class="text-center" style="font-size: xx-small">
-                    {{ item.product_discount }}
+                    {{ item.discount }}
                   </td>
                   <td class="text-center" style="font-size: xx-small">
-                    {{ item.product_tax }}
+                    {{ item.tax }}
                   </td>
                   <td class="text-center" style="font-size: xx-small">
-                    {{ item.product_total }}
+                    {{ item.amount }}
                   </td>
                 </tr>
               </tbody>
@@ -309,12 +407,13 @@
         <v-row style="padding: 1px; margin: auto">
           <v-col style="padding: 0">
             <v-table
-              style="font-size: 12px; border: 1px solid black; padding: 2px">
+              style="font-size: 12px; border: 1px solid black; padding: 2px"
+            >
               <tr>
                 <td style="width: 580px; font-weight: bold">หมายเหตุ:</td>
                 <td style="width: 95px">รวมเงิน</td>
                 <td style="width: 71px; text-align: end">
-                  {{ quo.sub_total }} บาท&nbsp;&nbsp;
+                  {{ quo.total_price }} บาท&nbsp;&nbsp;
                 </td>
               </tr>
               <tr>
@@ -332,7 +431,9 @@
                   “บริษัทศรีดาราทัวร์จำกัด” และขีดฆ่าหรือผู้ถือออก
                 </td>
                 <td>มูลค่าคิดภาษี</td>
-                <td style="text-align: end">{{ quo.vat }} บาท&nbsp;&nbsp;</td>
+                <td style="text-align: end">
+                  {{ quo.net_price }} บาท&nbsp;&nbsp;
+                </td>
               </tr>
 
               <tr>
@@ -341,9 +442,7 @@
                   บริษัทฯได้รับเงินตามเช็คเรียบร้อย
                 </td>
                 <td>ภาษีมูลค่าเพิ่ม</td>
-                <td style="text-align: end">
-                  {{ quo.product_value }} บาท&nbsp;&nbsp;
-                </td>
+                <td style="text-align: end">{{ quo.vat }} บาท&nbsp;&nbsp;</td>
               </tr>
               <tr>
                 <td style="font-weight: bold">
@@ -352,115 +451,85 @@
                       ตัวอักษร :
                     </v-col>
                     <v-col style="margin: auto; padding: 1px" cols="8">
-                      {{ ArabicNumberToText(Number(quo.grand_total)) }}
+                      {{ ArabicNumberToText(Number(quo.total_net_price)) }}
                     </v-col>
                   </v-row>
                 </td>
                 <td>ยอดสุทธิ</td>
                 <td style="text-align: end">
-                  {{ quo.grand_total }} บาท&nbsp;&nbsp;
+                  {{ quo.total_net_price }} บาท&nbsp;&nbsp;
                 </td>
               </tr>
             </v-table>
           </v-col>
         </v-row>
 
-        <v-table style="padding: 1px; margin: auto; font-size: 11px">
-          <tr>
-            <td
-              style="
-                border-top: 1px solid #000000;
-                border-right: 1px solid #000000;
-                border-bottom: 1px solid #000000;
-                border-left: 1px solid #000000;
-                width: 187px;
-              ">
-              <v-table>
-                <tr style="height: 110px">
-                  <td>&nbsp;</td>
-                </tr>
-                <tr style="text-align: center">
-                  <td></td>
-                </tr>
-                <tr style="text-align: center">
-                  <td>ผู้รับสินค้า</td>
-                </tr>
-                <tr>
-                  <td style="padding: 0px 0px 3px 3px">วันที่</td>
-                </tr>
-              </v-table>
-            </td>
-            <td
-              style="
-                border-top: 1px solid #000000;
-                border-right: 1px solid #000000;
-                border-bottom: 1px solid #000000;
-                border-left: 1px solid #000000;
-                width: 187px;
-              ">
-              <v-table>
-                <tr style="height: 110px">
-                  <td>&nbsp;</td>
-                </tr>
-                <tr style="text-align: center">
-                  <td></td>
-                </tr>
-                <tr style="text-align: center">
-                  <td>ผู้ส่งสินค้า</td>
-                </tr>
-                <tr>
-                  <td style="padding: 0px 0px 3px 3px">วันที่</td>
-                </tr></v-table
-              >
-            </td>
-            <td
-              style="
-                border-top: 1px solid #000000;
-                border-right: 1px solid #000000;
-                border-bottom: 1px solid #000000;
-                border-left: 1px solid #000000;
-                width: 187px;
-              ">
-              <v-table>
-                <tr style="height: 110px">
-                  <td>&nbsp;</td>
-                </tr>
-                <tr style="text-align: center">
-                  <td></td>
-                </tr>
-                <tr style="text-align: center">
-                  <td>ผู้ประสานงาน</td>
-                </tr>
-                <tr>
-                  <td style="padding: 0px 0px 3px 3px">วันที่</td>
-                </tr></v-table
-              >
-            </td>
-            <td
-              style="
-                border-top: 1px solid #000000;
-                border-right: 1px solid #000000;
-                border-bottom: 1px solid #000000;
-                border-left: 1px solid #000000;
-                width: 187px;
-              ">
-              <v-table>
-                <tr style="height: 110px">
-                  <td>&nbsp;</td>
-                </tr>
-                <tr style="text-align: center">
-                  <td></td>
-                </tr>
-                <tr style="text-align: center">
-                  <td>ผู้อนุมัติ</td>
-                </tr>
-                <tr>
-                  <td style="padding: 0px 0px 3px 3px">วันที่</td>
-                </tr></v-table
-              >
-            </td>
-          </tr>
-        </v-table>
+        <v-row style="margin: auto; font-size: 12px">
+          <v-col>
+            <v-table style="text-align: center">
+              <tr style="height: 110px">
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>ผู้รับสินค้า</td>
+              </tr>
+              <tr>
+                <td>วันที่</td>
+              </tr>
+              <tr style="border-bottom: 1px solid black">
+                <td>&nbsp;</td>
+              </tr>
+            </v-table>
+          </v-col>
+          <v-col>
+            <v-table style="text-align: center">
+              <tr style="height: 110px">
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>ผู้ส่งสินค้า</td>
+              </tr>
+              <tr>
+                <td>วันที่</td>
+              </tr>
+              <tr style="border-bottom: 1px solid black">
+                <td>&nbsp;</td>
+              </tr>
+            </v-table>
+          </v-col>
+          <v-col>
+            <v-table style="text-align: center">
+              <tr style="height: 110px">
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>ผู้ประสานงาน</td>
+              </tr>
+              <tr>
+                <td>วันที่</td>
+              </tr>
+              <tr style="border-bottom: 1px solid black">
+                <td>&nbsp;</td>
+              </tr>
+            </v-table>
+          </v-col>
+          <v-col>
+            <v-table style="text-align: center">
+              <tr style="height: 110px">
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>ผู้อนุมัติ</td>
+              </tr>
+              <tr>
+                <td>วันที่</td>
+              </tr>
+              <tr style="border-bottom: 1px solid black">
+                <td>&nbsp;</td>
+              </tr>
+            </v-table>
+          </v-col>
+        </v-row>
       </v-container>
     </div>
   </div>
@@ -502,7 +571,8 @@
           type="text"
           id="base-input"
           v-model="billing.billing_note_no"
-          class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+          class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        />
       </v-col>
       <v-col>
         <label
@@ -515,7 +585,8 @@
           style="z-index: 999"
           v-model:value="billing.billing_note_date"
           class="date-picker"
-          format="DD/MM/YYYY" />
+          format="DD/MM/YYYY"
+        />
       </v-col>
       <v-col>
         <label
@@ -527,7 +598,8 @@
           type="text"
           id="base-input"
           v-model="billing.billing_note_fax"
-          class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+          class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        />
       </v-col>
     </v-row>
   </a-modal>
@@ -540,6 +612,9 @@ import {
   update_data,
 } from "~~/services/pyapi";
 import locale from "ant-design-vue/es/date-picker/locale/th_TH";
+import dayjs from "dayjs";
+import buddhistEra from "dayjs/plugin/buddhistEra";
+dayjs.extend(buddhistEra);
 const key = "updated";
 export default defineComponent({
   setup() {
@@ -558,7 +633,7 @@ export default defineComponent({
       dialog: false,
       billing: {
         billing_note_no: "",
-        billing_note_date: "",
+        billing_note_date: "" as any,
         billing_note_fax: "",
       },
       loadGenBill: false,
@@ -570,10 +645,20 @@ export default defineComponent({
       content: "กำลังโหลดข้อมูลใบแจ้งหนี้ และสร้างเป็นเอกสาร",
       key,
     });
-    this.quo = await read_all_data(`quotations?tour_id=${this.tour_id}`);
-    this.bill = await read_all_data(`billings?tour_id=${this.tour_id}`);
+    let q = await read_all_data(`quotations?tour_id=${this.tour_id}`);
+    this.quo = q[0];
+    let b = await read_all_data(`billings?tour_id=${this.tour_id}`);
+    this.bill = b[0];
+    this.billing.billing_note_no = this.bill.no;
+    this.billing.billing_note_date = dayjs();
+    this.billing.billing_note_fax = this.bill.fax;
     this.prod = await read_all_data(`products?tid=${this.tour_id}`);
     this.onLoad = true;
+    this.$message.success({
+      content: "โหลดข้อมูลเรียบร้อยแล้ว",
+      key,
+      duration: 2,
+    });
   },
   methods: {
     print() {
@@ -594,29 +679,26 @@ export default defineComponent({
       }
       return true;
     },
-    // updateBilling() {
-    //   if (this.validateBillingForm()) {
-    //     this.loadGenBill = true;
-    //     const raw: any = billing_note_detail(
-    //       String(this.$route.params.tid),
-    //       this.billing.billing_note_no,
-    //       new Date(this.billing.billing_note_date),
-    //       this.billing.billing_note_fax
-    //     );
-    //     raw.fields.id = {: this.bill.id };
-    //     update_data("billing_note", this.bill.id, raw).then(
-    //       (res: any) => {
-    //         this.$message.success({
-    //           content: "สำเร็จ",
-    //           key,
-    //           duration: 1,
-    //         });
-    //         this.loadGenBill = false;
-    //         window.location.reload();
-    //       }
-    //     );
-    //   }
-    // },
+    updateBilling() {
+      if (this.validateBillingForm()) {
+        this.loadGenBill = true;
+        const payload = {
+          tour_id: this.tour_id,
+          no: this.billing.billing_note_no,
+          date: this.billing.billing_note_date,
+          fax: this.billing.billing_note_fax,
+        };
+        update_data("billing", this.bill.id, payload).then((res) => {
+          this.$message.success({
+            content: "บันทึกข้อมูลเรียบร้อยแล้ว",
+            key,
+            duration: 2,
+          });
+          this.dialog = false;
+          window.location.reload();
+        });
+      }
+    },
   },
 });
 </script>
