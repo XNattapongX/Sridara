@@ -36,10 +36,10 @@
            
             </h3>
           </td>
-          <td colspan="4" class="pb-1 pt-2 px-3">
+          <td colspan="5" class="pb-1 pt-2 px-3">
              
           </td>
-          <td colspan="3" class="pb-1 pt-2 px-3">
+          <td colspan="5" class="pb-1 pt-2 px-3">
             เลขที่ : 
           </td>
         </tr>
@@ -59,13 +59,13 @@
         </tr>
 
         <tr>
-          <td colspan="4" class="py-1 px-3">
+          <td colspan="5" class="py-1 px-3">
             <h3>
               ชื่อผู้ขอเบิก :
               
             </h3>
           </td>
-          <td colspan="4" class="py-1 px-3">
+          <td colspan="5" class="py-1 px-3">
             <h3>
               วันที่ต้องการใช้เงิน :
               
@@ -74,13 +74,13 @@
         </tr>
 
          <tr>
-          <td colspan="4" class="py-1 px-3">
+          <td colspan="5" class="py-1 px-3">
             <h3>
               แผนก :
               
             </h3>
           </td>
-          <td colspan="4" class="py-1 px-3">
+          <td colspan="5" class="py-1 px-3">
             <h3>
               โครงการ :
               
