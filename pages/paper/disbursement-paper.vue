@@ -135,14 +135,12 @@
               </thead>
               <tbody style="font-weight: normal; font-size: 14px">
                 <tr style="border-bottom: 1px solid black">
-                  <td class="text-center" style="font-size: xx-small">
                   
+                  <td class="text-center" style="font-size: xx-small">
                   </td>
                   <td class="text-center" style="font-size: xx-small">
-                   
                   </td>
                   <td class="text-center" style="font-size: xx-small">
-              
                   </td>
                   <td class="text-center" style="font-size: xx-small">
                     เบี้ยเลี้ยง

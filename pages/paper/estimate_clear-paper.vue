@@ -26,7 +26,7 @@
               </v-col>
             </v-row>
           <br>
-            <center>ใบเคียร์ประมาณการเงินสดย่อย</center>
+            <center>ใบเคลียร์ประมาณการเงินสดย่อย</center>
       <table
         
         class="w-full text-sm text-left">
