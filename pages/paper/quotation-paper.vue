@@ -626,7 +626,7 @@ export default defineComponent({
     data.length > 0 ? (this.go = true) : (this.go = false);
     this.quo = data[0];
 
-    const product = await read_all_data(`products?tour_id=${this.tour_id}`);
+    const product = await read_all_data(`products?tid=${this.tour_id}`);
     this.product = product;
     this.tour_program.price_per_unit = product[0].price_per_unit;
     this.tour_program.tax = product[0].tax;

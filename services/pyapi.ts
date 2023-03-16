@@ -2,7 +2,7 @@ import axios from "axios";
 
 const url =
   "http://2f40-2403-6200-8830-bc90-31a5-c5bd-c542-2c21.ap.ngrok.io/api/";
-// const url = "https://back-end-tour.vercel.app/api/"
+// const url = "https://back-end-tour.vercel.app/api/";
 
 const api = axios.create({
   baseURL: url,
@@ -36,6 +36,29 @@ export const update_data = async (
   const response = await api.put(`${collection}/${id}`, data);
   return response.data;
 };
+
+export const ListTaxInvoice = async () => {
+  const response = await api.get("quotations");
+  const documents = response.data;
+
+  const promises = documents.map(async (x: any) => {
+    const res = await api.get("taxes");
+    return res.data.map((y: any) => ({
+      tour_id: x.tour_id,
+      date: y.date,
+      no: y.no,
+      desc: `ลูกค้า-${x.customer_name} ที่อยู่-${x.address}`,
+      total: x.total_net_price,
+    }));
+  });
+
+  const results = await Promise.all(promises);
+  return results.flat().filter(onlyUnique);
+};
+
+export function onlyUnique(v: any, i: any) {
+  return i % 2 == 0;
+}
 
 export const genRanDec = (size: number) =>
   [...Array(size)]

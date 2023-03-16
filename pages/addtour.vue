@@ -1,12 +1,13 @@
 <template>
   <div style="border-radius: 1rem; margin: 1rem">
     <v-row style="margin: 1rem">
-      <v-col style="
-              border-radius: 1rem;
-              box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
-                rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
-              margin: 1rem;
-            ">
+      <v-col
+        style="
+          border-radius: 1rem;
+          box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+            rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+          margin: 1rem;
+        ">
         <h1
           class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">
           ข้อมูลทัวร์
@@ -14,37 +15,75 @@
 
         <v-row>
           <v-col>
-            <label for="base-input"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ชื่อทริปทัวร์</label>
-            <input type="text" v-model="tour_name" :disabled="lock_form" id="large-input"
-              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-          </v-col><v-col>
-            <label for="base-input"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ชื่อโปรแกรมทัวร์</label>
-            <input type="text" v-model="tour_program" :disabled="lock_form" id="large-input"
-              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-          </v-col></v-row>
+            <label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >ชื่อทริปทัวร์</label
+            >
+            <input
+              type="text"
+              v-model="tour_name"
+              :disabled="lock_form"
+              id="large-input"
+              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" /> </v-col
+          ><v-col>
+            <label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >ชื่อโปรแกรมทัวร์</label
+            >
+            <input
+              type="text"
+              v-model="tour_program"
+              :disabled="lock_form"
+              id="large-input"
+              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" /> </v-col
+        ></v-row>
 
         <v-row>
           <v-col>
-            <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ชื่อไกด์</label>
-            <input type="text" id="base-input" v-model="g_name" :disabled="lock_form"
+            <label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >ชื่อไกด์</label
+            >
+            <input
+              type="text"
+              id="base-input"
+              v-model="g_name"
+              :disabled="lock_form"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
 
           <v-col>
-            <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">เบอร์โทร</label>
-            <input type="text" v-model="g_tel" :disabled="lock_form" id="small-input"
-              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-          </v-col><v-col cols="2">
+            <label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >เบอร์โทร</label
+            >
+            <input
+              type="text"
+              v-model="g_tel"
+              :disabled="lock_form"
+              id="small-input"
+              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" /> </v-col
+          ><v-col cols="2">
             <br />
-            <v-btn variant="tonal" @click="addGuide" :disabled="lock_form" color="orange-lighten-1"
-              style="margin-top: 5px">เพิ่มไกด์</v-btn>
+            <v-btn
+              variant="tonal"
+              @click="addGuide"
+              :disabled="lock_form"
+              color="orange-lighten-1"
+              style="margin-top: 5px"
+              >เพิ่มไกด์</v-btn
+            >
           </v-col>
         </v-row>
         <v-row>
           <v-col>
-            <v-table density="compact" style="border: 1px solid #cfd8dc; border-radius: 0.5rem">
+            <v-table
+              density="compact"
+              style="border: 1px solid #cfd8dc; border-radius: 0.5rem">
               <thead>
                 <tr>
                   <th class="text-left">ชื่อไกด์</th>
@@ -65,100 +104,168 @@
         </v-row>
         <v-row>
           <v-col cols="3">
-            <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">จำนวนวัน</label>
-            <input type="number" v-model.number="day" id="base-input" :disabled="lock_form"
+            <label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >จำนวนวัน</label
+            >
+            <input
+              type="number"
+              v-model.number="day"
+              id="base-input"
+              :disabled="lock_form"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
 
           <v-col cols="3">
-            <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">จำนวนคืน</label>
-            <input type="number" id="small-input" :disabled="lock_form" v-model.number="night"
+            <label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >จำนวนคืน</label
+            >
+            <input
+              type="number"
+              id="small-input"
+              :disabled="lock_form"
+              v-model.number="night"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
-          <v-col><label for="base-input"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ระยะเวลา</label><a-range-picker
-              :locale="locale" :disabled="lock_form" v-model:value="d_range" format="DD/MM/YYYY" style="
-                    height: 55%;
-                    background-color: #f9fafb;
-                    border-radius: 0.4rem;
-                    width: 100%;
-                  " /></v-col>
+          <v-col
+            ><label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >ระยะเวลา</label
+            ><a-range-picker
+              :locale="locale"
+              :disabled="lock_form"
+              v-model:value="d_range"
+              format="DD/MM/YYYY"
+              style="
+                height: 55%;
+                background-color: #f9fafb;
+                border-radius: 0.4rem;
+                width: 100%;
+              "
+          /></v-col>
         </v-row>
+
         <v-row>
           <v-col>
-            <label for="base-input"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">เที่ยวบินหรือพาหนะอื่นๆขากลับ</label>
-            <input type="text" v-model="vehicle_in" :disabled="lock_form" id="large-input"
+            <label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >เที่ยวบินหรือพาหนะอื่นๆขาไป</label
+            >
+            <input
+              type="text"
+              id="large-input"
+              :disabled="lock_form"
+              v-model="vehicle_out"
+              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+          </v-col>
+          <v-col>
+            <label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >เที่ยวบินหรือพาหนะอื่นๆขากลับ</label
+            >
+            <input
+              type="text"
+              v-model="vehicle_in"
+              :disabled="lock_form"
+              id="large-input"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
         </v-row>
         <v-row>
-          <v-col>
-            <label for="base-input"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ราคาต่อหน่วย</label>
-            <input type="number" id="base-input" v-model.number="product_price_per_unit"
-              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-          </v-col>
-          <v-col>
-            <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ส่วนลด</label>
-            <input type="number" id="base-input" v-model.number="product_discount"
-              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-          </v-col>
-          <v-col>
-            <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ภาษี (0% 7%
-              9%)</label>
-            <select style="height: 55%" v-model="product_tax"
-              class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-              <option value="0%">0%</option>
-              <option value="7%">7%</option>
-              <option value="9%">9%</option>
-            </select>
-          </v-col>
-        </v-row>
-        <v-row>
-          <v-col><v-btn variant="tonal" block :disabled="lock_form" color="green-accent-4"
-              @click="addTourPackage">เพิ่มทัวร์</v-btn></v-col>
+          <v-col
+            ><v-btn
+              variant="tonal"
+              block
+              :disabled="lock_form"
+              color="green-accent-4"
+              @click="addTourPackage"
+              >เพิ่มทัวร์</v-btn
+            ></v-col
+          >
         </v-row>
       </v-col>
 
-      <v-col style="
-              border-radius: 1rem;
-              margin: 1rem;
-              box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
-                rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
-            ">
+      <v-col
+        style="
+          border-radius: 1rem;
+          margin: 1rem;
+          box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+            rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+        ">
         <h3
           class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">
           ข้อมูลโรงแรมที่พัก
         </h3>
         <div class="mb-6">
-          <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ชื่อโรงแรม</label>
-          <input type="text" id="large-input" :disabled="!lock_form" v-model="formHotel.name"
+          <label
+            for="base-input"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >ชื่อโรงแรม</label
+          >
+          <input
+            type="text"
+            id="large-input"
+            :disabled="!lock_form"
+            v-model="formHotel.name"
             class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
         </div>
         <v-row>
           <v-col>
-            <label for="base-input"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">จำนวนห้องพัก</label>
-            <input type="number" v-model.number="formHotel.amount_room" id="base-input" :disabled="!lock_form"
+            <label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >จำนวนห้องพัก</label
+            >
+            <input
+              type="number"
+              v-model.number="formHotel.amount_room"
+              id="base-input"
+              :disabled="!lock_form"
               class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </v-col>
-          <v-col><label for="base-input"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ระยะเวลา</label><a-range-picker
-              v-model:value="d_range2" :locale="locale" :disabled="!lock_form" format="DD/MM/YYYY" style="
-                    height: 55%;
-                    background-color: #f9fafb;
-                    border-radius: 0.4rem;
-                    width: 100%;
-                  " /></v-col>
+          <v-col
+            ><label
+              for="base-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >ระยะเวลา</label
+            ><a-range-picker
+              v-model:value="d_range2"
+              :locale="locale"
+              :disabled="!lock_form"
+              format="DD/MM/YYYY"
+              style="
+                height: 55%;
+                background-color: #f9fafb;
+                border-radius: 0.4rem;
+                width: 100%;
+              "
+          /></v-col>
         </v-row>
 
         <v-row>
-          <v-col><v-btn variant="tonal" block @click="addHotel" color="teal-accent-4"
-              :disabled="!lock_form">เพิ่มโรงแรม</v-btn></v-col>
+          <v-col
+            ><v-btn
+              variant="tonal"
+              block
+              @click="addHotel"
+              color="teal-accent-4"
+              :disabled="!lock_form"
+              >เพิ่มโรงแรม</v-btn
+            ></v-col
+          >
         </v-row>
         <br />
-        <v-table density="compact" fixed-header height="220px" style="border: 1px solid #cfd8dc">
+        <v-table
+          density="compact"
+          fixed-header
+          height="220px"
+          style="border: 1px solid #cfd8dc">
           <thead class="text-head-table">
             <tr>
               <th class="text-left">ชื่อโรงแรม</th>
@@ -179,19 +286,16 @@
       </v-col>
     </v-row>
     <v-row justify="end"
-      ><v-col cols="2" style="margin-right: -10vmin; margin-top: -2vmin"
-        ><v-btn
-          variant="tonal"
-          color="deep-purple-darken-4"
-          @click="$router.push('/')"
-          >ไปหน้ารายการทัวร์</v-btn
-        ></v-col
       ><v-col cols="2" style="margin-right: -6vmin; margin-top: -2vmin"
         ><v-btn
           variant="tonal"
           color="light-blue-accent-4"
           @click="$router.push(`/addusertour/${tour_id}`)"
-          :disabled="!lock_form">ไปหน้าเพิ่มลูกทัวร์</v-btn></v-col></v-row>
+          :disabled="!lock_form"
+          >ไปหน้าเพิ่มลูกทัวร์</v-btn
+        ></v-col
+      ></v-row
+    >
   </div>
 </template>
 <script lang="ts">
@@ -225,9 +329,6 @@ export default defineComponent({
       d_range2: [],
       lock_form: false,
       tour_id: "",
-      product_price_per_unit: "",
-      product_discount: 0,
-      product_tax: "",
       formHotel: {
         name: "",
         amount_room: 0,
@@ -258,34 +359,13 @@ export default defineComponent({
         this.night <= 0 ||
         this.vehicle_in == "" ||
         this.vehicle_out == "" ||
-        this.guide_name == "" ||
-        this.guide_tel == "" ||
-        this.members == 0
+        this.guide_ls.length == 0
       ) {
         this.$message.error("กรุณากรอกข้อมูลให้ครบถ้วน");
         return false;
       } else {
-        if (String(this.product_discount) == "") {
-        this.product_discount = 0;
-        }
         return true;
       }
-
-      // if (this.product_price_per_unit == "") {
-      //   this.$message.error("กรุณากรอกราคาต่อหน่วย", 3);
-      //   return false;
-      // }
-      // if (this.product_discount < 0) {
-      //   this.$message.error("กรุณากรอกส่วนลดสินค้า", 3);
-      //   return false;
-      // } else if (String(this.product_discount) == "") {
-      //   this.product_discount = 0;
-      //   return true;
-      // }
-      // if (this.product_tax == "") {
-      //   this.$message.error("กรุณากรอกภาษีมูลค่าเพิ่ม", 3);
-      //   return false;
-      // }
     },
     validateGuideData() {
       if (this.g_name == "" || this.g_tel == "") {
@@ -309,19 +389,6 @@ export default defineComponent({
       }
     },
     addTourPackage() {
-      const raw = group_tours(
-        this.tour_name,
-        this.tour_program,
-        new Date(this.go_date),
-        new Date(this.back_date),
-        this.day,
-        this.night,
-        this.vehicle_in,
-        this.vehicle_out,
-        this.guide_name,
-        this.guide_tel,
-        this.members
-      );
       if (this.validateTourData()) {
         const payload = {
           name: this.tour_name,

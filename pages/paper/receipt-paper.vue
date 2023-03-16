@@ -36,11 +36,11 @@
                     <td colspan="2">
                       <b>ชื่อลูกค้า: </b>
                     </td>
-                    <td colspan="2">{{ quo.customer_name.stringValue }}</td>
+                    <td colspan="2">{{ quo.customer_name }}</td>
                   </tr>
                   <tr style="height: 30px">
                     <td colspan="2"><b>ที่อยู่: </b></td>
-                    <td colspan="2">{{ quo.customer_address.stringValue }}</td>
+                    <td colspan="2">{{ quo.address }}</td>
                   </tr>
                   <tr style="height: 30px">
                     <td colspan="2">
@@ -258,10 +258,7 @@
 import dayjs from "dayjs";
 import { defineComponent } from "vue";
 import buddhistEra from "dayjs/plugin/buddhistEra";
-import {
-  read_one_data_conditions,
-  ArabicNumberToText,
-} from "~~/services/configs";
+import { read_all_data, ArabicNumberToText } from "~~/services/pyapi";
 export default defineComponent({
   setup() {
     dayjs.extend(buddhistEra);
@@ -270,7 +267,7 @@ export default defineComponent({
       ArabicNumberToText,
     };
   },
-  mounted() {
+  async mounted() {
     const obj = JSON.parse(String(this.$route.query.data));
     this.ob = obj;
 
@@ -278,15 +275,12 @@ export default defineComponent({
       (a: any, b: any) => Number(a) + Number(b.total),
       0
     );
-    console.log(this.last_total);
-    read_one_data_conditions(
-      "quotation_detail",
-      "tour_id",
-      obj.tax_invoice[0].tour_id
-    ).then((res) => {
-      this.onLoad = true;
-      this.quo = res[0].fields;
-    });
+
+    const q = await read_all_data(
+      `quotations?tour_id=${obj.tax_invoice[0].tour_id}`
+    );
+    this.quo = q[0];
+    this.onLoad = true;
   },
   data() {
     return {

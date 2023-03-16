@@ -305,8 +305,6 @@
   </div>
 </template>
 <script lang="ts">
-import { group_tours, hotel_tour } from "~~/services/payload";
-import Swal from "sweetalert2";
 import {
   read_all_data,
   read_one_data,
@@ -340,6 +338,11 @@ export default defineComponent({
     this.vehicle_out = tour_data.vehicle_out;
     const hotel_ls = await read_all_data(`hotels?tour_id=${this.tour_id}`);
     this.formHotel.hotel_ls = hotel_ls;
+
+    this.d_range = [
+      dayjs(this.go_date, "DD/MM/BBBB"),
+      dayjs(this.back_date, "DD/MM/BBBB"),
+    ];
   },
   data() {
     return {
@@ -387,32 +390,42 @@ export default defineComponent({
         });
       });
     },
+    validateTourData() {
+      if (
+        this.tour_name == "" ||
+        this.tour_program == "" ||
+        this.go_date == "" ||
+        this.back_date == "" ||
+        this.day <= 0 ||
+        this.night <= 0 ||
+        this.vehicle_in == "" ||
+        this.vehicle_out == "" ||
+        this.guided_ls.length == 0
+      ) {
+        this.$message.error("กรุณากรอกข้อมูลให้ครบถ้วน");
+        return false;
+      } else {
+        return true;
+      }
+    },
     editTourPackage() {
-      const raw: any = group_tours(
-        this.tour_name,
-        this.tour_program,
-        new Date(this.go_date),
-        new Date(this.back_date),
-        this.day,
-        this.night,
-        this.vehicle_in,
-        this.vehicle_out,
-        this.guide_name,
-        this.guide_tel,
-        this.members
-      );
-      raw.fields.id = { stringValue: String(this.$route.params.tid) };
-      update_data("group_tour", String(this.$route.params.tid), raw).then(
-        () => {
-          Swal.fire({
-            icon: "success",
-            timer: 1500,
-            title: "แก้ไขข้อมูลสำเร็จ",
-            showConfirmButton: false,
-            timerProgressBar: true,
-          });
-        }
-      );
+      if (this.validateTourData()) {
+        const payload = {
+          name: this.tour_name,
+          program_name: this.tour_program,
+          date_go: dayjs(this.go_date).format("DD/MM/BBBB"),
+          date_back: dayjs(this.back_date).format("DD/MM/BBBB"),
+          amount_of_days: this.day,
+          amount_of_nights: this.night,
+          vehicle_in: this.vehicle_in,
+          vehicle_out: this.vehicle_out,
+          guided_tour: this.guided_ls,
+        };
+        update_data("tour", this.tour_id, payload).then((result) => {
+          this.tour_id = result.id;
+          this.$message.success("แก้ไขข้อมูลสำเร็จ");
+        });
+      }
     },
     validateHotelData() {
       if (
