@@ -44,7 +44,6 @@ export const genRanDec = (size: number) =>
 
 export const ArabicNumberToText = (number: number | string): string => {
   var numbers: any = checkNumber(number);
-  console.log(numbers);
   const numberArray = [
     "ศูนย์",
     "หนึ่ง",
