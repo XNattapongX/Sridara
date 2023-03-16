@@ -29,26 +29,26 @@
             <v-row style="font-size: 12px; padding-left: 4px; margin: auto">
               <v-col style="padding: 0" cols="10">
                 <v-table>
-                  <tr style="height: 20px">
+                  <tr style="height: 10px">
                     <td colspan="2" style="font-weight: bold">&nbsp;</td>
                   </tr>
-                  <tr style="height: 30px">
+                  <tr style="height: 20px">
                     <td colspan="2">
                       <b>ชื่อลูกค้า: </b>
                     </td>
                     <td colspan="2">{{ quo.customer_name }}</td>
                   </tr>
-                  <tr style="height: 30px">
+                  <tr style="height: 20px">
                     <td colspan="2"><b>ที่อยู่: </b></td>
                     <td colspan="2">{{ quo.address }}</td>
                   </tr>
-                  <tr style="height: 30px">
+                  <tr style="height: 20px">
                     <td colspan="2">
                       <b>สาขา: </b>
                     </td>
                     <td colspan="2">{{ ob.receipt_branch }}</td>
                   </tr>
-                  <tr style="height: 20px">
+                  <tr style="height: 10px">
                     <td colspan="2" style="font-weight: bold">&nbsp;</td>
                   </tr>
                 </v-table>
