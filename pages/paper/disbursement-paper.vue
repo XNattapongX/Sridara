@@ -118,36 +118,48 @@
                 >
                   <td class="text-center" style="font-size: xx-small">ลำดับ</td>
                   <td class="text-center" style="font-size: xx-small">
-                    วันที่
+                    รายละเอียดค่าใช้จ่าย
                   </td>
                   <td class="text-center" style="font-size: xx-small">
-                    เลขที่ใบกำกับภาษี
+                    ราคา
+                  </td>
+                  <td colspan="5" class="text-center" style="font-size: xx-small">ค่าใช้จ่าย
                   </td>
                   <td class="text-center" style="font-size: xx-small">
-                    รายละเอียด
+                    จำนวน
                   </td>
                   <td class="text-center" style="font-size: xx-small">
-                    จำนวนเงิน
+                    ยอดสุทธิ
                   </td>
                 </tr>
               </thead>
               <tbody style="font-weight: normal; font-size: 14px">
                 <tr style="border-bottom: 1px solid black">
                   <td class="text-center" style="font-size: xx-small">
-                    fsdfsdf
+                  
                   </td>
                   <td class="text-center" style="font-size: xx-small">
-                    20/05/2566
+                   
                   </td>
                   <td class="text-center" style="font-size: xx-small">
-                    fdsfdsf
+              
                   </td>
                   <td class="text-center" style="font-size: xx-small">
-                    fdsfdsf
+                    เบี้ยเลี้ยง
                   </td>
                   <td class="text-center" style="font-size: xx-small">
-                    fsdfdsf
+                    ค่าที่พัก
                   </td>
+                  <td class="text-center" style="font-size: xx-small">
+                    ค่ายานพาหะนะ
+                  </td>
+                  <td class="text-center" style="font-size: xx-small">
+                    ค่าน้ำมัน
+                  </td>
+                  <td class="text-center" style="font-size: xx-small">
+                    อื่นๆ
+                  </td>
+                  
                 </tr>
               </tbody>
             </v-table>
