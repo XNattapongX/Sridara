@@ -648,7 +648,7 @@ export default defineComponent({
     this.tax = t[0];
     const q = await read_all_data(`quotations?tour_id=${this.tour_id}`);
     this.quo = q[0];
-    const p = await read_all_data(`products?tour_id=${this.tour_id}`);
+    const p = await read_all_data(`products?tid=${this.tour_id}`);
     this.prod = p;
     p.reduce((a: any, b: any) => {
       if (b.tax == "0%") {
