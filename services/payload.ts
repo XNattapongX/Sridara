@@ -73,7 +73,10 @@ export const group_tours = (
   vehicle_outcome: string,
   guide_name: Array<string>,
   guide_tel: Array<string>,
-  amount_member: number
+  amount_member: number,
+  tour_price_unit: string,
+  tour_discount: number,
+  tour_tax: string
 ) => {
   return {
     fields: {
@@ -110,6 +113,15 @@ export const group_tours = (
       amount_member: {
         stringValue: String(amount_member),
       },
+      tour_price_unit: {
+        stringValue: String(tour_price_unit),
+      },
+      tour_discount: {
+        stringValue: String(tour_discount),
+      },
+      tour_tax: {
+        stringValue: tour_tax,
+      }
     },
   };
 };

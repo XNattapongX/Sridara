@@ -514,6 +514,8 @@ export default defineComponent({
       product_ls: [] as any,
       price_validate_period: "",
       deposit: "",
+
+      
     };
   },
   methods: {
