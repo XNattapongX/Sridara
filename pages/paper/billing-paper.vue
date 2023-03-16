@@ -286,7 +286,7 @@
                     {{ item.name }}
                   </td>
                   <td class="text-center" style="font-size: xx-small">
-                    {{ item.amount }}
+                    {{ item.qty }}
                   </td>
                   <td class="text-center" style="font-size: xx-small">
                     {{ item.price_per_unit }}
@@ -578,7 +578,7 @@ export default defineComponent({
     let b = await read_all_data(`billings?tour_id=${this.tour_id}`);
     this.bill = b[0];
     this.billing.billing_note_no = this.bill.no;
-    this.billing.billing_note_date = dayjs(this.bill.date);
+    this.billing.billing_note_date = dayjs();
     this.billing.billing_note_fax = this.bill.fax;
     this.prod = await read_all_data(`products?tid=${this.tour_id}`);
     this.onLoad = true;

@@ -217,15 +217,15 @@
           variant="tonal"
           style="margin-right: 1rem"
           color="light-blue-accent-4"
-          v-if="haveBilling && haveQuotation && !haveTaxInvoice"
+          v-if="haveBilling && haveQuotation && !haveTax"
           @click="dialog2 = true"
           >สร้างใบกำกับภาษี</v-btn
         ><v-btn
           variant="tonal"
           style="margin-right: 1rem"
           color="light-blue-accent-4"
-          v-else-if="haveBilling && haveQuotation && haveTaxInvoice"
-          @click="$router.push(`/tax-invoice/${this.tour_id}`)"
+          v-else-if="haveBilling && haveQuotation && haveTax"
+          @click="$router.push(`/paper/tax-paper?tid=${this.tour_id}`)"
           >ดูใบกำกับภาษี</v-btn
         ><v-btn
           style="margin-right: 1rem"
@@ -448,8 +448,10 @@ export default {
     this.members_ls = await read_all_data("members?tour_id=" + this.tour_id);
     const quo_res = await read_all_data(`quotations?tour_id=${this.tour_id}`);
     const bill_res = await read_all_data(`billings?tour_id=${this.tour_id}`);
+    const tax_res = await read_all_data(`taxes?tour_id=${this.tour_id}`);
     quo_res.length ? (this.haveQuotation = true) : (this.haveQuotation = false);
     bill_res.length ? (this.haveBilling = true) : (this.haveBilling = false);
+    tax_res.length ? (this.haveTax = true) : (this.haveTax = false);
     this.loading = false;
 
     this.billing.billing_note_no = genRanDec(7);
@@ -592,7 +594,7 @@ export default {
       loading: true,
       haveQuotation: false,
       haveBilling: false,
-      haveTaxInvoice: false,
+      haveTax: false,
       dialog: false,
       dialog2: false,
       dialog3: false,

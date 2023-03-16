@@ -37,6 +37,29 @@ export const update_data = async (
   return response.data;
 };
 
+export const ListTaxInvoice = async () => {
+  const response = await api.get("quotations");
+  const documents = response.data;
+
+  const promises = documents.map(async (x: any) => {
+    const res = await api.get("taxes");
+    return res.data.map((y: any) => ({
+      tour_id: x.tour_id,
+      date: y.date,
+      no: y.no,
+      desc: `ลูกค้า-${x.customer_name} ที่อยู่-${x.address}`,
+      total: x.total_net_price,
+    }));
+  });
+
+  const results = await Promise.all(promises);
+  return results.flat().filter(onlyUnique);
+};
+
+export function onlyUnique(v: any, i: any) {
+  return i % 2 == 0;
+}
+
 export const genRanDec = (size: number) =>
   [...Array(size)]
     .map(() => Math.floor(Math.random() * 10).toString(10))

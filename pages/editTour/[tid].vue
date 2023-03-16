@@ -338,6 +338,10 @@ export default defineComponent({
     this.back_date = tour_data.date_back;
     this.vehicle_in = tour_data.vehicle_in;
     this.vehicle_out = tour_data.vehicle_out;
+    this.d_range = [
+      dayjs(this.go_date, "DD/MM/BBBB"),
+      dayjs(this.back_date, "DD/MM/BBBB"),
+    ];
     const hotel_ls = await read_all_data(`hotels?tour_id=${this.tour_id}`);
     this.formHotel.hotel_ls = hotel_ls;
   },

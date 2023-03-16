@@ -97,7 +97,7 @@
                 <td colspan="2" style="padding-left: 4px; font-weight: bold">
                   ชื่อลูกค้า:
                 </td>
-                <td colspan="2">{{ quo.customer_name.stringValue }}</td>
+                <td colspan="2">{{ quo.customer_name }}</td>
               </tr>
               <tr
                 style="
@@ -113,7 +113,7 @@
                   ที่อยู่:
                 </td>
                 <td colspan="2">
-                  {{ quo.customer_address.stringValue }}
+                  {{ quo.address }}
                 </td>
               </tr>
               <tr
@@ -127,7 +127,7 @@
                 <td colspan="2" style="font-weight: bold; padding-left: 4px">
                   เลขประจำตัวผู้เสียภาษี:
                 </td>
-                <td colspan="2">{{ quo.tax_id.stringValue }}</td>
+                <td colspan="2">{{ quo.tax_id }}</td>
               </tr>
               <tr
                 style="
@@ -148,7 +148,7 @@
                       border-radius: 3px;
                     "
                     id="vehicle3"
-                    :checked="tax.tax_invoice_branch.stringValue == ''"
+                    :checked="tax.branch == ''"
                     name="vehicle3"
                     value="Boat" />
                   <label for="vehicle3"> สำนักงานใหญ่</label>
@@ -157,7 +157,7 @@
                   <input
                     type="checkbox"
                     class="mr-2"
-                    :checked="tax.tax_invoice_branch.stringValue != ''"
+                    :checked="tax.branch != ''"
                     style="
                       color: #424242;
                       margin-top: -3px;
@@ -167,9 +167,7 @@
                     id="vehicle3"
                     name="vehicle3"
                     value="Boat" />
-                  <label for="vehicle3">
-                    สาขาที่: {{ tax.tax_invoice_branch.stringValue }}</label
-                  >
+                  <label for="vehicle3"> สาขาที่: {{ tax.branch }}</label>
                 </td>
               </tr>
             </v-table>
@@ -187,7 +185,7 @@
                 <td style="padding-left: 4px; font-weight: bold" width="40%">
                   เลขที่:
                 </td>
-                <td>{{ tax.tax_invoice_no.stringValue }}</td>
+                <td>{{ tax.no }}</td>
               </tr>
               <tr
                 style="
@@ -198,7 +196,7 @@
                   height: 40px;
                 ">
                 <td style="padding-left: 4px; font-weight: bold">วันที่:</td>
-                <td>{{ tax.tax_invoice_date.stringValue }}</td>
+                <td>{{ tax.date }}</td>
               </tr>
               <tr
                 style="
@@ -209,7 +207,7 @@
                   height: 40px;
                 ">
                 <td style="padding-left: 4px; font-weight: bold">กำหนดชำระ:</td>
-                <td>{{ tax.tax_invoice_pay_date.stringValue }}</td>
+                <td>{{ tax.pay_date }}</td>
               </tr>
               <tr
                 style="
@@ -220,7 +218,7 @@
                   height: 40px;
                 ">
                 <td style="padding-left: 4px; font-weight: bold">ผู้ขาย:</td>
-                <td>{{ quo.seller_name.stringValue }}</td>
+                <td>{{ quo.sales_person }}</td>
               </tr>
               <tr
                 style="
@@ -233,7 +231,7 @@
                 <td style="padding-left: 4px; font-weight: bold">
                   รหัสลูกค้า:
                 </td>
-                <td>{{ quo.customer_code.stringValue }}</td>
+                <td>{{ quo.customer_code }}</td>
               </tr>
               <tr
                 style="
@@ -246,7 +244,7 @@
                 <td style="padding-left: 4px; font-weight: bold">
                   ยืนยันราคาวันที่:
                 </td>
-                <td>{{ quo.confirm_price_within.stringValue }}</td>
+                <td>{{ quo.confirm_price_within }}</td>
               </tr>
             </v-table></v-col
           >
@@ -278,34 +276,30 @@
                 </tr>
               </thead>
               <tbody style="font-weight: normal; font-size: 14px">
-                <tr
-                  v-for="(item, index) in quo.product.arrayValue.values"
-                  :key="index">
+                <tr v-for="(item, index) in prod" :key="index">
                   <td class="text-center" style="font-size: xx-small">
                     {{ index + 1 }}
                   </td>
                   <td class="text-center" style="font-size: xx-small">
-                    {{ item.mapValue.fields.product_code.stringValue }}
+                    {{ item.code }}
                   </td>
                   <td class="text-left" style="font-size: xx-small">
-                    {{ item.mapValue.fields.product_name.stringValue }}
+                    {{ item.name }}
                   </td>
                   <td class="text-center" style="font-size: xx-small">
-                    {{ item.mapValue.fields.product_amount.stringValue }}
+                    {{ item.qty }}
                   </td>
                   <td class="text-center" style="font-size: xx-small">
-                    {{
-                      item.mapValue.fields.product_price_per_unit.stringValue
-                    }}
+                    {{ item.price_per_unit }}
                   </td>
                   <td class="text-center" style="font-size: xx-small">
-                    {{ item.mapValue.fields.product_discount.stringValue }}
+                    {{ item.discount }}
                   </td>
                   <td class="text-center" style="font-size: xx-small">
-                    {{ item.mapValue.fields.product_tax.stringValue }}
+                    {{ item.tax }}
                   </td>
                   <td class="text-center" style="font-size: xx-small">
-                    {{ item.mapValue.fields.product_total.stringValue }}
+                    {{ item.amount }}
                   </td>
                 </tr>
               </tbody>
@@ -320,7 +314,7 @@
               <tr>
                 <td style="width: 500px; font-weight: bold">หมายเหตุ:</td>
                 <td style="width: 80px">รวมเงิน</td>
-                <td style="width: 71px">{{ quo.sub_total.stringValue }}</td>
+                <td style="width: 71px">{{ quo.total_price }}</td>
               </tr>
               <tr>
                 <td>
@@ -329,7 +323,7 @@
                   ใดๆทั้งสิ้น
                 </td>
                 <td>หักส่วนลดพิเศษ</td>
-                <td>{{ quo.less_cash_discount.stringValue }}</td>
+                <td>{{ quo.less_cash_discount }}</td>
               </tr>
               <tr>
                 <td>
@@ -337,7 +331,7 @@
                   กรรมสิทธิ์สินค้าตามใบส่งของนี้ยังถือว่าเป็นของผู้ขายอยู่จนกว่าผู้ซื้อจะได้ชำระเงินหรือเช็คขึ้นเงินเรียบร้อย
                 </td>
                 <td>มูลค่ายกเว้นภาษี</td>
-                <td>200000</td>
+                <td>{{ avoid_tax }}</td>
               </tr>
 
               <tr>
@@ -346,7 +340,7 @@
                   “บริษัทศรีดาราทัวร์จำกัด” และขีดฆ่าหรือผู้ถือออก
                 </td>
                 <td>มูลค่าคิดภาษี</td>
-                <td>{{ quo.vat.stringValue }}</td>
+                <td>{{ quo.net_price }}</td>
               </tr>
               <tr>
                 <td style="font-weight: bold">
@@ -355,17 +349,17 @@
                       ตัวอักษร :
                     </v-col>
                     <v-col style="margin: auto; padding: 1px" cols="8">
-                      {{ ArabicNumberToText(quo.grand_total.stringValue) }}
+                      {{ ArabicNumberToText(quo.total_net_price) }}
                     </v-col>
                   </v-row>
                 </td>
                 <td>ภาษีมูลค่าเพิ่ม</td>
-                <td>{{ quo.product_value.stringValue }}</td>
+                <td>{{ quo.vat }}</td>
               </tr>
               <tr>
                 <td rowspan="2">&nbsp;</td>
                 <td style="font-weight: bold" rowspan="2">ยอดสุทธิ</td>
-                <td rowspan="2">{{ quo.grand_total.stringValue }}</td>
+                <td rowspan="2">{{ quo.total_net_price }}</td>
               </tr>
             </v-table>
           </v-col>
@@ -557,13 +551,15 @@
 </template>
 <script lang="ts">
 import locale from "ant-design-vue/es/date-picker/locale/th_TH";
+import dayjs from "dayjs";
 import { defineComponent } from "vue";
 import {
-  read_one_data_conditions,
+  read_all_data,
   update_data,
   ArabicNumberToText,
-} from "~~/services/configs";
-import { tax_invoice_detail } from "~~/services/payload";
+} from "~~/services/pyapi";
+import buddhistEra from "dayjs/plugin/buddhistEra";
+dayjs.extend(buddhistEra);
 const key = "updated";
 export default defineComponent({
   setup() {
@@ -594,66 +590,81 @@ export default defineComponent({
     updateTaxInvoice() {
       if (this.valideteTaxInvoice()) {
         this.loadGenBill = true;
-        const raw: any = tax_invoice_detail(
-          String(this.$route.params.tid),
-          this.taxUpdate.tax_no,
-          new Date(this.taxUpdate.tax_date),
-          new Date(this.taxUpdate.tax_pay_date),
-          this.taxUpdate.tax_branch
-        );
-        raw.fields.id = { stringValue: this.tax.id.stringValue };
-        update_data("tax_invoice", this.tax.id.stringValue, raw).then((res) => {
-          this.$message.success({
-            content: "แก้ไขข้อมูลใบกำกับภาษีเรียบร้อยแล้ว",
-            key,
-            duration: 2,
+        const payload = {
+          tour_id: this.tour_id,
+          no: this.taxUpdate.tax_no,
+          date: this.taxUpdate.tax_date.format("DD/MM/BBBB"),
+          pay_date: this.taxUpdate.tax_pay_date.format("DD/MM/BBBB"),
+          branch: this.taxUpdate.tax_branch,
+        };
+        update_data("tax", this.tax.id, payload)
+          .then((res) => {
+            this.$message.success({
+              content: "สร้างเอกสารเรียบร้อยแล้ว",
+              key,
+              duration: 2,
+            });
+            this.dialog = false;
+            window.location.reload();
+            this.loadGenBill = false;
+          })
+          .catch((err) => {
+            this.$message.error({
+              content: "เกิดข้อผิดพลาดในการสร้างเอกสาร",
+              key,
+              duration: 2,
+            });
+            this.dialog = false;
+            this.loadGenBill = false;
           });
-          this.dialog = false;
-          this.loadGenBill = false;
-          window.location.reload();
-        });
       }
     },
   },
   data() {
     return {
+      tour_id: "",
+      avoid_tax: 0,
       dialog: false,
       onLoad: false,
       loadGenBill: false,
       quo: {} as any,
+      prod: [] as any,
       tax: {} as any,
       taxUpdate: {
         tax_no: "",
-        tax_date: "",
-        tax_pay_date: "",
+        tax_date: "" as any,
+        tax_pay_date: "" as any,
         tax_branch: "",
       },
     };
   },
-  mounted() {
+  async mounted() {
+    this.tour_id = String(this.$route.query.tid);
     this.$message.loading({
       content: "กำลังโหลดข้อมูลใบกำกับภาษี และสร้างเป็นเอกสาร",
       key,
     });
-    read_one_data_conditions(
-      "tax_invoice",
-      "tour_id",
-      String(this.$route.params.tid)
-    ).then((res: any) => {
-      this.tax = res[0].fields;
-      read_one_data_conditions(
-        "quotation_detail",
-        "tour_id",
-        String(this.$route.params.tid)
-      ).then((res: any) => {
-        this.onLoad = true;
-        this.$message.success({
-          content: "สำเร็จ",
-          key,
-          duration: 1,
-        });
-        this.quo = res[0].fields;
-      });
+    const t = await read_all_data(`taxes?tour_id=${this.tour_id}`);
+    this.tax = t[0];
+    const q = await read_all_data(`quotations?tour_id=${this.tour_id}`);
+    this.quo = q[0];
+    const p = await read_all_data(`products?tour_id=${this.tour_id}`);
+    this.prod = p;
+    p.reduce((a: any, b: any) => {
+      if (b.tax == "0%") {
+        this.avoid_tax += b.amount;
+      }
+    }, 0);
+    this.onLoad = true;
+    this.taxUpdate.tax_no = t[0].no;
+    this.taxUpdate.tax_date = dayjs();
+    this.taxUpdate.tax_pay_date = dayjs(t[0].pay_date, "DD/MM/BBBB");
+    this.taxUpdate.tax_branch = t[0].branch;
+
+    this.$message.success({
+      content: "โหลดข้อมูลใบกำกับภาษี และสร้างเป็นเอกสารเรียบร้อยแล้ว",
+      key,
+      duration: 2,
     });
   },
 });
@@ -701,5 +712,11 @@ export default defineComponent({
     background: initial;
     page-break-after: always;
   }
+}
+.date-picker {
+  height: 4.7vmin;
+  background-color: #f9fafb;
+  border-radius: 0.4rem;
+  width: 100%;
 }
 </style>

@@ -131,7 +131,7 @@
 </template>
 
 <script lang="ts">
-import { ListTaxInvoice, onlyUnique } from "~~/services/configs";
+import { genRanDec, ListTaxInvoice } from "~~/services/pyapi";
 import locale from "ant-design-vue/es/date-picker/locale/th_TH";
 type Key = string | number;
 
@@ -220,7 +220,7 @@ export default {
           receipt_check_date: this.receipt_check_date,
           tax_invoice: arr,
         });
-        this.$router.push(`/receipt-paper?data=${json}`);
+        this.$router.push(`/paper/receipt-paper?data=${json}`);
       }
     },
   },
@@ -232,6 +232,7 @@ export default {
     },
   },
   mounted() {
+    this.receipt_no = genRanDec(7);
     ListTaxInvoice().then((result) => {
       result.forEach((element, index) => {
         this.data_tmp.push({
@@ -285,7 +286,6 @@ export default {
       // func
       start,
       onSelectChange,
-      onlyUnique,
     };
   },
 };
