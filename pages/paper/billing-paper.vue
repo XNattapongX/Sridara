@@ -540,6 +540,9 @@ import {
   update_data,
 } from "~~/services/pyapi";
 import locale from "ant-design-vue/es/date-picker/locale/th_TH";
+import dayjs from "dayjs";
+import buddhistEra from "dayjs/plugin/buddhistEra";
+dayjs.extend(buddhistEra);
 const key = "updated";
 export default defineComponent({
   setup() {
@@ -558,7 +561,7 @@ export default defineComponent({
       dialog: false,
       billing: {
         billing_note_no: "",
-        billing_note_date: "",
+        billing_note_date: "" as any,
         billing_note_fax: "",
       },
       loadGenBill: false,
@@ -574,8 +577,16 @@ export default defineComponent({
     this.quo = q[0];
     let b = await read_all_data(`billings?tour_id=${this.tour_id}`);
     this.bill = b[0];
+    this.billing.billing_note_no = this.bill.no;
+    this.billing.billing_note_date = dayjs(this.bill.date);
+    this.billing.billing_note_fax = this.bill.fax;
     this.prod = await read_all_data(`products?tid=${this.tour_id}`);
     this.onLoad = true;
+    this.$message.success({
+      content: "โหลดข้อมูลเรียบร้อยแล้ว",
+      key,
+      duration: 2,
+    });
   },
   methods: {
     print() {
@@ -596,29 +607,26 @@ export default defineComponent({
       }
       return true;
     },
-    // updateBilling() {
-    //   if (this.validateBillingForm()) {
-    //     this.loadGenBill = true;
-    //     const raw: any = billing_note_detail(
-    //       String(this.$route.params.tid),
-    //       this.billing.billing_note_no,
-    //       new Date(this.billing.billing_note_date),
-    //       this.billing.billing_note_fax
-    //     );
-    //     raw.fields.id = {: this.bill.id };
-    //     update_data("billing_note", this.bill.id, raw).then(
-    //       (res: any) => {
-    //         this.$message.success({
-    //           content: "สำเร็จ",
-    //           key,
-    //           duration: 1,
-    //         });
-    //         this.loadGenBill = false;
-    //         window.location.reload();
-    //       }
-    //     );
-    //   }
-    // },
+    updateBilling() {
+      if (this.validateBillingForm()) {
+        this.loadGenBill = true;
+        const payload = {
+          tour_id: this.tour_id,
+          no: this.billing.billing_note_no,
+          date: this.billing.billing_note_date,
+          fax: this.billing.billing_note_fax,
+        };
+        update_data("billing", this.bill.id, payload).then((res) => {
+          this.$message.success({
+            content: "บันทึกข้อมูลเรียบร้อยแล้ว",
+            key,
+            duration: 2,
+          });
+          this.dialog = false;
+          window.location.reload();
+        });
+      }
+    },
   },
 });
 </script>

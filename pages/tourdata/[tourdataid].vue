@@ -209,7 +209,7 @@
           style="margin-right: 1rem"
           variant="tonal"
           color="light-blue-accent-4"
-          @click="$router.push(`/billing-paper/${tour_id}`)"
+          @click="$router.push(`/paper/billing-paper?tid=${tour_id}`)"
           >ดูใบแจ้งหนี้</v-btn
         >
 
@@ -447,11 +447,16 @@ export default {
     this.hotels_ls = await read_all_data("hotels?tour_id=" + this.tour_id);
     this.members_ls = await read_all_data("members?tour_id=" + this.tour_id);
     const quo_res = await read_all_data(`quotations?tour_id=${this.tour_id}`);
+    const bill_res = await read_all_data(`billings?tour_id=${this.tour_id}`);
     quo_res.length ? (this.haveQuotation = true) : (this.haveQuotation = false);
+    bill_res.length ? (this.haveBilling = true) : (this.haveBilling = false);
     this.loading = false;
 
     this.billing.billing_note_no = genRanDec(7);
     this.billing.billing_note_date = dayjs(new Date());
+
+    this.tax.tax_no = genRanDec(7);
+    this.tax.tax_date = dayjs(new Date());
   },
   methods: {
     validateQuotation() {
@@ -547,7 +552,7 @@ export default {
         };
         create_data("billing", payload).then(() => {
           this.dialog = false;
-          this.$router.push(`/paper/billing-paper?tid${this.tour_id}`);
+          this.$router.push(`/paper/billing-paper?tid=${this.tour_id}`);
         });
       }
     },
@@ -566,16 +571,16 @@ export default {
     generateTaxInvoice() {
       if (this.validateTax()) {
         this.loadGenBill = true;
-        const raw = tax_invoice_detail(
-          this.tour_id,
-          this.tax.tax_no,
-          this.tax.tax_date,
-          this.tax.tax_pay_date,
-          this.tax.tax_branch
-        );
-        create_data("tax_invoice", raw).then(() => {
+        const payload = {
+          tour_id: this.tour_id,
+          no: this.tax.tax_no,
+          date: dayjs(this.tax.tax_date).format("DD/MM/BBBB"),
+          pay_date: dayjs(this.tax.tax_pay_date).format("DD/MM/BBBB"),
+          branch: this.tax.tax_branch,
+        };
+        create_data("tax", payload).then(() => {
           this.dialog2 = false;
-          this.$router.push(`/tax-invoice/${this.tour_id}`);
+          this.$router.push(`/paper/tax-paper?tid=${this.tour_id}`);
         });
       }
     },
