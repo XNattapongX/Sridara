@@ -173,10 +173,10 @@
                 <td>&nbsp;</td>
               </tr>
               <tr>
-                <td>ผู้จัดทำ</td>
+                <td>(นางสาวสุริพร รัตนชัย)</td>
               </tr>
               <tr>
-                <td>วันที่</td>
+                <td>ผู้ขอเคียร์</td>
               </tr>
               <tr style="border-bottom: 1px solid black">
                 <td>&nbsp;</td>
@@ -189,10 +189,10 @@
                 <td>&nbsp;</td>
               </tr>
               <tr>
-                <td>ผู้รับเงิน</td>
+                <td>(………………………………………………)</td>
               </tr>
               <tr>
-                <td>วันที่</td>
+                <td>ผู้อนุมัติ / ตรวจสอบ</td>
               </tr>
               <tr style="border-bottom: 1px solid black">
                 <td>&nbsp;</td>
@@ -205,10 +205,27 @@
                 <td>&nbsp;</td>
               </tr>
               <tr>
-                <td>กรรมการผู้มีอำนาจหรือตัวแทน</td>
+                <td>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  )</td>
               </tr>
               <tr>
-                <td>วันที่</td>
+                <td>ผู้รับเคียร์เงิน</td>
+              </tr>
+              <tr style="border-bottom: 1px solid black">
+                <td>&nbsp;</td>
+              </tr>
+            </v-table>
+          </v-col>
+          <v-col>
+            <v-table style="text-align: center">
+              <tr style="height: 110px">
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>(………………………………………………)</td>
+              </tr>
+              <tr>
+                <td>ผู้อำนวยการฝ่ายการเงิน</td>
               </tr>
               <tr style="border-bottom: 1px solid black">
                 <td>&nbsp;</td>
