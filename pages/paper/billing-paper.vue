@@ -1,7 +1,6 @@
 <template>
   <div
-    style="display: flex; background-color: rgb(225, 225, 241); z-index: -111"
-  >
+    style="display: flex; background-color: rgb(225, 225, 241); z-index: -111">
     <div class="page" v-if="onLoad">
       <v-container>
         <v-row>
@@ -11,8 +10,7 @@
                 <img
                   src="https://www.adt.or.th/image/ADT1%20-%201108%20-%200263.jpg"
                   class="w-141px h-47px"
-                  alt="sridara Logo"
-                />
+                  alt="sridara Logo" />
                 <v-sheet style="text-align: left; font-size: 12px">
                   <div>บริษัท ศรีดาราทัวร์ จำกัด (สำนักงานใหญ่)</div>
                   <div>
@@ -120,8 +118,7 @@
         </v-row>
 
         <v-row
-          style="padding: 1px; margin: auto; border-bottom: 1px solid black"
-        >
+          style="padding: 1px; margin: auto; border-bottom: 1px solid black">
           <v-col style="padding: 1px; height: 400px">
             <v-table density="compact" height="auto">
               <thead style="font-weight: bold; font-size: 14px">
@@ -129,8 +126,7 @@
                   style="
                     border-top: 1px solid black;
                     border-bottom: 1px solid black;
-                  "
-                >
+                  ">
                   <td class="text-center" style="font-size: xx-small">ลำดับ</td>
                   <td class="text-center" style="font-size: xx-small">
                     รหัสสินค้า
@@ -190,8 +186,7 @@
             padding-right: 4px;
             margin: auto;
             border-bottom: 1px solid black;
-          "
-        >
+          ">
           <v-col style="padding: 0" cols="9"
             ><v-table>
               <tr>
@@ -371,8 +366,7 @@
           type="text"
           id="base-input"
           v-model="billing.billing_note_no"
-          class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        />
+          class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
       </v-col>
       <v-col>
         <label
@@ -385,8 +379,7 @@
           style="z-index: 999"
           v-model:value="billing.billing_note_date"
           class="date-picker"
-          format="DD/MM/YYYY"
-        />
+          format="DD/MM/YYYY" />
       </v-col>
       <v-col>
         <label
@@ -398,8 +391,7 @@
           type="text"
           id="base-input"
           v-model="billing.billing_note_fax"
-          class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        />
+          class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
       </v-col>
     </v-row>
   </a-modal>
@@ -412,6 +404,9 @@ import {
   update_data,
 } from "~~/services/pyapi";
 import locale from "ant-design-vue/es/date-picker/locale/th_TH";
+import dayjs from "dayjs";
+import buddhistEra from "dayjs/plugin/buddhistEra";
+dayjs.extend(buddhistEra);
 const key = "updated";
 export default defineComponent({
   setup() {
@@ -430,7 +425,7 @@ export default defineComponent({
       dialog: false,
       billing: {
         billing_note_no: "",
-        billing_note_date: "",
+        billing_note_date: "" as any,
         billing_note_fax: "",
       },
       loadGenBill: false,
@@ -451,6 +446,11 @@ export default defineComponent({
     this.billing.billing_note_fax = this.bill.fax;
     this.prod = await read_all_data(`products?tid=${this.tour_id}`);
     this.onLoad = true;
+    this.$message.success({
+      content: "โหลดข้อมูลเรียบร้อยแล้ว",
+      key,
+      duration: 2,
+    });
   },
   methods: {
     print() {
@@ -471,29 +471,26 @@ export default defineComponent({
       }
       return true;
     },
-    // updateBilling() {
-    //   if (this.validateBillingForm()) {
-    //     this.loadGenBill = true;
-    //     const raw: any = billing_note_detail(
-    //       String(this.$route.params.tid),
-    //       this.billing.billing_note_no,
-    //       new Date(this.billing.billing_note_date),
-    //       this.billing.billing_note_fax
-    //     );
-    //     raw.fields.id = {: this.bill.id };
-    //     update_data("billing_note", this.bill.id, raw).then(
-    //       (res: any) => {
-    //         this.$message.success({
-    //           content: "สำเร็จ",
-    //           key,
-    //           duration: 1,
-    //         });
-    //         this.loadGenBill = false;
-    //         window.location.reload();
-    //       }
-    //     );
-    //   }
-    // },
+    updateBilling() {
+      if (this.validateBillingForm()) {
+        this.loadGenBill = true;
+        const payload = {
+          tour_id: this.tour_id,
+          no: this.billing.billing_note_no,
+          date: this.billing.billing_note_date,
+          fax: this.billing.billing_note_fax,
+        };
+        update_data("billing", this.bill.id, payload).then((res) => {
+          this.$message.success({
+            content: "บันทึกข้อมูลเรียบร้อยแล้ว",
+            key,
+            duration: 2,
+          });
+          this.dialog = false;
+          window.location.reload();
+        });
+      }
+    },
   },
 });
 </script>
