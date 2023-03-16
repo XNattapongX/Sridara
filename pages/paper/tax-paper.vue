@@ -1,6 +1,7 @@
 <template>
   <div
-    style="display: flex; background-color: rgb(225, 225, 241); z-index: -111">
+    style="display: flex; background-color: rgb(225, 225, 241); z-index: -111"
+  >
     <div class="page" v-if="onLoad">
       <v-container>
         <v-row style="font-size: 12px; padding: 1px; margin: 1px auto">
@@ -37,7 +38,8 @@
                     border-left: 1px solid #000000;
                     width: 170px;
                     font-weight: bold;
-                  ">
+                  "
+                >
                   ใบกำกับภาษี/ใบส่งของ
                 </td>
               </tr>
@@ -49,7 +51,8 @@
                     border-right: 1px solid #000000;
                     border-bottom: 1px solid #000000;
                     border-left: 1px solid #000000;
-                  ">
+                  "
+                >
                   Tax Invoice/Delivery Order
                 </td>
               </tr>
@@ -63,7 +66,8 @@
                     border-left: 1px solid #000000;
                     width: 170px;
                     font-weight: bold;
-                  ">
+                  "
+                >
                   ต้นฉบับ/Original
                 </td>
               </tr>
@@ -75,7 +79,8 @@
                     border-right: 1px solid #000000;
                     border-bottom: 1px solid #000000;
                     border-left: 1px solid #000000;
-                  ">
+                  "
+                >
                   เอกสารออกเป็นชุด
                 </td>
               </tr>
@@ -93,7 +98,8 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                ">
+                "
+              >
                 <td colspan="2" style="padding-left: 4px; font-weight: bold">
                   ชื่อลูกค้า:
                 </td>
@@ -106,10 +112,12 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 120px;
-                ">
+                "
+              >
                 <td
                   colspan="2"
-                  style="padding: auto; padding-left: 4px; font-weight: bold">
+                  style="padding: auto; padding-left: 4px; font-weight: bold"
+                >
                   ที่อยู่:
                 </td>
                 <td colspan="2">
@@ -123,7 +131,8 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                ">
+                "
+              >
                 <td colspan="2" style="font-weight: bold; padding-left: 4px">
                   เลขประจำตัวผู้เสียภาษี:
                 </td>
@@ -136,7 +145,8 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                ">
+                "
+              >
                 <td colspan="2">
                   <input
                     type="checkbox"
@@ -150,7 +160,8 @@
                     id="vehicle3"
                     :checked="tax.branch == ''"
                     name="vehicle3"
-                    value="Boat" />
+                    value="Boat"
+                  />
                   <label for="vehicle3"> สำนักงานใหญ่</label>
                 </td>
                 <td colspan="2">
@@ -166,7 +177,8 @@
                     "
                     id="vehicle3"
                     name="vehicle3"
-                    value="Boat" />
+                    value="Boat"
+                  />
                   <label for="vehicle3"> สาขาที่: {{ tax.branch }}</label>
                 </td>
               </tr>
@@ -181,7 +193,8 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                ">
+                "
+              >
                 <td style="padding-left: 4px; font-weight: bold" width="40%">
                   เลขที่:
                 </td>
@@ -194,7 +207,8 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                ">
+                "
+              >
                 <td style="padding-left: 4px; font-weight: bold">วันที่:</td>
                 <td>{{ tax.date }}</td>
               </tr>
@@ -205,7 +219,8 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                ">
+                "
+              >
                 <td style="padding-left: 4px; font-weight: bold">กำหนดชำระ:</td>
                 <td>{{ tax.pay_date }}</td>
               </tr>
@@ -216,7 +231,8 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                ">
+                "
+              >
                 <td style="padding-left: 4px; font-weight: bold">ผู้ขาย:</td>
                 <td>{{ quo.sales_person }}</td>
               </tr>
@@ -227,7 +243,8 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                ">
+                "
+              >
                 <td style="padding-left: 4px; font-weight: bold">
                   รหัสลูกค้า:
                 </td>
@@ -240,7 +257,8 @@
                   border-bottom: 1px solid #000000;
                   border-left: 1px solid #000000;
                   height: 40px;
-                ">
+                "
+              >
                 <td style="padding-left: 4px; font-weight: bold">
                   ยืนยันราคาวันที่:
                 </td>
@@ -310,7 +328,8 @@
         <v-row style="padding: 1px; margin: auto">
           <v-col style="padding: 0">
             <v-table
-              style="font-size: 12px; border: 1px solid black; padding: 2px">
+              style="font-size: 12px; border: 1px solid black; padding: 2px"
+            >
               <tr>
                 <td style="width: 500px; font-weight: bold">หมายเหตุ:</td>
                 <td style="width: 80px">รวมเงิน</td>
@@ -374,7 +393,8 @@
                 border-bottom: 1px solid #000000;
                 border-left: 1px solid #000000;
                 width: 187px;
-              ">
+              "
+            >
               <v-table>
                 <tr style="height: 110px">
                   <td>&nbsp;</td>
@@ -397,7 +417,8 @@
                 border-bottom: 1px solid #000000;
                 border-left: 1px solid #000000;
                 width: 187px;
-              ">
+              "
+            >
               <v-table>
                 <tr style="height: 110px">
                   <td>&nbsp;</td>
@@ -420,7 +441,8 @@
                 border-bottom: 1px solid #000000;
                 border-left: 1px solid #000000;
                 width: 187px;
-              ">
+              "
+            >
               <v-table>
                 <tr style="height: 110px">
                   <td>&nbsp;</td>
@@ -443,7 +465,8 @@
                 border-bottom: 1px solid #000000;
                 border-left: 1px solid #000000;
                 width: 187px;
-              ">
+              "
+            >
               <v-table>
                 <tr style="height: 110px">
                   <td>&nbsp;</td>
@@ -484,7 +507,8 @@
   <a-modal
     v-model:visible="dialog"
     width="65rem"
-    title="ฟอร์มแก้ไขใบกำกับภาษี/ใบส่งของ">
+    title="ฟอร์มแก้ไขใบกำกับภาษี/ใบส่งของ"
+  >
     <template #footer>
       <a-button key="back" @click="dialog = false">ยกเลิก</a-button>
       <a-button
@@ -506,7 +530,8 @@
           type="text"
           id="base-input"
           v-model="taxUpdate.tax_no"
-          class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+          class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        />
       </v-col>
       <v-col>
         <label
@@ -519,7 +544,8 @@
           style="z-index: 999"
           v-model:value="taxUpdate.tax_date"
           class="date-picker"
-          format="DD/MM/YYYY" />
+          format="DD/MM/YYYY"
+        />
       </v-col>
       <v-col>
         <label
@@ -532,7 +558,8 @@
           style="z-index: 999"
           v-model:value="taxUpdate.tax_pay_date"
           class="date-picker"
-          format="DD/MM/YYYY" />
+          format="DD/MM/YYYY"
+        />
       </v-col>
       <v-col>
         <label
@@ -544,7 +571,8 @@
           type="text"
           id="base-input"
           v-model="taxUpdate.tax_branch"
-          class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+          class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        />
       </v-col>
     </v-row>
   </a-modal>

@@ -412,6 +412,7 @@ import {
   update_data,
 } from "~~/services/pyapi";
 import locale from "ant-design-vue/es/date-picker/locale/th_TH";
+import dayjs from "dayjs";
 const key = "updated";
 export default defineComponent({
   setup() {
@@ -430,7 +431,7 @@ export default defineComponent({
       dialog: false,
       billing: {
         billing_note_no: "",
-        billing_note_date: "",
+        billing_note_date: "" as any,
         billing_note_fax: "",
       },
       loadGenBill: false,
