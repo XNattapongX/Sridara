@@ -65,7 +65,7 @@
                   เลขที่
                 </td>
                 <td style="border: 1px solid black; padding: 0px 0px 0px 3px">
-                  {{ quotation.fields.quotation_id.stringValue }}
+                  {{ quo.no }}
                 </td>
               </tr>
               <tr>
@@ -79,7 +79,7 @@
                   วันที่
                 </td>
                 <td style="border: 1px solid black; padding: 0px 0px 0px 3px">
-                  {{ quotation.fields.quotation_date.stringValue }}
+                  {{ quo.date }}
                 </td>
               </tr>
             </v-table></v-col
@@ -100,7 +100,7 @@
                 <td style="padding-left: 4px; font-weight: bold" width="25% ">
                   ชื่อลูกค้า:
                 </td>
-                <td>{{ quotation.fields.customer_name.stringValue }}</td>
+                <td>{{ quo.customer_name }}</td>
               </tr>
               <tr
                 style="
@@ -111,7 +111,7 @@
                   height: 40px;
                 ">
                 <td style="padding-left: 4px; font-weight: bold">ID TEX:</td>
-                <td>{{ quotation.fields.tax_id.stringValue }}</td>
+                <td>{{ quo.tax_id }}</td>
               </tr>
               <tr
                 style="
@@ -124,7 +124,7 @@
                 <td style="padding-left: 4px; font-weight: bold">
                   ชื่อผู้ติดต่อ:
                 </td>
-                <td>{{ quotation.fields.contact_name.stringValue }}</td>
+                <td>{{ quo.contact_name }}</td>
               </tr>
               <tr
                 style="
@@ -137,7 +137,7 @@
                 <td style="padding: auto; padding-left: 4px; font-weight: bold">
                   ที่อยู่:
                 </td>
-                <td>{{ quotation.fields.customer_address.stringValue }}</td>
+                <td>{{ quo.address }}</td>
               </tr>
               <tr
                 style="
@@ -148,7 +148,7 @@
                   height: 40px;
                 ">
                 <td style="padding-left: 4px; font-weight: bold">โทร:</td>
-                <td>{{ quotation.fields.contact_tel.stringValue }}</td>
+                <td>{{ quo.customer_tel }}</td>
               </tr>
             </v-table></v-col
           >
@@ -165,7 +165,7 @@
                 <td style="padding-left: 4px; font-weight: bold" width="40%">
                   รหัสลูกค้า:
                 </td>
-                <td>{{ quotation.fields.customer_code.stringValue }}</td>
+                <td>{{ quo.customer_code }}</td>
               </tr>
               <tr
                 style="
@@ -178,7 +178,7 @@
                 <td style="padding-left: 4px; font-weight: bold">
                   ผู้เสนอขาย:
                 </td>
-                <td>{{ quotation.fields.seller_name.stringValue }}</td>
+                <td>{{ quo.sales_person }}</td>
               </tr>
               <tr
                 style="
@@ -189,7 +189,7 @@
                   height: 40px;
                 ">
                 <td style="padding-left: 4px; font-weight: bold">ฝ่าย:</td>
-                <td>{{ quotation.fields.seller_department.stringValue }}</td>
+                <td>{{ quo.sale_department }}</td>
               </tr>
               <tr
                 style="
@@ -202,7 +202,7 @@
                 <td style="padding-left: 4px; font-weight: bold">
                   ยืนยันราคาภายใน:
                 </td>
-                <td>{{ quotation.fields.confirm_price_within.stringValue }}</td>
+                <td>{{ quo.confirm_price_within }}</td>
               </tr>
               <tr
                 style="
@@ -213,7 +213,7 @@
                   height: 40px;
                 ">
                 <td style="padding-left: 4px; font-weight: bold">วันส่งของ:</td>
-                <td>{{ quotation.fields.delivery_date.stringValue }}</td>
+                <td>{{ quo.delivery_date }}</td>
               </tr>
               <tr
                 style="
@@ -224,7 +224,7 @@
                   height: 40px;
                 ">
                 <td style="padding-left: 4px; font-weight: bold">Email:</td>
-                <td>{{ quotation.fields.contact_email.stringValue }}</td>
+                <td>{{ quo.email }}</td>
               </tr>
             </v-table></v-col
           >
@@ -261,35 +261,30 @@
                 </tr>
               </thead>
               <tbody style="font-weight: normal; font-size: 14px">
-                <tr
-                  v-for="(item, index) in quotation.fields.product.arrayValue
-                    .values"
-                  :key="index">
+                <tr v-for="(item, index) in product" :key="index">
                   <td class="text-center" style="font-size: xx-small">
                     {{ index + 1 }}
                   </td>
                   <td class="text-center" style="font-size: xx-small">
-                    {{ item.mapValue.fields.product_code.stringValue }}
+                    {{ item.code }}
                   </td>
                   <td class="text-left" style="font-size: xx-small">
-                    {{ item.mapValue.fields.product_name.stringValue }}
+                    {{ item.name }}
                   </td>
                   <td class="text-center" style="font-size: xx-small">
-                    {{ item.mapValue.fields.product_amount.stringValue }}
+                    {{ item.qty }}
                   </td>
                   <td class="text-center" style="font-size: xx-small">
-                    {{
-                      item.mapValue.fields.product_price_per_unit.stringValue
-                    }}
+                    {{ item.price_per_unit }}
                   </td>
                   <td class="text-center" style="font-size: xx-small">
-                    {{ item.mapValue.fields.product_discount.stringValue }}
+                    {{ item.discount }}
                   </td>
                   <td class="text-center" style="font-size: xx-small">
-                    {{ item.mapValue.fields.product_tax.stringValue }}
+                    {{ item.tax }}
                   </td>
                   <td class="text-center" style="font-size: xx-small">
-                    {{ item.mapValue.fields.product_total.stringValue }}
+                    {{ item.amount }}
                   </td>
                 </tr>
               </tbody>
@@ -306,7 +301,7 @@
                 <td style="width: 570px; font-weight: bold">หมายเหตุ:</td>
                 <td style="width: 100px">มัดจำ</td>
                 <td style="width: 76px; text-align: end">
-                  {{ quotation.fields.earnest_money.stringValue }}
+                  {{ quo.earnest_money }}
                   บาท&nbsp;&nbsp;
                 </td>
               </tr>
@@ -315,14 +310,14 @@
                   <v-row>
                     <v-col cols="3"> กำหนดยืนราคา </v-col>
                     <v-col cols="2">
-                      {{ quotation.fields.price_validity_period.stringValue }}
+                      {{ quo.price_validate_period }}
                     </v-col>
                     <v-col cols="2"> วัน </v-col>
                   </v-row>
                 </td>
                 <td>รวมเงิน</td>
                 <td style="text-align: end">
-                  {{ quotation.fields.sub_total.stringValue }} บาท&nbsp;&nbsp;
+                  {{ quo.total_price }} บาท&nbsp;&nbsp;
                 </td>
               </tr>
               <tr>
@@ -332,7 +327,7 @@
                 </td>
                 <td>มูลค่าสินค้า</td>
                 <td style="text-align: end">
-                  {{ quotation.fields.vat.stringValue }}
+                  {{ quo.vat }}
                   บาท&nbsp;&nbsp;
                 </td>
               </tr>
@@ -342,7 +337,7 @@
                 </td>
                 <td>ส่วนลดสินค้า</td>
                 <td style="text-align: end">
-                  {{ quotation.fields.less_cash_discount.stringValue }}
+                  {{ quo.less_cash_discount }}
                   บาท&nbsp;&nbsp;
                 </td>
               </tr>
@@ -353,9 +348,7 @@
                 </td>
                 <td>ภาษีมูลค่าเพิ่ม 7%</td>
                 <td style="text-align: end">
-                  {{
-                    quotation.fields.product_value.stringValue
-                  }}
+                  {{ quo.net_price }}
                   บาท&nbsp;&nbsp;
                 </td>
               </tr>
@@ -365,7 +358,7 @@
                 </td>
                 <td>จำนวนเงินทั้งสิ้น</td>
                 <td style="text-align: end">
-                  {{ quotation.fields.grand_total.stringValue }} บาท&nbsp;&nbsp;
+                  {{ quo.total_net_price }} บาท&nbsp;&nbsp;
                 </td>
               </tr>
             </v-table>
@@ -537,11 +530,7 @@
     style="margin-top: -2rem; background-color: rgb(225, 225, 241)"
     class="hide-btn"
     ><v-col style="text-align: right">
-      <v-btn
-        color="yellow-darken-4"
-        @click="
-          $router.push(`/qpform/quoedit/${quotation.fields.id.stringValue}`)
-        "
+      <v-btn color="yellow-darken-4" @click="dialog3 = true"
         >แก้ไขเอกสารใบเสนอราคา</v-btn
       ></v-col
     ><v-col style="text-align: left">
@@ -550,36 +539,139 @@
       ></v-col
     ></v-row
   >
+
+  <a-modal
+    v-model:visible="dialog3"
+    title="กรุณากรอกราคาของทัวน์ใหม่ ก่อนแก้ไขใบเสนอราคา">
+    <template #footer>
+      <a-button key="back" @click="dialog3 = false">ยกเลิก</a-button>
+      <a-button
+        key="submit"
+        type="primary"
+        :loading="tour_program.loading"
+        @click="onProductChange"
+        >ไปหน้าแก้ไข</a-button
+      >
+    </template>
+    <v-row>
+      <v-col>
+        <label
+          for="base-input"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >ราคาต่อหน่วย</label
+        >
+        <input
+          type="text"
+          id="base-input"
+          v-model.number="tour_program.price_per_unit"
+          class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+      </v-col>
+      <v-col>
+        <label
+          for="base-input"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >ภาษี (0% 7% 9%)</label
+        >
+        <select
+          style="height: 55%"
+          v-model="tour_program.tax"
+          class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+          <option value="0%">0%</option>
+          <option value="7%">7%</option>
+          <option value="9%">9%</option>
+        </select>
+      </v-col>
+      <v-col>
+        <label
+          for="base-input"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >ส่วนลด</label
+        >
+        <input
+          type="text"
+          id="base-input"
+          v-model.number="tour_program.discount"
+          class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+      </v-col>
+    </v-row>
+  </a-modal>
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
-import { read_one_data_conditions } from "~~/services/configs";
+import { read_all_data, update_data } from "~~/services/pyapi";
 const key = "updatable";
 export default defineComponent({
   data() {
     return {
-      quotation: {} as any,
+      tour_id: "",
+      quo: {} as any,
+      product: [] as any,
       go: false,
+      dialog3: false,
+      tour_program: {
+        price_per_unit: 0,
+        tax: "",
+        discount: 0,
+        loading: false,
+      },
     };
   },
-  mounted() {
+  async mounted() {
+    this.tour_id = String(this.$route.query.tid);
     this.$message.loading({
       content: "กำลังโหลดข้อมูลใบเสนอราคา และสร้างเป็นเอกสาร",
       key,
     });
-    read_one_data_conditions(
-      "quotation_detail",
-      "tour_id",
-      String(this.$route.params.tid)
-    ).then((res) => {
-      this.$message.success({ content: "สำเร็จ", key, duration: 1 });
-      this.go = true;
-      this.quotation = res[0];
+    const data = await read_all_data(`quotations?tour_id=${this.tour_id}`);
+    data.length > 0 ? (this.go = true) : (this.go = false);
+    this.quo = data[0];
+
+    const product = await read_all_data(`products?tour_id=${this.tour_id}`);
+    this.product = product;
+    this.tour_program.price_per_unit = product[0].price_per_unit;
+    this.tour_program.tax = product[0].tax;
+    this.tour_program.discount = product[0].discount;
+
+    this.$message.success({
+      content: "โหลดข้อมูลเรียบร้อยแล้ว",
+      key,
+      duration: 2,
     });
   },
   methods: {
     print() {
       window.print();
+    },
+    onProductChange() {
+      let total = this.tour_program.price_per_unit;
+      var amount = 0;
+      if (this.tour_program.tax == "7%") {
+        amount = total + total * 0.07 - this.tour_program.discount;
+      } else if (this.tour_program.tax == "9%") {
+        amount = total + total * 0.09 - this.tour_program.discount;
+      } else {
+        amount = total - this.tour_program.discount;
+      }
+      const payload = {
+        tour_id: this.tour_id,
+        code: this.product[0].code,
+        name: this.product[0].name,
+        price_per_unit: this.tour_program.price_per_unit,
+        tax: this.tour_program.tax,
+        discount: this.tour_program.discount,
+        desc: this.product[0].desc,
+        qty: this.product[0].qty,
+        unit: this.product[0].unit,
+        amount: amount,
+      };
+      update_data("product", this.product[0].id, payload).then(() => {
+        this.$message.success({
+          content: "แก้ไขข้อมูลสินค้าเรียบร้อยแล้ว",
+          key,
+          duration: 2,
+        });
+        this.$router.push(`/qpform/quoedit/${this.tour_id}`);
+      });
     },
   },
 });

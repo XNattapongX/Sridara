@@ -575,7 +575,7 @@ export default defineComponent({
         confirm_price_within: dayjs(this.confirm_price_within).format(
           "DD/MM/BBBB"
         ),
-        dalivery_date: dayjs(this.delivery_date).format("DD/MM/BBBB"),
+        delivery_date: dayjs(this.delivery_date).format("DD/MM/BBBB"),
         sales_person: this.sales_person,
         sale_department: this.sale_department,
         customer_tel: this.contact_tel,
@@ -607,7 +607,7 @@ export default defineComponent({
         return false;
       }
       if (this.product_qty <= 0) {
-        this.$message.error("กรุณากรอกจำน0สินค้า", 3);
+        this.$message.error("กรุณากรอกจำนวนสินค้า", 3);
         return false;
       }
       if (this.product_price_per_unit == 0) {

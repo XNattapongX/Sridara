@@ -183,7 +183,7 @@
           style="margin-right: 1rem"
           variant="tonal"
           color="light-blue-accent-4"
-          @click="$router.push(`/quotation-paper/${tour_id}`)"
+          @click="$router.push(`/paper/quotation-paper?tid=${tour_id}`)"
           >ดูใบเสนอราคา</v-btn
         >
         <v-btn
@@ -432,7 +432,9 @@ import {
   genRanDec,
 } from "~~/services/pyapi";
 import locale from "ant-design-vue/es/date-picker/locale/th_TH";
-import { billing_note_detail, tax_invoice_detail } from "~~/services/payload";
+import dayjs from "dayjs";
+import buddhistEra from "dayjs/plugin/buddhistEra";
+dayjs.extend(buddhistEra);
 export default {
   setup() {
     return {
@@ -444,7 +446,12 @@ export default {
     this.tour_data = await read_one_data("tour", this.tour_id);
     this.hotels_ls = await read_all_data("hotels?tour_id=" + this.tour_id);
     this.members_ls = await read_all_data("members?tour_id=" + this.tour_id);
+    const quo_res = await read_all_data(`quotations?tour_id=${this.tour_id}`);
+    quo_res.length ? (this.haveQuotation = true) : (this.haveQuotation = false);
     this.loading = false;
+
+    this.billing.billing_note_no = genRanDec(7);
+    this.billing.billing_note_date = dayjs(new Date());
   },
   methods: {
     validateQuotation() {
@@ -532,15 +539,15 @@ export default {
     generateBilling() {
       if (this.validateBilling()) {
         this.loadGenBill = true;
-        const raw = billing_note_detail(
-          this.tour_id,
-          this.billing.billing_note_no,
-          this.billing.billing_note_date,
-          this.billing.billing_note_fax
-        );
-        create_data("billing_note", raw).then(() => {
+        const payload = {
+          tour_id: this.tour_id,
+          no: this.billing.billing_note_no,
+          date: dayjs(this.billing.billing_note_date).format("DD/MM/BBBB"),
+          fax: this.billing.billing_note_fax,
+        };
+        create_data("billing", payload).then(() => {
           this.dialog = false;
-          this.$router.push(`/billing-paper/${this.tour_id}`);
+          this.$router.push(`/paper/billing-paper?tid${this.tour_id}`);
         });
       }
     },

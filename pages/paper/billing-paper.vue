@@ -100,7 +100,7 @@
                   width="25% ">
                   ชื่อลูกค้า:
                 </td>
-                <td colspan="2">{{ quo.customer_name.stringValue }}</td>
+                <td colspan="2">{{ quo.customer_name }}</td>
               </tr>
               <tr
                 style="
@@ -113,7 +113,7 @@
                 <td colspan="2" style="padding-left: 4px; font-weight: bold">
                   ID TEX:
                 </td>
-                <td colspan="2">{{ quo.tax_id.stringValue }}</td>
+                <td colspan="2">{{ quo.tax_id }}</td>
               </tr>
               <tr
                 style="
@@ -126,7 +126,7 @@
                 <td colspan="2" style="padding-left: 4px; font-weight: bold">
                   ชื่อผู้ติดต่อ:
                 </td>
-                <td colspan="2">{{ quo.contact_name.stringValue }}</td>
+                <td colspan="2">{{ quo.contact_name }}</td>
               </tr>
               <tr
                 style="
@@ -142,7 +142,7 @@
                   ที่อยู่:
                 </td>
                 <td colspan="2">
-                  {{ quo.customer_address.stringValue }}
+                  {{ quo.customer_address }}
                 </td>
               </tr>
               <tr
@@ -154,7 +154,7 @@
                   height: 40px;
                 ">
                 <td style="padding-left: 4px" colspan="3">
-                  <b>โทร:</b> {{ quo.contact_tel.stringValue }}
+                  <b>โทร:</b> {{ quo.contact_tel }}
                 </td>
                 <td
                   style="
@@ -164,7 +164,7 @@
                     border-bottom: 1px none #000000;
                     border-left: 1px solid #000000;
                   ">
-                  <b>Fax:</b> {{ bill.billing_note_fax.stringValue }}
+                  <b>Fax:</b> {{ bill.billing_note_fax }}
                 </td>
               </tr>
             </v-table></v-col
@@ -182,7 +182,7 @@
                 <td style="padding-left: 4px; font-weight: bold" width="40%">
                   เลขที่:
                 </td>
-                <td>{{ bill.billing_note_no.stringValue }}</td>
+                <td>{{ bill.billing_note_no }}</td>
               </tr>
               <tr
                 style="
@@ -193,7 +193,7 @@
                   height: 40px;
                 ">
                 <td style="padding-left: 4px; font-weight: bold">วันที่:</td>
-                <td>{{ bill.billing_note_date.stringValue }}</td>
+                <td>{{ bill.billing_note_date }}</td>
               </tr>
               <tr
                 style="
@@ -206,7 +206,7 @@
                 <td style="padding-left: 4px; font-weight: bold">
                   รหัสลูกค้า:
                 </td>
-                <td>{{ quo.customer_code.stringValue }}</td>
+                <td>{{ quo.customer_code }}</td>
               </tr>
               <tr
                 style="
@@ -219,7 +219,7 @@
                 <td style="padding-left: 4px; font-weight: bold">
                   ผู้เสนอขาย:
                 </td>
-                <td>{{ quo.seller_name.stringValue }}</td>
+                <td>{{ quo.seller_name }}</td>
               </tr>
               <tr
                 style="
@@ -230,7 +230,7 @@
                   height: 40px;
                 ">
                 <td style="padding-left: 4px; font-weight: bold">ฝ่าย:</td>
-                <td>{{ quo.seller_department.stringValue }}</td>
+                <td>{{ quo.seller_department }}</td>
               </tr>
               <tr
                 style="
@@ -243,7 +243,7 @@
                 <td style="padding-left: 4px; font-weight: bold">
                   ยืนยันราคาวันที่:
                 </td>
-                <td>{{ quo.confirm_price_within.stringValue }}</td>
+                <td>{{ quo.confirm_price_within }}</td>
               </tr>
             </v-table></v-col
           >
@@ -275,34 +275,30 @@
                 </tr>
               </thead>
               <tbody style="font-weight: normal; font-size: 14px">
-                <tr
-                  v-for="(item, index) in quo.product.arrayValue.values"
-                  :key="index">
+                <tr v-for="(item, index) in prod" :key="index">
                   <td class="text-center" style="font-size: xx-small">
                     {{ index + 1 }}
                   </td>
                   <td class="text-center" style="font-size: xx-small">
-                    {{ item.mapValue.fields.product_code.stringValue }}
+                    {{ item.product_code }}
                   </td>
                   <td class="text-left" style="font-size: xx-small">
-                    {{ item.mapValue.fields.product_name.stringValue }}
+                    {{ item.product_name }}
                   </td>
                   <td class="text-center" style="font-size: xx-small">
-                    {{ item.mapValue.fields.product_amount.stringValue }}
+                    {{ item.product_amount }}
                   </td>
                   <td class="text-center" style="font-size: xx-small">
-                    {{
-                      item.mapValue.fields.product_price_per_unit.stringValue
-                    }}
+                    {{ item.product_price_per_unit }}
                   </td>
                   <td class="text-center" style="font-size: xx-small">
-                    {{ item.mapValue.fields.product_discount.stringValue }}
+                    {{ item.product_discount }}
                   </td>
                   <td class="text-center" style="font-size: xx-small">
-                    {{ item.mapValue.fields.product_tax.stringValue }}
+                    {{ item.product_tax }}
                   </td>
                   <td class="text-center" style="font-size: xx-small">
-                    {{ item.mapValue.fields.product_total.stringValue }}
+                    {{ item.product_total }}
                   </td>
                 </tr>
               </tbody>
@@ -318,7 +314,7 @@
                 <td style="width: 580px; font-weight: bold">หมายเหตุ:</td>
                 <td style="width: 95px">รวมเงิน</td>
                 <td style="width: 71px; text-align: end">
-                  {{ quo.sub_total.stringValue }} บาท&nbsp;&nbsp;
+                  {{ quo.sub_total }} บาท&nbsp;&nbsp;
                 </td>
               </tr>
               <tr>
@@ -327,7 +323,7 @@
                 </td>
                 <td>มัดจำ 100%</td>
                 <td style="text-align: end">
-                  {{ quo.earnest_money.stringValue }} บาท&nbsp;&nbsp;
+                  {{ quo.earnest_money }} บาท&nbsp;&nbsp;
                 </td>
               </tr>
               <tr>
@@ -336,9 +332,7 @@
                   “บริษัทศรีดาราทัวร์จำกัด” และขีดฆ่าหรือผู้ถือออก
                 </td>
                 <td>มูลค่าคิดภาษี</td>
-                <td style="text-align: end">
-                  {{ quo.vat.stringValue }} บาท&nbsp;&nbsp;
-                </td>
+                <td style="text-align: end">{{ quo.vat }} บาท&nbsp;&nbsp;</td>
               </tr>
 
               <tr>
@@ -348,7 +342,7 @@
                 </td>
                 <td>ภาษีมูลค่าเพิ่ม</td>
                 <td style="text-align: end">
-                  {{ quo.product_value.stringValue }} บาท&nbsp;&nbsp;
+                  {{ quo.product_value }} บาท&nbsp;&nbsp;
                 </td>
               </tr>
               <tr>
@@ -358,15 +352,13 @@
                       ตัวอักษร :
                     </v-col>
                     <v-col style="margin: auto; padding: 1px" cols="8">
-                      {{
-                        ArabicNumberToText(Number(quo.grand_total.stringValue))
-                      }}
+                      {{ ArabicNumberToText(Number(quo.grand_total)) }}
                     </v-col>
                   </v-row>
                 </td>
                 <td>ยอดสุทธิ</td>
                 <td style="text-align: end">
-                  {{ quo.grand_total.stringValue }} บาท&nbsp;&nbsp;
+                  {{ quo.grand_total }} บาท&nbsp;&nbsp;
                 </td>
               </tr>
             </v-table>
@@ -543,11 +535,10 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import {
-  read_one_data_conditions,
+  read_all_data,
   ArabicNumberToText,
   update_data,
-} from "~~/services/configs";
-import { billing_note_detail } from "~~/services/payload";
+} from "~~/services/pyapi";
 import locale from "ant-design-vue/es/date-picker/locale/th_TH";
 const key = "updated";
 export default defineComponent({
@@ -559,8 +550,10 @@ export default defineComponent({
   },
   data() {
     return {
+      tour_id: "",
       quo: {} as any,
       bill: {} as any,
+      prod: [] as any,
       onLoad: false,
       dialog: false,
       billing: {
@@ -571,31 +564,16 @@ export default defineComponent({
       loadGenBill: false,
     };
   },
-  mounted() {
+  async mounted() {
+    this.tour_id = String(this.$route.query.tid);
     this.$message.loading({
       content: "กำลังโหลดข้อมูลใบแจ้งหนี้ และสร้างเป็นเอกสาร",
       key,
     });
-    read_one_data_conditions(
-      "billing_note",
-      "tour_id",
-      String(this.$route.params.tid)
-    ).then((res: any) => {
-      this.bill = res[0].fields;
-      read_one_data_conditions(
-        "quotation_detail",
-        "tour_id",
-        String(this.$route.params.tid)
-      ).then((res: any) => {
-        this.onLoad = true;
-        this.$message.success({
-          content: "สำเร็จ",
-          key,
-          duration: 1,
-        });
-        this.quo = res[0].fields;
-      });
-    });
+    this.quo = await read_all_data(`quotations?tour_id=${this.tour_id}`);
+    this.bill = await read_all_data(`billings?tour_id=${this.tour_id}`);
+    this.prod = await read_all_data(`products?tid=${this.tour_id}`);
+    this.onLoad = true;
   },
   methods: {
     print() {
@@ -616,29 +594,29 @@ export default defineComponent({
       }
       return true;
     },
-    updateBilling() {
-      if (this.validateBillingForm()) {
-        this.loadGenBill = true;
-        const raw: any = billing_note_detail(
-          String(this.$route.params.tid),
-          this.billing.billing_note_no,
-          new Date(this.billing.billing_note_date),
-          this.billing.billing_note_fax
-        );
-        raw.fields.id = { stringValue: this.bill.id.stringValue };
-        update_data("billing_note", this.bill.id.stringValue, raw).then(
-          (res: any) => {
-            this.$message.success({
-              content: "สำเร็จ",
-              key,
-              duration: 1,
-            });
-            this.loadGenBill = false;
-            window.location.reload();
-          }
-        );
-      }
-    },
+    // updateBilling() {
+    //   if (this.validateBillingForm()) {
+    //     this.loadGenBill = true;
+    //     const raw: any = billing_note_detail(
+    //       String(this.$route.params.tid),
+    //       this.billing.billing_note_no,
+    //       new Date(this.billing.billing_note_date),
+    //       this.billing.billing_note_fax
+    //     );
+    //     raw.fields.id = {: this.bill.id };
+    //     update_data("billing_note", this.bill.id, raw).then(
+    //       (res: any) => {
+    //         this.$message.success({
+    //           content: "สำเร็จ",
+    //           key,
+    //           duration: 1,
+    //         });
+    //         this.loadGenBill = false;
+    //         window.location.reload();
+    //       }
+    //     );
+    //   }
+    // },
   },
 });
 </script>
