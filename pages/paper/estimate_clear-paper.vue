@@ -3,7 +3,7 @@
     style="display: flex; background-color: rgb(225, 225, 241); z-index: -111"
   >
     <div class="page">
-      <v-container> </v-container>
+      <v-container></v-container>
     </div>
   </div>
   <v-row
