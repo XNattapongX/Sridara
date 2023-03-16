@@ -417,12 +417,14 @@ export default defineComponent({
     validateHotelData() {
       if (
         this.formHotel.name == "" ||
-        this.formHotel.amount_room < 0 ||
+        this.formHotel.amount_room <= 0 ||
         this.formHotel.check_in == "" ||
         this.formHotel.check_out == ""
       ) {
         this.$message.error("กรุณากรอกข้อมูลให้ครบถ้วน");
         return false;
+      } else {
+        return true;
       }
     },
     addHotel() {
