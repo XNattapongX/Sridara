@@ -1,245 +1,139 @@
 <template>
   <div
-    style="display: flex; background-color: rgb(225, 225, 241); z-index: -111">
+    style="display: flex; background-color: rgb(225, 225, 241); z-index: -111"
+  >
     <div class="page" v-if="go">
       <v-container>
-        <v-row style="font-size: 12px; padding: 1px; margin: 1px auto">
-          <v-col style="padding: 1px; margin: 0 auto"
-            ><img
-              src="https://www.adt.or.th/image/ADT1%20-%201108%20-%200263.jpg"
-              class="w-141px h-47px"
-              style="margin: auto"
-              alt="sridara Logo"
-          /></v-col>
-          <v-col style="padding: 1px; margin: 0 auto" cols="7"
-            ><v-sheet style="text-align: center; font-size: 12px">
-              บริษัท ศรีดาราทัวร์ จำกัด (สำนักงานใหญ่)
-              <td></td>
-              123 ถนน ชยางกูร หมู่ 19 ตำบล บุ่ง อำเภอเมืองอำนาจเจริญ
-              จังหวัดอำนาจเจริญ 37000
-              <td></td>
-              เลขประจำตัวผู้เสียภาษี0375552000037 โทร.082-3656514
-              <td></td>
-              www.facebook.com/sridaratourfanpage
-              <td></td>
-              ********************************************************
-            </v-sheet>
+        <v-row>
+          <v-col cols="8">
+            <v-row>
+              <v-col>
+                <img
+                  src="https://www.adt.or.th/image/ADT1%20-%201108%20-%200263.jpg"
+                  class="w-141px h-47px"
+                  alt="sridara Logo"
+                />
+                <v-sheet style="text-align: left; font-size: 12px">
+                  <div>บริษัท ศรีดาราทัวร์ จำกัด (สำนักงานใหญ่)</div>
+                  <div>
+                    123 ถนนชยางกูร หมู่ 19 ตำบลบุ่ง อำเภอเมืองอำนาจเจริญ
+                    จังหวัดอำนาจเจริญ 37000
+                  </div>
+                  <div>เลขประจำตัวผู้เสียภาษี: 0375552000037</div>
+                  โทร.082-3656514
+                  <div><a>www.facebook.com/sridaratourfanpage</a></div>
+                </v-sheet>
+              </v-col>
+            </v-row>
+
+            <v-row style="font-size: 12px; padding-left: 4px; margin: auto">
+              <v-col style="padding: 0" cols="10">
+                <v-table>
+                  <tr style="height: 10px">
+                    <td colspan="2" style="font-weight: bold">&nbsp;</td>
+                  </tr>
+                  <tr style="height: 20px">
+                    <td colspan="2">
+                      <b>ชื่อลูกค้า: </b>
+                    </td>
+                    <td colspan="2">{{ quo.customer_name }}</td>
+                  </tr>
+                  <tr style="height: 20px">
+                    <td colspan="2">
+                      <b>ชื่อผู้ติดต่อ: </b>
+                    </td>
+                    <td colspan="2">{{ quo.contact_name }}</td>
+                  </tr>
+                  <tr style="height: 20px">
+                    <td colspan="2"><b>ที่อยู่: </b></td>
+                    <td colspan="2">{{ quo.address }}</td>
+                  </tr>
+                  <tr style="height: 20px">
+                    <td colspan="2">
+                      <b>ID TAX: </b>
+                    </td>
+                    <td colspan="2">{{ quo.tax_id }}</td>
+                  </tr>
+                  <tr style="height: 20px">
+                    <td colspan="2">
+                      <b>โทร: </b>
+                    </td>
+                    <td colspan="2">{{ quo.customer_tel }}</td>
+                  </tr>
+                  <tr style="height: 20px">
+                    <td colspan="2">
+                      <b>Email: </b>
+                    </td>
+                    <td colspan="2">{{ quo.email }}</td>
+                  </tr>
+                  <tr style="height: 10px">
+                    <td colspan="2" style="font-weight: bold">&nbsp;</td>
+                  </tr>
+                </v-table>
+              </v-col>
+            </v-row>
           </v-col>
 
-          <v-col style="padding: 1px; margin: 0 auto">
-            <v-table>
+          <v-col>
+            <v-table style="font-size: 12px">
               <tr style="text-align: center">
-                <td
-                  colspan="2"
-                  style="
-                    border-top: 1px solid #000000;
-                    border-right: 1px solid #000000;
-                    border-bottom: 1px none #000000;
-                    border-left: 1px solid #000000;
-                    width: 170px;
-                    font-weight: bold;
-                  ">
-                  ใบเสนอราคา/ยืนยันการสั่งซื้อ
-                </td>
-              </tr>
-              <tr style="text-align: center">
-                <td
-                  colspan="2"
-                  style="
-                    border-top: 1px none #000000;
-                    border-right: 1px solid #000000;
-                    border-bottom: 1px solid #000000;
-                    border-left: 1px solid #000000;
-                  ">
-                  Quatation
+                <td colspan="2" style="border-bottom: 1px solid lightgray">
+                  <div style="font-size: 14px">
+                    <b>ใบเสนอราคา/ยืนยันการสั่งซื้อ</b>
+                  </div>
+                  <div>Quatation</div>
                 </td>
               </tr>
               <tr>
-                <td
-                  style="
-                    border: 1px solid black;
-                    width: 50px;
-                    font-weight: bold;
-                    padding: 0px 0px 0px 3px;
-                  ">
-                  เลขที่
-                </td>
-                <td style="border: 1px solid black; padding: 0px 0px 0px 3px">
-                  {{ quo.no }}
-                </td>
+                <td><b>เลขที่:</b></td>
+                <td style="text-align: right">{{ quo.no }}</td>
               </tr>
               <tr>
-                <td
+                <td><b>วันที่:</b></td>
+                <td style="text-align: right">{{ quo.date }}</td>
+              </tr>
+              <tr style="border-top: 1px solid lightgray">
+                <td><b>รหัสลูกค้า:</b></td>
+                <td style="text-align: right">{{ quo.customer_code }}</td>
+              </tr>
+              <tr>
+                <td><b>ผู้เสนอขาย:</b></td>
+                <td style="text-align: right">{{ quo.sales_person }}</td>
+              </tr>
+              <tr>
+                <td><b>ฝ่าย:</b></td>
+                <td style="text-align: right">{{ quo.sale_department }}</td>
+              </tr>
+              <tr style="border-top: 1px solid lightgray">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td><b>ยืนยันราคาภายใน:</b></td>
+                <td style="text-align: right">
+                  {{ quo.confirm_price_within }}
+                </td>
+              </tr>
+              <tr style="border-top: 1px solid lightgray">
+                <td><b>วันส่งของ:</b></td>
+                <td style="text-align: right">{{ quo.delivery_date }}</td>
+              </tr>
+            </v-table>
+          </v-col>
+        </v-row>
+
+        <v-row
+          style="padding: 1px; margin: auto; border-bottom: 1px solid black"
+        >
+          <v-col style="padding: 1px; height: 400px">
+            <v-table density="compact" height="auto">
+              <thead style="font-weight: bold; font-size: 14px">
+                <tr
                   style="
-                    border: 1px solid black;
-                    width: 50px;
-                    font-weight: bold;
-                    padding: 0px 0px 0px 3px;
-                  ">
-                  วันที่
-                </td>
-                <td style="border: 1px solid black; padding: 0px 0px 0px 3px">
-                  {{ quo.date }}
-                </td>
-              </tr>
-            </v-table></v-col
-          >
-        </v-row>
-
-        <v-row style="font-size: 12px; padding: 1px; margin: auto">
-          <v-col style="padding: 0" cols="7">
-            <v-table>
-              <tr
-                style="
-                  border-top: 1px solid #000000;
-                  border-right: none;
-                  border-bottom: 1px solid #000000;
-                  border-left: 1px solid #000000;
-                  height: 40px;
-                ">
-                <td style="padding-left: 4px; font-weight: bold" width="25% ">
-                  ชื่อลูกค้า:
-                </td>
-                <td>{{ quo.customer_name }}</td>
-              </tr>
-              <tr
-                style="
-                  border-top: 1px solid #000000;
-                  border-right: none;
-                  border-bottom: 1px solid #000000;
-                  border-left: 1px solid #000000;
-                  height: 40px;
-                ">
-                <td style="padding-left: 4px; font-weight: bold">ID TEX:</td>
-                <td>{{ quo.tax_id }}</td>
-              </tr>
-              <tr
-                style="
-                  border-top: 1px solid #000000;
-                  border-right: none;
-                  border-bottom: 1px solid #000000;
-                  border-left: 1px solid #000000;
-                  height: 40px;
-                ">
-                <td style="padding-left: 4px; font-weight: bold">
-                  ชื่อผู้ติดต่อ:
-                </td>
-                <td>{{ quo.contact_name }}</td>
-              </tr>
-              <tr
-                style="
-                  border-top: 1px solid #000000;
-                  border-right: none #000000;
-                  border-bottom: 1px solid #000000;
-                  border-left: 1px solid #000000;
-                  height: 80px;
-                ">
-                <td style="padding: auto; padding-left: 4px; font-weight: bold">
-                  ที่อยู่:
-                </td>
-                <td>{{ quo.address }}</td>
-              </tr>
-              <tr
-                style="
-                  border-top: 1px solid #000000;
-                  border-right: none;
-                  border-bottom: 1px solid #000000;
-                  border-left: 1px solid #000000;
-                  height: 40px;
-                ">
-                <td style="padding-left: 4px; font-weight: bold">โทร:</td>
-                <td>{{ quo.customer_tel }}</td>
-              </tr>
-            </v-table></v-col
-          >
-          <v-col style="padding: 0" cols="5"
-            ><v-table>
-              <tr
-                style="
-                  border-top: 1px solid #000000;
-                  border-right: 1px solid #000000;
-                  border-bottom: 1px solid #000000;
-                  border-left: 1px solid #000000;
-                  height: 40px;
-                ">
-                <td style="padding-left: 4px; font-weight: bold" width="40%">
-                  รหัสลูกค้า:
-                </td>
-                <td>{{ quo.customer_code }}</td>
-              </tr>
-              <tr
-                style="
-                  border-top: 1px solid #000000;
-                  border-right: 1px solid #000000;
-                  border-bottom: 1px solid #000000;
-                  border-left: 1px solid #000000;
-                  height: 40px;
-                ">
-                <td style="padding-left: 4px; font-weight: bold">
-                  ผู้เสนอขาย:
-                </td>
-                <td>{{ quo.sales_person }}</td>
-              </tr>
-              <tr
-                style="
-                  border-top: 1px solid #000000;
-                  border-right: 1px solid #000000;
-                  border-bottom: 1px solid #000000;
-                  border-left: 1px solid #000000;
-                  height: 40px;
-                ">
-                <td style="padding-left: 4px; font-weight: bold">ฝ่าย:</td>
-                <td>{{ quo.sale_department }}</td>
-              </tr>
-              <tr
-                style="
-                  border-top: 1px solid #000000;
-                  border-right: 1px solid #000000;
-                  border-bottom: 1px solid #000000;
-                  border-left: 1px solid #000000;
-                  height: 40px;
-                ">
-                <td style="padding-left: 4px; font-weight: bold">
-                  ยืนยันราคาภายใน:
-                </td>
-                <td>{{ quo.confirm_price_within }}</td>
-              </tr>
-              <tr
-                style="
-                  border-top: 1px solid #000000;
-                  border-right: 1px solid #000000;
-                  border-bottom: 1px solid #000000;
-                  border-left: 1px solid #000000;
-                  height: 40px;
-                ">
-                <td style="padding-left: 4px; font-weight: bold">วันส่งของ:</td>
-                <td>{{ quo.delivery_date }}</td>
-              </tr>
-              <tr
-                style="
-                  border-top: 1px solid #000000;
-                  border-right: 1px solid #000000;
-                  border-bottom: 1px solid #000000;
-                  border-left: 1px solid #000000;
-                  height: 40px;
-                ">
-                <td style="padding-left: 4px; font-weight: bold">Email:</td>
-                <td>{{ quo.email }}</td>
-              </tr>
-            </v-table></v-col
-          >
-        </v-row>
-
-        <v-row style="padding: 1px; margin: auto">
-          <v-col style="padding: 1px; height: 400px; border: 1px solid black">
-            <v-table density="compact" height="397px">
-              <thead
-                style="
-                  font-weight: bold;
-                  font-size: 14px;
-                  border-bottom: 1px solid black;
-                ">
-                <tr>
+                    border-top: 1px solid black;
+                    border-bottom: 1px solid black;
+                  "
+                >
                   <td class="text-center" style="font-size: xx-small">ลำดับ</td>
                   <td class="text-center" style="font-size: xx-small">
                     รหัสสินค้า
@@ -292,19 +186,93 @@
           </v-col>
         </v-row>
 
+        <v-row
+          style="
+            font-size: 12px;
+            padding-left: 4px;
+            padding-right: 4px;
+            margin: auto;
+            border-bottom: 1px solid black;
+          "
+        >
+          <v-col style="padding: 0" cols="9"
+            ><v-table>
+              <tr>
+                <td colspan="6">&nbsp;</td>
+              </tr>
+              <tr>
+                <td colspan="6"><b>หมายเหตุ:</b></td>
+              </tr>
+              <tr>
+                <td colspan="6">
+                  <b>กำหนดยืนราคา &nbsp;{{ quo.earnest_money }}&nbsp;บาท</b>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="6">
+                  2.หากชำระเงินด้วยเช็คโปรดขีดคร่อมในนาม
+                  “บริษัทศรีดาราทัวร์จำกัด” และขีดฆ่าหรือผู้ถือออก
+                </td>
+              </tr>
+              <tr>
+                <td colspan="6">
+                  3.การชำระเงินด้วยเช็คจะสมบูรณ์เมื่อ
+                  บริษัทฯได้รับเงินตามเช็คเรียบร้อย
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <b>ตัวอักษร: </b>
+                </td>
+                <td colspan="4">
+                  <b> dgffdsgfdgsd</b>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="6">&nbsp;</td>
+              </tr>
+            </v-table>
+          </v-col>
+          <v-col style="padding: 0" cols="3"
+            ><v-table style="padding-left: 20px; padding-right: 10px">
+              <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>รวมเงิน</td>
+                <td style="text-align: right">{{ quo.total_price }} บาท</td>
+              </tr>
+              <tr>
+                <td>มัดจำ 100%</td>
+                <td style="text-align: right">{{ quo.earnest_money }} บาท</td>
+              </tr>
+              <tr>
+                <td>มูลค่าคิดภาษี</td>
+                <td style="text-align: right">{{ quo.net_price }} บาท</td>
+              </tr>
+              <tr>
+                <td>ภาษีมูลค่าเพิ่ม</td>
+                <td style="text-align: right">{{ quo.vat }} บาท</td>
+              </tr>
+              <tr>
+                <td><b>ยอดสุทธิ</b></td>
+                <td style="text-align: right">{{ quo.total_net_price }} บาท</td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+            </v-table>
+          </v-col>
+        </v-row>
+
         <v-row style="padding: 1px; margin: auto">
           <v-col style="padding: 0">
             <v-table
               density="compact"
-              style="font-size: 12px; border: 1px solid black; padding: 2px">
-              <tr>
-                <td style="width: 570px; font-weight: bold">หมายเหตุ:</td>
-                <td style="width: 100px">มัดจำ</td>
-                <td style="width: 76px; text-align: end">
-                  {{ quo.earnest_money }}
-                  บาท&nbsp;&nbsp;
-                </td>
-              </tr>
+              style="font-size: 12px; border: 1px solid black; padding: 2px"
+            >
               <tr>
                 <td>
                   <v-row>
@@ -365,162 +333,96 @@
           </v-col>
         </v-row>
 
-        <v-table style="padding: 1px; margin: auto; font-size: 11px">
-          <tr
-            style="
-              border-top: 1px solid #000000;
-              border-right: 1px solid #000000;
-              border-bottom: 1px none #000000;
-              border-left: 1px solid #000000;
-            ">
-            <td>&#32;</td>
-            <td
-              style="
-                border-top: 1px none #000000;
-                border-right: 1px solid #000000;
-                border-bottom: 1px none #000000;
-                border-left: 1px solid #000000;
-              ">
-              &#32;
-            </td>
-            <td
-              style="
-                border-top: 1px none #000000;
-                border-right: 1px solid #000000;
-                border-bottom: 1px none #000000;
-                border-left: 1px solid #000000;
-              ">
-              &#32;
-            </td>
-            <td style="padding: 3px 0px 3px 3px">
-              ข้าพเจ้าเห็นชอบตามรายการที่เสนอ
-            </td>
-          </tr>
-          <tr
-            style="
-              border-top: 1px none #000000;
-              border-right: 1px solid #000000;
-              border-bottom: 1px none #000000;
-              border-left: 1px solid #000000;
-            ">
-            <td>&#32;</td>
-            <td
-              style="
-                border-top: 1px none #000000;
-                border-right: 1px solid #000000;
-                border-bottom: 1px none #000000;
-                border-left: 1px solid #000000;
-              ">
-              &#32;
-            </td>
-            <td
-              style="
-                border-top: 1px none #000000;
-                border-right: 1px solid #000000;
-                border-bottom: 1px none #000000;
-                border-left: 1px solid #000000;
-              ">
-              &#32;
-            </td>
-            <td style="padding: 0px 0px 3px 3px">
-              และขอสั่งซื้อตามรายละเอียดนี้ทุกประการ
-            </td>
-          </tr>
-          <tr>
-            <td
-              style="
-                border-top: 1px none #000000;
-                border-right: 1px solid #000000;
-                border-bottom: 1px solid #000000;
-                border-left: 1px solid #000000;
-                width: 187px;
-              ">
-              <v-table>
-                <tr style="height: 110px">
-                  <td>&#32;</td>
-                </tr>
-                <tr style="text-align: center">
-                  <td></td>
-                </tr>
-                <tr style="text-align: center">
-                  <td>ผู้เสนอราคา</td>
-                </tr>
-                <tr>
-                  <td style="padding: 0px 0px 3px 3px">วันที่</td>
-                </tr>
-              </v-table>
-            </td>
-            <td
-              style="
-                border-top: 1px none #000000;
-                border-right: 1px solid #000000;
-                border-bottom: 1px solid #000000;
-                border-left: 1px solid #000000;
-                width: 187px;
-              ">
-              <v-table>
-                <tr style="height: 110px">
-                  <td>&#32;</td>
-                </tr>
-                <tr style="text-align: center">
-                  <td></td>
-                </tr>
-                <tr style="text-align: center">
-                  <td>ผู้รับเงิน</td>
-                </tr>
-                <tr>
-                  <td style="padding: 0px 0px 3px 3px">วันที่</td>
-                </tr></v-table
-              >
-            </td>
-            <td
-              style="
-                border-top: 1px none #000000;
-                border-right: 1px solid #000000;
-                border-bottom: 1px solid #000000;
-                border-left: 1px solid #000000;
-                width: 187px;
-              ">
-              <v-table>
-                <tr style="height: 110px">
-                  <td>&#32;</td>
-                </tr>
-                <tr style="text-align: center">
-                  <td></td>
-                </tr>
-                <tr style="text-align: center">
-                  <td>ผู้ตรวจสอบ</td>
-                </tr>
-                <tr>
-                  <td style="padding: 0px 0px 3px 3px">วันที่</td>
-                </tr></v-table
-              >
-            </td>
-            <td
-              style="
-                border-top: 1px none #000000;
-                border-right: 1px solid #000000;
-                border-bottom: 1px solid #000000;
-                border-left: 1px solid #000000;
-                width: 187px;
-              ">
-              <v-table>
-                <tr style="height: 110px">
-                  <td>&#32;</td>
-                </tr>
-                <tr style="text-align: center">
-                  <td></td>
-                </tr>
-                <tr style="text-align: center">
-                  <td>ผู้อนุมัติสั่งซื้อ</td>
-                </tr>
-                <tr>
-                  <td style="padding: 0px 0px 3px 3px">วันที่</td>
-                </tr></v-table
-              >
-            </td>
-          </tr>
-        </v-table>
+        <v-row style="margin: auto; font-size: 12px">
+          <v-col>
+            <v-table style="text-align: center">
+              <tr style="font-size: 10px; text-align: left">
+                <td>
+                  <div>&nbsp;</div>
+                  <div>&nbsp;</div>
+                </td>
+              </tr>
+              <tr style="height: 100px">
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>ผู้เสนอราคา</td>
+              </tr>
+              <tr>
+                <td>วันที่</td>
+              </tr>
+              <tr style="border-bottom: 1px solid black">
+                <td>&nbsp;</td>
+              </tr>
+            </v-table>
+          </v-col>
+          <v-col>
+            <v-table style="text-align: center">
+              <tr style="font-size: 10px; text-align: left">
+                <td>
+                  <div>&nbsp;</div>
+                  <div>&nbsp;</div>
+                </td>
+              </tr>
+              <tr style="height: 100px">
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>ผู้รับเงิน</td>
+              </tr>
+              <tr>
+                <td>วันที่</td>
+              </tr>
+              <tr style="border-bottom: 1px solid black">
+                <td>&nbsp;</td>
+              </tr>
+            </v-table>
+          </v-col>
+          <v-col>
+            <v-table style="text-align: center">
+              <tr style="font-size: 10px; text-align: left">
+                <td>
+                  <div>&nbsp;</div>
+                  <div>&nbsp;</div>
+                </td>
+              </tr>
+              <tr style="height: 100px">
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>ผู้ตรวจสอบ</td>
+              </tr>
+              <tr>
+                <td>วันที่</td>
+              </tr>
+              <tr style="border-bottom: 1px solid black">
+                <td>&nbsp;</td>
+              </tr>
+            </v-table>
+          </v-col>
+          <v-col>
+            <v-table>
+              <tr style="font-size: 10px; text-align: left">
+                <td>
+                  <div>ข้าพเจ้าเห็นชอบตามรายการที่เสนอ</div>
+                  <div>และขอสั่งซื้อตามรายละเอียดนี้ทุกประการ</div>
+                </td>
+              </tr>
+              <tr style="height: 100px; font-size: 10px; text-align: left">
+                <td>&nbsp;</td>
+              </tr>
+              <tr style="text-align: center">
+                <td>ผู้อนุมัติสั่งซื้อ</td>
+              </tr>
+              <tr style="text-align: center">
+                <td>วันที่</td>
+              </tr>
+              <tr style="border-bottom: 1px solid black">
+                <td>&nbsp;</td>
+              </tr>
+            </v-table>
+          </v-col>
+        </v-row>
       </v-container>
     </div>
   </div>
@@ -542,7 +444,8 @@
 
   <a-modal
     v-model:visible="dialog3"
-    title="กรุณากรอกราคาของทัวน์ใหม่ ก่อนแก้ไขใบเสนอราคา">
+    title="กรุณากรอกราคาของทัวน์ใหม่ ก่อนแก้ไขใบเสนอราคา"
+  >
     <template #footer>
       <a-button key="back" @click="dialog3 = false">ยกเลิก</a-button>
       <a-button
@@ -564,7 +467,8 @@
           type="text"
           id="base-input"
           v-model.number="tour_program.price_per_unit"
-          class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+          class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        />
       </v-col>
       <v-col>
         <label
@@ -575,7 +479,8 @@
         <select
           style="height: 55%"
           v-model="tour_program.tax"
-          class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+          class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        >
           <option value="0%">0%</option>
           <option value="7%">7%</option>
           <option value="9%">9%</option>
@@ -591,7 +496,8 @@
           type="text"
           id="base-input"
           v-model.number="tour_program.discount"
-          class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+          class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        />
       </v-col>
     </v-row>
   </a-modal>
