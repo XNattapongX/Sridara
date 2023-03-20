@@ -89,11 +89,14 @@
             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >หักภาษี ณ ที่จ่าย</label
           >
-          <input
-            type="text"
+          <select
+            style="height: 55%"
             v-model="receipt_tax"
-            id="large-input"
-            class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" /> </v-col
+            class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <option value="0%">0%</option>
+            <option value="7%">3%</option>
+            <option value="9%">5%</option>
+          </select> </v-col
         ><v-col
           ><label
             for="base-input"

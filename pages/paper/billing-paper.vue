@@ -478,7 +478,7 @@ export default defineComponent({
         const payload = {
           tour_id: this.tour_id,
           no: this.billing.billing_note_no,
-          date: this.billing.billing_note_date,
+          date: dayjs(this.billing.billing_note_date).format("DD/MM/BBBB"),
           fax: this.billing.billing_note_fax,
         };
         update_data("billing", this.bill.id, payload).then((res) => {
