@@ -12,8 +12,21 @@
             <th scope="col" class="px-6 py-3">ชื่อโปรแกรมทัวร์</th>
             <th scope="col" class="px-6 py-3">วันที่เริ่มทริป</th>
             <th scope="col" class="px-6 py-3">วันที่จบทริปงับ</th>
+<<<<<<< HEAD
+            <th scope="col" class="px-6 py-3">วันที่อากาศสดใสไร้เมฆหมอก</th>
+            <th scope="col" class="px-6 py-3">คืนที่ดาวเต็มฟ้า</th>
+=======
             <th scope="col" class="px-6 py-3">วัน</th>
+<<<<<<< HEAD
+<<<<<<< HEAD
+            <th scope="col" class="px-6 py-3">คืนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนน</th>
+>>>>>>> 0aa71e89e8e194d04610524a7af07028e5829f42
+=======
             <th scope="col" class="px-6 py-3">คืนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนwdadadasdadsdaasdadadadasdadasdadds</th>
+>>>>>>> fc3980b52b5893581a799223777dd0959ae3fbda
+=======
+            <th scope="col" class="px-6 py-3">คืน</th>
+>>>>>>> 501ebb6a63b012dd593ccc7aae546e9de7b1ce4d
             <th scope="col" class="px-6 py-3">เที่ยวบินหรือพาหนะอื่นขาไป</th>
             <th scope="col" class="px-6 py-3">เที่ยวบินหรือพาหนะอื่นขากลับ</th>
 
