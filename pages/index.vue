@@ -8,10 +8,10 @@
           class="text-xs text-gray-700 uppercase bg-gray-50 dark:text-gray-400"
           style="background-color: #81c784">
           <tr>
-            <th scope="col" class="px-6 py-3">ชื่อทริปทัวร์</th>
-            <th scope="col" class="px-6 py-3">ชื่อโปรแกรมทัวร์</th>
-            <th scope="col" class="px-6 py-3">วันที่เริ่มทริป</th>
-            <th scope="col" class="px-6 py-3">วันที่จบทริป</th>
+            <th scope="col" class="px-6 py-3">ชื่อทริปทัวร์จ้าา</th>
+            <th scope="col" class="px-6 py-3">ชื่อโปรแกรมทัวร์ครับผม....</th>
+            <th scope="col" class="px-6 py-3">วันที่เริ่มทริปค่าาา</th>
+            <th scope="col" class="px-6 py-3">วันที่จบทริปงับ</th>
             <th scope="col" class="px-6 py-3">วัน</th>
             <th scope="col" class="px-6 py-3">คืน</th>
             <th scope="col" class="px-6 py-3">เที่ยวบินหรือพาหนะอื่นขาไป</th>

@@ -1,6 +1,7 @@
 <template>
   <div
-    style="display: flex; background-color: rgb(225, 225, 241); z-index: -111">
+    style="display: flex; background-color: rgb(225, 225, 241); z-index: -111"
+  >
     <div class="page" v-if="onLoad">
       <v-container>
         <v-row>
@@ -10,7 +11,8 @@
                 <img
                   src="https://www.adt.or.th/image/ADT1%20-%201108%20-%200263.jpg"
                   class="w-141px h-47px"
-                  alt="sridara Logo" />
+                  alt="sridara Logo"
+                />
                 <v-sheet style="text-align: left; font-size: 12px">
                   <div>บริษัท ศรีดาราทัวร์ จำกัด (สำนักงานใหญ่)</div>
                   <div>
@@ -27,32 +29,45 @@
             <v-row style="font-size: 12px; padding-left: 4px; margin: auto">
               <v-col style="padding: 0" cols="10">
                 <v-table>
-                  <tr style="height: 20px">
+                  <tr style="height: 10px">
                     <td colspan="2" style="font-weight: bold">&nbsp;</td>
                   </tr>
-                  <tr style="height: 30px">
+                  <tr style="height: 20px">
                     <td colspan="2">
                       <b>ชื่อลูกค้า: </b>
                     </td>
                     <td colspan="2">{{ quo.customer_name }}</td>
                   </tr>
-                  <tr style="height: 30px">
+                  <tr style="height: 20px">
                     <td colspan="2">
-                      <b>รหัสลูกค้า: </b>
+                      <b>ชื่อผู้ติดต่อ: </b>
                     </td>
-                    <td colspan="2">{{ quo.customer_code }}</td>
+                    <td colspan="2">{{ quo.contact_name }}</td>
                   </tr>
-                  <tr style="height: 30px">
+                  <tr style="height: 20px">
                     <td colspan="2"><b>ที่อยู่: </b></td>
                     <td colspan="2">{{ quo.address }}</td>
                   </tr>
-                  <tr style="height: 30px">
+
+                  <tr style="height: 20px">
                     <td colspan="2">
                       <b>ID TAX: </b>
                     </td>
                     <td colspan="2">{{ quo.tax_id }}</td>
                   </tr>
                   <tr style="height: 20px">
+                    <td colspan="2">
+                      <b>FAX: </b>
+                    </td>
+                    <td colspan="2">{{ bill.fax }}</td>
+                  </tr>
+                  <tr style="height: 20px">
+                    <td colspan="2">
+                      <b>โทร: </b>
+                    </td>
+                    <td colspan="2">{{ quo.customer_tel }}</td>
+                  </tr>
+                  <tr style="height: 10px">
                     <td colspan="2" style="font-weight: bold">&nbsp;</td>
                   </tr>
                 </v-table>
@@ -84,24 +99,16 @@
                 <td style="text-align: right">{{ bill.no }}</td>
               </tr>
               <tr style="border-top: 1px solid lightgray">
+                <td><b>รหัสลูกค้า:</b></td>
+                <td style="text-align: right">{{ quo.customer_code }}</td>
+              </tr>
+              <tr>
                 <td><b>ผู้เสนอขาย:</b></td>
                 <td style="text-align: right">{{ quo.sales_person }}</td>
               </tr>
               <tr style="border-bottom: 1px solid lightgray">
                 <td><b>ฝ่าย:</b></td>
                 <td style="text-align: right">{{ quo.sale_department }}</td>
-              </tr>
-              <tr>
-                <td><b>ชื่อผู้ติดต่อ:</b></td>
-                <td style="text-align: right">{{ quo.contact_name }}</td>
-              </tr>
-              <tr>
-                <td><b>FAX:</b></td>
-                <td style="text-align: right">{{ bill.fax }}</td>
-              </tr>
-              <tr>
-                <td><b>โทร:</b></td>
-                <td style="text-align: right">{{ quo.customer_tel }}</td>
               </tr>
               <tr style="border-top: 1px solid lightgray">
                 <td>&nbsp;</td>
@@ -118,7 +125,8 @@
         </v-row>
 
         <v-row
-          style="padding: 1px; margin: auto; border-bottom: 1px solid black">
+          style="padding: 1px; margin: auto; border-bottom: 1px solid black"
+        >
           <v-col style="padding: 1px; height: 400px">
             <v-table density="compact" height="auto">
               <thead style="font-weight: bold; font-size: 14px">
@@ -126,7 +134,8 @@
                   style="
                     border-top: 1px solid black;
                     border-bottom: 1px solid black;
-                  ">
+                  "
+                >
                   <td class="text-center" style="font-size: xx-small">ลำดับ</td>
                   <td class="text-center" style="font-size: xx-small">
                     รหัสสินค้า
@@ -186,7 +195,8 @@
             padding-right: 4px;
             margin: auto;
             border-bottom: 1px solid black;
-          ">
+          "
+        >
           <v-col style="padding: 0" cols="9"
             ><v-table>
               <tr>
@@ -366,7 +376,8 @@
           type="text"
           id="base-input"
           v-model="billing.billing_note_no"
-          class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+          class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        />
       </v-col>
       <v-col>
         <label
@@ -379,7 +390,8 @@
           style="z-index: 999"
           v-model:value="billing.billing_note_date"
           class="date-picker"
-          format="DD/MM/YYYY" />
+          format="DD/MM/YYYY"
+        />
       </v-col>
       <v-col>
         <label
@@ -391,7 +403,8 @@
           type="text"
           id="base-input"
           v-model="billing.billing_note_fax"
-          class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+          class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        />
       </v-col>
     </v-row>
   </a-modal>
@@ -478,7 +491,7 @@ export default defineComponent({
         const payload = {
           tour_id: this.tour_id,
           no: this.billing.billing_note_no,
-          date: this.billing.billing_note_date,
+          date: dayjs(this.billing.billing_note_date).format("DD/MM/BBBB"),
           fax: this.billing.billing_note_fax,
         };
         update_data("billing", this.bill.id, payload).then((res) => {
