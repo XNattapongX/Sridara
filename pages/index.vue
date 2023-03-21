@@ -14,16 +14,8 @@
             <th scope="col" class="px-6 py-3">วันที่จบทริปงับ</th>
             <th scope="col" class="px-6 py-3">วันที่อากาศสดใสไร้เมฆหมอก</th>
             <th scope="col" class="px-6 py-3">คืนที่ดาวเต็มฟ้า</th>
-            <th scope="col" class="px-6 py-3">วัน</th>
-<<<<<<< HEAD
-<<<<<<< HEAD
-            <th scope="col" class="px-6 py-3">คืนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนน</th>
->>>>>>> 0aa71e89e8e194d04610524a7af07028e5829f42
-=======
-            <th scope="col" class="px-6 py-3">คืนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนwdadadasdadsdaasdadadadasdadasdadds</th>
->>>>>>> fc3980b52b5893581a799223777dd0959ae3fbda
-=======
-            <th scope="col" class="px-6 py-3">คืน</th>
+            <th scope="col" class="px-6 py-3">วันนนนนนนนน</th>
+            <th scope="col" class="px-6 py-3">คืนนนนนนนนน</th>
             <th scope="col" class="px-6 py-3">เที่ยวบินหรือพาหนะอื่นขาไป</th>
             <th scope="col" class="px-6 py-3">เที่ยวบินหรือพาหนะอื่นขาไปขามา</th>
             <th scope="col" class="px-6 py-3">เที่ยวบินหรือพาหนะอื่นขากลับ</th>
