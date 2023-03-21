@@ -15,8 +15,8 @@
             <th scope="col" class="px-6 py-3">วันที่อากาศสดใสไร้เมฆหมอก(Clear day without clouds)</th>
             <th scope="col" class="px-6 py-3">คืนที่ดาวเต็มฟ้า</th>
             <th scope="col" class="px-6 py-3">วัน</th>
-            <th scope="col" class="px-6 py-3">คืนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนน</th>
-            <th scope="col" class="px-6 py-3">คืนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนwdadadasdadsdaasdadadadasdadasdadds</th>
+            <th scope="col" class="px-6 py-3">คืนน</th>
+            <th scope="col" class="px-6 py-3">คืนน</th>
             <th scope="col" class="px-6 py-3">คืน</th>
             <th scope="col" class="px-6 py-3">เที่ยวบินหรือพาหนะอื่นขาไป</th>
             <th scope="col" class="px-6 py-3">เที่ยวบินหรือพาหนะอื่นขากลับ</th>
