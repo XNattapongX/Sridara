@@ -11,10 +11,10 @@
             <th scope="col" class="px-6 py-3">ผมรักลุงตู่</th>
             <th scope="col" class="px-6 py-3">คิดถึงคนบนฟ้า</th>
             <th scope="col" class="px-6 py-3">ไม่ใช่สลิ่มแค่เป็นคนรักชาติ</th>
-            <th scope="col" class="px-6 py-3">วันที่จบทริปงับ</th>
+            <th scope="col" class="px-6 py-3">วันที่จบจะไม่มีอีกต่อไป</th>
             <th scope="col" class="px-6 py-3">วันที่อากาศสดใสไร้เมฆหมอก</th>
             <th scope="col" class="px-6 py-3">คืนที่ดาวเต็มฟ้า</th>
-            <th scope="col" class="px-6 py-3">เที่ยวบินหรือพาหนะอื่นขาไป</th>
+            <th scope="col" class="px-6 py-3">เครื่องบินที่บินไปหาเธอ</th>
             <th scope="col" class="px-6 py-3">เที่ยวบินหรือพาหนะอื่นขากลับ</th>
 
             <th scope="col" class="px-6 py-3">จำนวนลูกทัวร์</th>
