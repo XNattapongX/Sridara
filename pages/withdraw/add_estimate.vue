@@ -82,40 +82,40 @@
           <v-col>
             <!-- <label for="base-input"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ค่าใช้จ่าย</label> -->
-              <v-row>
-                <v-col>
-                  ค่าเบี่ยเลี้ยง
-                </v-col>
-                <v-col>
-                  ค่าที่พัก
-                </v-col>
-                <v-col>
-                  ค่ายานพาหะนะ
-                </v-col>
-                <v-col>
-                  ค่าน้ำมัน
-                </v-col>
-                <v-col>
-                  อื่น ๆ
-                </v-col>
-              </v-row>
-              <v-row>
-                <v-col >
-                  <v-checkbox :model-value="false"></v-checkbox>
-                </v-col>
-                <v-col >
-                  <v-checkbox :model-value="false"></v-checkbox>
-                </v-col>
-                <v-col >
-                  <v-checkbox :model-value="false"></v-checkbox>
-                </v-col>
-                <v-col >
-                  <v-checkbox :model-value="false"></v-checkbox>
-                </v-col>
-                <v-col >
-                  <v-checkbox :model-value="false"></v-checkbox>
-                </v-col>
-              </v-row>
+            <v-row>
+              <v-col>
+                ค่าเบี่ยเลี้ยง
+              </v-col>
+              <v-col>
+                ค่าที่พัก
+              </v-col>
+              <v-col>
+                ค่ายานพาหะนะ
+              </v-col>
+              <v-col>
+                ค่าน้ำมัน
+              </v-col>
+              <v-col>
+                อื่น ๆ
+              </v-col>
+            </v-row>
+            <v-row>
+              <v-col>
+                <v-checkbox :model-value="false"></v-checkbox>
+              </v-col>
+              <v-col>
+                <v-checkbox :model-value="false"></v-checkbox>
+              </v-col>
+              <v-col>
+                <v-checkbox :model-value="false"></v-checkbox>
+              </v-col>
+              <v-col>
+                <v-checkbox :model-value="false"></v-checkbox>
+              </v-col>
+              <v-col>
+                <v-checkbox :model-value="false"></v-checkbox>
+              </v-col>
+            </v-row>
           </v-col>
           <v-col>
             <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">จำนวน</label>
@@ -135,10 +135,10 @@
         </v-row>
         <br />
         <div class="relative overflow-x-auto" style="
-                border-radius: 0.5rem;
-                box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
-                  rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
-              ">
+                            border-radius: 0.5rem;
+                            box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+                              rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+                          ">
           <section class="bg-gray-50 dark:bg-gray-900">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
               <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:text-gray-400"
@@ -147,15 +147,18 @@
                   <th scope="col" class="px-6 py-3">ลำดับ</th>
                   <th scope="col" class="px-6 py-3">รายละเอียดค่าใช้จ่าย</th>
                   <th scope="col" class="px-6 py-3">ราคา</th>
-                  <th scope="col" class="px-6 py-3">จำนวน</th>
-                  <th scope="col" class="px-6 py-3">ยอดสุทธิ</th>
-                  <th scope="col" class="px-6 py-3">วันที่ออก</th>
-                  <th scope="col" class="px-6 py-3">วันที่หมด</th>
-                  <th scope="col" class="px-6 py-3">ว/ด/ป เกิด</th>
-                  <th scope="col" class="px-6 py-3">สัญชาต</th>
-                  <th scope="col" class="px-6 py-3">เพศ</th>
-                  <th scope="col" class="px-6 py-3">ประเภทเตียง</th>
-                  <th scope="col" class="px-6 py-3">ตรวจลงตราเลขที</th>
+                  <th scope="col" class="px-6 py-3">ค่าใช้จ่าย
+                <tr>
+                  <th scope="col" class="px-2 py-3">เบี่ยเลี้ยง</th>
+                  <th scope="col" class="px-2 py-3">ค่าที่พัก</th>
+                  <th scope="col" class="px-2 py-3">ค่ำยานพาหะนะ</th>
+                  <th scope="col" class="px-2 py-3">ค่าน้ำมัน</th>
+                  <th scope="col" class="px-2 py-3">อื่น ๆ</th>
+                </tr>
+                </th>
+                <th scope="col" class="px-6 py-3">จำนวน</th>
+                <th scope="col" class="px-6 py-3">ยอดสุทธิ</th>
+                <th scope="col" class="px-6 py-3">จัดการ</th>
                 </tr>
               </thead>
               <tbody>
@@ -166,7 +169,8 @@
                 </tr>
                 <tr class="table-row-hover" v-for="(item, index) in members_ls"
                   @click="deleteAlert(item.id, item.thai_name)" :key="index">
-                  <td class="px-6 py-4">{{ index + 1 }}</td>
+                  <td class="px-6 py-4">
+                    {{ index + 1 }}</td>
                   <td class="px-6 py-4">
                     {{ item.thai_name }}
                   </td>
@@ -174,29 +178,24 @@
                     {{ item.national_id }}
                   </td>
                   <td class="px-6 py-4">
-                    {{ item.eng_name }}
+                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:text-gray-400"
+                        style="background-color: #81c784">
+                        <tr>
+                          <th scope="col" class="px-2 py-3">เบี่ยเลี้ยง</th>
+                          <th scope="col" class="px-2 py-3">ค่าที่พัก</th>
+                          <th scope="col" class="px-2 py-3">ค่ำยานพาหะนะ</th>
+                          <th scope="col" class="px-2 py-3">ค่าน้ำมัน</th>
+                          <th scope="col" class="px-2 py-3">อื่น ๆ</th>
+                        </tr>
+                      </thead>
+                    </table>
                   </td>
                   <td class="px-6 py-4">
                     {{ item.passport_no }}
                   </td>
                   <td class="px-6 py-4">
                     {{ item.passport_issue }}
-                  </td>
-                  <td class="px-6 py-4">
-                    {{ item.passport_exp }}
-                  </td>
-                  <td class="px-6 py-4">{{ item.date_of_birth }}</td>
-                  <td class="px-6 py-4">
-                    {{ item.nationality }}
-                  </td>
-                  <td class="px-6 py-4">
-                    {{ item.gender }}
-                  </td>
-                  <td class="px-6 py-4">
-                    {{ item.bed_type }}
-                  </td>
-                  <td class="px-6 py-4">
-                    {{ item.stamp_no }}
                   </td>
                 </tr>
               </tbody>
