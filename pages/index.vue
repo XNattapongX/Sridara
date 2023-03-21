@@ -13,7 +13,7 @@
             <th scope="col" class="px-6 py-3">วันที่เริ่มทริป</th>
             <th scope="col" class="px-6 py-3">วันที่จบทริปงับ</th>
             <th scope="col" class="px-6 py-3">วัน</th>
-            <th scope="col" class="px-6 py-3">คืนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนwdadadasdadsdaasdadadadasdadasdadds</th>
+            <th scope="col" class="px-6 py-3">คืน</th>
             <th scope="col" class="px-6 py-3">เที่ยวบินหรือพาหนะอื่นขาไป</th>
             <th scope="col" class="px-6 py-3">เที่ยวบินหรือพาหนะอื่นขากลับ</th>
 
